@@ -1,0 +1,193 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>google.cloud.aiplatform_v1.types.model_evaluation &#8212; google-cloud-aiplatform  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/alabaster.css" />
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+          	<div class="admonition" id="python2-eol"> 
+          	 As of January 1, 2020 this library no longer supports Python 2 on the latest released version. 
+          	 Library versions released prior to that date will continue to be available. For more information please
+          	 visit <a href="https://cloud.google.com/python/docs/python2-sunset/">Python 2 support on Google Cloud</a>.
+          	</div>
+            
+  <h1>Source code for google.cloud.aiplatform_v1.types.model_evaluation</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Copyright 2020 Google LLC</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="c1">#</span>
+<span class="kn">import</span> <span class="nn">proto</span>  <span class="c1"># type: ignore</span>
+
+<span class="kn">from</span> <span class="nn">google.protobuf</span> <span class="kn">import</span> <span class="n">struct_pb2</span>  <span class="c1"># type: ignore</span>
+<span class="kn">from</span> <span class="nn">google.protobuf</span> <span class="kn">import</span> <span class="n">timestamp_pb2</span>  <span class="c1"># type: ignore</span>
+
+
+<span class="n">__protobuf__</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">module</span><span class="p">(</span>
+    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;google.cloud.aiplatform.v1&quot;</span><span class="p">,</span> <span class="n">manifest</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;ModelEvaluation&quot;</span><span class="p">,},</span>
+<span class="p">)</span>
+
+
+<div class="viewcode-block" id="ModelEvaluation"><a class="viewcode-back" href="../../../../../aiplatform_v1/types.html#google.cloud.aiplatform_v1.types.ModelEvaluation">[docs]</a><span class="k">class</span> <span class="nc">ModelEvaluation</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;A collection of metrics calculated by comparing Model&#39;s</span>
+<span class="sd">    predictions on all of the test data against annotations from the</span>
+<span class="sd">    test data.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        name (str):</span>
+<span class="sd">            Output only. The resource name of the</span>
+<span class="sd">            ModelEvaluation.</span>
+<span class="sd">        metrics_schema_uri (str):</span>
+<span class="sd">            Output only. Points to a YAML file stored on Google Cloud</span>
+<span class="sd">            Storage describing the</span>
+<span class="sd">            [metrics][google.cloud.aiplatform.v1.ModelEvaluation.metrics]</span>
+<span class="sd">            of this ModelEvaluation. The schema is defined as an OpenAPI</span>
+<span class="sd">            3.0.2 `Schema</span>
+<span class="sd">            Object &lt;https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.2.md#schemaObject&gt;`__.</span>
+<span class="sd">        metrics (google.protobuf.struct_pb2.Value):</span>
+<span class="sd">            Output only. Evaluation metrics of the Model. The schema of</span>
+<span class="sd">            the metrics is stored in</span>
+<span class="sd">            [metrics_schema_uri][google.cloud.aiplatform.v1.ModelEvaluation.metrics_schema_uri]</span>
+<span class="sd">        create_time (google.protobuf.timestamp_pb2.Timestamp):</span>
+<span class="sd">            Output only. Timestamp when this</span>
+<span class="sd">            ModelEvaluation was created.</span>
+<span class="sd">        slice_dimensions (Sequence[str]):</span>
+<span class="sd">            Output only. All possible</span>
+<span class="sd">            [dimensions][ModelEvaluationSlice.slice.dimension] of</span>
+<span class="sd">            ModelEvaluationSlices. The dimensions can be used as the</span>
+<span class="sd">            filter of the</span>
+<span class="sd">            [ModelService.ListModelEvaluationSlices][google.cloud.aiplatform.v1.ModelService.ListModelEvaluationSlices]</span>
+<span class="sd">            request, in the form of ``slice.dimension = &lt;dimension&gt;``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="n">metrics_schema_uri</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span>
+    <span class="n">metrics</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">struct_pb2</span><span class="o">.</span><span class="n">Value</span><span class="p">,)</span>
+    <span class="n">create_time</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">timestamp_pb2</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">,)</span>
+    <span class="n">slice_dimensions</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">5</span><span class="p">,)</span></div>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">__protobuf__</span><span class="o">.</span><span class="n">manifest</span><span class="p">))</span>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../../../index.html">google-cloud-aiplatform</a></h1>
+
+
+
+<p class="blurb">Google Cloud Client Libraries for google-cloud-aiplatform</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=googleapis&repo=python-aiplatform&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform.html">Google Cloud Aiplatform SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1/services.html">Services for Google Cloud Aiplatform v1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1/types.html">Types for Google Cloud Aiplatform v1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1beta1/services.html">Services for Google Cloud Aiplatform v1beta1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1beta1/types.html">Types for Google Cloud Aiplatform v1beta1 API</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../changelog.html">Changelog</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Google.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+    <a href="https://github.com/googleapis/python-aiplatform" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>

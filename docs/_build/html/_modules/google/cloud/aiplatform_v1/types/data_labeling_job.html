@@ -1,0 +1,379 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>google.cloud.aiplatform_v1.types.data_labeling_job &#8212; google-cloud-aiplatform  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/alabaster.css" />
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+          	<div class="admonition" id="python2-eol"> 
+          	 As of January 1, 2020 this library no longer supports Python 2 on the latest released version. 
+          	 Library versions released prior to that date will continue to be available. For more information please
+          	 visit <a href="https://cloud.google.com/python/docs/python2-sunset/">Python 2 support on Google Cloud</a>.
+          	</div>
+            
+  <h1>Source code for google.cloud.aiplatform_v1.types.data_labeling_job</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Copyright 2020 Google LLC</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="c1">#</span>
+<span class="kn">import</span> <span class="nn">proto</span>  <span class="c1"># type: ignore</span>
+
+<span class="kn">from</span> <span class="nn">google.cloud.aiplatform_v1.types</span> <span class="kn">import</span> <span class="n">encryption_spec</span> <span class="k">as</span> <span class="n">gca_encryption_spec</span>
+<span class="kn">from</span> <span class="nn">google.cloud.aiplatform_v1.types</span> <span class="kn">import</span> <span class="n">job_state</span>
+<span class="kn">from</span> <span class="nn">google.protobuf</span> <span class="kn">import</span> <span class="n">struct_pb2</span>  <span class="c1"># type: ignore</span>
+<span class="kn">from</span> <span class="nn">google.protobuf</span> <span class="kn">import</span> <span class="n">timestamp_pb2</span>  <span class="c1"># type: ignore</span>
+<span class="kn">from</span> <span class="nn">google.rpc</span> <span class="kn">import</span> <span class="n">status_pb2</span>  <span class="c1"># type: ignore</span>
+<span class="kn">from</span> <span class="nn">google.type</span> <span class="kn">import</span> <span class="n">money_pb2</span>  <span class="c1"># type: ignore</span>
+
+
+<span class="n">__protobuf__</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">module</span><span class="p">(</span>
+    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;google.cloud.aiplatform.v1&quot;</span><span class="p">,</span>
+    <span class="n">manifest</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;DataLabelingJob&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ActiveLearningConfig&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;SampleConfig&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;TrainingConfig&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">)</span>
+
+
+<div class="viewcode-block" id="DataLabelingJob"><a class="viewcode-back" href="../../../../../aiplatform_v1/types.html#google.cloud.aiplatform_v1.types.DataLabelingJob">[docs]</a><span class="k">class</span> <span class="nc">DataLabelingJob</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;DataLabelingJob is used to trigger a human labeling job on</span>
+<span class="sd">    unlabeled data from the following Dataset:</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        name (str):</span>
+<span class="sd">            Output only. Resource name of the</span>
+<span class="sd">            DataLabelingJob.</span>
+<span class="sd">        display_name (str):</span>
+<span class="sd">            Required. The user-defined name of the</span>
+<span class="sd">            DataLabelingJob. The name can be up to 128</span>
+<span class="sd">            characters long and can be consist of any UTF-8</span>
+<span class="sd">            characters.</span>
+<span class="sd">            Display name of a DataLabelingJob.</span>
+<span class="sd">        datasets (Sequence[str]):</span>
+<span class="sd">            Required. Dataset resource names. Right now we only support</span>
+<span class="sd">            labeling from a single Dataset. Format:</span>
+<span class="sd">            ``projects/{project}/locations/{location}/datasets/{dataset}``</span>
+<span class="sd">        annotation_labels (Sequence[google.cloud.aiplatform_v1.types.DataLabelingJob.AnnotationLabelsEntry]):</span>
+<span class="sd">            Labels to assign to annotations generated by</span>
+<span class="sd">            this DataLabelingJob.</span>
+<span class="sd">            Label keys and values can be no longer than 64</span>
+<span class="sd">            characters (Unicode codepoints), can only</span>
+<span class="sd">            contain lowercase letters, numeric characters,</span>
+<span class="sd">            underscores and dashes. International characters</span>
+<span class="sd">            are allowed. See https://goo.gl/xmQnxf for more</span>
+<span class="sd">            information and examples of labels. System</span>
+<span class="sd">            reserved label keys are prefixed with</span>
+<span class="sd">            &quot;aiplatform.googleapis.com/&quot; and are immutable.</span>
+<span class="sd">        labeler_count (int):</span>
+<span class="sd">            Required. Number of labelers to work on each</span>
+<span class="sd">            DataItem.</span>
+<span class="sd">        instruction_uri (str):</span>
+<span class="sd">            Required. The Google Cloud Storage location</span>
+<span class="sd">            of the instruction pdf. This pdf is shared with</span>
+<span class="sd">            labelers, and provides detailed description on</span>
+<span class="sd">            how to label DataItems in Datasets.</span>
+<span class="sd">        inputs_schema_uri (str):</span>
+<span class="sd">            Required. Points to a YAML file stored on</span>
+<span class="sd">            Google Cloud Storage describing the config for a</span>
+<span class="sd">            specific type of DataLabelingJob. The schema</span>
+<span class="sd">            files that can be used here are found in the</span>
+<span class="sd">            https://storage.googleapis.com/google-cloud-</span>
+<span class="sd">            aiplatform bucket in the</span>
+<span class="sd">            /schema/datalabelingjob/inputs/ folder.</span>
+<span class="sd">        inputs (google.protobuf.struct_pb2.Value):</span>
+<span class="sd">            Required. Input config parameters for the</span>
+<span class="sd">            DataLabelingJob.</span>
+<span class="sd">        state (google.cloud.aiplatform_v1.types.JobState):</span>
+<span class="sd">            Output only. The detailed state of the job.</span>
+<span class="sd">        labeling_progress (int):</span>
+<span class="sd">            Output only. Current labeling job progress percentage scaled</span>
+<span class="sd">            in interval [0, 100], indicating the percentage of DataItems</span>
+<span class="sd">            that has been finished.</span>
+<span class="sd">        current_spend (google.type.money_pb2.Money):</span>
+<span class="sd">            Output only. Estimated cost(in US dollars)</span>
+<span class="sd">            that the DataLabelingJob has incurred to date.</span>
+<span class="sd">        create_time (google.protobuf.timestamp_pb2.Timestamp):</span>
+<span class="sd">            Output only. Timestamp when this</span>
+<span class="sd">            DataLabelingJob was created.</span>
+<span class="sd">        update_time (google.protobuf.timestamp_pb2.Timestamp):</span>
+<span class="sd">            Output only. Timestamp when this</span>
+<span class="sd">            DataLabelingJob was updated most recently.</span>
+<span class="sd">        error (google.rpc.status_pb2.Status):</span>
+<span class="sd">            Output only. DataLabelingJob errors. It is only populated</span>
+<span class="sd">            when job&#39;s state is ``JOB_STATE_FAILED`` or</span>
+<span class="sd">            ``JOB_STATE_CANCELLED``.</span>
+<span class="sd">        labels (Sequence[google.cloud.aiplatform_v1.types.DataLabelingJob.LabelsEntry]):</span>
+<span class="sd">            The labels with user-defined metadata to organize your</span>
+<span class="sd">            DataLabelingJobs.</span>
+
+<span class="sd">            Label keys and values can be no longer than 64 characters</span>
+<span class="sd">            (Unicode codepoints), can only contain lowercase letters,</span>
+<span class="sd">            numeric characters, underscores and dashes. International</span>
+<span class="sd">            characters are allowed.</span>
+
+<span class="sd">            See https://goo.gl/xmQnxf for more information and examples</span>
+<span class="sd">            of labels. System reserved label keys are prefixed with</span>
+<span class="sd">            &quot;aiplatform.googleapis.com/&quot; and are immutable. Following</span>
+<span class="sd">            system labels exist for each DataLabelingJob:</span>
+
+<span class="sd">            -  &quot;aiplatform.googleapis.com/schema&quot;: output only, its</span>
+<span class="sd">               value is the</span>
+<span class="sd">               [inputs_schema][google.cloud.aiplatform.v1.DataLabelingJob.inputs_schema_uri]&#39;s</span>
+<span class="sd">               title.</span>
+<span class="sd">        specialist_pools (Sequence[str]):</span>
+<span class="sd">            The SpecialistPools&#39; resource names</span>
+<span class="sd">            associated with this job.</span>
+<span class="sd">        encryption_spec (google.cloud.aiplatform_v1.types.EncryptionSpec):</span>
+<span class="sd">            Customer-managed encryption key spec for a</span>
+<span class="sd">            DataLabelingJob. If set, this DataLabelingJob</span>
+<span class="sd">            will be secured by this key.</span>
+<span class="sd">            Note: Annotations created in the DataLabelingJob</span>
+<span class="sd">            are associated with the EncryptionSpec of the</span>
+<span class="sd">            Dataset they are exported to.</span>
+<span class="sd">        active_learning_config (google.cloud.aiplatform_v1.types.ActiveLearningConfig):</span>
+<span class="sd">            Parameters that configure the active learning</span>
+<span class="sd">            pipeline. Active learning will label the data</span>
+<span class="sd">            incrementally via several iterations. For every</span>
+<span class="sd">            iteration, it will select a batch of data based</span>
+<span class="sd">            on the sampling strategy.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="n">display_name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span>
+    <span class="n">datasets</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,)</span>
+    <span class="n">annotation_labels</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">MapField</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">12</span><span class="p">,)</span>
+    <span class="n">labeler_count</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">INT32</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">4</span><span class="p">,)</span>
+    <span class="n">instruction_uri</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">5</span><span class="p">,)</span>
+    <span class="n">inputs_schema_uri</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">6</span><span class="p">,)</span>
+    <span class="n">inputs</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">struct_pb2</span><span class="o">.</span><span class="n">Value</span><span class="p">,)</span>
+    <span class="n">state</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">ENUM</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">enum</span><span class="o">=</span><span class="n">job_state</span><span class="o">.</span><span class="n">JobState</span><span class="p">,)</span>
+    <span class="n">labeling_progress</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">INT32</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">13</span><span class="p">,)</span>
+    <span class="n">current_spend</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">money_pb2</span><span class="o">.</span><span class="n">Money</span><span class="p">,)</span>
+    <span class="n">create_time</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">timestamp_pb2</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">,)</span>
+    <span class="n">update_time</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">timestamp_pb2</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">error</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">22</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">status_pb2</span><span class="o">.</span><span class="n">Status</span><span class="p">,)</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">MapField</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">11</span><span class="p">,)</span>
+    <span class="n">specialist_pools</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">16</span><span class="p">,)</span>
+    <span class="n">encryption_spec</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">gca_encryption_spec</span><span class="o">.</span><span class="n">EncryptionSpec</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">active_learning_config</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;ActiveLearningConfig&quot;</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ActiveLearningConfig"><a class="viewcode-back" href="../../../../../aiplatform_v1/types.html#google.cloud.aiplatform_v1.types.ActiveLearningConfig">[docs]</a><span class="k">class</span> <span class="nc">ActiveLearningConfig</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Parameters that configure the active learning pipeline.</span>
+<span class="sd">    Active learning will  label the data incrementally by several</span>
+<span class="sd">    iterations. For every iteration, it  will select a batch of data</span>
+<span class="sd">    based on the sampling strategy.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        max_data_item_count (int):</span>
+<span class="sd">            Max number of human labeled DataItems.</span>
+<span class="sd">        max_data_item_percentage (int):</span>
+<span class="sd">            Max percent of total DataItems for human</span>
+<span class="sd">            labeling.</span>
+<span class="sd">        sample_config (google.cloud.aiplatform_v1.types.SampleConfig):</span>
+<span class="sd">            Active learning data sampling config. For</span>
+<span class="sd">            every active learning labeling iteration, it</span>
+<span class="sd">            will select a batch of data based on the</span>
+<span class="sd">            sampling strategy.</span>
+<span class="sd">        training_config (google.cloud.aiplatform_v1.types.TrainingConfig):</span>
+<span class="sd">            CMLE training config. For every active</span>
+<span class="sd">            learning labeling iteration, system will train a</span>
+<span class="sd">            machine learning model on CMLE. The trained</span>
+<span class="sd">            model will be used by data sampling algorithm to</span>
+<span class="sd">            select DataItems.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">max_data_item_count</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">INT64</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">oneof</span><span class="o">=</span><span class="s2">&quot;human_labeling_budget&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">max_data_item_percentage</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">INT32</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">oneof</span><span class="o">=</span><span class="s2">&quot;human_labeling_budget&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">sample_config</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;SampleConfig&quot;</span><span class="p">,)</span>
+    <span class="n">training_config</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;TrainingConfig&quot;</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="SampleConfig"><a class="viewcode-back" href="../../../../../aiplatform_v1/types.html#google.cloud.aiplatform_v1.types.SampleConfig">[docs]</a><span class="k">class</span> <span class="nc">SampleConfig</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Active learning data sampling config. For every active</span>
+<span class="sd">    learning labeling iteration, it will select a batch of data</span>
+<span class="sd">    based on the sampling strategy.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        initial_batch_sample_percentage (int):</span>
+<span class="sd">            The percentage of data needed to be labeled</span>
+<span class="sd">            in the first batch.</span>
+<span class="sd">        following_batch_sample_percentage (int):</span>
+<span class="sd">            The percentage of data needed to be labeled</span>
+<span class="sd">            in each following batch (except the first</span>
+<span class="sd">            batch).</span>
+<span class="sd">        sample_strategy (google.cloud.aiplatform_v1.types.SampleConfig.SampleStrategy):</span>
+<span class="sd">            Field to choose sampling strategy. Sampling</span>
+<span class="sd">            strategy will decide which data should be</span>
+<span class="sd">            selected for human labeling in every batch.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="SampleConfig.SampleStrategy"><a class="viewcode-back" href="../../../../../aiplatform_v1/types.html#google.cloud.aiplatform_v1.types.SampleConfig.SampleStrategy">[docs]</a>    <span class="k">class</span> <span class="nc">SampleStrategy</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Enum</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Sample strategy decides which subset of DataItems should be</span>
+<span class="sd">        selected for human labeling in every batch.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">SAMPLE_STRATEGY_UNSPECIFIED</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">UNCERTAINTY</span> <span class="o">=</span> <span class="mi">1</span></div>
+
+    <span class="n">initial_batch_sample_percentage</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">INT32</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">oneof</span><span class="o">=</span><span class="s2">&quot;initial_batch_sample_size&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">following_batch_sample_percentage</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">INT32</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">oneof</span><span class="o">=</span><span class="s2">&quot;following_batch_sample_size&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">sample_strategy</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">ENUM</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">enum</span><span class="o">=</span><span class="n">SampleStrategy</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="TrainingConfig"><a class="viewcode-back" href="../../../../../aiplatform_v1/types.html#google.cloud.aiplatform_v1.types.TrainingConfig">[docs]</a><span class="k">class</span> <span class="nc">TrainingConfig</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;CMLE training config. For every active learning labeling</span>
+<span class="sd">    iteration, system will train a machine learning model on CMLE.</span>
+<span class="sd">    The trained model will be used by data sampling algorithm to</span>
+<span class="sd">    select DataItems.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        timeout_training_milli_hours (int):</span>
+<span class="sd">            The timeout hours for the CMLE training job,</span>
+<span class="sd">            expressed in milli hours i.e. 1,000 value in</span>
+<span class="sd">            this field means 1 hour.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">timeout_training_milli_hours</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">INT64</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span></div>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">__protobuf__</span><span class="o">.</span><span class="n">manifest</span><span class="p">))</span>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../../../index.html">google-cloud-aiplatform</a></h1>
+
+
+
+<p class="blurb">Google Cloud Client Libraries for google-cloud-aiplatform</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=googleapis&repo=python-aiplatform&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform.html">Google Cloud Aiplatform SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1/services.html">Services for Google Cloud Aiplatform v1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1/types.html">Types for Google Cloud Aiplatform v1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1beta1/services.html">Services for Google Cloud Aiplatform v1beta1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1beta1/types.html">Types for Google Cloud Aiplatform v1beta1 API</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../changelog.html">Changelog</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Google.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+    <a href="https://github.com/googleapis/python-aiplatform" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>

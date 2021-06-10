@@ -1,0 +1,1101 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>google.cloud.aiplatform_v1beta1.types.metadata_service &#8212; google-cloud-aiplatform  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/alabaster.css" />
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+          	<div class="admonition" id="python2-eol"> 
+          	 As of January 1, 2020 this library no longer supports Python 2 on the latest released version. 
+          	 Library versions released prior to that date will continue to be available. For more information please
+          	 visit <a href="https://cloud.google.com/python/docs/python2-sunset/">Python 2 support on Google Cloud</a>.
+          	</div>
+            
+  <h1>Source code for google.cloud.aiplatform_v1beta1.types.metadata_service</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Copyright 2020 Google LLC</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="c1">#</span>
+<span class="kn">import</span> <span class="nn">proto</span>  <span class="c1"># type: ignore</span>
+
+<span class="kn">from</span> <span class="nn">google.cloud.aiplatform_v1beta1.types</span> <span class="kn">import</span> <span class="n">artifact</span> <span class="k">as</span> <span class="n">gca_artifact</span>
+<span class="kn">from</span> <span class="nn">google.cloud.aiplatform_v1beta1.types</span> <span class="kn">import</span> <span class="n">context</span> <span class="k">as</span> <span class="n">gca_context</span>
+<span class="kn">from</span> <span class="nn">google.cloud.aiplatform_v1beta1.types</span> <span class="kn">import</span> <span class="n">event</span>
+<span class="kn">from</span> <span class="nn">google.cloud.aiplatform_v1beta1.types</span> <span class="kn">import</span> <span class="n">execution</span> <span class="k">as</span> <span class="n">gca_execution</span>
+<span class="kn">from</span> <span class="nn">google.cloud.aiplatform_v1beta1.types</span> <span class="kn">import</span> <span class="n">metadata_schema</span> <span class="k">as</span> <span class="n">gca_metadata_schema</span>
+<span class="kn">from</span> <span class="nn">google.cloud.aiplatform_v1beta1.types</span> <span class="kn">import</span> <span class="n">metadata_store</span> <span class="k">as</span> <span class="n">gca_metadata_store</span>
+<span class="kn">from</span> <span class="nn">google.cloud.aiplatform_v1beta1.types</span> <span class="kn">import</span> <span class="n">operation</span>
+<span class="kn">from</span> <span class="nn">google.protobuf</span> <span class="kn">import</span> <span class="n">field_mask_pb2</span>  <span class="c1"># type: ignore</span>
+
+
+<span class="n">__protobuf__</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">module</span><span class="p">(</span>
+    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;google.cloud.aiplatform.v1beta1&quot;</span><span class="p">,</span>
+    <span class="n">manifest</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;CreateMetadataStoreRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;CreateMetadataStoreOperationMetadata&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;GetMetadataStoreRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ListMetadataStoresRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ListMetadataStoresResponse&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;DeleteMetadataStoreRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;DeleteMetadataStoreOperationMetadata&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;CreateArtifactRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;GetArtifactRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ListArtifactsRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ListArtifactsResponse&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;UpdateArtifactRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;CreateContextRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;GetContextRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ListContextsRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ListContextsResponse&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;UpdateContextRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;DeleteContextRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;AddContextArtifactsAndExecutionsRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;AddContextArtifactsAndExecutionsResponse&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;AddContextChildrenRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;AddContextChildrenResponse&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;QueryContextLineageSubgraphRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;CreateExecutionRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;GetExecutionRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ListExecutionsRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ListExecutionsResponse&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;UpdateExecutionRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;AddExecutionEventsRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;AddExecutionEventsResponse&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;QueryExecutionInputsAndOutputsRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;CreateMetadataSchemaRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;GetMetadataSchemaRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ListMetadataSchemasRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ListMetadataSchemasResponse&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;QueryArtifactLineageSubgraphRequest&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">)</span>
+
+
+<div class="viewcode-block" id="CreateMetadataStoreRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.CreateMetadataStoreRequest">[docs]</a><span class="k">class</span> <span class="nc">CreateMetadataStoreRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [MetadataService.CreateMetadataStore][google.cloud.aiplatform.v1beta1.MetadataService.CreateMetadataStore].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        parent (str):</span>
+<span class="sd">            Required. The resource name of the Location</span>
+<span class="sd">            where the MetadataStore should be created.</span>
+<span class="sd">            Format: projects/{project}/locations/{location}/</span>
+<span class="sd">        metadata_store (google.cloud.aiplatform_v1beta1.types.MetadataStore):</span>
+<span class="sd">            Required. The MetadataStore to create.</span>
+<span class="sd">        metadata_store_id (str):</span>
+<span class="sd">            The {metadatastore} portion of the resource name with the</span>
+<span class="sd">            format:</span>
+<span class="sd">            projects/{project}/locations/{location}/metadataStores/{metadatastore}</span>
+<span class="sd">            If not provided, the MetadataStore&#39;s ID will be a UUID</span>
+<span class="sd">            generated by the service. Must be 4-128 characters in</span>
+<span class="sd">            length. Valid characters are /[a-z][0-9]-/. Must be unique</span>
+<span class="sd">            across all MetadataStores in the parent Location. (Otherwise</span>
+<span class="sd">            the request will fail with ALREADY_EXISTS, or</span>
+<span class="sd">            PERMISSION_DENIED if the caller can&#39;t view the preexisting</span>
+<span class="sd">            MetadataStore.)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="n">metadata_store</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">gca_metadata_store</span><span class="o">.</span><span class="n">MetadataStore</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">metadata_store_id</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="CreateMetadataStoreOperationMetadata"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.CreateMetadataStoreOperationMetadata">[docs]</a><span class="k">class</span> <span class="nc">CreateMetadataStoreOperationMetadata</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Details of operations that perform</span>
+<span class="sd">    [MetadataService.CreateMetadataStore][google.cloud.aiplatform.v1beta1.MetadataService.CreateMetadataStore].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        generic_metadata (google.cloud.aiplatform_v1beta1.types.GenericOperationMetadata):</span>
+<span class="sd">            Operation metadata for creating a</span>
+<span class="sd">            MetadataStore.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">generic_metadata</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">operation</span><span class="o">.</span><span class="n">GenericOperationMetadata</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="GetMetadataStoreRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.GetMetadataStoreRequest">[docs]</a><span class="k">class</span> <span class="nc">GetMetadataStoreRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [MetadataService.GetMetadataStore][google.cloud.aiplatform.v1beta1.MetadataService.GetMetadataStore].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        name (str):</span>
+<span class="sd">            Required. The resource name of the</span>
+<span class="sd">            MetadataStore to retrieve. Format:</span>
+<span class="sd">            projects/{project}/locations/{location}/metadataStores/{metadatastore}</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="ListMetadataStoresRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ListMetadataStoresRequest">[docs]</a><span class="k">class</span> <span class="nc">ListMetadataStoresRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [MetadataService.ListMetadataStores][google.cloud.aiplatform.v1beta1.MetadataService.ListMetadataStores].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        parent (str):</span>
+<span class="sd">            Required. The Location whose MetadataStores</span>
+<span class="sd">            should be listed. Format:</span>
+<span class="sd">            projects/{project}/locations/{location}</span>
+<span class="sd">        page_size (int):</span>
+<span class="sd">            The maximum number of Metadata Stores to</span>
+<span class="sd">            return. The service may return fewer.</span>
+<span class="sd">            Must be in range 1-1000, inclusive. Defaults to</span>
+<span class="sd">            100.</span>
+<span class="sd">        page_token (str):</span>
+<span class="sd">            A page token, received from a previous</span>
+<span class="sd">            [MetadataService.ListMetadataStores][google.cloud.aiplatform.v1beta1.MetadataService.ListMetadataStores]</span>
+<span class="sd">            call. Provide this to retrieve the subsequent page.</span>
+
+<span class="sd">            When paginating, all other provided parameters must match</span>
+<span class="sd">            the call that provided the page token. (Otherwise the</span>
+<span class="sd">            request will fail with INVALID_ARGUMENT error.)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="n">page_size</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">INT32</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span>
+    <span class="n">page_token</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="ListMetadataStoresResponse"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ListMetadataStoresResponse">[docs]</a><span class="k">class</span> <span class="nc">ListMetadataStoresResponse</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Response message for</span>
+<span class="sd">    [MetadataService.ListMetadataStores][google.cloud.aiplatform.v1beta1.MetadataService.ListMetadataStores].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        metadata_stores (Sequence[google.cloud.aiplatform_v1beta1.types.MetadataStore]):</span>
+<span class="sd">            The MetadataStores found for the Location.</span>
+<span class="sd">        next_page_token (str):</span>
+<span class="sd">            A token, which can be sent as</span>
+<span class="sd">            [ListMetadataStoresRequest.page_token][google.cloud.aiplatform.v1beta1.ListMetadataStoresRequest.page_token]</span>
+<span class="sd">            to retrieve the next page. If this field is not populated,</span>
+<span class="sd">            there are no subsequent pages.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">raw_page</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="n">metadata_stores</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">gca_metadata_store</span><span class="o">.</span><span class="n">MetadataStore</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">next_page_token</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="DeleteMetadataStoreRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.DeleteMetadataStoreRequest">[docs]</a><span class="k">class</span> <span class="nc">DeleteMetadataStoreRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [MetadataService.DeleteMetadataStore][google.cloud.aiplatform.v1beta1.MetadataService.DeleteMetadataStore].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        name (str):</span>
+<span class="sd">            Required. The resource name of the</span>
+<span class="sd">            MetadataStore to delete. Format:</span>
+<span class="sd">            projects/{project}/locations/{location}/metadataStores/{metadatastore}</span>
+<span class="sd">        force (bool):</span>
+<span class="sd">            If set to true, any child resources of this MetadataStore</span>
+<span class="sd">            will be deleted. (Otherwise, the request will fail with a</span>
+<span class="sd">            FAILED_PRECONDITION error if the MetadataStore has any child</span>
+<span class="sd">            resources.)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="n">force</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">BOOL</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="DeleteMetadataStoreOperationMetadata"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.DeleteMetadataStoreOperationMetadata">[docs]</a><span class="k">class</span> <span class="nc">DeleteMetadataStoreOperationMetadata</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Details of operations that perform</span>
+<span class="sd">    [MetadataService.DeleteMetadataStore][google.cloud.aiplatform.v1beta1.MetadataService.DeleteMetadataStore].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        generic_metadata (google.cloud.aiplatform_v1beta1.types.GenericOperationMetadata):</span>
+<span class="sd">            Operation metadata for deleting a</span>
+<span class="sd">            MetadataStore.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">generic_metadata</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">operation</span><span class="o">.</span><span class="n">GenericOperationMetadata</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="CreateArtifactRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.CreateArtifactRequest">[docs]</a><span class="k">class</span> <span class="nc">CreateArtifactRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [MetadataService.CreateArtifact][google.cloud.aiplatform.v1beta1.MetadataService.CreateArtifact].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        parent (str):</span>
+<span class="sd">            Required. The resource name of the</span>
+<span class="sd">            MetadataStore where the Artifact should be</span>
+<span class="sd">            created. Format:</span>
+<span class="sd">            projects/{project}/locations/{location}/metadataStores/{metadatastore}</span>
+<span class="sd">        artifact (google.cloud.aiplatform_v1beta1.types.Artifact):</span>
+<span class="sd">            Required. The Artifact to create.</span>
+<span class="sd">        artifact_id (str):</span>
+<span class="sd">            The {artifact} portion of the resource name with the format:</span>
+<span class="sd">            projects/{project}/locations/{location}/metadataStores/{metadatastore}/artifacts/{artifact}</span>
+<span class="sd">            If not provided, the Artifact&#39;s ID will be a UUID generated</span>
+<span class="sd">            by the service. Must be 4-128 characters in length. Valid</span>
+<span class="sd">            characters are /[a-z][0-9]-/. Must be unique across all</span>
+<span class="sd">            Artifacts in the parent MetadataStore. (Otherwise the</span>
+<span class="sd">            request will fail with ALREADY_EXISTS, or PERMISSION_DENIED</span>
+<span class="sd">            if the caller can&#39;t view the preexisting Artifact.)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="n">artifact</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">gca_artifact</span><span class="o">.</span><span class="n">Artifact</span><span class="p">,)</span>
+    <span class="n">artifact_id</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="GetArtifactRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.GetArtifactRequest">[docs]</a><span class="k">class</span> <span class="nc">GetArtifactRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [MetadataService.GetArtifact][google.cloud.aiplatform.v1beta1.MetadataService.GetArtifact].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        name (str):</span>
+<span class="sd">            Required. The resource name of the Artifact</span>
+<span class="sd">            to retrieve. Format:</span>
+<span class="sd">            projects/{project}/locations/{location}/metadataStores/{metadatastore}/artifacts/{artifact}</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="ListArtifactsRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ListArtifactsRequest">[docs]</a><span class="k">class</span> <span class="nc">ListArtifactsRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [MetadataService.ListArtifacts][google.cloud.aiplatform.v1beta1.MetadataService.ListArtifacts].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        parent (str):</span>
+<span class="sd">            Required. The MetadataStore whose Artifacts</span>
+<span class="sd">            should be listed. Format:</span>
+<span class="sd">            projects/{project}/locations/{location}/metadataStores/{metadatastore}</span>
+<span class="sd">        page_size (int):</span>
+<span class="sd">            The maximum number of Artifacts to return.</span>
+<span class="sd">            The service may return fewer. Must be in range</span>
+<span class="sd">            1-1000, inclusive. Defaults to 100.</span>
+<span class="sd">        page_token (str):</span>
+<span class="sd">            A page token, received from a previous</span>
+<span class="sd">            [MetadataService.ListArtifacts][google.cloud.aiplatform.v1beta1.MetadataService.ListArtifacts]</span>
+<span class="sd">            call. Provide this to retrieve the subsequent page.</span>
+
+<span class="sd">            When paginating, all other provided parameters must match</span>
+<span class="sd">            the call that provided the page token. (Otherwise the</span>
+<span class="sd">            request will fail with INVALID_ARGUMENT error.)</span>
+<span class="sd">        filter (str):</span>
+<span class="sd">            Filter specifying the boolean condition for the Artifacts to</span>
+<span class="sd">            satisfy in order to be part of the result set. The syntax to</span>
+<span class="sd">            define filter query is based on https://google.aip.dev/160.</span>
+<span class="sd">            The supported set of filters include the following:</span>
+
+<span class="sd">            -  **Attribute filtering**: For example:</span>
+<span class="sd">               ``display_name = &quot;test&quot;``. Supported fields include:</span>
+<span class="sd">               ``name``, ``display_name``, ``uri``, ``state``,</span>
+<span class="sd">               ``schema_title``, ``create_time``, and ``update_time``.</span>
+<span class="sd">               Time fields, such as ``create_time`` and ``update_time``,</span>
+<span class="sd">               require values specified in RFC-3339 format. For example:</span>
+<span class="sd">               ``create_time = &quot;2020-11-19T11:30:00-04:00&quot;``</span>
+<span class="sd">            -  **Metadata field**: To filter on metadata fields use</span>
+<span class="sd">               traversal operation as follows:</span>
+<span class="sd">               ``metadata.&lt;field_name&gt;.&lt;type_value&gt;``. For example:</span>
+<span class="sd">               ``metadata.field_1.number_value = 10.0``</span>
+<span class="sd">            -  **Context based filtering**: To filter Artifacts based on</span>
+<span class="sd">               the contexts to which they belong, use the function</span>
+<span class="sd">               operator with the full resource name</span>
+<span class="sd">               ``in_context(&lt;context-name&gt;)``. For example:</span>
+<span class="sd">               ``in_context(&quot;projects/&lt;project_number&gt;/locations/&lt;location&gt;/metadataStores/&lt;metadatastore_name&gt;/contexts/&lt;context-id&gt;&quot;)``</span>
+
+<span class="sd">            Each of the above supported filter types can be combined</span>
+<span class="sd">            together using logical operators (``AND`` &amp; ``OR``).</span>
+
+<span class="sd">            For example:</span>
+<span class="sd">            ``display_name = &quot;test&quot; AND metadata.field1.bool_value = true``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="n">page_size</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">INT32</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span>
+    <span class="n">page_token</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,)</span>
+    <span class="nb">filter</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">4</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="ListArtifactsResponse"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ListArtifactsResponse">[docs]</a><span class="k">class</span> <span class="nc">ListArtifactsResponse</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Response message for</span>
+<span class="sd">    [MetadataService.ListArtifacts][google.cloud.aiplatform.v1beta1.MetadataService.ListArtifacts].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        artifacts (Sequence[google.cloud.aiplatform_v1beta1.types.Artifact]):</span>
+<span class="sd">            The Artifacts retrieved from the</span>
+<span class="sd">            MetadataStore.</span>
+<span class="sd">        next_page_token (str):</span>
+<span class="sd">            A token, which can be sent as</span>
+<span class="sd">            [ListArtifactsRequest.page_token][google.cloud.aiplatform.v1beta1.ListArtifactsRequest.page_token]</span>
+<span class="sd">            to retrieve the next page. If this field is not populated,</span>
+<span class="sd">            there are no subsequent pages.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">raw_page</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="n">artifacts</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">gca_artifact</span><span class="o">.</span><span class="n">Artifact</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">next_page_token</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="UpdateArtifactRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.UpdateArtifactRequest">[docs]</a><span class="k">class</span> <span class="nc">UpdateArtifactRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [MetadataService.UpdateArtifact][google.cloud.aiplatform.v1beta1.MetadataService.UpdateArtifact].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        artifact (google.cloud.aiplatform_v1beta1.types.Artifact):</span>
+<span class="sd">            Required. The Artifact containing updates. The Artifact&#39;s</span>
+<span class="sd">            [Artifact.name][google.cloud.aiplatform.v1beta1.Artifact.name]</span>
+<span class="sd">            field is used to identify the Artifact to be updated.</span>
+<span class="sd">            Format:</span>
+<span class="sd">            projects/{project}/locations/{location}/metadataStores/{metadatastore}/artifacts/{artifact}</span>
+<span class="sd">        update_mask (google.protobuf.field_mask_pb2.FieldMask):</span>
+<span class="sd">            Required. A FieldMask indicating which fields</span>
+<span class="sd">            should be updated.</span>
+<span class="sd">        allow_missing (bool):</span>
+<span class="sd">            If set to true, and the</span>
+<span class="sd">            [Artifact][google.cloud.aiplatform.v1beta1.Artifact] is not</span>
+<span class="sd">            found, a new</span>
+<span class="sd">            [Artifact][google.cloud.aiplatform.v1beta1.Artifact] will be</span>
+<span class="sd">            created. In this situation, ``update_mask`` is ignored.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">artifact</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">gca_artifact</span><span class="o">.</span><span class="n">Artifact</span><span class="p">,)</span>
+    <span class="n">update_mask</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">field_mask_pb2</span><span class="o">.</span><span class="n">FieldMask</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">allow_missing</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">BOOL</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="CreateContextRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.CreateContextRequest">[docs]</a><span class="k">class</span> <span class="nc">CreateContextRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [MetadataService.CreateContext][google.cloud.aiplatform.v1beta1.MetadataService.CreateContext].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        parent (str):</span>
+<span class="sd">            Required. The resource name of the</span>
+<span class="sd">            MetadataStore where the Context should be</span>
+<span class="sd">            created. Format:</span>
+<span class="sd">            projects/{project}/locations/{location}/metadataStores/{metadatastore}</span>
+<span class="sd">        context (google.cloud.aiplatform_v1beta1.types.Context):</span>
+<span class="sd">            Required. The Context to create.</span>
+<span class="sd">        context_id (str):</span>
+<span class="sd">            The {context} portion of the resource name with the format:</span>
+<span class="sd">            projects/{project}/locations/{location}/metadataStores/{metadatastore}/contexts/{context}.</span>
+<span class="sd">            If not provided, the Context&#39;s ID will be a UUID generated</span>
+<span class="sd">            by the service. Must be 4-128 characters in length. Valid</span>
+<span class="sd">            characters are /[a-z][0-9]-/. Must be unique across all</span>
+<span class="sd">            Contexts in the parent MetadataStore. (Otherwise the request</span>
+<span class="sd">            will fail with ALREADY_EXISTS, or PERMISSION_DENIED if the</span>
+<span class="sd">            caller can&#39;t view the preexisting Context.)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">gca_context</span><span class="o">.</span><span class="n">Context</span><span class="p">,)</span>
+    <span class="n">context_id</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="GetContextRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.GetContextRequest">[docs]</a><span class="k">class</span> <span class="nc">GetContextRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [MetadataService.GetContext][google.cloud.aiplatform.v1beta1.MetadataService.GetContext].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        name (str):</span>
+<span class="sd">            Required. The resource name of the Context to</span>
+<span class="sd">            retrieve. Format:</span>
+<span class="sd">            projects/{project}/locations/{location}/metadataStores/{metadatastore}/contexts/{context}</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="ListContextsRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ListContextsRequest">[docs]</a><span class="k">class</span> <span class="nc">ListContextsRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [MetadataService.ListContexts][google.cloud.aiplatform.v1beta1.MetadataService.ListContexts]</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        parent (str):</span>
+<span class="sd">            Required. The MetadataStore whose Contexts</span>
+<span class="sd">            should be listed. Format:</span>
+<span class="sd">            projects/{project}/locations/{location}/metadataStores/{metadatastore}</span>
+<span class="sd">        page_size (int):</span>
+<span class="sd">            The maximum number of Contexts to return. The</span>
+<span class="sd">            service may return fewer. Must be in range</span>
+<span class="sd">            1-1000, inclusive. Defaults to 100.</span>
+<span class="sd">        page_token (str):</span>
+<span class="sd">            A page token, received from a previous</span>
+<span class="sd">            [MetadataService.ListContexts][google.cloud.aiplatform.v1beta1.MetadataService.ListContexts]</span>
+<span class="sd">            call. Provide this to retrieve the subsequent page.</span>
+
+<span class="sd">            When paginating, all other provided parameters must match</span>
+<span class="sd">            the call that provided the page token. (Otherwise the</span>
+<span class="sd">            request will fail with INVALID_ARGUMENT error.)</span>
+<span class="sd">        filter (str):</span>
+<span class="sd">            Filter specifying the boolean condition for the Contexts to</span>
+<span class="sd">            satisfy in order to be part of the result set. The syntax to</span>
+<span class="sd">            define filter query is based on https://google.aip.dev/160.</span>
+<span class="sd">            Following are the supported set of filters:</span>
+
+<span class="sd">            -  **Attribute filtering**: For example:</span>
+<span class="sd">               ``display_name = &quot;test&quot;``. Supported fields include:</span>
+<span class="sd">               ``name``, ``display_name``, ``schema_title``,</span>
+<span class="sd">               ``create_time``, and ``update_time``. Time fields, such</span>
+<span class="sd">               as ``create_time`` and ``update_time``, require values</span>
+<span class="sd">               specified in RFC-3339 format. For example:</span>
+<span class="sd">               ``create_time = &quot;2020-11-19T11:30:00-04:00&quot;``.</span>
+
+<span class="sd">            -  **Metadata field**: To filter on metadata fields use</span>
+<span class="sd">               traversal operation as follows:</span>
+<span class="sd">               ``metadata.&lt;field_name&gt;.&lt;type_value&gt;``. For example:</span>
+<span class="sd">               ``metadata.field_1.number_value = 10.0``.</span>
+
+<span class="sd">            -  **Parent Child filtering**: To filter Contexts based on</span>
+<span class="sd">               parent-child relationship use the HAS operator as</span>
+<span class="sd">               follows:</span>
+
+<span class="sd">               ::</span>
+
+<span class="sd">                  parent_contexts:</span>
+<span class="sd">                  &quot;projects/&lt;project_number&gt;/locations/&lt;location&gt;/metadataStores/&lt;metadatastore_name&gt;/contexts/&lt;context_id&gt;&quot;</span>
+<span class="sd">                  child_contexts:</span>
+<span class="sd">                  &quot;projects/&lt;project_number&gt;/locations/&lt;location&gt;/metadataStores/&lt;metadatastore_name&gt;/contexts/&lt;context_id&gt;&quot;</span>
+
+<span class="sd">            Each of the above supported filters can be combined together</span>
+<span class="sd">            using logical operators (``AND`` &amp; ``OR``).</span>
+
+<span class="sd">            For example:</span>
+<span class="sd">            ``display_name = &quot;test&quot; AND metadata.field1.bool_value = true``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="n">page_size</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">INT32</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span>
+    <span class="n">page_token</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,)</span>
+    <span class="nb">filter</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">4</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="ListContextsResponse"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ListContextsResponse">[docs]</a><span class="k">class</span> <span class="nc">ListContextsResponse</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Response message for</span>
+<span class="sd">    [MetadataService.ListContexts][google.cloud.aiplatform.v1beta1.MetadataService.ListContexts].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        contexts (Sequence[google.cloud.aiplatform_v1beta1.types.Context]):</span>
+<span class="sd">            The Contexts retrieved from the</span>
+<span class="sd">            MetadataStore.</span>
+<span class="sd">        next_page_token (str):</span>
+<span class="sd">            A token, which can be sent as</span>
+<span class="sd">            [ListContextsRequest.page_token][google.cloud.aiplatform.v1beta1.ListContextsRequest.page_token]</span>
+<span class="sd">            to retrieve the next page. If this field is not populated,</span>
+<span class="sd">            there are no subsequent pages.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">raw_page</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="n">contexts</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">gca_context</span><span class="o">.</span><span class="n">Context</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">next_page_token</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="UpdateContextRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.UpdateContextRequest">[docs]</a><span class="k">class</span> <span class="nc">UpdateContextRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [MetadataService.UpdateContext][google.cloud.aiplatform.v1beta1.MetadataService.UpdateContext].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        context (google.cloud.aiplatform_v1beta1.types.Context):</span>
+<span class="sd">            Required. The Context containing updates. The Context&#39;s</span>
+<span class="sd">            [Context.name][google.cloud.aiplatform.v1beta1.Context.name]</span>
+<span class="sd">            field is used to identify the Context to be updated. Format:</span>
+<span class="sd">            projects/{project}/locations/{location}/metadataStores/{metadatastore}/contexts/{context}</span>
+<span class="sd">        update_mask (google.protobuf.field_mask_pb2.FieldMask):</span>
+<span class="sd">            Required. A FieldMask indicating which fields</span>
+<span class="sd">            should be updated.</span>
+<span class="sd">        allow_missing (bool):</span>
+<span class="sd">            If set to true, and the</span>
+<span class="sd">            [Context][google.cloud.aiplatform.v1beta1.Context] is not</span>
+<span class="sd">            found, a new</span>
+<span class="sd">            [Context][google.cloud.aiplatform.v1beta1.Context] will be</span>
+<span class="sd">            created. In this situation, ``update_mask`` is ignored.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">context</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">gca_context</span><span class="o">.</span><span class="n">Context</span><span class="p">,)</span>
+    <span class="n">update_mask</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">field_mask_pb2</span><span class="o">.</span><span class="n">FieldMask</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">allow_missing</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">BOOL</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="DeleteContextRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.DeleteContextRequest">[docs]</a><span class="k">class</span> <span class="nc">DeleteContextRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [MetadataService.DeleteContext][google.cloud.aiplatform.v1beta1.MetadataService.DeleteContext].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        name (str):</span>
+<span class="sd">            Required. The resource name of the Context to</span>
+<span class="sd">            retrieve. Format:</span>
+<span class="sd">            projects/{project}/locations/{location}/metadataStores/{metadatastore}/contexts/{context}</span>
+<span class="sd">        force (bool):</span>
+<span class="sd">            If set to true, any child resources of this Context will be</span>
+<span class="sd">            deleted. (Otherwise, the request will fail with a</span>
+<span class="sd">            FAILED_PRECONDITION error if the Context has any child</span>
+<span class="sd">            resources, such as another Context, Artifact, or Execution).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="n">force</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">BOOL</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="AddContextArtifactsAndExecutionsRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.AddContextArtifactsAndExecutionsRequest">[docs]</a><span class="k">class</span> <span class="nc">AddContextArtifactsAndExecutionsRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [MetadataService.AddContextArtifactsAndExecutions][google.cloud.aiplatform.v1beta1.MetadataService.AddContextArtifactsAndExecutions].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        context (str):</span>
+<span class="sd">            Required. The resource name of the Context</span>
+<span class="sd">            that the Artifacts and Executions belong to.</span>
+<span class="sd">            Format:</span>
+<span class="sd">            projects/{project}/locations/{location}/metadataStores/{metadatastore}/contexts/{context}</span>
+<span class="sd">        artifacts (Sequence[str]):</span>
+<span class="sd">            The resource names of the Artifacts to</span>
+<span class="sd">            attribute to the Context.</span>
+<span class="sd">            Format:</span>
+<span class="sd">            projects/{project}/locations/{location}/metadataStores/{metadatastore}/artifacts/{artifact}</span>
+<span class="sd">        executions (Sequence[str]):</span>
+<span class="sd">            The resource names of the Executions to</span>
+<span class="sd">            associate with the Context.</span>
+
+<span class="sd">            Format:</span>
+<span class="sd">            projects/{project}/locations/{location}/metadataStores/{metadatastore}/executions/{execution}</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">context</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="n">artifacts</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span>
+    <span class="n">executions</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="AddContextArtifactsAndExecutionsResponse"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.AddContextArtifactsAndExecutionsResponse">[docs]</a><span class="k">class</span> <span class="nc">AddContextArtifactsAndExecutionsResponse</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Response message for</span>
+<span class="sd">    [MetadataService.AddContextArtifactsAndExecutions][google.cloud.aiplatform.v1beta1.MetadataService.AddContextArtifactsAndExecutions].</span>
+<span class="sd">        &quot;&quot;&quot;</span></div>
+
+
+<div class="viewcode-block" id="AddContextChildrenRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.AddContextChildrenRequest">[docs]</a><span class="k">class</span> <span class="nc">AddContextChildrenRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [MetadataService.AddContextChildren][google.cloud.aiplatform.v1beta1.MetadataService.AddContextChildren].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        context (str):</span>
+<span class="sd">            Required. The resource name of the parent</span>
+<span class="sd">            Context.</span>
+<span class="sd">            Format:</span>
+<span class="sd">            projects/{project}/locations/{location}/metadataStores/{metadatastore}/contexts/{context}</span>
+<span class="sd">        child_contexts (Sequence[str]):</span>
+<span class="sd">            The resource names of the child Contexts.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">context</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="n">child_contexts</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="AddContextChildrenResponse"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.AddContextChildrenResponse">[docs]</a><span class="k">class</span> <span class="nc">AddContextChildrenResponse</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Response message for</span>
+<span class="sd">    [MetadataService.AddContextChildren][google.cloud.aiplatform.v1beta1.MetadataService.AddContextChildren].</span>
+<span class="sd">        &quot;&quot;&quot;</span></div>
+
+
+<div class="viewcode-block" id="QueryContextLineageSubgraphRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.QueryContextLineageSubgraphRequest">[docs]</a><span class="k">class</span> <span class="nc">QueryContextLineageSubgraphRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [MetadataService.QueryContextLineageSubgraph][google.cloud.aiplatform.v1beta1.MetadataService.QueryContextLineageSubgraph].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        context (str):</span>
+<span class="sd">            Required. The resource name of the Context whose Artifacts</span>
+<span class="sd">            and Executions should be retrieved as a LineageSubgraph.</span>
+<span class="sd">            Format:</span>
+<span class="sd">            projects/{project}/locations/{location}/metadataStores/{metadatastore}/contexts/{context}</span>
+
+<span class="sd">            The request may error with FAILED_PRECONDITION if the number</span>
+<span class="sd">            of Artifacts, the number of Executions, or the number of</span>
+<span class="sd">            Events that would be returned for the Context exceeds 1000.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">context</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="CreateExecutionRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.CreateExecutionRequest">[docs]</a><span class="k">class</span> <span class="nc">CreateExecutionRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [MetadataService.CreateExecution][google.cloud.aiplatform.v1beta1.MetadataService.CreateExecution].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        parent (str):</span>
+<span class="sd">            Required. The resource name of the</span>
+<span class="sd">            MetadataStore where the Execution should be</span>
+<span class="sd">            created. Format:</span>
+<span class="sd">            projects/{project}/locations/{location}/metadataStores/{metadatastore}</span>
+<span class="sd">        execution (google.cloud.aiplatform_v1beta1.types.Execution):</span>
+<span class="sd">            Required. The Execution to create.</span>
+<span class="sd">        execution_id (str):</span>
+<span class="sd">            The {execution} portion of the resource name with the</span>
+<span class="sd">            format:</span>
+<span class="sd">            projects/{project}/locations/{location}/metadataStores/{metadatastore}/executions/{execution}</span>
+<span class="sd">            If not provided, the Execution&#39;s ID will be a UUID generated</span>
+<span class="sd">            by the service. Must be 4-128 characters in length. Valid</span>
+<span class="sd">            characters are /[a-z][0-9]-/. Must be unique across all</span>
+<span class="sd">            Executions in the parent MetadataStore. (Otherwise the</span>
+<span class="sd">            request will fail with ALREADY_EXISTS, or PERMISSION_DENIED</span>
+<span class="sd">            if the caller can&#39;t view the preexisting Execution.)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="n">execution</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">gca_execution</span><span class="o">.</span><span class="n">Execution</span><span class="p">,)</span>
+    <span class="n">execution_id</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="GetExecutionRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.GetExecutionRequest">[docs]</a><span class="k">class</span> <span class="nc">GetExecutionRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [MetadataService.GetExecution][google.cloud.aiplatform.v1beta1.MetadataService.GetExecution].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        name (str):</span>
+<span class="sd">            Required. The resource name of the Execution</span>
+<span class="sd">            to retrieve. Format:</span>
+<span class="sd">            projects/{project}/locations/{location}/metadataStores/{metadatastore}/executions/{execution}</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="ListExecutionsRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ListExecutionsRequest">[docs]</a><span class="k">class</span> <span class="nc">ListExecutionsRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [MetadataService.ListExecutions][google.cloud.aiplatform.v1beta1.MetadataService.ListExecutions].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        parent (str):</span>
+<span class="sd">            Required. The MetadataStore whose Executions</span>
+<span class="sd">            should be listed. Format:</span>
+<span class="sd">            projects/{project}/locations/{location}/metadataStores/{metadatastore}</span>
+<span class="sd">        page_size (int):</span>
+<span class="sd">            The maximum number of Executions to return.</span>
+<span class="sd">            The service may return fewer. Must be in range</span>
+<span class="sd">            1-1000, inclusive. Defaults to 100.</span>
+<span class="sd">        page_token (str):</span>
+<span class="sd">            A page token, received from a previous</span>
+<span class="sd">            [MetadataService.ListExecutions][google.cloud.aiplatform.v1beta1.MetadataService.ListExecutions]</span>
+<span class="sd">            call. Provide this to retrieve the subsequent page.</span>
+
+<span class="sd">            When paginating, all other provided parameters must match</span>
+<span class="sd">            the call that provided the page token. (Otherwise the</span>
+<span class="sd">            request will fail with an INVALID_ARGUMENT error.)</span>
+<span class="sd">        filter (str):</span>
+<span class="sd">            Filter specifying the boolean condition for the Executions</span>
+<span class="sd">            to satisfy in order to be part of the result set. The syntax</span>
+<span class="sd">            to define filter query is based on</span>
+<span class="sd">            https://google.aip.dev/160. Following are the supported set</span>
+<span class="sd">            of filters:</span>
+
+<span class="sd">            -  **Attribute filtering**: For example:</span>
+<span class="sd">               ``display_name = &quot;test&quot;``. Supported fields include:</span>
+<span class="sd">               ``name``, ``display_name``, ``state``, ``schema_title``,</span>
+<span class="sd">               ``create_time``, and ``update_time``. Time fields, such</span>
+<span class="sd">               as ``create_time`` and ``update_time``, require values</span>
+<span class="sd">               specified in RFC-3339 format. For example:</span>
+<span class="sd">               ``create_time = &quot;2020-11-19T11:30:00-04:00&quot;``.</span>
+<span class="sd">            -  **Metadata field**: To filter on metadata fields use</span>
+<span class="sd">               traversal operation as follows:</span>
+<span class="sd">               ``metadata.&lt;field_name&gt;.&lt;type_value&gt;`` For example:</span>
+<span class="sd">               ``metadata.field_1.number_value = 10.0``</span>
+<span class="sd">            -  **Context based filtering**: To filter Executions based</span>
+<span class="sd">               on the contexts to which they belong use the function</span>
+<span class="sd">               operator with the full resource name:</span>
+<span class="sd">               ``in_context(&lt;context-name&gt;)``. For example:</span>
+<span class="sd">               ``in_context(&quot;projects/&lt;project_number&gt;/locations/&lt;location&gt;/metadataStores/&lt;metadatastore_name&gt;/contexts/&lt;context-id&gt;&quot;)``</span>
+
+<span class="sd">            Each of the above supported filters can be combined together</span>
+<span class="sd">            using logical operators (``AND`` &amp; ``OR``). For example:</span>
+<span class="sd">            ``display_name = &quot;test&quot; AND metadata.field1.bool_value = true``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="n">page_size</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">INT32</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span>
+    <span class="n">page_token</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,)</span>
+    <span class="nb">filter</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">4</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="ListExecutionsResponse"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ListExecutionsResponse">[docs]</a><span class="k">class</span> <span class="nc">ListExecutionsResponse</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Response message for</span>
+<span class="sd">    [MetadataService.ListExecutions][google.cloud.aiplatform.v1beta1.MetadataService.ListExecutions].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        executions (Sequence[google.cloud.aiplatform_v1beta1.types.Execution]):</span>
+<span class="sd">            The Executions retrieved from the</span>
+<span class="sd">            MetadataStore.</span>
+<span class="sd">        next_page_token (str):</span>
+<span class="sd">            A token, which can be sent as</span>
+<span class="sd">            [ListExecutionsRequest.page_token][google.cloud.aiplatform.v1beta1.ListExecutionsRequest.page_token]</span>
+<span class="sd">            to retrieve the next page. If this field is not populated,</span>
+<span class="sd">            there are no subsequent pages.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">raw_page</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="n">executions</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">gca_execution</span><span class="o">.</span><span class="n">Execution</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">next_page_token</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="UpdateExecutionRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.UpdateExecutionRequest">[docs]</a><span class="k">class</span> <span class="nc">UpdateExecutionRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [MetadataService.UpdateExecution][google.cloud.aiplatform.v1beta1.MetadataService.UpdateExecution].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        execution (google.cloud.aiplatform_v1beta1.types.Execution):</span>
+<span class="sd">            Required. The Execution containing updates. The Execution&#39;s</span>
+<span class="sd">            [Execution.name][google.cloud.aiplatform.v1beta1.Execution.name]</span>
+<span class="sd">            field is used to identify the Execution to be updated.</span>
+<span class="sd">            Format:</span>
+<span class="sd">            projects/{project}/locations/{location}/metadataStores/{metadatastore}/executions/{execution}</span>
+<span class="sd">        update_mask (google.protobuf.field_mask_pb2.FieldMask):</span>
+<span class="sd">            Required. A FieldMask indicating which fields</span>
+<span class="sd">            should be updated.</span>
+<span class="sd">        allow_missing (bool):</span>
+<span class="sd">            If set to true, and the</span>
+<span class="sd">            [Execution][google.cloud.aiplatform.v1beta1.Execution] is</span>
+<span class="sd">            not found, a new</span>
+<span class="sd">            [Execution][google.cloud.aiplatform.v1beta1.Execution] will</span>
+<span class="sd">            be created. In this situation, ``update_mask`` is ignored.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">execution</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">gca_execution</span><span class="o">.</span><span class="n">Execution</span><span class="p">,)</span>
+    <span class="n">update_mask</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">field_mask_pb2</span><span class="o">.</span><span class="n">FieldMask</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">allow_missing</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">BOOL</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="AddExecutionEventsRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.AddExecutionEventsRequest">[docs]</a><span class="k">class</span> <span class="nc">AddExecutionEventsRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [MetadataService.AddExecutionEvents][google.cloud.aiplatform.v1beta1.MetadataService.AddExecutionEvents].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        execution (str):</span>
+<span class="sd">            Required. The resource name of the Execution</span>
+<span class="sd">            that the Events connect Artifacts with.</span>
+<span class="sd">            Format:</span>
+<span class="sd">            projects/{project}/locations/{location}/metadataStores/{metadatastore}/executions/{execution}</span>
+<span class="sd">        events (Sequence[google.cloud.aiplatform_v1beta1.types.Event]):</span>
+<span class="sd">            The Events to create and add.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">execution</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="n">events</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">event</span><span class="o">.</span><span class="n">Event</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="AddExecutionEventsResponse"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.AddExecutionEventsResponse">[docs]</a><span class="k">class</span> <span class="nc">AddExecutionEventsResponse</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Response message for</span>
+<span class="sd">    [MetadataService.AddExecutionEvents][google.cloud.aiplatform.v1beta1.MetadataService.AddExecutionEvents].</span>
+<span class="sd">        &quot;&quot;&quot;</span></div>
+
+
+<div class="viewcode-block" id="QueryExecutionInputsAndOutputsRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.QueryExecutionInputsAndOutputsRequest">[docs]</a><span class="k">class</span> <span class="nc">QueryExecutionInputsAndOutputsRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [MetadataService.QueryExecutionInputsAndOutputs][google.cloud.aiplatform.v1beta1.MetadataService.QueryExecutionInputsAndOutputs].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        execution (str):</span>
+<span class="sd">            Required. The resource name of the Execution</span>
+<span class="sd">            whose input and output Artifacts should be</span>
+<span class="sd">            retrieved as a LineageSubgraph. Format:</span>
+<span class="sd">            projects/{project}/locations/{location}/metadataStores/{metadatastore}/executions/{execution}</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">execution</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="CreateMetadataSchemaRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.CreateMetadataSchemaRequest">[docs]</a><span class="k">class</span> <span class="nc">CreateMetadataSchemaRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [MetadataService.CreateMetadataSchema][google.cloud.aiplatform.v1beta1.MetadataService.CreateMetadataSchema].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        parent (str):</span>
+<span class="sd">            Required. The resource name of the</span>
+<span class="sd">            MetadataStore where the MetadataSchema should be</span>
+<span class="sd">            created. Format:</span>
+<span class="sd">            projects/{project}/locations/{location}/metadataStores/{metadatastore}</span>
+<span class="sd">        metadata_schema (google.cloud.aiplatform_v1beta1.types.MetadataSchema):</span>
+<span class="sd">            Required. The MetadataSchema to create.</span>
+<span class="sd">        metadata_schema_id (str):</span>
+<span class="sd">            The {metadata_schema} portion of the resource name with the</span>
+<span class="sd">            format:</span>
+<span class="sd">            projects/{project}/locations/{location}/metadataStores/{metadatastore}/metadataSchemas/{metadataschema}</span>
+<span class="sd">            If not provided, the MetadataStore&#39;s ID will be a UUID</span>
+<span class="sd">            generated by the service. Must be 4-128 characters in</span>
+<span class="sd">            length. Valid characters are /[a-z][0-9]-/. Must be unique</span>
+<span class="sd">            across all MetadataSchemas in the parent Location.</span>
+<span class="sd">            (Otherwise the request will fail with ALREADY_EXISTS, or</span>
+<span class="sd">            PERMISSION_DENIED if the caller can&#39;t view the preexisting</span>
+<span class="sd">            MetadataSchema.)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="n">metadata_schema</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">gca_metadata_schema</span><span class="o">.</span><span class="n">MetadataSchema</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">metadata_schema_id</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="GetMetadataSchemaRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.GetMetadataSchemaRequest">[docs]</a><span class="k">class</span> <span class="nc">GetMetadataSchemaRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [MetadataService.GetMetadataSchema][google.cloud.aiplatform.v1beta1.MetadataService.GetMetadataSchema].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        name (str):</span>
+<span class="sd">            Required. The resource name of the</span>
+<span class="sd">            MetadataSchema to retrieve. Format:</span>
+<span class="sd">            projects/{project}/locations/{location}/metadataStores/{metadatastore}/metadataSchemas/{metadataschema}</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="ListMetadataSchemasRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ListMetadataSchemasRequest">[docs]</a><span class="k">class</span> <span class="nc">ListMetadataSchemasRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [MetadataService.ListMetadataSchemas][google.cloud.aiplatform.v1beta1.MetadataService.ListMetadataSchemas].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        parent (str):</span>
+<span class="sd">            Required. The MetadataStore whose</span>
+<span class="sd">            MetadataSchemas should be listed. Format:</span>
+<span class="sd">            projects/{project}/locations/{location}/metadataStores/{metadatastore}</span>
+<span class="sd">        page_size (int):</span>
+<span class="sd">            The maximum number of MetadataSchemas to</span>
+<span class="sd">            return. The service may return fewer.</span>
+<span class="sd">            Must be in range 1-1000, inclusive. Defaults to</span>
+<span class="sd">            100.</span>
+<span class="sd">        page_token (str):</span>
+<span class="sd">            A page token, received from a previous</span>
+<span class="sd">            [MetadataService.ListMetadataSchemas][google.cloud.aiplatform.v1beta1.MetadataService.ListMetadataSchemas]</span>
+<span class="sd">            call. Provide this to retrieve the next page.</span>
+
+<span class="sd">            When paginating, all other provided parameters must match</span>
+<span class="sd">            the call that provided the page token. (Otherwise the</span>
+<span class="sd">            request will fail with INVALID_ARGUMENT error.)</span>
+<span class="sd">        filter (str):</span>
+<span class="sd">            A query to filter available MetadataSchemas</span>
+<span class="sd">            for matching results.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="n">page_size</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">INT32</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span>
+    <span class="n">page_token</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,)</span>
+    <span class="nb">filter</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">4</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="ListMetadataSchemasResponse"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ListMetadataSchemasResponse">[docs]</a><span class="k">class</span> <span class="nc">ListMetadataSchemasResponse</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Response message for</span>
+<span class="sd">    [MetadataService.ListMetadataSchemas][google.cloud.aiplatform.v1beta1.MetadataService.ListMetadataSchemas].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        metadata_schemas (Sequence[google.cloud.aiplatform_v1beta1.types.MetadataSchema]):</span>
+<span class="sd">            The MetadataSchemas found for the</span>
+<span class="sd">            MetadataStore.</span>
+<span class="sd">        next_page_token (str):</span>
+<span class="sd">            A token, which can be sent as</span>
+<span class="sd">            [ListMetadataSchemasRequest.page_token][google.cloud.aiplatform.v1beta1.ListMetadataSchemasRequest.page_token]</span>
+<span class="sd">            to retrieve the next page. If this field is not populated,</span>
+<span class="sd">            there are no subsequent pages.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">raw_page</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="n">metadata_schemas</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">gca_metadata_schema</span><span class="o">.</span><span class="n">MetadataSchema</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">next_page_token</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="QueryArtifactLineageSubgraphRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.QueryArtifactLineageSubgraphRequest">[docs]</a><span class="k">class</span> <span class="nc">QueryArtifactLineageSubgraphRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [MetadataService.QueryArtifactLineageSubgraph][google.cloud.aiplatform.v1beta1.MetadataService.QueryArtifactLineageSubgraph].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        artifact (str):</span>
+<span class="sd">            Required. The resource name of the Artifact whose Lineage</span>
+<span class="sd">            needs to be retrieved as a LineageSubgraph. Format:</span>
+<span class="sd">            projects/{project}/locations/{location}/metadataStores/{metadatastore}/artifacts/{artifact}</span>
+
+<span class="sd">            The request may error with FAILED_PRECONDITION if the number</span>
+<span class="sd">            of Artifacts, the number of Executions, or the number of</span>
+<span class="sd">            Events that would be returned for the Context exceeds 1000.</span>
+<span class="sd">        max_hops (int):</span>
+<span class="sd">            Specifies the size of the lineage graph in terms of number</span>
+<span class="sd">            of hops from the specified artifact. Negative Value:</span>
+<span class="sd">            INVALID_ARGUMENT error is returned 0: Only input artifact is</span>
+<span class="sd">            returned. No value: Transitive closure is performed to</span>
+<span class="sd">            return the complete graph.</span>
+<span class="sd">        filter (str):</span>
+<span class="sd">            Filter specifying the boolean condition for the Artifacts to</span>
+<span class="sd">            satisfy in order to be part of the Lineage Subgraph. The</span>
+<span class="sd">            syntax to define filter query is based on</span>
+<span class="sd">            https://google.aip.dev/160. The supported set of filters</span>
+<span class="sd">            include the following:</span>
+
+<span class="sd">            -  **Attribute filtering**: For example:</span>
+<span class="sd">               ``display_name = &quot;test&quot;`` Supported fields include:</span>
+<span class="sd">               ``name``, ``display_name``, ``uri``, ``state``,</span>
+<span class="sd">               ``schema_title``, ``create_time``, and ``update_time``.</span>
+<span class="sd">               Time fields, such as ``create_time`` and ``update_time``,</span>
+<span class="sd">               require values specified in RFC-3339 format. For example:</span>
+<span class="sd">               ``create_time = &quot;2020-11-19T11:30:00-04:00&quot;``</span>
+<span class="sd">            -  **Metadata field**: To filter on metadata fields use</span>
+<span class="sd">               traversal operation as follows:</span>
+<span class="sd">               ``metadata.&lt;field_name&gt;.&lt;type_value&gt;``. For example:</span>
+<span class="sd">               ``metadata.field_1.number_value = 10.0``</span>
+
+<span class="sd">            Each of the above supported filter types can be combined</span>
+<span class="sd">            together using logical operators (``AND`` &amp; ``OR``).</span>
+
+<span class="sd">            For example:</span>
+<span class="sd">            ``display_name = &quot;test&quot; AND metadata.field1.bool_value = true``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">artifact</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="n">max_hops</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">INT32</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span>
+    <span class="nb">filter</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,)</span></div>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">__protobuf__</span><span class="o">.</span><span class="n">manifest</span><span class="p">))</span>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../../../index.html">google-cloud-aiplatform</a></h1>
+
+
+
+<p class="blurb">Google Cloud Client Libraries for google-cloud-aiplatform</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=googleapis&repo=python-aiplatform&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform.html">Google Cloud Aiplatform SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1/services.html">Services for Google Cloud Aiplatform v1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1/types.html">Types for Google Cloud Aiplatform v1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1beta1/services.html">Services for Google Cloud Aiplatform v1beta1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1beta1/types.html">Types for Google Cloud Aiplatform v1beta1 API</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../changelog.html">Changelog</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Google.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+    <a href="https://github.com/googleapis/python-aiplatform" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>

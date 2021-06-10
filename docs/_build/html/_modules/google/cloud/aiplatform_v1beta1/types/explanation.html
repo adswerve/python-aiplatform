@@ -1,0 +1,687 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>google.cloud.aiplatform_v1beta1.types.explanation &#8212; google-cloud-aiplatform  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/alabaster.css" />
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+          	<div class="admonition" id="python2-eol"> 
+          	 As of January 1, 2020 this library no longer supports Python 2 on the latest released version. 
+          	 Library versions released prior to that date will continue to be available. For more information please
+          	 visit <a href="https://cloud.google.com/python/docs/python2-sunset/">Python 2 support on Google Cloud</a>.
+          	</div>
+            
+  <h1>Source code for google.cloud.aiplatform_v1beta1.types.explanation</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Copyright 2020 Google LLC</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="c1">#</span>
+<span class="kn">import</span> <span class="nn">proto</span>  <span class="c1"># type: ignore</span>
+
+<span class="kn">from</span> <span class="nn">google.cloud.aiplatform_v1beta1.types</span> <span class="kn">import</span> <span class="n">explanation_metadata</span>
+<span class="kn">from</span> <span class="nn">google.protobuf</span> <span class="kn">import</span> <span class="n">struct_pb2</span>  <span class="c1"># type: ignore</span>
+
+
+<span class="n">__protobuf__</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">module</span><span class="p">(</span>
+    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;google.cloud.aiplatform.v1beta1&quot;</span><span class="p">,</span>
+    <span class="n">manifest</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;Explanation&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ModelExplanation&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Attribution&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ExplanationSpec&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ExplanationParameters&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;SampledShapleyAttribution&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;IntegratedGradientsAttribution&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;XraiAttribution&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;SmoothGradConfig&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;FeatureNoiseSigma&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ExplanationSpecOverride&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ExplanationMetadataOverride&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">)</span>
+
+
+<div class="viewcode-block" id="Explanation"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.Explanation">[docs]</a><span class="k">class</span> <span class="nc">Explanation</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Explanation of a prediction (provided in</span>
+<span class="sd">    [PredictResponse.predictions][google.cloud.aiplatform.v1beta1.PredictResponse.predictions])</span>
+<span class="sd">    produced by the Model on a given</span>
+<span class="sd">    [instance][google.cloud.aiplatform.v1beta1.ExplainRequest.instances].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        attributions (Sequence[google.cloud.aiplatform_v1beta1.types.Attribution]):</span>
+<span class="sd">            Output only. Feature attributions grouped by predicted</span>
+<span class="sd">            outputs.</span>
+
+<span class="sd">            For Models that predict only one output, such as regression</span>
+<span class="sd">            Models that predict only one score, there is only one</span>
+<span class="sd">            attibution that explains the predicted output. For Models</span>
+<span class="sd">            that predict multiple outputs, such as multiclass Models</span>
+<span class="sd">            that predict multiple classes, each element explains one</span>
+<span class="sd">            specific item.</span>
+<span class="sd">            [Attribution.output_index][google.cloud.aiplatform.v1beta1.Attribution.output_index]</span>
+<span class="sd">            can be used to identify which output this attribution is</span>
+<span class="sd">            explaining.</span>
+
+<span class="sd">            If users set</span>
+<span class="sd">            [ExplanationParameters.top_k][google.cloud.aiplatform.v1beta1.ExplanationParameters.top_k],</span>
+<span class="sd">            the attributions are sorted by</span>
+<span class="sd">            [instance_output_value][Attributions.instance_output_value]</span>
+<span class="sd">            in descending order. If</span>
+<span class="sd">            [ExplanationParameters.output_indices][google.cloud.aiplatform.v1beta1.ExplanationParameters.output_indices]</span>
+<span class="sd">            is specified, the attributions are stored by</span>
+<span class="sd">            [Attribution.output_index][google.cloud.aiplatform.v1beta1.Attribution.output_index]</span>
+<span class="sd">            in the same order as they appear in the output_indices.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">attributions</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;Attribution&quot;</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="ModelExplanation"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ModelExplanation">[docs]</a><span class="k">class</span> <span class="nc">ModelExplanation</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Aggregated explanation metrics for a Model over a set of</span>
+<span class="sd">    instances.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        mean_attributions (Sequence[google.cloud.aiplatform_v1beta1.types.Attribution]):</span>
+<span class="sd">            Output only. Aggregated attributions explaining the Model&#39;s</span>
+<span class="sd">            prediction outputs over the set of instances. The</span>
+<span class="sd">            attributions are grouped by outputs.</span>
+
+<span class="sd">            For Models that predict only one output, such as regression</span>
+<span class="sd">            Models that predict only one score, there is only one</span>
+<span class="sd">            attibution that explains the predicted output. For Models</span>
+<span class="sd">            that predict multiple outputs, such as multiclass Models</span>
+<span class="sd">            that predict multiple classes, each element explains one</span>
+<span class="sd">            specific item.</span>
+<span class="sd">            [Attribution.output_index][google.cloud.aiplatform.v1beta1.Attribution.output_index]</span>
+<span class="sd">            can be used to identify which output this attribution is</span>
+<span class="sd">            explaining.</span>
+
+<span class="sd">            The</span>
+<span class="sd">            [baselineOutputValue][google.cloud.aiplatform.v1beta1.Attribution.baseline_output_value],</span>
+<span class="sd">            [instanceOutputValue][google.cloud.aiplatform.v1beta1.Attribution.instance_output_value]</span>
+<span class="sd">            and</span>
+<span class="sd">            [featureAttributions][google.cloud.aiplatform.v1beta1.Attribution.feature_attributions]</span>
+<span class="sd">            fields are averaged over the test data.</span>
+
+<span class="sd">            NOTE: Currently AutoML tabular classification Models produce</span>
+<span class="sd">            only one attribution, which averages attributions over all</span>
+<span class="sd">            the classes it predicts.</span>
+<span class="sd">            [Attribution.approximation_error][google.cloud.aiplatform.v1beta1.Attribution.approximation_error]</span>
+<span class="sd">            is not populated.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">mean_attributions</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;Attribution&quot;</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Attribution"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.Attribution">[docs]</a><span class="k">class</span> <span class="nc">Attribution</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Attribution that explains a particular prediction output.</span>
+<span class="sd">    Attributes:</span>
+<span class="sd">        baseline_output_value (float):</span>
+<span class="sd">            Output only. Model predicted output if the input instance is</span>
+<span class="sd">            constructed from the baselines of all the features defined</span>
+<span class="sd">            in</span>
+<span class="sd">            [ExplanationMetadata.inputs][google.cloud.aiplatform.v1beta1.ExplanationMetadata.inputs].</span>
+<span class="sd">            The field name of the output is determined by the key in</span>
+<span class="sd">            [ExplanationMetadata.outputs][google.cloud.aiplatform.v1beta1.ExplanationMetadata.outputs].</span>
+
+<span class="sd">            If the Model&#39;s predicted output has multiple dimensions</span>
+<span class="sd">            (rank &gt; 1), this is the value in the output located by</span>
+<span class="sd">            [output_index][google.cloud.aiplatform.v1beta1.Attribution.output_index].</span>
+
+<span class="sd">            If there are multiple baselines, their output values are</span>
+<span class="sd">            averaged.</span>
+<span class="sd">        instance_output_value (float):</span>
+<span class="sd">            Output only. Model predicted output on the corresponding</span>
+<span class="sd">            [explanation instance][ExplainRequest.instances]. The field</span>
+<span class="sd">            name of the output is determined by the key in</span>
+<span class="sd">            [ExplanationMetadata.outputs][google.cloud.aiplatform.v1beta1.ExplanationMetadata.outputs].</span>
+
+<span class="sd">            If the Model predicted output has multiple dimensions, this</span>
+<span class="sd">            is the value in the output located by</span>
+<span class="sd">            [output_index][google.cloud.aiplatform.v1beta1.Attribution.output_index].</span>
+<span class="sd">        feature_attributions (google.protobuf.struct_pb2.Value):</span>
+<span class="sd">            Output only. Attributions of each explained feature.</span>
+<span class="sd">            Features are extracted from the [prediction</span>
+<span class="sd">            instances][google.cloud.aiplatform.v1beta1.ExplainRequest.instances]</span>
+<span class="sd">            according to [explanation metadata for</span>
+<span class="sd">            inputs][google.cloud.aiplatform.v1beta1.ExplanationMetadata.inputs].</span>
+
+<span class="sd">            The value is a struct, whose keys are the name of the</span>
+<span class="sd">            feature. The values are how much the feature in the</span>
+<span class="sd">            [instance][google.cloud.aiplatform.v1beta1.ExplainRequest.instances]</span>
+<span class="sd">            contributed to the predicted result.</span>
+
+<span class="sd">            The format of the value is determined by the feature&#39;s input</span>
+<span class="sd">            format:</span>
+
+<span class="sd">            -  If the feature is a scalar value, the attribution value</span>
+<span class="sd">               is a [floating</span>
+<span class="sd">               number][google.protobuf.Value.number_value].</span>
+
+<span class="sd">            -  If the feature is an array of scalar values, the</span>
+<span class="sd">               attribution value is an</span>
+<span class="sd">               [array][google.protobuf.Value.list_value].</span>
+
+<span class="sd">            -  If the feature is a struct, the attribution value is a</span>
+<span class="sd">               [struct][google.protobuf.Value.struct_value]. The keys in</span>
+<span class="sd">               the attribution value struct are the same as the keys in</span>
+<span class="sd">               the feature struct. The formats of the values in the</span>
+<span class="sd">               attribution struct are determined by the formats of the</span>
+<span class="sd">               values in the feature struct.</span>
+
+<span class="sd">            The</span>
+<span class="sd">            [ExplanationMetadata.feature_attributions_schema_uri][google.cloud.aiplatform.v1beta1.ExplanationMetadata.feature_attributions_schema_uri]</span>
+<span class="sd">            field, pointed to by the</span>
+<span class="sd">            [ExplanationSpec][google.cloud.aiplatform.v1beta1.ExplanationSpec]</span>
+<span class="sd">            field of the</span>
+<span class="sd">            [Endpoint.deployed_models][google.cloud.aiplatform.v1beta1.Endpoint.deployed_models]</span>
+<span class="sd">            object, points to the schema file that describes the</span>
+<span class="sd">            features and their attribution values (if it is populated).</span>
+<span class="sd">        output_index (Sequence[int]):</span>
+<span class="sd">            Output only. The index that locates the explained prediction</span>
+<span class="sd">            output.</span>
+
+<span class="sd">            If the prediction output is a scalar value, output_index is</span>
+<span class="sd">            not populated. If the prediction output has multiple</span>
+<span class="sd">            dimensions, the length of the output_index list is the same</span>
+<span class="sd">            as the number of dimensions of the output. The i-th element</span>
+<span class="sd">            in output_index is the element index of the i-th dimension</span>
+<span class="sd">            of the output vector. Indices start from 0.</span>
+<span class="sd">        output_display_name (str):</span>
+<span class="sd">            Output only. The display name of the output identified by</span>
+<span class="sd">            [output_index][google.cloud.aiplatform.v1beta1.Attribution.output_index].</span>
+<span class="sd">            For example, the predicted class name by a</span>
+<span class="sd">            multi-classification Model.</span>
+
+<span class="sd">            This field is only populated iff the Model predicts display</span>
+<span class="sd">            names as a separate field along with the explained output.</span>
+<span class="sd">            The predicted display name must has the same shape of the</span>
+<span class="sd">            explained output, and can be located using output_index.</span>
+<span class="sd">        approximation_error (float):</span>
+<span class="sd">            Output only. Error of</span>
+<span class="sd">            [feature_attributions][google.cloud.aiplatform.v1beta1.Attribution.feature_attributions]</span>
+<span class="sd">            caused by approximation used in the explanation method.</span>
+<span class="sd">            Lower value means more precise attributions.</span>
+
+<span class="sd">            -  For Sampled Shapley</span>
+<span class="sd">               [attribution][google.cloud.aiplatform.v1beta1.ExplanationParameters.sampled_shapley_attribution],</span>
+<span class="sd">               increasing</span>
+<span class="sd">               [path_count][google.cloud.aiplatform.v1beta1.SampledShapleyAttribution.path_count]</span>
+<span class="sd">               might reduce the error.</span>
+<span class="sd">            -  For Integrated Gradients</span>
+<span class="sd">               [attribution][google.cloud.aiplatform.v1beta1.ExplanationParameters.integrated_gradients_attribution],</span>
+<span class="sd">               increasing</span>
+<span class="sd">               [step_count][google.cloud.aiplatform.v1beta1.IntegratedGradientsAttribution.step_count]</span>
+<span class="sd">               might reduce the error.</span>
+<span class="sd">            -  For [XRAI</span>
+<span class="sd">               attribution][google.cloud.aiplatform.v1beta1.ExplanationParameters.xrai_attribution],</span>
+<span class="sd">               increasing</span>
+<span class="sd">               [step_count][google.cloud.aiplatform.v1beta1.XraiAttribution.step_count]</span>
+<span class="sd">               might reduce the error.</span>
+
+<span class="sd">            See `this</span>
+<span class="sd">            introduction &lt;/vertex-ai/docs/explainable-ai/overview&gt;`__</span>
+<span class="sd">            for more information.</span>
+<span class="sd">        output_name (str):</span>
+<span class="sd">            Output only. Name of the explain output. Specified as the</span>
+<span class="sd">            key in</span>
+<span class="sd">            [ExplanationMetadata.outputs][google.cloud.aiplatform.v1beta1.ExplanationMetadata.outputs].</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">baseline_output_value</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">DOUBLE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="n">instance_output_value</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">DOUBLE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span>
+    <span class="n">feature_attributions</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">struct_pb2</span><span class="o">.</span><span class="n">Value</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">output_index</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">INT32</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">4</span><span class="p">,)</span>
+    <span class="n">output_display_name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">5</span><span class="p">,)</span>
+    <span class="n">approximation_error</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">DOUBLE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">6</span><span class="p">,)</span>
+    <span class="n">output_name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">7</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="ExplanationSpec"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ExplanationSpec">[docs]</a><span class="k">class</span> <span class="nc">ExplanationSpec</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Specification of Model explanation.</span>
+<span class="sd">    Attributes:</span>
+<span class="sd">        parameters (google.cloud.aiplatform_v1beta1.types.ExplanationParameters):</span>
+<span class="sd">            Required. Parameters that configure</span>
+<span class="sd">            explaining of the Model&#39;s predictions.</span>
+<span class="sd">        metadata (google.cloud.aiplatform_v1beta1.types.ExplanationMetadata):</span>
+<span class="sd">            Required. Metadata describing the Model&#39;s</span>
+<span class="sd">            input and output for explanation.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">parameters</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;ExplanationParameters&quot;</span><span class="p">,)</span>
+    <span class="n">metadata</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">explanation_metadata</span><span class="o">.</span><span class="n">ExplanationMetadata</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ExplanationParameters"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ExplanationParameters">[docs]</a><span class="k">class</span> <span class="nc">ExplanationParameters</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Parameters to configure explaining for Model&#39;s predictions.</span>
+<span class="sd">    Attributes:</span>
+<span class="sd">        sampled_shapley_attribution (google.cloud.aiplatform_v1beta1.types.SampledShapleyAttribution):</span>
+<span class="sd">            An attribution method that approximates</span>
+<span class="sd">            Shapley values for features that contribute to</span>
+<span class="sd">            the label being predicted. A sampling strategy</span>
+<span class="sd">            is used to approximate the value rather than</span>
+<span class="sd">            considering all subsets of features. Refer to</span>
+<span class="sd">            this paper for model details:</span>
+<span class="sd">            https://arxiv.org/abs/1306.4265.</span>
+<span class="sd">        integrated_gradients_attribution (google.cloud.aiplatform_v1beta1.types.IntegratedGradientsAttribution):</span>
+<span class="sd">            An attribution method that computes Aumann-</span>
+<span class="sd">            hapley values taking advantage of the model&#39;s</span>
+<span class="sd">            fully differentiable structure. Refer to this</span>
+<span class="sd">            paper for more details:</span>
+<span class="sd">            https://arxiv.org/abs/1703.01365</span>
+<span class="sd">        xrai_attribution (google.cloud.aiplatform_v1beta1.types.XraiAttribution):</span>
+<span class="sd">            An attribution method that redistributes</span>
+<span class="sd">            Integrated Gradients attribution to segmented</span>
+<span class="sd">            regions, taking advantage of the model&#39;s fully</span>
+<span class="sd">            differentiable structure. Refer to this paper</span>
+<span class="sd">            for more details:</span>
+<span class="sd">            https://arxiv.org/abs/1906.02825</span>
+<span class="sd">            XRAI currently performs better on natural</span>
+<span class="sd">            images, like a picture of a house or an animal.</span>
+<span class="sd">            If the images are taken in artificial</span>
+<span class="sd">            environments, like a lab or manufacturing line,</span>
+<span class="sd">            or from diagnostic equipment, like x-rays or</span>
+<span class="sd">            quality-control cameras, use Integrated</span>
+<span class="sd">            Gradients instead.</span>
+<span class="sd">        top_k (int):</span>
+<span class="sd">            If populated, returns attributions for top K</span>
+<span class="sd">            indices of outputs (defaults to 1). Only applies</span>
+<span class="sd">            to Models that predicts more than one outputs</span>
+<span class="sd">            (e,g, multi-class Models). When set to -1,</span>
+<span class="sd">            returns explanations for all outputs.</span>
+<span class="sd">        output_indices (google.protobuf.struct_pb2.ListValue):</span>
+<span class="sd">            If populated, only returns attributions that have</span>
+<span class="sd">            [output_index][google.cloud.aiplatform.v1beta1.Attribution.output_index]</span>
+<span class="sd">            contained in output_indices. It must be an ndarray of</span>
+<span class="sd">            integers, with the same shape of the output it&#39;s explaining.</span>
+
+<span class="sd">            If not populated, returns attributions for</span>
+<span class="sd">            [top_k][google.cloud.aiplatform.v1beta1.ExplanationParameters.top_k]</span>
+<span class="sd">            indices of outputs. If neither top_k nor output_indeices is</span>
+<span class="sd">            populated, returns the argmax index of the outputs.</span>
+
+<span class="sd">            Only applicable to Models that predict multiple outputs</span>
+<span class="sd">            (e,g, multi-class Models that predict multiple classes).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">sampled_shapley_attribution</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">oneof</span><span class="o">=</span><span class="s2">&quot;method&quot;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;SampledShapleyAttribution&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">integrated_gradients_attribution</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span>
+        <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="n">oneof</span><span class="o">=</span><span class="s2">&quot;method&quot;</span><span class="p">,</span>
+        <span class="n">message</span><span class="o">=</span><span class="s2">&quot;IntegratedGradientsAttribution&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">xrai_attribution</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">oneof</span><span class="o">=</span><span class="s2">&quot;method&quot;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;XraiAttribution&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">top_k</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">INT32</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">4</span><span class="p">,)</span>
+    <span class="n">output_indices</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">struct_pb2</span><span class="o">.</span><span class="n">ListValue</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="SampledShapleyAttribution"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.SampledShapleyAttribution">[docs]</a><span class="k">class</span> <span class="nc">SampledShapleyAttribution</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;An attribution method that approximates Shapley values for</span>
+<span class="sd">    features that contribute to the label being predicted. A</span>
+<span class="sd">    sampling strategy is used to approximate the value rather than</span>
+<span class="sd">    considering all subsets of features.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        path_count (int):</span>
+<span class="sd">            Required. The number of feature permutations to consider</span>
+<span class="sd">            when approximating the Shapley values.</span>
+
+<span class="sd">            Valid range of its value is [1, 50], inclusively.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">path_count</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">INT32</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="IntegratedGradientsAttribution"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.IntegratedGradientsAttribution">[docs]</a><span class="k">class</span> <span class="nc">IntegratedGradientsAttribution</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;An attribution method that computes the Aumann-Shapley value</span>
+<span class="sd">    taking advantage of the model&#39;s fully differentiable structure.</span>
+<span class="sd">    Refer to this paper for more details:</span>
+<span class="sd">    https://arxiv.org/abs/1703.01365</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        step_count (int):</span>
+<span class="sd">            Required. The number of steps for approximating the path</span>
+<span class="sd">            integral. A good value to start is 50 and gradually increase</span>
+<span class="sd">            until the sum to diff property is within the desired error</span>
+<span class="sd">            range.</span>
+
+<span class="sd">            Valid range of its value is [1, 100], inclusively.</span>
+<span class="sd">        smooth_grad_config (google.cloud.aiplatform_v1beta1.types.SmoothGradConfig):</span>
+<span class="sd">            Config for SmoothGrad approximation of</span>
+<span class="sd">            gradients.</span>
+<span class="sd">            When enabled, the gradients are approximated by</span>
+<span class="sd">            averaging the gradients from noisy samples in</span>
+<span class="sd">            the vicinity of the inputs. Adding noise can</span>
+<span class="sd">            help improve the computed gradients. Refer to</span>
+<span class="sd">            this paper for more details:</span>
+<span class="sd">            https://arxiv.org/pdf/1706.03825.pdf</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">step_count</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">INT32</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="n">smooth_grad_config</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;SmoothGradConfig&quot;</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="XraiAttribution"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.XraiAttribution">[docs]</a><span class="k">class</span> <span class="nc">XraiAttribution</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;An explanation method that redistributes Integrated Gradients</span>
+<span class="sd">    attributions to segmented regions, taking advantage of the</span>
+<span class="sd">    model&#39;s fully differentiable structure. Refer to this paper for</span>
+<span class="sd">    more details: https://arxiv.org/abs/1906.02825</span>
+
+<span class="sd">    Supported only by image Models.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        step_count (int):</span>
+<span class="sd">            Required. The number of steps for approximating the path</span>
+<span class="sd">            integral. A good value to start is 50 and gradually increase</span>
+<span class="sd">            until the sum to diff property is met within the desired</span>
+<span class="sd">            error range.</span>
+
+<span class="sd">            Valid range of its value is [1, 100], inclusively.</span>
+<span class="sd">        smooth_grad_config (google.cloud.aiplatform_v1beta1.types.SmoothGradConfig):</span>
+<span class="sd">            Config for SmoothGrad approximation of</span>
+<span class="sd">            gradients.</span>
+<span class="sd">            When enabled, the gradients are approximated by</span>
+<span class="sd">            averaging the gradients from noisy samples in</span>
+<span class="sd">            the vicinity of the inputs. Adding noise can</span>
+<span class="sd">            help improve the computed gradients. Refer to</span>
+<span class="sd">            this paper for more details:</span>
+<span class="sd">            https://arxiv.org/pdf/1706.03825.pdf</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">step_count</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">INT32</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="n">smooth_grad_config</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;SmoothGradConfig&quot;</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="SmoothGradConfig"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.SmoothGradConfig">[docs]</a><span class="k">class</span> <span class="nc">SmoothGradConfig</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Config for SmoothGrad approximation of gradients.</span>
+<span class="sd">    When enabled, the gradients are approximated by averaging the</span>
+<span class="sd">    gradients from noisy samples in the vicinity of the inputs.</span>
+<span class="sd">    Adding noise can help improve the computed gradients. Refer to</span>
+<span class="sd">    this paper for more details:</span>
+<span class="sd">    https://arxiv.org/pdf/1706.03825.pdf</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        noise_sigma (float):</span>
+<span class="sd">            This is a single float value and will be used to add noise</span>
+<span class="sd">            to all the features. Use this field when all features are</span>
+<span class="sd">            normalized to have the same distribution: scale to range [0,</span>
+<span class="sd">            1], [-1, 1] or z-scoring, where features are normalized to</span>
+<span class="sd">            have 0-mean and 1-variance. Learn more about</span>
+<span class="sd">            `normalization &lt;https://developers.google.com/machine-learning/data-prep/transform/normalization&gt;`__.</span>
+
+<span class="sd">            For best results the recommended value is about 10% - 20% of</span>
+<span class="sd">            the standard deviation of the input feature. Refer to</span>
+<span class="sd">            section 3.2 of the SmoothGrad paper:</span>
+<span class="sd">            https://arxiv.org/pdf/1706.03825.pdf. Defaults to 0.1.</span>
+
+<span class="sd">            If the distribution is different per feature, set</span>
+<span class="sd">            [feature_noise_sigma][google.cloud.aiplatform.v1beta1.SmoothGradConfig.feature_noise_sigma]</span>
+<span class="sd">            instead for each feature.</span>
+<span class="sd">        feature_noise_sigma (google.cloud.aiplatform_v1beta1.types.FeatureNoiseSigma):</span>
+<span class="sd">            This is similar to</span>
+<span class="sd">            [noise_sigma][google.cloud.aiplatform.v1beta1.SmoothGradConfig.noise_sigma],</span>
+<span class="sd">            but provides additional flexibility. A separate noise sigma</span>
+<span class="sd">            can be provided for each feature, which is useful if their</span>
+<span class="sd">            distributions are different. No noise is added to features</span>
+<span class="sd">            that are not set. If this field is unset,</span>
+<span class="sd">            [noise_sigma][google.cloud.aiplatform.v1beta1.SmoothGradConfig.noise_sigma]</span>
+<span class="sd">            will be used for all features.</span>
+<span class="sd">        noisy_sample_count (int):</span>
+<span class="sd">            The number of gradient samples to use for approximation. The</span>
+<span class="sd">            higher this number, the more accurate the gradient is, but</span>
+<span class="sd">            the runtime complexity increases by this factor as well.</span>
+<span class="sd">            Valid range of its value is [1, 50]. Defaults to 3.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">noise_sigma</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">FLOAT</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">oneof</span><span class="o">=</span><span class="s2">&quot;GradientNoiseSigma&quot;</span><span class="p">,)</span>
+    <span class="n">feature_noise_sigma</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span>
+        <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="n">oneof</span><span class="o">=</span><span class="s2">&quot;GradientNoiseSigma&quot;</span><span class="p">,</span>
+        <span class="n">message</span><span class="o">=</span><span class="s2">&quot;FeatureNoiseSigma&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">noisy_sample_count</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">INT32</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="FeatureNoiseSigma"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.FeatureNoiseSigma">[docs]</a><span class="k">class</span> <span class="nc">FeatureNoiseSigma</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Noise sigma by features. Noise sigma represents the standard</span>
+<span class="sd">    deviation of the gaussian kernel that will be used to add noise</span>
+<span class="sd">    to interpolated inputs prior to computing gradients.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        noise_sigma (Sequence[google.cloud.aiplatform_v1beta1.types.FeatureNoiseSigma.NoiseSigmaForFeature]):</span>
+<span class="sd">            Noise sigma per feature. No noise is added to</span>
+<span class="sd">            features that are not set.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="FeatureNoiseSigma.NoiseSigmaForFeature"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.FeatureNoiseSigma.NoiseSigmaForFeature">[docs]</a>    <span class="k">class</span> <span class="nc">NoiseSigmaForFeature</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Noise sigma for a single feature.</span>
+<span class="sd">        Attributes:</span>
+<span class="sd">            name (str):</span>
+<span class="sd">                The name of the input feature for which noise sigma is</span>
+<span class="sd">                provided. The features are defined in [explanation metadata</span>
+<span class="sd">                inputs][google.cloud.aiplatform.v1beta1.ExplanationMetadata.inputs].</span>
+<span class="sd">            sigma (float):</span>
+<span class="sd">                This represents the standard deviation of the Gaussian</span>
+<span class="sd">                kernel that will be used to add noise to the feature prior</span>
+<span class="sd">                to computing gradients. Similar to</span>
+<span class="sd">                [noise_sigma][google.cloud.aiplatform.v1beta1.SmoothGradConfig.noise_sigma]</span>
+<span class="sd">                but represents the noise added to the current feature.</span>
+<span class="sd">                Defaults to 0.1.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+        <span class="n">sigma</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">FLOAT</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span></div>
+
+    <span class="n">noise_sigma</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">NoiseSigmaForFeature</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ExplanationSpecOverride"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ExplanationSpecOverride">[docs]</a><span class="k">class</span> <span class="nc">ExplanationSpecOverride</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;The</span>
+<span class="sd">    [ExplanationSpec][google.cloud.aiplatform.v1beta1.ExplanationSpec]</span>
+<span class="sd">    entries that can be overridden at [online</span>
+<span class="sd">    explanation][PredictionService.Explain][google.cloud.aiplatform.v1beta1.PredictionService.Explain]</span>
+<span class="sd">    time.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        parameters (google.cloud.aiplatform_v1beta1.types.ExplanationParameters):</span>
+<span class="sd">            The parameters to be overridden. Note that the</span>
+<span class="sd">            [method][google.cloud.aiplatform.v1beta1.ExplanationParameters.method]</span>
+<span class="sd">            cannot be changed. If not specified, no parameter is</span>
+<span class="sd">            overridden.</span>
+<span class="sd">        metadata (google.cloud.aiplatform_v1beta1.types.ExplanationMetadataOverride):</span>
+<span class="sd">            The metadata to be overridden. If not</span>
+<span class="sd">            specified, no metadata is overridden.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">parameters</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;ExplanationParameters&quot;</span><span class="p">,)</span>
+    <span class="n">metadata</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;ExplanationMetadataOverride&quot;</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ExplanationMetadataOverride"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ExplanationMetadataOverride">[docs]</a><span class="k">class</span> <span class="nc">ExplanationMetadataOverride</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;The</span>
+<span class="sd">    [ExplanationMetadata][google.cloud.aiplatform.v1beta1.ExplanationMetadata]</span>
+<span class="sd">    entries that can be overridden at [online</span>
+<span class="sd">    explanation][google.cloud.aiplatform.v1beta1.PredictionService.Explain]</span>
+<span class="sd">    time.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        inputs (Sequence[google.cloud.aiplatform_v1beta1.types.ExplanationMetadataOverride.InputsEntry]):</span>
+<span class="sd">            Required. Overrides the [input</span>
+<span class="sd">            metadata][google.cloud.aiplatform.v1beta1.ExplanationMetadata.inputs]</span>
+<span class="sd">            of the features. The key is the name of the feature to be</span>
+<span class="sd">            overridden. The keys specified here must exist in the input</span>
+<span class="sd">            metadata to be overridden. If a feature is not specified</span>
+<span class="sd">            here, the corresponding feature&#39;s input metadata is not</span>
+<span class="sd">            overridden.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ExplanationMetadataOverride.InputMetadataOverride"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ExplanationMetadataOverride.InputMetadataOverride">[docs]</a>    <span class="k">class</span> <span class="nc">InputMetadataOverride</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;The [input</span>
+<span class="sd">        metadata][google.cloud.aiplatform.v1beta1.ExplanationMetadata.InputMetadata]</span>
+<span class="sd">        entries to be overridden.</span>
+
+<span class="sd">        Attributes:</span>
+<span class="sd">            input_baselines (Sequence[google.protobuf.struct_pb2.Value]):</span>
+<span class="sd">                Baseline inputs for this feature.</span>
+
+<span class="sd">                This overrides the ``input_baseline`` field of the</span>
+<span class="sd">                [ExplanationMetadata.InputMetadata][google.cloud.aiplatform.v1beta1.ExplanationMetadata.InputMetadata]</span>
+<span class="sd">                object of the corresponding feature&#39;s input metadata. If</span>
+<span class="sd">                it&#39;s not specified, the original baselines are not</span>
+<span class="sd">                overridden.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">input_baselines</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span>
+            <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">struct_pb2</span><span class="o">.</span><span class="n">Value</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+    <span class="n">inputs</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">MapField</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">InputMetadataOverride</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">__protobuf__</span><span class="o">.</span><span class="n">manifest</span><span class="p">))</span>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../../../index.html">google-cloud-aiplatform</a></h1>
+
+
+
+<p class="blurb">Google Cloud Client Libraries for google-cloud-aiplatform</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=googleapis&repo=python-aiplatform&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform.html">Google Cloud Aiplatform SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1/services.html">Services for Google Cloud Aiplatform v1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1/types.html">Types for Google Cloud Aiplatform v1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1beta1/services.html">Services for Google Cloud Aiplatform v1beta1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1beta1/types.html">Types for Google Cloud Aiplatform v1beta1 API</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../changelog.html">Changelog</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Google.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+    <a href="https://github.com/googleapis/python-aiplatform" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>

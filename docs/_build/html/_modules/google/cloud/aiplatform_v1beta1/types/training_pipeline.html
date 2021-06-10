@@ -1,0 +1,568 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>google.cloud.aiplatform_v1beta1.types.training_pipeline &#8212; google-cloud-aiplatform  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/alabaster.css" />
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+          	<div class="admonition" id="python2-eol"> 
+          	 As of January 1, 2020 this library no longer supports Python 2 on the latest released version. 
+          	 Library versions released prior to that date will continue to be available. For more information please
+          	 visit <a href="https://cloud.google.com/python/docs/python2-sunset/">Python 2 support on Google Cloud</a>.
+          	</div>
+            
+  <h1>Source code for google.cloud.aiplatform_v1beta1.types.training_pipeline</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Copyright 2020 Google LLC</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="c1">#</span>
+<span class="kn">import</span> <span class="nn">proto</span>  <span class="c1"># type: ignore</span>
+
+<span class="kn">from</span> <span class="nn">google.cloud.aiplatform_v1beta1.types</span> <span class="kn">import</span> <span class="n">encryption_spec</span> <span class="k">as</span> <span class="n">gca_encryption_spec</span>
+<span class="kn">from</span> <span class="nn">google.cloud.aiplatform_v1beta1.types</span> <span class="kn">import</span> <span class="n">io</span>
+<span class="kn">from</span> <span class="nn">google.cloud.aiplatform_v1beta1.types</span> <span class="kn">import</span> <span class="n">model</span>
+<span class="kn">from</span> <span class="nn">google.cloud.aiplatform_v1beta1.types</span> <span class="kn">import</span> <span class="n">pipeline_state</span>
+<span class="kn">from</span> <span class="nn">google.protobuf</span> <span class="kn">import</span> <span class="n">struct_pb2</span>  <span class="c1"># type: ignore</span>
+<span class="kn">from</span> <span class="nn">google.protobuf</span> <span class="kn">import</span> <span class="n">timestamp_pb2</span>  <span class="c1"># type: ignore</span>
+<span class="kn">from</span> <span class="nn">google.rpc</span> <span class="kn">import</span> <span class="n">status_pb2</span>  <span class="c1"># type: ignore</span>
+
+
+<span class="n">__protobuf__</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">module</span><span class="p">(</span>
+    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;google.cloud.aiplatform.v1beta1&quot;</span><span class="p">,</span>
+    <span class="n">manifest</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;TrainingPipeline&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;InputDataConfig&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;FractionSplit&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;FilterSplit&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;PredefinedSplit&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;TimestampSplit&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">)</span>
+
+
+<div class="viewcode-block" id="TrainingPipeline"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.TrainingPipeline">[docs]</a><span class="k">class</span> <span class="nc">TrainingPipeline</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;The TrainingPipeline orchestrates tasks associated with training a</span>
+<span class="sd">    Model. It always executes the training task, and optionally may also</span>
+<span class="sd">    export data from Vertex AI&#39;s Dataset which becomes the training</span>
+<span class="sd">    input,</span>
+<span class="sd">    [upload][google.cloud.aiplatform.v1beta1.ModelService.UploadModel]</span>
+<span class="sd">    the Model to Vertex AI, and evaluate the Model.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        name (str):</span>
+<span class="sd">            Output only. Resource name of the</span>
+<span class="sd">            TrainingPipeline.</span>
+<span class="sd">        display_name (str):</span>
+<span class="sd">            Required. The user-defined name of this</span>
+<span class="sd">            TrainingPipeline.</span>
+<span class="sd">        input_data_config (google.cloud.aiplatform_v1beta1.types.InputDataConfig):</span>
+<span class="sd">            Specifies Vertex AI owned input data that may be used for</span>
+<span class="sd">            training the Model. The TrainingPipeline&#39;s</span>
+<span class="sd">            [training_task_definition][google.cloud.aiplatform.v1beta1.TrainingPipeline.training_task_definition]</span>
+<span class="sd">            should make clear whether this config is used and if there</span>
+<span class="sd">            are any special requirements on how it should be filled. If</span>
+<span class="sd">            nothing about this config is mentioned in the</span>
+<span class="sd">            [training_task_definition][google.cloud.aiplatform.v1beta1.TrainingPipeline.training_task_definition],</span>
+<span class="sd">            then it should be assumed that the TrainingPipeline does not</span>
+<span class="sd">            depend on this configuration.</span>
+<span class="sd">        training_task_definition (str):</span>
+<span class="sd">            Required. A Google Cloud Storage path to the</span>
+<span class="sd">            YAML file that defines the training task which</span>
+<span class="sd">            is responsible for producing the model artifact,</span>
+<span class="sd">            and may also include additional auxiliary work.</span>
+<span class="sd">            The definition files that can be used here are</span>
+<span class="sd">            found in gs://google-cloud-</span>
+<span class="sd">            aiplatform/schema/trainingjob/definition/. Note:</span>
+<span class="sd">            The URI given on output will be immutable and</span>
+<span class="sd">            probably different, including the URI scheme,</span>
+<span class="sd">            than the one given on input. The output URI will</span>
+<span class="sd">            point to a location where the user only has a</span>
+<span class="sd">            read access.</span>
+<span class="sd">        training_task_inputs (google.protobuf.struct_pb2.Value):</span>
+<span class="sd">            Required. The training task&#39;s parameter(s), as specified in</span>
+<span class="sd">            the</span>
+<span class="sd">            [training_task_definition][google.cloud.aiplatform.v1beta1.TrainingPipeline.training_task_definition]&#39;s</span>
+<span class="sd">            ``inputs``.</span>
+<span class="sd">        training_task_metadata (google.protobuf.struct_pb2.Value):</span>
+<span class="sd">            Output only. The metadata information as specified in the</span>
+<span class="sd">            [training_task_definition][google.cloud.aiplatform.v1beta1.TrainingPipeline.training_task_definition]&#39;s</span>
+<span class="sd">            ``metadata``. This metadata is an auxiliary runtime and</span>
+<span class="sd">            final information about the training task. While the</span>
+<span class="sd">            pipeline is running this information is populated only at a</span>
+<span class="sd">            best effort basis. Only present if the pipeline&#39;s</span>
+<span class="sd">            [training_task_definition][google.cloud.aiplatform.v1beta1.TrainingPipeline.training_task_definition]</span>
+<span class="sd">            contains ``metadata`` object.</span>
+<span class="sd">        model_to_upload (google.cloud.aiplatform_v1beta1.types.Model):</span>
+<span class="sd">            Describes the Model that may be uploaded (via</span>
+<span class="sd">            [ModelService.UploadModel][google.cloud.aiplatform.v1beta1.ModelService.UploadModel])</span>
+<span class="sd">            by this TrainingPipeline. The TrainingPipeline&#39;s</span>
+<span class="sd">            [training_task_definition][google.cloud.aiplatform.v1beta1.TrainingPipeline.training_task_definition]</span>
+<span class="sd">            should make clear whether this Model description should be</span>
+<span class="sd">            populated, and if there are any special requirements</span>
+<span class="sd">            regarding how it should be filled. If nothing is mentioned</span>
+<span class="sd">            in the</span>
+<span class="sd">            [training_task_definition][google.cloud.aiplatform.v1beta1.TrainingPipeline.training_task_definition],</span>
+<span class="sd">            then it should be assumed that this field should not be</span>
+<span class="sd">            filled and the training task either uploads the Model</span>
+<span class="sd">            without a need of this information, or that training task</span>
+<span class="sd">            does not support uploading a Model as part of the pipeline.</span>
+<span class="sd">            When the Pipeline&#39;s state becomes</span>
+<span class="sd">            ``PIPELINE_STATE_SUCCEEDED`` and the trained Model had been</span>
+<span class="sd">            uploaded into Vertex AI, then the model_to_upload&#39;s resource</span>
+<span class="sd">            [name][google.cloud.aiplatform.v1beta1.Model.name] is</span>
+<span class="sd">            populated. The Model is always uploaded into the Project and</span>
+<span class="sd">            Location in which this pipeline is.</span>
+<span class="sd">        state (google.cloud.aiplatform_v1beta1.types.PipelineState):</span>
+<span class="sd">            Output only. The detailed state of the</span>
+<span class="sd">            pipeline.</span>
+<span class="sd">        error (google.rpc.status_pb2.Status):</span>
+<span class="sd">            Output only. Only populated when the pipeline&#39;s state is</span>
+<span class="sd">            ``PIPELINE_STATE_FAILED`` or ``PIPELINE_STATE_CANCELLED``.</span>
+<span class="sd">        create_time (google.protobuf.timestamp_pb2.Timestamp):</span>
+<span class="sd">            Output only. Time when the TrainingPipeline</span>
+<span class="sd">            was created.</span>
+<span class="sd">        start_time (google.protobuf.timestamp_pb2.Timestamp):</span>
+<span class="sd">            Output only. Time when the TrainingPipeline for the first</span>
+<span class="sd">            time entered the ``PIPELINE_STATE_RUNNING`` state.</span>
+<span class="sd">        end_time (google.protobuf.timestamp_pb2.Timestamp):</span>
+<span class="sd">            Output only. Time when the TrainingPipeline entered any of</span>
+<span class="sd">            the following states: ``PIPELINE_STATE_SUCCEEDED``,</span>
+<span class="sd">            ``PIPELINE_STATE_FAILED``, ``PIPELINE_STATE_CANCELLED``.</span>
+<span class="sd">        update_time (google.protobuf.timestamp_pb2.Timestamp):</span>
+<span class="sd">            Output only. Time when the TrainingPipeline</span>
+<span class="sd">            was most recently updated.</span>
+<span class="sd">        labels (Sequence[google.cloud.aiplatform_v1beta1.types.TrainingPipeline.LabelsEntry]):</span>
+<span class="sd">            The labels with user-defined metadata to</span>
+<span class="sd">            organize TrainingPipelines.</span>
+<span class="sd">            Label keys and values can be no longer than 64</span>
+<span class="sd">            characters (Unicode codepoints), can only</span>
+<span class="sd">            contain lowercase letters, numeric characters,</span>
+<span class="sd">            underscores and dashes. International characters</span>
+<span class="sd">            are allowed.</span>
+<span class="sd">            See https://goo.gl/xmQnxf for more information</span>
+<span class="sd">            and examples of labels.</span>
+<span class="sd">        encryption_spec (google.cloud.aiplatform_v1beta1.types.EncryptionSpec):</span>
+<span class="sd">            Customer-managed encryption key spec for a TrainingPipeline.</span>
+<span class="sd">            If set, this TrainingPipeline will be secured by this key.</span>
+
+<span class="sd">            Note: Model trained by this TrainingPipeline is also secured</span>
+<span class="sd">            by this key if</span>
+<span class="sd">            [model_to_upload][google.cloud.aiplatform.v1beta1.TrainingPipeline.encryption_spec]</span>
+<span class="sd">            is not set separately.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="n">display_name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span>
+    <span class="n">input_data_config</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;InputDataConfig&quot;</span><span class="p">,)</span>
+    <span class="n">training_task_definition</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">4</span><span class="p">,)</span>
+    <span class="n">training_task_inputs</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">struct_pb2</span><span class="o">.</span><span class="n">Value</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">training_task_metadata</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">struct_pb2</span><span class="o">.</span><span class="n">Value</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">model_to_upload</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">Model</span><span class="p">,)</span>
+    <span class="n">state</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">ENUM</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">enum</span><span class="o">=</span><span class="n">pipeline_state</span><span class="o">.</span><span class="n">PipelineState</span><span class="p">,)</span>
+    <span class="n">error</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">status_pb2</span><span class="o">.</span><span class="n">Status</span><span class="p">,)</span>
+    <span class="n">create_time</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">timestamp_pb2</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">start_time</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">timestamp_pb2</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">,)</span>
+    <span class="n">end_time</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">timestamp_pb2</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">,)</span>
+    <span class="n">update_time</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">timestamp_pb2</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">MapField</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">15</span><span class="p">,)</span>
+    <span class="n">encryption_spec</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">gca_encryption_spec</span><span class="o">.</span><span class="n">EncryptionSpec</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="InputDataConfig"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.InputDataConfig">[docs]</a><span class="k">class</span> <span class="nc">InputDataConfig</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Specifies Vertex AI owned input data to be used for training,</span>
+<span class="sd">    and possibly evaluating, the Model.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        fraction_split (google.cloud.aiplatform_v1beta1.types.FractionSplit):</span>
+<span class="sd">            Split based on fractions defining the size of</span>
+<span class="sd">            each set.</span>
+<span class="sd">        filter_split (google.cloud.aiplatform_v1beta1.types.FilterSplit):</span>
+<span class="sd">            Split based on the provided filters for each</span>
+<span class="sd">            set.</span>
+<span class="sd">        predefined_split (google.cloud.aiplatform_v1beta1.types.PredefinedSplit):</span>
+<span class="sd">            Supported only for tabular Datasets.</span>
+<span class="sd">            Split based on a predefined key.</span>
+<span class="sd">        timestamp_split (google.cloud.aiplatform_v1beta1.types.TimestampSplit):</span>
+<span class="sd">            Supported only for tabular Datasets.</span>
+<span class="sd">            Split based on the timestamp of the input data</span>
+<span class="sd">            pieces.</span>
+<span class="sd">        gcs_destination (google.cloud.aiplatform_v1beta1.types.GcsDestination):</span>
+<span class="sd">            The Cloud Storage location where the training data is to be</span>
+<span class="sd">            written to. In the given directory a new directory is</span>
+<span class="sd">            created with name:</span>
+<span class="sd">            ``dataset-&lt;dataset-id&gt;-&lt;annotation-type&gt;-&lt;timestamp-of-training-call&gt;``</span>
+<span class="sd">            where timestamp is in YYYY-MM-DDThh:mm:ss.sssZ ISO-8601</span>
+<span class="sd">            format. All training input data is written into that</span>
+<span class="sd">            directory.</span>
+
+<span class="sd">            The Vertex AI environment variables representing Cloud</span>
+<span class="sd">            Storage data URIs are represented in the Cloud Storage</span>
+<span class="sd">            wildcard format to support sharded data. e.g.:</span>
+<span class="sd">            &quot;gs://.../training-*.jsonl&quot;</span>
+
+<span class="sd">            -  AIP_DATA_FORMAT = &quot;jsonl&quot; for non-tabular data, &quot;csv&quot; for</span>
+<span class="sd">               tabular data</span>
+
+<span class="sd">            -  AIP_TRAINING_DATA_URI =</span>
+<span class="sd">               &quot;gcs_destination/dataset---/training-*.${AIP_DATA_FORMAT}&quot;</span>
+
+<span class="sd">            -  AIP_VALIDATION_DATA_URI =</span>
+<span class="sd">               &quot;gcs_destination/dataset---/validation-*.${AIP_DATA_FORMAT}&quot;</span>
+
+<span class="sd">            -  AIP_TEST_DATA_URI =</span>
+<span class="sd">               &quot;gcs_destination/dataset---/test-*.${AIP_DATA_FORMAT}&quot;.</span>
+<span class="sd">        bigquery_destination (google.cloud.aiplatform_v1beta1.types.BigQueryDestination):</span>
+<span class="sd">            Only applicable to custom training with tabular Dataset with</span>
+<span class="sd">            BigQuery source.</span>
+
+<span class="sd">            The BigQuery project location where the training data is to</span>
+<span class="sd">            be written to. In the given project a new dataset is created</span>
+<span class="sd">            with name</span>
+<span class="sd">            ``dataset_&lt;dataset-id&gt;_&lt;annotation-type&gt;_&lt;timestamp-of-training-call&gt;``</span>
+<span class="sd">            where timestamp is in YYYY_MM_DDThh_mm_ss_sssZ format. All</span>
+<span class="sd">            training input data is written into that dataset. In the</span>
+<span class="sd">            dataset three tables are created, ``training``,</span>
+<span class="sd">            ``validation`` and ``test``.</span>
+
+<span class="sd">            -  AIP_DATA_FORMAT = &quot;bigquery&quot;.</span>
+
+<span class="sd">            -  AIP_TRAINING_DATA_URI =</span>
+<span class="sd">               &quot;bigquery_destination.dataset\_\ **\ .training&quot;</span>
+
+<span class="sd">            -  AIP_VALIDATION_DATA_URI =</span>
+<span class="sd">               &quot;bigquery_destination.dataset\_\ **\ .validation&quot;</span>
+
+<span class="sd">            -  AIP_TEST_DATA_URI =</span>
+<span class="sd">               &quot;bigquery_destination.dataset\_\ **\ .test&quot;.</span>
+<span class="sd">        dataset_id (str):</span>
+<span class="sd">            Required. The ID of the Dataset in the same Project and</span>
+<span class="sd">            Location which data will be used to train the Model. The</span>
+<span class="sd">            Dataset must use schema compatible with Model being trained,</span>
+<span class="sd">            and what is compatible should be described in the used</span>
+<span class="sd">            TrainingPipeline&#39;s [training_task_definition]</span>
+<span class="sd">            [google.cloud.aiplatform.v1beta1.TrainingPipeline.training_task_definition].</span>
+<span class="sd">            For tabular Datasets, all their data is exported to</span>
+<span class="sd">            training, to pick and choose from.</span>
+<span class="sd">        annotations_filter (str):</span>
+<span class="sd">            Applicable only to Datasets that have DataItems and</span>
+<span class="sd">            Annotations.</span>
+
+<span class="sd">            A filter on Annotations of the Dataset. Only Annotations</span>
+<span class="sd">            that both match this filter and belong to DataItems not</span>
+<span class="sd">            ignored by the split method are used in respectively</span>
+<span class="sd">            training, validation or test role, depending on the role of</span>
+<span class="sd">            the DataItem they are on (for the auto-assigned that role is</span>
+<span class="sd">            decided by Vertex AI). A filter with same syntax as the one</span>
+<span class="sd">            used in</span>
+<span class="sd">            [ListAnnotations][google.cloud.aiplatform.v1beta1.DatasetService.ListAnnotations]</span>
+<span class="sd">            may be used, but note here it filters across all Annotations</span>
+<span class="sd">            of the Dataset, and not just within a single DataItem.</span>
+<span class="sd">        annotation_schema_uri (str):</span>
+<span class="sd">            Applicable only to custom training with Datasets that have</span>
+<span class="sd">            DataItems and Annotations.</span>
+
+<span class="sd">            Cloud Storage URI that points to a YAML file describing the</span>
+<span class="sd">            annotation schema. The schema is defined as an OpenAPI 3.0.2</span>
+<span class="sd">            `Schema</span>
+<span class="sd">            Object &lt;https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.2.md#schemaObject&gt;`__.</span>
+<span class="sd">            The schema files that can be used here are found in</span>
+<span class="sd">            gs://google-cloud-aiplatform/schema/dataset/annotation/ ,</span>
+<span class="sd">            note that the chosen schema must be consistent with</span>
+<span class="sd">            [metadata][google.cloud.aiplatform.v1beta1.Dataset.metadata_schema_uri]</span>
+<span class="sd">            of the Dataset specified by</span>
+<span class="sd">            [dataset_id][google.cloud.aiplatform.v1beta1.InputDataConfig.dataset_id].</span>
+
+<span class="sd">            Only Annotations that both match this schema and belong to</span>
+<span class="sd">            DataItems not ignored by the split method are used in</span>
+<span class="sd">            respectively training, validation or test role, depending on</span>
+<span class="sd">            the role of the DataItem they are on.</span>
+
+<span class="sd">            When used in conjunction with</span>
+<span class="sd">            [annotations_filter][google.cloud.aiplatform.v1beta1.InputDataConfig.annotations_filter],</span>
+<span class="sd">            the Annotations used for training are filtered by both</span>
+<span class="sd">            [annotations_filter][google.cloud.aiplatform.v1beta1.InputDataConfig.annotations_filter]</span>
+<span class="sd">            and</span>
+<span class="sd">            [annotation_schema_uri][google.cloud.aiplatform.v1beta1.InputDataConfig.annotation_schema_uri].</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">fraction_split</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">oneof</span><span class="o">=</span><span class="s2">&quot;split&quot;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;FractionSplit&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">filter_split</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">oneof</span><span class="o">=</span><span class="s2">&quot;split&quot;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;FilterSplit&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">predefined_split</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">oneof</span><span class="o">=</span><span class="s2">&quot;split&quot;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;PredefinedSplit&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">timestamp_split</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">oneof</span><span class="o">=</span><span class="s2">&quot;split&quot;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;TimestampSplit&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">gcs_destination</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">oneof</span><span class="o">=</span><span class="s2">&quot;destination&quot;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">io</span><span class="o">.</span><span class="n">GcsDestination</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">bigquery_destination</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">oneof</span><span class="o">=</span><span class="s2">&quot;destination&quot;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">io</span><span class="o">.</span><span class="n">BigQueryDestination</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">dataset_id</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="n">annotations_filter</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">6</span><span class="p">,)</span>
+    <span class="n">annotation_schema_uri</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">9</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="FractionSplit"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.FractionSplit">[docs]</a><span class="k">class</span> <span class="nc">FractionSplit</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Assigns the input data to training, validation, and test sets as per</span>
+<span class="sd">    the given fractions. Any of ``training_fraction``,</span>
+<span class="sd">    ``validation_fraction`` and ``test_fraction`` may optionally be</span>
+<span class="sd">    provided, they must sum to up to 1. If the provided ones sum to less</span>
+<span class="sd">    than 1, the remainder is assigned to sets as decided by Vertex AI.</span>
+<span class="sd">    If none of the fractions are set, by default roughly 80% of data is</span>
+<span class="sd">    used for training, 10% for validation, and 10% for test.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        training_fraction (float):</span>
+<span class="sd">            The fraction of the input data that is to be</span>
+<span class="sd">            used to train the Model.</span>
+<span class="sd">        validation_fraction (float):</span>
+<span class="sd">            The fraction of the input data that is to be</span>
+<span class="sd">            used to validate the Model.</span>
+<span class="sd">        test_fraction (float):</span>
+<span class="sd">            The fraction of the input data that is to be</span>
+<span class="sd">            used to evaluate the Model.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">training_fraction</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">DOUBLE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="n">validation_fraction</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">DOUBLE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span>
+    <span class="n">test_fraction</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">DOUBLE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="FilterSplit"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.FilterSplit">[docs]</a><span class="k">class</span> <span class="nc">FilterSplit</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Assigns input data to training, validation, and test sets</span>
+<span class="sd">    based on the given filters, data pieces not matched by any</span>
+<span class="sd">    filter are ignored. Currently only supported for Datasets</span>
+<span class="sd">    containing DataItems.</span>
+<span class="sd">    If any of the filters in this message are to match nothing, then</span>
+<span class="sd">    they can be set as &#39;-&#39; (the minus sign).</span>
+
+<span class="sd">    Supported only for unstructured Datasets.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        training_filter (str):</span>
+<span class="sd">            Required. A filter on DataItems of the Dataset. DataItems</span>
+<span class="sd">            that match this filter are used to train the Model. A filter</span>
+<span class="sd">            with same syntax as the one used in</span>
+<span class="sd">            [DatasetService.ListDataItems][google.cloud.aiplatform.v1beta1.DatasetService.ListDataItems]</span>
+<span class="sd">            may be used. If a single DataItem is matched by more than</span>
+<span class="sd">            one of the FilterSplit filters, then it is assigned to the</span>
+<span class="sd">            first set that applies to it in the training, validation,</span>
+<span class="sd">            test order.</span>
+<span class="sd">        validation_filter (str):</span>
+<span class="sd">            Required. A filter on DataItems of the Dataset. DataItems</span>
+<span class="sd">            that match this filter are used to validate the Model. A</span>
+<span class="sd">            filter with same syntax as the one used in</span>
+<span class="sd">            [DatasetService.ListDataItems][google.cloud.aiplatform.v1beta1.DatasetService.ListDataItems]</span>
+<span class="sd">            may be used. If a single DataItem is matched by more than</span>
+<span class="sd">            one of the FilterSplit filters, then it is assigned to the</span>
+<span class="sd">            first set that applies to it in the training, validation,</span>
+<span class="sd">            test order.</span>
+<span class="sd">        test_filter (str):</span>
+<span class="sd">            Required. A filter on DataItems of the Dataset. DataItems</span>
+<span class="sd">            that match this filter are used to test the Model. A filter</span>
+<span class="sd">            with same syntax as the one used in</span>
+<span class="sd">            [DatasetService.ListDataItems][google.cloud.aiplatform.v1beta1.DatasetService.ListDataItems]</span>
+<span class="sd">            may be used. If a single DataItem is matched by more than</span>
+<span class="sd">            one of the FilterSplit filters, then it is assigned to the</span>
+<span class="sd">            first set that applies to it in the training, validation,</span>
+<span class="sd">            test order.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">training_filter</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="n">validation_filter</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span>
+    <span class="n">test_filter</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="PredefinedSplit"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.PredefinedSplit">[docs]</a><span class="k">class</span> <span class="nc">PredefinedSplit</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Assigns input data to training, validation, and test sets</span>
+<span class="sd">    based on the value of a provided key.</span>
+
+<span class="sd">    Supported only for tabular Datasets.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        key (str):</span>
+<span class="sd">            Required. The key is a name of one of the Dataset&#39;s data</span>
+<span class="sd">            columns. The value of the key (either the label&#39;s value or</span>
+<span class="sd">            value in the column) must be one of {``training``,</span>
+<span class="sd">            ``validation``, ``test``}, and it defines to which set the</span>
+<span class="sd">            given piece of data is assigned. If for a piece of data the</span>
+<span class="sd">            key is not present or has an invalid value, that piece is</span>
+<span class="sd">            ignored by the pipeline.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">key</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="TimestampSplit"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.TimestampSplit">[docs]</a><span class="k">class</span> <span class="nc">TimestampSplit</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Assigns input data to training, validation, and test sets</span>
+<span class="sd">    based on a provided timestamps. The youngest data pieces are</span>
+<span class="sd">    assigned to training set, next to validation set, and the oldest</span>
+<span class="sd">    to the test set.</span>
+<span class="sd">    Supported only for tabular Datasets.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        training_fraction (float):</span>
+<span class="sd">            The fraction of the input data that is to be</span>
+<span class="sd">            used to train the Model.</span>
+<span class="sd">        validation_fraction (float):</span>
+<span class="sd">            The fraction of the input data that is to be</span>
+<span class="sd">            used to validate the Model.</span>
+<span class="sd">        test_fraction (float):</span>
+<span class="sd">            The fraction of the input data that is to be</span>
+<span class="sd">            used to evaluate the Model.</span>
+<span class="sd">        key (str):</span>
+<span class="sd">            Required. The key is a name of one of the Dataset&#39;s data</span>
+<span class="sd">            columns. The values of the key (the values in the column)</span>
+<span class="sd">            must be in RFC 3339 ``date-time`` format, where</span>
+<span class="sd">            ``time-offset`` = ``&quot;Z&quot;`` (e.g. 1985-04-12T23:20:50.52Z). If</span>
+<span class="sd">            for a piece of data the key is not present or has an invalid</span>
+<span class="sd">            value, that piece is ignored by the pipeline.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">training_fraction</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">DOUBLE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="n">validation_fraction</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">DOUBLE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span>
+    <span class="n">test_fraction</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">DOUBLE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,)</span>
+    <span class="n">key</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">4</span><span class="p">,)</span></div>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">__protobuf__</span><span class="o">.</span><span class="n">manifest</span><span class="p">))</span>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../../../index.html">google-cloud-aiplatform</a></h1>
+
+
+
+<p class="blurb">Google Cloud Client Libraries for google-cloud-aiplatform</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=googleapis&repo=python-aiplatform&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform.html">Google Cloud Aiplatform SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1/services.html">Services for Google Cloud Aiplatform v1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1/types.html">Types for Google Cloud Aiplatform v1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1beta1/services.html">Services for Google Cloud Aiplatform v1beta1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1beta1/types.html">Types for Google Cloud Aiplatform v1beta1 API</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../changelog.html">Changelog</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Google.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+    <a href="https://github.com/googleapis/python-aiplatform" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>

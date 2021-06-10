@@ -1,0 +1,454 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>google.cloud.aiplatform_v1beta1.types.model_deployment_monitoring_job &#8212; google-cloud-aiplatform  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/alabaster.css" />
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+          	<div class="admonition" id="python2-eol"> 
+          	 As of January 1, 2020 this library no longer supports Python 2 on the latest released version. 
+          	 Library versions released prior to that date will continue to be available. For more information please
+          	 visit <a href="https://cloud.google.com/python/docs/python2-sunset/">Python 2 support on Google Cloud</a>.
+          	</div>
+            
+  <h1>Source code for google.cloud.aiplatform_v1beta1.types.model_deployment_monitoring_job</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Copyright 2020 Google LLC</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="c1">#</span>
+<span class="kn">import</span> <span class="nn">proto</span>  <span class="c1"># type: ignore</span>
+
+<span class="kn">from</span> <span class="nn">google.cloud.aiplatform_v1beta1.types</span> <span class="kn">import</span> <span class="n">feature_monitoring_stats</span>
+<span class="kn">from</span> <span class="nn">google.cloud.aiplatform_v1beta1.types</span> <span class="kn">import</span> <span class="n">io</span>
+<span class="kn">from</span> <span class="nn">google.cloud.aiplatform_v1beta1.types</span> <span class="kn">import</span> <span class="n">job_state</span>
+<span class="kn">from</span> <span class="nn">google.cloud.aiplatform_v1beta1.types</span> <span class="kn">import</span> <span class="n">model_monitoring</span>
+<span class="kn">from</span> <span class="nn">google.protobuf</span> <span class="kn">import</span> <span class="n">duration_pb2</span>  <span class="c1"># type: ignore</span>
+<span class="kn">from</span> <span class="nn">google.protobuf</span> <span class="kn">import</span> <span class="n">struct_pb2</span>  <span class="c1"># type: ignore</span>
+<span class="kn">from</span> <span class="nn">google.protobuf</span> <span class="kn">import</span> <span class="n">timestamp_pb2</span>  <span class="c1"># type: ignore</span>
+
+
+<span class="n">__protobuf__</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">module</span><span class="p">(</span>
+    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;google.cloud.aiplatform.v1beta1&quot;</span><span class="p">,</span>
+    <span class="n">manifest</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;ModelDeploymentMonitoringObjectiveType&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ModelDeploymentMonitoringJob&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ModelDeploymentMonitoringBigQueryTable&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ModelDeploymentMonitoringObjectiveConfig&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ModelDeploymentMonitoringScheduleConfig&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ModelMonitoringStatsAnomalies&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">)</span>
+
+
+<div class="viewcode-block" id="ModelDeploymentMonitoringObjectiveType"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ModelDeploymentMonitoringObjectiveType">[docs]</a><span class="k">class</span> <span class="nc">ModelDeploymentMonitoringObjectiveType</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;The Model Monitoring Objective types.&quot;&quot;&quot;</span>
+    <span class="n">MODEL_DEPLOYMENT_MONITORING_OBJECTIVE_TYPE_UNSPECIFIED</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">RAW_FEATURE_SKEW</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">RAW_FEATURE_DRIFT</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">FEATURE_ATTRIBUTION_SKEW</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="n">FEATURE_ATTRIBUTION_DRIFT</span> <span class="o">=</span> <span class="mi">4</span></div>
+
+
+<div class="viewcode-block" id="ModelDeploymentMonitoringJob"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ModelDeploymentMonitoringJob">[docs]</a><span class="k">class</span> <span class="nc">ModelDeploymentMonitoringJob</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Represents a job that runs periodically to monitor the</span>
+<span class="sd">    deployed models in an endpoint. It will analyze the logged</span>
+<span class="sd">    training &amp; prediction data to detect any abnormal behaviors.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        name (str):</span>
+<span class="sd">            Output only. Resource name of a</span>
+<span class="sd">            ModelDeploymentMonitoringJob.</span>
+<span class="sd">        display_name (str):</span>
+<span class="sd">            Required. The user-defined name of the</span>
+<span class="sd">            ModelDeploymentMonitoringJob. The name can be up</span>
+<span class="sd">            to 128 characters long and can be consist of any</span>
+<span class="sd">            UTF-8 characters.</span>
+<span class="sd">            Display name of a ModelDeploymentMonitoringJob.</span>
+<span class="sd">        endpoint (str):</span>
+<span class="sd">            Required. Endpoint resource name. Format:</span>
+<span class="sd">            ``projects/{project}/locations/{location}/endpoints/{endpoint}``</span>
+<span class="sd">        state (google.cloud.aiplatform_v1beta1.types.JobState):</span>
+<span class="sd">            Output only. The detailed state of the</span>
+<span class="sd">            monitoring job. When the job is still creating,</span>
+<span class="sd">            the state will be &#39;PENDING&#39;. Once the job is</span>
+<span class="sd">            successfully created, the state will be</span>
+<span class="sd">            &#39;RUNNING&#39;. Pause the job, the state will be</span>
+<span class="sd">            &#39;PAUSED&#39;.</span>
+<span class="sd">            Resume the job, the state will return to</span>
+<span class="sd">            &#39;RUNNING&#39;.</span>
+<span class="sd">        schedule_state (google.cloud.aiplatform_v1beta1.types.ModelDeploymentMonitoringJob.MonitoringScheduleState):</span>
+<span class="sd">            Output only. Schedule state when the</span>
+<span class="sd">            monitoring job is in Running state.</span>
+<span class="sd">        model_deployment_monitoring_objective_configs (Sequence[google.cloud.aiplatform_v1beta1.types.ModelDeploymentMonitoringObjectiveConfig]):</span>
+<span class="sd">            Required. The config for monitoring</span>
+<span class="sd">            objectives. This is a per DeployedModel config.</span>
+<span class="sd">            Each DeployedModel needs to be configed</span>
+<span class="sd">            separately.</span>
+<span class="sd">        model_deployment_monitoring_schedule_config (google.cloud.aiplatform_v1beta1.types.ModelDeploymentMonitoringScheduleConfig):</span>
+<span class="sd">            Required. Schedule config for running the</span>
+<span class="sd">            monitoring job.</span>
+<span class="sd">        logging_sampling_strategy (google.cloud.aiplatform_v1beta1.types.SamplingStrategy):</span>
+<span class="sd">            Required. Sample Strategy for logging.</span>
+<span class="sd">        model_monitoring_alert_config (google.cloud.aiplatform_v1beta1.types.ModelMonitoringAlertConfig):</span>
+<span class="sd">            Alert config for model monitoring.</span>
+<span class="sd">        predict_instance_schema_uri (str):</span>
+<span class="sd">            YAML schema file uri describing the format of</span>
+<span class="sd">            a single instance, which are given to format</span>
+<span class="sd">            this Endpoint&#39;s prediction (and explanation). If</span>
+<span class="sd">            not set, we will generate predict schema from</span>
+<span class="sd">            collected predict requests.</span>
+<span class="sd">        sample_predict_instance (google.protobuf.struct_pb2.Value):</span>
+<span class="sd">            Sample Predict instance, same format as</span>
+<span class="sd">            [PredictRequest.instances][google.cloud.aiplatform.v1beta1.PredictRequest.instances],</span>
+<span class="sd">            this can be set as a replacement of</span>
+<span class="sd">            [ModelDeploymentMonitoringJob.predict_instance_schema_uri][google.cloud.aiplatform.v1beta1.ModelDeploymentMonitoringJob.predict_instance_schema_uri].</span>
+<span class="sd">            If not set, we will generate predict schema from collected</span>
+<span class="sd">            predict requests.</span>
+<span class="sd">        analysis_instance_schema_uri (str):</span>
+<span class="sd">            YAML schema file uri describing the format of a single</span>
+<span class="sd">            instance that you want Tensorflow Data Validation (TFDV) to</span>
+<span class="sd">            analyze.</span>
+
+<span class="sd">            If this field is empty, all the feature data types are</span>
+<span class="sd">            inferred from</span>
+<span class="sd">            [predict_instance_schema_uri][google.cloud.aiplatform.v1beta1.ModelDeploymentMonitoringJob.predict_instance_schema_uri],</span>
+<span class="sd">            meaning that TFDV will use the data in the exact format(data</span>
+<span class="sd">            type) as prediction request/response. If there are any data</span>
+<span class="sd">            type differences between predict instance and TFDV instance,</span>
+<span class="sd">            this field can be used to override the schema. For models</span>
+<span class="sd">            trained with Vertex AI, this field must be set as all the</span>
+<span class="sd">            fields in predict instance formatted as string.</span>
+<span class="sd">        bigquery_tables (Sequence[google.cloud.aiplatform_v1beta1.types.ModelDeploymentMonitoringBigQueryTable]):</span>
+<span class="sd">            Output only. The created bigquery tables for</span>
+<span class="sd">            the job under customer project. Customer could</span>
+<span class="sd">            do their own query &amp; analysis. There could be 4</span>
+<span class="sd">            log tables in maximum:</span>
+<span class="sd">            1. Training data logging predict</span>
+<span class="sd">            request/response 2. Serving data logging predict</span>
+<span class="sd">            request/response</span>
+<span class="sd">        log_ttl (google.protobuf.duration_pb2.Duration):</span>
+<span class="sd">            The TTL of BigQuery tables in user projects</span>
+<span class="sd">            which stores logs. A day is the basic unit of</span>
+<span class="sd">            the TTL and we take the ceil of TTL/86400(a</span>
+<span class="sd">            day). e.g. { second: 3600} indicates ttl = 1</span>
+<span class="sd">            day.</span>
+<span class="sd">        labels (Sequence[google.cloud.aiplatform_v1beta1.types.ModelDeploymentMonitoringJob.LabelsEntry]):</span>
+<span class="sd">            The labels with user-defined metadata to</span>
+<span class="sd">            organize your ModelDeploymentMonitoringJob.</span>
+
+<span class="sd">            Label keys and values can be no longer than 64</span>
+<span class="sd">            characters (Unicode codepoints), can only</span>
+<span class="sd">            contain lowercase letters, numeric characters,</span>
+<span class="sd">            underscores and dashes. International characters</span>
+<span class="sd">            are allowed.</span>
+<span class="sd">            See https://goo.gl/xmQnxf for more information</span>
+<span class="sd">            and examples of labels.</span>
+<span class="sd">        create_time (google.protobuf.timestamp_pb2.Timestamp):</span>
+<span class="sd">            Output only. Timestamp when this</span>
+<span class="sd">            ModelDeploymentMonitoringJob was created.</span>
+<span class="sd">        update_time (google.protobuf.timestamp_pb2.Timestamp):</span>
+<span class="sd">            Output only. Timestamp when this</span>
+<span class="sd">            ModelDeploymentMonitoringJob was updated most</span>
+<span class="sd">            recently.</span>
+<span class="sd">        next_schedule_time (google.protobuf.timestamp_pb2.Timestamp):</span>
+<span class="sd">            Output only. Timestamp when this monitoring</span>
+<span class="sd">            pipeline will be scheduled to run for the next</span>
+<span class="sd">            round.</span>
+<span class="sd">        stats_anomalies_base_directory (google.cloud.aiplatform_v1beta1.types.GcsDestination):</span>
+<span class="sd">            Stats anomalies base folder path.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ModelDeploymentMonitoringJob.MonitoringScheduleState"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ModelDeploymentMonitoringJob.MonitoringScheduleState">[docs]</a>    <span class="k">class</span> <span class="nc">MonitoringScheduleState</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Enum</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;The state to Specify the monitoring pipeline.&quot;&quot;&quot;</span>
+        <span class="n">MONITORING_SCHEDULE_STATE_UNSPECIFIED</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">PENDING</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">OFFLINE</span> <span class="o">=</span> <span class="mi">2</span>
+        <span class="n">RUNNING</span> <span class="o">=</span> <span class="mi">3</span></div>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="n">display_name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span>
+    <span class="n">endpoint</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,)</span>
+    <span class="n">state</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">ENUM</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">enum</span><span class="o">=</span><span class="n">job_state</span><span class="o">.</span><span class="n">JobState</span><span class="p">,)</span>
+    <span class="n">schedule_state</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">ENUM</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">enum</span><span class="o">=</span><span class="n">MonitoringScheduleState</span><span class="p">,)</span>
+    <span class="n">model_deployment_monitoring_objective_configs</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;ModelDeploymentMonitoringObjectiveConfig&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">model_deployment_monitoring_schedule_config</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;ModelDeploymentMonitoringScheduleConfig&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">logging_sampling_strategy</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">model_monitoring</span><span class="o">.</span><span class="n">SamplingStrategy</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">model_monitoring_alert_config</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">model_monitoring</span><span class="o">.</span><span class="n">ModelMonitoringAlertConfig</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">predict_instance_schema_uri</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">9</span><span class="p">,)</span>
+    <span class="n">sample_predict_instance</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">19</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">struct_pb2</span><span class="o">.</span><span class="n">Value</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">analysis_instance_schema_uri</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">16</span><span class="p">,)</span>
+    <span class="n">bigquery_tables</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;ModelDeploymentMonitoringBigQueryTable&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">log_ttl</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">17</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">duration_pb2</span><span class="o">.</span><span class="n">Duration</span><span class="p">,)</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">MapField</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">11</span><span class="p">,)</span>
+    <span class="n">create_time</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">timestamp_pb2</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">update_time</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">timestamp_pb2</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">next_schedule_time</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">timestamp_pb2</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">stats_anomalies_base_directory</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">io</span><span class="o">.</span><span class="n">GcsDestination</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ModelDeploymentMonitoringBigQueryTable"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ModelDeploymentMonitoringBigQueryTable">[docs]</a><span class="k">class</span> <span class="nc">ModelDeploymentMonitoringBigQueryTable</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;ModelDeploymentMonitoringBigQueryTable specifies the BigQuery</span>
+<span class="sd">    table name as well as some information of the logs stored in</span>
+<span class="sd">    this table.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        log_source (google.cloud.aiplatform_v1beta1.types.ModelDeploymentMonitoringBigQueryTable.LogSource):</span>
+<span class="sd">            The source of log.</span>
+<span class="sd">        log_type (google.cloud.aiplatform_v1beta1.types.ModelDeploymentMonitoringBigQueryTable.LogType):</span>
+<span class="sd">            The type of log.</span>
+<span class="sd">        bigquery_table_path (str):</span>
+<span class="sd">            The created BigQuery table to store logs. Customer could do</span>
+<span class="sd">            their own query &amp; analysis. Format:</span>
+<span class="sd">            ``bq://&lt;project_id&gt;.model_deployment_monitoring_&lt;endpoint_id&gt;.&lt;tolower(log_source)&gt;_&lt;tolower(log_type)&gt;``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ModelDeploymentMonitoringBigQueryTable.LogSource"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ModelDeploymentMonitoringBigQueryTable.LogSource">[docs]</a>    <span class="k">class</span> <span class="nc">LogSource</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Enum</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Indicates where does the log come from.&quot;&quot;&quot;</span>
+        <span class="n">LOG_SOURCE_UNSPECIFIED</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">TRAINING</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">SERVING</span> <span class="o">=</span> <span class="mi">2</span></div>
+
+<div class="viewcode-block" id="ModelDeploymentMonitoringBigQueryTable.LogType"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ModelDeploymentMonitoringBigQueryTable.LogType">[docs]</a>    <span class="k">class</span> <span class="nc">LogType</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Enum</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Indicates what type of traffic does the log belong to.&quot;&quot;&quot;</span>
+        <span class="n">LOG_TYPE_UNSPECIFIED</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">PREDICT</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">EXPLAIN</span> <span class="o">=</span> <span class="mi">2</span></div>
+
+    <span class="n">log_source</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">ENUM</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">enum</span><span class="o">=</span><span class="n">LogSource</span><span class="p">,)</span>
+    <span class="n">log_type</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">ENUM</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">enum</span><span class="o">=</span><span class="n">LogType</span><span class="p">,)</span>
+    <span class="n">bigquery_table_path</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="ModelDeploymentMonitoringObjectiveConfig"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ModelDeploymentMonitoringObjectiveConfig">[docs]</a><span class="k">class</span> <span class="nc">ModelDeploymentMonitoringObjectiveConfig</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;ModelDeploymentMonitoringObjectiveConfig contains the pair of</span>
+<span class="sd">    deployed_model_id to ModelMonitoringObjectiveConfig.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        deployed_model_id (str):</span>
+<span class="sd">            The DeployedModel ID of the objective config.</span>
+<span class="sd">        objective_config (google.cloud.aiplatform_v1beta1.types.ModelMonitoringObjectiveConfig):</span>
+<span class="sd">            The objective config of for the</span>
+<span class="sd">            modelmonitoring job of this deployed model.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">deployed_model_id</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="n">objective_config</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span>
+        <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="n">message</span><span class="o">=</span><span class="n">model_monitoring</span><span class="o">.</span><span class="n">ModelMonitoringObjectiveConfig</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ModelDeploymentMonitoringScheduleConfig"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ModelDeploymentMonitoringScheduleConfig">[docs]</a><span class="k">class</span> <span class="nc">ModelDeploymentMonitoringScheduleConfig</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;The config for scheduling monitoring job.</span>
+<span class="sd">    Attributes:</span>
+<span class="sd">        monitor_interval (google.protobuf.duration_pb2.Duration):</span>
+<span class="sd">            Required. The model monitoring job running</span>
+<span class="sd">            interval. It will be rounded up to next full</span>
+<span class="sd">            hour.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">monitor_interval</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">duration_pb2</span><span class="o">.</span><span class="n">Duration</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ModelMonitoringStatsAnomalies"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ModelMonitoringStatsAnomalies">[docs]</a><span class="k">class</span> <span class="nc">ModelMonitoringStatsAnomalies</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Statistics and anomalies generated by Model Monitoring.</span>
+<span class="sd">    Attributes:</span>
+<span class="sd">        objective (google.cloud.aiplatform_v1beta1.types.ModelDeploymentMonitoringObjectiveType):</span>
+<span class="sd">            Model Monitoring Objective those stats and</span>
+<span class="sd">            anomalies belonging to.</span>
+<span class="sd">        deployed_model_id (str):</span>
+<span class="sd">            Deployed Model ID.</span>
+<span class="sd">        anomaly_count (int):</span>
+<span class="sd">            Number of anomalies within all stats.</span>
+<span class="sd">        feature_stats (Sequence[google.cloud.aiplatform_v1beta1.types.ModelMonitoringStatsAnomalies.FeatureHistoricStatsAnomalies]):</span>
+<span class="sd">            A list of historical Stats and Anomalies</span>
+<span class="sd">            generated for all Features.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ModelMonitoringStatsAnomalies.FeatureHistoricStatsAnomalies"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ModelMonitoringStatsAnomalies.FeatureHistoricStatsAnomalies">[docs]</a>    <span class="k">class</span> <span class="nc">FeatureHistoricStatsAnomalies</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Historical Stats (and Anomalies) for a specific Feature.</span>
+<span class="sd">        Attributes:</span>
+<span class="sd">            feature_display_name (str):</span>
+<span class="sd">                Display Name of the Feature.</span>
+<span class="sd">            threshold (google.cloud.aiplatform_v1beta1.types.ThresholdConfig):</span>
+<span class="sd">                Threshold for anomaly detection.</span>
+<span class="sd">            training_stats (google.cloud.aiplatform_v1beta1.types.FeatureStatsAnomaly):</span>
+<span class="sd">                Stats calculated for the Training Dataset.</span>
+<span class="sd">            prediction_stats (Sequence[google.cloud.aiplatform_v1beta1.types.FeatureStatsAnomaly]):</span>
+<span class="sd">                A list of historical stats generated by</span>
+<span class="sd">                different time window&#39;s Prediction Dataset.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">feature_display_name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+        <span class="n">threshold</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+            <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">model_monitoring</span><span class="o">.</span><span class="n">ThresholdConfig</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">training_stats</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+            <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span>
+            <span class="n">number</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+            <span class="n">message</span><span class="o">=</span><span class="n">feature_monitoring_stats</span><span class="o">.</span><span class="n">FeatureStatsAnomaly</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">prediction_stats</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span>
+            <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span>
+            <span class="n">number</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+            <span class="n">message</span><span class="o">=</span><span class="n">feature_monitoring_stats</span><span class="o">.</span><span class="n">FeatureStatsAnomaly</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+    <span class="n">objective</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">ENUM</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">enum</span><span class="o">=</span><span class="s2">&quot;ModelDeploymentMonitoringObjectiveType&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">deployed_model_id</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span>
+    <span class="n">anomaly_count</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">INT32</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,)</span>
+    <span class="n">feature_stats</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">FeatureHistoricStatsAnomalies</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">__protobuf__</span><span class="o">.</span><span class="n">manifest</span><span class="p">))</span>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../../../index.html">google-cloud-aiplatform</a></h1>
+
+
+
+<p class="blurb">Google Cloud Client Libraries for google-cloud-aiplatform</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=googleapis&repo=python-aiplatform&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform.html">Google Cloud Aiplatform SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1/services.html">Services for Google Cloud Aiplatform v1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1/types.html">Types for Google Cloud Aiplatform v1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1beta1/services.html">Services for Google Cloud Aiplatform v1beta1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1beta1/types.html">Types for Google Cloud Aiplatform v1beta1 API</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../changelog.html">Changelog</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Google.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+    <a href="https://github.com/googleapis/python-aiplatform" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>

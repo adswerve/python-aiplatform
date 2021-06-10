@@ -1,0 +1,688 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>PredictionService &#8212; google-cloud-aiplatform  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="SpecialistPoolService" href="specialist_pool_service.html" />
+    <link rel="prev" title="PipelineService" href="pipeline_service.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+          	<div class="admonition" id="python2-eol"> 
+          	 As of January 1, 2020 this library no longer supports Python 2 on the latest released version. 
+          	 Library versions released prior to that date will continue to be available. For more information please
+          	 visit <a href="https://cloud.google.com/python/docs/python2-sunset/">Python 2 support on Google Cloud</a>.
+          	</div>
+            
+  <section id="module-google.cloud.aiplatform_v1.services.prediction_service">
+<span id="predictionservice"></span><h1>PredictionService<a class="headerlink" href="#module-google.cloud.aiplatform_v1.services.prediction_service" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceAsyncClient">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">google.cloud.aiplatform_v1.services.prediction_service.</span></span><span class="sig-name descname"><span class="pre">PredictionServiceAsyncClient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">*</span></em>, <em class="sig-param"><span class="pre">credentials:</span> <span class="pre">google.auth.credentials.Credentials</span> <span class="pre">=</span> <span class="pre">None</span></em>, <em class="sig-param"><span class="pre">transport:</span> <span class="pre">Union[str</span></em>, <em class="sig-param"><span class="pre">google.cloud.aiplatform_v1.services.prediction_service.transports.base.PredictionServiceTransport]</span> <span class="pre">=</span> <span class="pre">'grpc_asyncio'</span></em>, <em class="sig-param"><span class="pre">client_options:</span> <span class="pre">&lt;module</span> <span class="pre">'google.api_core.client_options'</span> <span class="pre">from</span> <span class="pre">'/Users/daniel/Documents/Github/python-aiplatform/.nox/docs/lib/python3.8/site-packages/google/api_core/client_options.py'&gt;</span> <span class="pre">=</span> <span class="pre">None</span></em>, <em class="sig-param"><span class="pre">client_info:</span> <span class="pre">google.api_core.gapic_v1.client_info.ClientInfo</span> <span class="pre">=</span> <span class="pre">&lt;google.api_core.gapic_v1.client_info.ClientInfo</span> <span class="pre">object&gt;</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/google/cloud/aiplatform_v1/services/prediction_service/async_client.html#PredictionServiceAsyncClient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceAsyncClient" title="Permalink to this definition">¶</a></dt>
+<dd><p>A service for online predictions and explanations.</p>
+<p>Instantiates the prediction service client.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>credentials</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://googleapis.dev/python/google-auth/latest/reference/google.auth.credentials.html#google.auth.credentials.Credentials" title="(in google-auth v1.30.2)"><em>google.auth.credentials.Credentials</em></a><em>]</em>) – The
+authorization credentials to attach to requests. These
+credentials identify the application to the service; if none
+are specified, the client will attempt to ascertain the
+credentials from the environment.</p></li>
+<li><p><strong>transport</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>, </em><em>PredictionServiceTransport</em><em>]</em>) – The
+transport to use. If set to None, a transport is chosen
+automatically.</p></li>
+<li><p><strong>client_options</strong> (<em>ClientOptions</em>) – Custom options for the client. It
+won’t take effect if a <code class="docutils literal notranslate"><span class="pre">transport</span></code> instance is provided.
+(1) The <code class="docutils literal notranslate"><span class="pre">api_endpoint</span></code> property can be used to override the
+default endpoint provided by the client. GOOGLE_API_USE_MTLS_ENDPOINT
+environment variable can also be used to override the endpoint:
+“always” (always use the default mTLS endpoint), “never” (always
+use the default regular endpoint) and “auto” (auto switch to the
+default mTLS endpoint if client certificate is present, this is
+the default value). However, the <code class="docutils literal notranslate"><span class="pre">api_endpoint</span></code> property takes
+precedence if provided.
+(2) If GOOGLE_API_USE_CLIENT_CERTIFICATE environment variable
+is “true”, then the <code class="docutils literal notranslate"><span class="pre">client_cert_source</span></code> property can be used
+to provide client certificate for mutual TLS transport. If
+not provided, the default SSL client certificate will be used if
+present. If GOOGLE_API_USE_CLIENT_CERTIFICATE is “false” or not
+set, no client certificate will be used.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>google.auth.exceptions.MutualTlsChannelError</strong> – If mutual TLS transport
+    creation failed for any reason.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceAsyncClient.common_billing_account_path">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">common_billing_account_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">billing_account</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><a class="headerlink" href="#google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceAsyncClient.common_billing_account_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a fully-qualified billing_account string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceAsyncClient.common_folder_path">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">common_folder_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><a class="headerlink" href="#google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceAsyncClient.common_folder_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a fully-qualified folder string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceAsyncClient.common_location_path">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">common_location_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><a class="headerlink" href="#google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceAsyncClient.common_location_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a fully-qualified location string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceAsyncClient.common_organization_path">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">common_organization_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">organization</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><a class="headerlink" href="#google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceAsyncClient.common_organization_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a fully-qualified organization string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceAsyncClient.common_project_path">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">common_project_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><a class="headerlink" href="#google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceAsyncClient.common_project_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a fully-qualified project string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceAsyncClient.endpoint_path">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">endpoint_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">endpoint</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><a class="headerlink" href="#google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceAsyncClient.endpoint_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a fully-qualified endpoint string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceAsyncClient.from_service_account_file">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_service_account_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/google/cloud/aiplatform_v1/services/prediction_service/async_client.html#PredictionServiceAsyncClient.from_service_account_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceAsyncClient.from_service_account_file" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Creates an instance of this client using the provided credentials</dt><dd><p>file.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The path to the service account private key json
+file.</p></li>
+<li><p><strong>args</strong> – Additional arguments to pass to the constructor.</p></li>
+<li><p><strong>kwargs</strong> – Additional arguments to pass to the constructor.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The constructed client.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceAsyncClient" title="google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceAsyncClient">PredictionServiceAsyncClient</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceAsyncClient.from_service_account_info">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_service_account_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">info</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#dict" title="(in Python v3.7)"><span class="pre">dict</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/google/cloud/aiplatform_v1/services/prediction_service/async_client.html#PredictionServiceAsyncClient.from_service_account_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceAsyncClient.from_service_account_info" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Creates an instance of this client using the provided credentials</dt><dd><p>info.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>info</strong> (<a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – The service account private key info.</p></li>
+<li><p><strong>args</strong> – Additional arguments to pass to the constructor.</p></li>
+<li><p><strong>kwargs</strong> – Additional arguments to pass to the constructor.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The constructed client.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceAsyncClient" title="google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceAsyncClient">PredictionServiceAsyncClient</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceAsyncClient.from_service_account_json">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_service_account_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceAsyncClient.from_service_account_json" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Creates an instance of this client using the provided credentials</dt><dd><p>file.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The path to the service account private key json
+file.</p></li>
+<li><p><strong>args</strong> – Additional arguments to pass to the constructor.</p></li>
+<li><p><strong>kwargs</strong> – Additional arguments to pass to the constructor.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The constructed client.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceAsyncClient" title="google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceAsyncClient">PredictionServiceAsyncClient</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceAsyncClient.get_transport_class">
+<span class="sig-name descname"><span class="pre">get_transport_class</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">Type</span><span class="p"><span class="pre">[</span></span><span class="pre">google.cloud.aiplatform_v1.services.prediction_service.transports.base.PredictionServiceTransport</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceAsyncClient.get_transport_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns an appropriate transport class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>label</strong> – The name of the desired transport. If none is
+provided, then the first transport in the registry is used.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The transport class to use.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceAsyncClient.parse_common_billing_account_path">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">parse_common_billing_account_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceAsyncClient.parse_common_billing_account_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse a billing_account path into its component segments.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceAsyncClient.parse_common_folder_path">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">parse_common_folder_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceAsyncClient.parse_common_folder_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse a folder path into its component segments.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceAsyncClient.parse_common_location_path">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">parse_common_location_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceAsyncClient.parse_common_location_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse a location path into its component segments.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceAsyncClient.parse_common_organization_path">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">parse_common_organization_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceAsyncClient.parse_common_organization_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse a organization path into its component segments.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceAsyncClient.parse_common_project_path">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">parse_common_project_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceAsyncClient.parse_common_project_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse a project path into its component segments.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceAsyncClient.parse_endpoint_path">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">parse_endpoint_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceAsyncClient.parse_endpoint_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses a endpoint path into its component segments.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceAsyncClient.predict">
+<em class="property"><span class="pre">async</span> </em><span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">request:</span> <span class="pre">Optional[google.cloud.aiplatform_v1.types.prediction_service.PredictRequest]</span> <span class="pre">=</span> <span class="pre">None</span></em>, <em class="sig-param"><span class="pre">*</span></em>, <em class="sig-param"><span class="pre">endpoint:</span> <span class="pre">Optional[str]</span> <span class="pre">=</span> <span class="pre">None</span></em>, <em class="sig-param"><span class="pre">instances:</span> <span class="pre">Optional[Sequence[google.protobuf.struct_pb2.Value]]</span> <span class="pre">=</span> <span class="pre">None</span></em>, <em class="sig-param"><span class="pre">parameters:</span> <span class="pre">Optional[google.protobuf.struct_pb2.Value]</span> <span class="pre">=</span> <span class="pre">None</span></em>, <em class="sig-param"><span class="pre">retry:</span> <span class="pre">google.api_core.retry.Retry</span> <span class="pre">=</span> <span class="pre">&lt;object</span> <span class="pre">object&gt;</span></em>, <em class="sig-param"><span class="pre">timeout:</span> <span class="pre">Optional[float]</span> <span class="pre">=</span> <span class="pre">None</span></em>, <em class="sig-param"><span class="pre">metadata:</span> <span class="pre">Sequence[Tuple[str</span></em>, <em class="sig-param"><span class="pre">str]]</span> <span class="pre">=</span> <span class="pre">()</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="types.html#google.cloud.aiplatform_v1.types.PredictResponse" title="google.cloud.aiplatform_v1.types.prediction_service.PredictResponse"><span class="pre">google.cloud.aiplatform_v1.types.prediction_service.PredictResponse</span></a><a class="reference internal" href="../_modules/google/cloud/aiplatform_v1/services/prediction_service/async_client.html#PredictionServiceAsyncClient.predict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceAsyncClient.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform an online prediction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> (<a class="reference internal" href="types.html#google.cloud.aiplatform_v1.types.PredictRequest" title="google.cloud.aiplatform_v1.types.PredictRequest"><code class="xref py py-class docutils literal notranslate"><span class="pre">google.cloud.aiplatform_v1.types.PredictRequest</span></code></a>) – The request object. Request message for
+[PredictionService.Predict][google.cloud.aiplatform.v1.PredictionService.Predict].</p></li>
+<li><p><strong>endpoint</strong> (<a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – <p>Required. The name of the Endpoint requested to serve
+the prediction. Format:
+<code class="docutils literal notranslate"><span class="pre">projects/{project}/locations/{location}/endpoints/{endpoint}</span></code></p>
+<p>This corresponds to the <code class="docutils literal notranslate"><span class="pre">endpoint</span></code> field
+on the <code class="docutils literal notranslate"><span class="pre">request</span></code> instance; if <code class="docutils literal notranslate"><span class="pre">request</span></code> is provided, this
+should not be set.</p>
+</p></li>
+<li><p><strong>instances</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence[google.protobuf.struct_pb2.Value]</span></code>) – <p>Required. The instances that are the input to the
+prediction call. A DeployedModel may have an upper limit
+on the number of instances it supports per request, and
+when it is exceeded the prediction call errors in case
+of AutoML Models, or, in case of customer created
+Models, the behaviour is as documented by that Model.
+The schema of any single instance may be specified via
+Endpoint’s DeployedModels’
+[Model’s][google.cloud.aiplatform.v1.DeployedModel.model]
+[PredictSchemata’s][google.cloud.aiplatform.v1.Model.predict_schemata]
+[instance_schema_uri][google.cloud.aiplatform.v1.PredictSchemata.instance_schema_uri].</p>
+<p>This corresponds to the <code class="docutils literal notranslate"><span class="pre">instances</span></code> field
+on the <code class="docutils literal notranslate"><span class="pre">request</span></code> instance; if <code class="docutils literal notranslate"><span class="pre">request</span></code> is provided, this
+should not be set.</p>
+</p></li>
+<li><p><strong>parameters</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">google.protobuf.struct_pb2.Value</span></code>) – <p>The parameters that govern the prediction. The schema of
+the parameters may be specified via Endpoint’s
+DeployedModels’ [Model’s
+][google.cloud.aiplatform.v1.DeployedModel.model]
+[PredictSchemata’s][google.cloud.aiplatform.v1.Model.predict_schemata]
+[parameters_schema_uri][google.cloud.aiplatform.v1.PredictSchemata.parameters_schema_uri].</p>
+<p>This corresponds to the <code class="docutils literal notranslate"><span class="pre">parameters</span></code> field
+on the <code class="docutils literal notranslate"><span class="pre">request</span></code> instance; if <code class="docutils literal notranslate"><span class="pre">request</span></code> is provided, this
+should not be set.</p>
+</p></li>
+<li><p><strong>retry</strong> (<a class="reference external" href="https://googleapis.dev/python/google-api-core/latest/retry.html#google.api_core.retry.Retry" title="(in google-api-core)"><em>google.api_core.retry.Retry</em></a>) – Designation of what errors, if any,
+should be retried.</p></li>
+<li><p><strong>timeout</strong> (<a class="reference external" href="https://python.readthedocs.io/en/latest/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The timeout for this request.</p></li>
+<li><p><strong>metadata</strong> (<em>Sequence</em><em>[</em><em>Tuple</em><em>[</em><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>, </em><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>]</em><em>]</em>) – Strings which should be
+sent along with the request as metadata.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Response message for
+[PredictionService.Predict][google.cloud.aiplatform.v1.PredictionService.Predict].</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="types.html#google.cloud.aiplatform_v1.types.PredictResponse" title="google.cloud.aiplatform_v1.types.PredictResponse">google.cloud.aiplatform_v1.types.PredictResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceAsyncClient.transport">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">transport</span></span><em class="property"><span class="pre">:</span> <span class="pre">google.cloud.aiplatform_v1.services.prediction_service.transports.base.PredictionServiceTransport</span></em><a class="headerlink" href="#google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceAsyncClient.transport" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the transport used by the client instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The transport used by the client instance.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PredictionServiceTransport</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceClient">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">google.cloud.aiplatform_v1.services.prediction_service.</span></span><span class="sig-name descname"><span class="pre">PredictionServiceClient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">*</span></em>, <em class="sig-param"><span class="pre">credentials:</span> <span class="pre">Optional[google.auth.credentials.Credentials]</span> <span class="pre">=</span> <span class="pre">None</span></em>, <em class="sig-param"><span class="pre">transport:</span> <span class="pre">Optional[Union[str</span></em>, <em class="sig-param"><span class="pre">google.cloud.aiplatform_v1.services.prediction_service.transports.base.PredictionServiceTransport]]</span> <span class="pre">=</span> <span class="pre">None</span></em>, <em class="sig-param"><span class="pre">client_options:</span> <span class="pre">Optional[google.api_core.client_options.ClientOptions]</span> <span class="pre">=</span> <span class="pre">None</span></em>, <em class="sig-param"><span class="pre">client_info:</span> <span class="pre">google.api_core.gapic_v1.client_info.ClientInfo</span> <span class="pre">=</span> <span class="pre">&lt;google.api_core.gapic_v1.client_info.ClientInfo</span> <span class="pre">object&gt;</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/google/cloud/aiplatform_v1/services/prediction_service/client.html#PredictionServiceClient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceClient" title="Permalink to this definition">¶</a></dt>
+<dd><p>A service for online predictions and explanations.</p>
+<p>Instantiates the prediction service client.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>credentials</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://googleapis.dev/python/google-auth/latest/reference/google.auth.credentials.html#google.auth.credentials.Credentials" title="(in google-auth v1.30.2)"><em>google.auth.credentials.Credentials</em></a><em>]</em>) – The
+authorization credentials to attach to requests. These
+credentials identify the application to the service; if none
+are specified, the client will attempt to ascertain the
+credentials from the environment.</p></li>
+<li><p><strong>transport</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>, </em><em>PredictionServiceTransport</em><em>]</em>) – The
+transport to use. If set to None, a transport is chosen
+automatically.</p></li>
+<li><p><strong>client_options</strong> (<a class="reference external" href="https://googleapis.dev/python/google-api-core/latest/client_options.html#google.api_core.client_options.ClientOptions" title="(in google-api-core)"><em>google.api_core.client_options.ClientOptions</em></a>) – Custom options for the
+client. It won’t take effect if a <code class="docutils literal notranslate"><span class="pre">transport</span></code> instance is provided.
+(1) The <code class="docutils literal notranslate"><span class="pre">api_endpoint</span></code> property can be used to override the
+default endpoint provided by the client. GOOGLE_API_USE_MTLS_ENDPOINT
+environment variable can also be used to override the endpoint:
+“always” (always use the default mTLS endpoint), “never” (always
+use the default regular endpoint) and “auto” (auto switch to the
+default mTLS endpoint if client certificate is present, this is
+the default value). However, the <code class="docutils literal notranslate"><span class="pre">api_endpoint</span></code> property takes
+precedence if provided.
+(2) If GOOGLE_API_USE_CLIENT_CERTIFICATE environment variable
+is “true”, then the <code class="docutils literal notranslate"><span class="pre">client_cert_source</span></code> property can be used
+to provide client certificate for mutual TLS transport. If
+not provided, the default SSL client certificate will be used if
+present. If GOOGLE_API_USE_CLIENT_CERTIFICATE is “false” or not
+set, no client certificate will be used.</p></li>
+<li><p><strong>client_info</strong> (<a class="reference external" href="https://googleapis.dev/python/google-api-core/latest/client_info.html#google.api_core.gapic_v1.client_info.ClientInfo" title="(in google-api-core)"><em>google.api_core.gapic_v1.client_info.ClientInfo</em></a>) – The client info used to send a user-agent string along with
+API requests. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, then default info will be used.
+Generally, you only need to set this if you’re developing
+your own client library.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference external" href="https://googleapis.dev/python/google-auth/latest/reference/google.auth.exceptions.html#google.auth.exceptions.MutualTLSChannelError" title="(in google-auth v1.30.2)"><strong>google.auth.exceptions.MutualTLSChannelError</strong></a> – If mutual TLS transport
+    creation failed for any reason.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceClient.common_billing_account_path">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">common_billing_account_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">billing_account</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><a class="reference internal" href="../_modules/google/cloud/aiplatform_v1/services/prediction_service/client.html#PredictionServiceClient.common_billing_account_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceClient.common_billing_account_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a fully-qualified billing_account string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceClient.common_folder_path">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">common_folder_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><a class="reference internal" href="../_modules/google/cloud/aiplatform_v1/services/prediction_service/client.html#PredictionServiceClient.common_folder_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceClient.common_folder_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a fully-qualified folder string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceClient.common_location_path">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">common_location_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><a class="reference internal" href="../_modules/google/cloud/aiplatform_v1/services/prediction_service/client.html#PredictionServiceClient.common_location_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceClient.common_location_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a fully-qualified location string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceClient.common_organization_path">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">common_organization_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">organization</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><a class="reference internal" href="../_modules/google/cloud/aiplatform_v1/services/prediction_service/client.html#PredictionServiceClient.common_organization_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceClient.common_organization_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a fully-qualified organization string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceClient.common_project_path">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">common_project_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><a class="reference internal" href="../_modules/google/cloud/aiplatform_v1/services/prediction_service/client.html#PredictionServiceClient.common_project_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceClient.common_project_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a fully-qualified project string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceClient.endpoint_path">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">endpoint_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">endpoint</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><a class="reference internal" href="../_modules/google/cloud/aiplatform_v1/services/prediction_service/client.html#PredictionServiceClient.endpoint_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceClient.endpoint_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a fully-qualified endpoint string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceClient.from_service_account_file">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_service_account_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/google/cloud/aiplatform_v1/services/prediction_service/client.html#PredictionServiceClient.from_service_account_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceClient.from_service_account_file" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Creates an instance of this client using the provided credentials</dt><dd><p>file.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The path to the service account private key json
+file.</p></li>
+<li><p><strong>args</strong> – Additional arguments to pass to the constructor.</p></li>
+<li><p><strong>kwargs</strong> – Additional arguments to pass to the constructor.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The constructed client.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceClient" title="google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceClient">PredictionServiceClient</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceClient.from_service_account_info">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_service_account_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">info</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#dict" title="(in Python v3.7)"><span class="pre">dict</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/google/cloud/aiplatform_v1/services/prediction_service/client.html#PredictionServiceClient.from_service_account_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceClient.from_service_account_info" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Creates an instance of this client using the provided credentials</dt><dd><p>info.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>info</strong> (<a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – The service account private key info.</p></li>
+<li><p><strong>args</strong> – Additional arguments to pass to the constructor.</p></li>
+<li><p><strong>kwargs</strong> – Additional arguments to pass to the constructor.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The constructed client.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceClient" title="google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceClient">PredictionServiceClient</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceClient.from_service_account_json">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_service_account_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceClient.from_service_account_json" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Creates an instance of this client using the provided credentials</dt><dd><p>file.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The path to the service account private key json
+file.</p></li>
+<li><p><strong>args</strong> – Additional arguments to pass to the constructor.</p></li>
+<li><p><strong>kwargs</strong> – Additional arguments to pass to the constructor.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The constructed client.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceClient" title="google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceClient">PredictionServiceClient</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceClient.parse_common_billing_account_path">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">parse_common_billing_account_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><a class="reference internal" href="../_modules/google/cloud/aiplatform_v1/services/prediction_service/client.html#PredictionServiceClient.parse_common_billing_account_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceClient.parse_common_billing_account_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse a billing_account path into its component segments.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceClient.parse_common_folder_path">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">parse_common_folder_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><a class="reference internal" href="../_modules/google/cloud/aiplatform_v1/services/prediction_service/client.html#PredictionServiceClient.parse_common_folder_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceClient.parse_common_folder_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse a folder path into its component segments.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceClient.parse_common_location_path">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">parse_common_location_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><a class="reference internal" href="../_modules/google/cloud/aiplatform_v1/services/prediction_service/client.html#PredictionServiceClient.parse_common_location_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceClient.parse_common_location_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse a location path into its component segments.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceClient.parse_common_organization_path">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">parse_common_organization_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><a class="reference internal" href="../_modules/google/cloud/aiplatform_v1/services/prediction_service/client.html#PredictionServiceClient.parse_common_organization_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceClient.parse_common_organization_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse a organization path into its component segments.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceClient.parse_common_project_path">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">parse_common_project_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><a class="reference internal" href="../_modules/google/cloud/aiplatform_v1/services/prediction_service/client.html#PredictionServiceClient.parse_common_project_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceClient.parse_common_project_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse a project path into its component segments.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceClient.parse_endpoint_path">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">parse_endpoint_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><a class="reference internal" href="../_modules/google/cloud/aiplatform_v1/services/prediction_service/client.html#PredictionServiceClient.parse_endpoint_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceClient.parse_endpoint_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses a endpoint path into its component segments.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceClient.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">request:</span> <span class="pre">Optional[google.cloud.aiplatform_v1.types.prediction_service.PredictRequest]</span> <span class="pre">=</span> <span class="pre">None</span></em>, <em class="sig-param"><span class="pre">*</span></em>, <em class="sig-param"><span class="pre">endpoint:</span> <span class="pre">Optional[str]</span> <span class="pre">=</span> <span class="pre">None</span></em>, <em class="sig-param"><span class="pre">instances:</span> <span class="pre">Optional[Sequence[google.protobuf.struct_pb2.Value]]</span> <span class="pre">=</span> <span class="pre">None</span></em>, <em class="sig-param"><span class="pre">parameters:</span> <span class="pre">Optional[google.protobuf.struct_pb2.Value]</span> <span class="pre">=</span> <span class="pre">None</span></em>, <em class="sig-param"><span class="pre">retry:</span> <span class="pre">google.api_core.retry.Retry</span> <span class="pre">=</span> <span class="pre">&lt;object</span> <span class="pre">object&gt;</span></em>, <em class="sig-param"><span class="pre">timeout:</span> <span class="pre">Optional[float]</span> <span class="pre">=</span> <span class="pre">None</span></em>, <em class="sig-param"><span class="pre">metadata:</span> <span class="pre">Sequence[Tuple[str</span></em>, <em class="sig-param"><span class="pre">str]]</span> <span class="pre">=</span> <span class="pre">()</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="types.html#google.cloud.aiplatform_v1.types.PredictResponse" title="google.cloud.aiplatform_v1.types.prediction_service.PredictResponse"><span class="pre">google.cloud.aiplatform_v1.types.prediction_service.PredictResponse</span></a><a class="reference internal" href="../_modules/google/cloud/aiplatform_v1/services/prediction_service/client.html#PredictionServiceClient.predict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceClient.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform an online prediction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> (<a class="reference internal" href="types.html#google.cloud.aiplatform_v1.types.PredictRequest" title="google.cloud.aiplatform_v1.types.PredictRequest"><em>google.cloud.aiplatform_v1.types.PredictRequest</em></a>) – The request object. Request message for
+[PredictionService.Predict][google.cloud.aiplatform.v1.PredictionService.Predict].</p></li>
+<li><p><strong>endpoint</strong> (<a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – <p>Required. The name of the Endpoint requested to serve
+the prediction. Format:
+<code class="docutils literal notranslate"><span class="pre">projects/{project}/locations/{location}/endpoints/{endpoint}</span></code></p>
+<p>This corresponds to the <code class="docutils literal notranslate"><span class="pre">endpoint</span></code> field
+on the <code class="docutils literal notranslate"><span class="pre">request</span></code> instance; if <code class="docutils literal notranslate"><span class="pre">request</span></code> is provided, this
+should not be set.</p>
+</p></li>
+<li><p><strong>instances</strong> (<em>Sequence</em><em>[</em><em>google.protobuf.struct_pb2.Value</em><em>]</em>) – <p>Required. The instances that are the input to the
+prediction call. A DeployedModel may have an upper limit
+on the number of instances it supports per request, and
+when it is exceeded the prediction call errors in case
+of AutoML Models, or, in case of customer created
+Models, the behaviour is as documented by that Model.
+The schema of any single instance may be specified via
+Endpoint’s DeployedModels’
+[Model’s][google.cloud.aiplatform.v1.DeployedModel.model]
+[PredictSchemata’s][google.cloud.aiplatform.v1.Model.predict_schemata]
+[instance_schema_uri][google.cloud.aiplatform.v1.PredictSchemata.instance_schema_uri].</p>
+<p>This corresponds to the <code class="docutils literal notranslate"><span class="pre">instances</span></code> field
+on the <code class="docutils literal notranslate"><span class="pre">request</span></code> instance; if <code class="docutils literal notranslate"><span class="pre">request</span></code> is provided, this
+should not be set.</p>
+</p></li>
+<li><p><strong>parameters</strong> (<em>google.protobuf.struct_pb2.Value</em>) – <p>The parameters that govern the prediction. The schema of
+the parameters may be specified via Endpoint’s
+DeployedModels’ [Model’s
+][google.cloud.aiplatform.v1.DeployedModel.model]
+[PredictSchemata’s][google.cloud.aiplatform.v1.Model.predict_schemata]
+[parameters_schema_uri][google.cloud.aiplatform.v1.PredictSchemata.parameters_schema_uri].</p>
+<p>This corresponds to the <code class="docutils literal notranslate"><span class="pre">parameters</span></code> field
+on the <code class="docutils literal notranslate"><span class="pre">request</span></code> instance; if <code class="docutils literal notranslate"><span class="pre">request</span></code> is provided, this
+should not be set.</p>
+</p></li>
+<li><p><strong>retry</strong> (<a class="reference external" href="https://googleapis.dev/python/google-api-core/latest/retry.html#google.api_core.retry.Retry" title="(in google-api-core)"><em>google.api_core.retry.Retry</em></a>) – Designation of what errors, if any,
+should be retried.</p></li>
+<li><p><strong>timeout</strong> (<a class="reference external" href="https://python.readthedocs.io/en/latest/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The timeout for this request.</p></li>
+<li><p><strong>metadata</strong> (<em>Sequence</em><em>[</em><em>Tuple</em><em>[</em><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>, </em><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>]</em><em>]</em>) – Strings which should be
+sent along with the request as metadata.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Response message for
+[PredictionService.Predict][google.cloud.aiplatform.v1.PredictionService.Predict].</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="types.html#google.cloud.aiplatform_v1.types.PredictResponse" title="google.cloud.aiplatform_v1.types.PredictResponse">google.cloud.aiplatform_v1.types.PredictResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceClient.transport">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">transport</span></span><em class="property"><span class="pre">:</span> <span class="pre">google.cloud.aiplatform_v1.services.prediction_service.transports.base.PredictionServiceTransport</span></em><a class="headerlink" href="#google.cloud.aiplatform_v1.services.prediction_service.PredictionServiceClient.transport" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the transport used by the client instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><dl class="simple">
+<dt>The transport used by the client</dt><dd><p>instance.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>PredictionServiceTransport</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">google-cloud-aiplatform</a></h1>
+
+
+
+<p class="blurb">Google Cloud Client Libraries for google-cloud-aiplatform</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=googleapis&repo=python-aiplatform&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../aiplatform.html">Google Cloud Aiplatform SDK</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="services.html">Services for Google Cloud Aiplatform v1 API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="dataset_service.html">DatasetService</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint_service.html">EndpointService</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_service.html">JobService</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_service.html">MigrationService</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_service.html">ModelService</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipeline_service.html">PipelineService</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">PredictionService</a></li>
+<li class="toctree-l2"><a class="reference internal" href="specialist_pool_service.html">SpecialistPoolService</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="types.html">Types for Google Cloud Aiplatform v1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aiplatform_v1beta1/services.html">Services for Google Cloud Aiplatform v1beta1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aiplatform_v1beta1/types.html">Types for Google Cloud Aiplatform v1beta1 API</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="services.html">Services for Google Cloud Aiplatform v1 API</a><ul>
+      <li>Previous: <a href="pipeline_service.html" title="previous chapter">PipelineService</a></li>
+      <li>Next: <a href="specialist_pool_service.html" title="next chapter">SpecialistPoolService</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Google.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/aiplatform_v1/prediction_service.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+    <a href="https://github.com/googleapis/python-aiplatform" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,446 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>google.cloud.aiplatform_v1.types.batch_prediction_job &#8212; google-cloud-aiplatform  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/alabaster.css" />
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+          	<div class="admonition" id="python2-eol"> 
+          	 As of January 1, 2020 this library no longer supports Python 2 on the latest released version. 
+          	 Library versions released prior to that date will continue to be available. For more information please
+          	 visit <a href="https://cloud.google.com/python/docs/python2-sunset/">Python 2 support on Google Cloud</a>.
+          	</div>
+            
+  <h1>Source code for google.cloud.aiplatform_v1.types.batch_prediction_job</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Copyright 2020 Google LLC</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="c1">#</span>
+<span class="kn">import</span> <span class="nn">proto</span>  <span class="c1"># type: ignore</span>
+
+<span class="kn">from</span> <span class="nn">google.cloud.aiplatform_v1.types</span> <span class="kn">import</span> <span class="n">completion_stats</span> <span class="k">as</span> <span class="n">gca_completion_stats</span>
+<span class="kn">from</span> <span class="nn">google.cloud.aiplatform_v1.types</span> <span class="kn">import</span> <span class="n">encryption_spec</span> <span class="k">as</span> <span class="n">gca_encryption_spec</span>
+<span class="kn">from</span> <span class="nn">google.cloud.aiplatform_v1.types</span> <span class="kn">import</span> <span class="n">io</span>
+<span class="kn">from</span> <span class="nn">google.cloud.aiplatform_v1.types</span> <span class="kn">import</span> <span class="n">job_state</span>
+<span class="kn">from</span> <span class="nn">google.cloud.aiplatform_v1.types</span> <span class="kn">import</span> <span class="n">machine_resources</span>
+<span class="kn">from</span> <span class="nn">google.cloud.aiplatform_v1.types</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">manual_batch_tuning_parameters</span> <span class="k">as</span> <span class="n">gca_manual_batch_tuning_parameters</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">google.protobuf</span> <span class="kn">import</span> <span class="n">struct_pb2</span>  <span class="c1"># type: ignore</span>
+<span class="kn">from</span> <span class="nn">google.protobuf</span> <span class="kn">import</span> <span class="n">timestamp_pb2</span>  <span class="c1"># type: ignore</span>
+<span class="kn">from</span> <span class="nn">google.rpc</span> <span class="kn">import</span> <span class="n">status_pb2</span>  <span class="c1"># type: ignore</span>
+
+
+<span class="n">__protobuf__</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">module</span><span class="p">(</span>
+    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;google.cloud.aiplatform.v1&quot;</span><span class="p">,</span> <span class="n">manifest</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;BatchPredictionJob&quot;</span><span class="p">,},</span>
+<span class="p">)</span>
+
+
+<div class="viewcode-block" id="BatchPredictionJob"><a class="viewcode-back" href="../../../../../aiplatform_v1/types.html#google.cloud.aiplatform_v1.types.BatchPredictionJob">[docs]</a><span class="k">class</span> <span class="nc">BatchPredictionJob</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;A job that uses a</span>
+<span class="sd">    [Model][google.cloud.aiplatform.v1.BatchPredictionJob.model] to</span>
+<span class="sd">    produce predictions on multiple [input</span>
+<span class="sd">    instances][google.cloud.aiplatform.v1.BatchPredictionJob.input_config].</span>
+<span class="sd">    If predictions for significant portion of the instances fail, the</span>
+<span class="sd">    job may finish without attempting predictions for all remaining</span>
+<span class="sd">    instances.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        name (str):</span>
+<span class="sd">            Output only. Resource name of the</span>
+<span class="sd">            BatchPredictionJob.</span>
+<span class="sd">        display_name (str):</span>
+<span class="sd">            Required. The user-defined name of this</span>
+<span class="sd">            BatchPredictionJob.</span>
+<span class="sd">        model (str):</span>
+<span class="sd">            Required. The name of the Model that produces</span>
+<span class="sd">            the predictions via this job, must share the</span>
+<span class="sd">            same ancestor Location. Starting this job has no</span>
+<span class="sd">            impact on any existing deployments of the Model</span>
+<span class="sd">            and their resources.</span>
+<span class="sd">        input_config (google.cloud.aiplatform_v1.types.BatchPredictionJob.InputConfig):</span>
+<span class="sd">            Required. Input configuration of the instances on which</span>
+<span class="sd">            predictions are performed. The schema of any single instance</span>
+<span class="sd">            may be specified via the</span>
+<span class="sd">            [Model&#39;s][google.cloud.aiplatform.v1.BatchPredictionJob.model]</span>
+<span class="sd">            [PredictSchemata&#39;s][google.cloud.aiplatform.v1.Model.predict_schemata]</span>
+<span class="sd">            [instance_schema_uri][google.cloud.aiplatform.v1.PredictSchemata.instance_schema_uri].</span>
+<span class="sd">        model_parameters (google.protobuf.struct_pb2.Value):</span>
+<span class="sd">            The parameters that govern the predictions. The schema of</span>
+<span class="sd">            the parameters may be specified via the</span>
+<span class="sd">            [Model&#39;s][google.cloud.aiplatform.v1.BatchPredictionJob.model]</span>
+<span class="sd">            [PredictSchemata&#39;s][google.cloud.aiplatform.v1.Model.predict_schemata]</span>
+<span class="sd">            [parameters_schema_uri][google.cloud.aiplatform.v1.PredictSchemata.parameters_schema_uri].</span>
+<span class="sd">        output_config (google.cloud.aiplatform_v1.types.BatchPredictionJob.OutputConfig):</span>
+<span class="sd">            Required. The Configuration specifying where output</span>
+<span class="sd">            predictions should be written. The schema of any single</span>
+<span class="sd">            prediction may be specified as a concatenation of</span>
+<span class="sd">            [Model&#39;s][google.cloud.aiplatform.v1.BatchPredictionJob.model]</span>
+<span class="sd">            [PredictSchemata&#39;s][google.cloud.aiplatform.v1.Model.predict_schemata]</span>
+<span class="sd">            [instance_schema_uri][google.cloud.aiplatform.v1.PredictSchemata.instance_schema_uri]</span>
+<span class="sd">            and</span>
+<span class="sd">            [prediction_schema_uri][google.cloud.aiplatform.v1.PredictSchemata.prediction_schema_uri].</span>
+<span class="sd">        dedicated_resources (google.cloud.aiplatform_v1.types.BatchDedicatedResources):</span>
+<span class="sd">            The config of resources used by the Model during the batch</span>
+<span class="sd">            prediction. If the Model</span>
+<span class="sd">            [supports][google.cloud.aiplatform.v1.Model.supported_deployment_resources_types]</span>
+<span class="sd">            DEDICATED_RESOURCES this config may be provided (and the job</span>
+<span class="sd">            will use these resources), if the Model doesn&#39;t support</span>
+<span class="sd">            AUTOMATIC_RESOURCES, this config must be provided.</span>
+<span class="sd">        manual_batch_tuning_parameters (google.cloud.aiplatform_v1.types.ManualBatchTuningParameters):</span>
+<span class="sd">            Immutable. Parameters configuring the batch behavior.</span>
+<span class="sd">            Currently only applicable when</span>
+<span class="sd">            [dedicated_resources][google.cloud.aiplatform.v1.BatchPredictionJob.dedicated_resources]</span>
+<span class="sd">            are used (in other cases Vertex AI does the tuning itself).</span>
+<span class="sd">        output_info (google.cloud.aiplatform_v1.types.BatchPredictionJob.OutputInfo):</span>
+<span class="sd">            Output only. Information further describing</span>
+<span class="sd">            the output of this job.</span>
+<span class="sd">        state (google.cloud.aiplatform_v1.types.JobState):</span>
+<span class="sd">            Output only. The detailed state of the job.</span>
+<span class="sd">        error (google.rpc.status_pb2.Status):</span>
+<span class="sd">            Output only. Only populated when the job&#39;s state is</span>
+<span class="sd">            JOB_STATE_FAILED or JOB_STATE_CANCELLED.</span>
+<span class="sd">        partial_failures (Sequence[google.rpc.status_pb2.Status]):</span>
+<span class="sd">            Output only. Partial failures encountered.</span>
+<span class="sd">            For example, single files that can&#39;t be read.</span>
+<span class="sd">            This field never exceeds 20 entries.</span>
+<span class="sd">            Status details fields contain standard GCP error</span>
+<span class="sd">            details.</span>
+<span class="sd">        resources_consumed (google.cloud.aiplatform_v1.types.ResourcesConsumed):</span>
+<span class="sd">            Output only. Information about resources that</span>
+<span class="sd">            had been consumed by this job. Provided in real</span>
+<span class="sd">            time at best effort basis, as well as a final</span>
+<span class="sd">            value once the job completes.</span>
+
+<span class="sd">            Note: This field currently may be not populated</span>
+<span class="sd">            for batch predictions that use AutoML Models.</span>
+<span class="sd">        completion_stats (google.cloud.aiplatform_v1.types.CompletionStats):</span>
+<span class="sd">            Output only. Statistics on completed and</span>
+<span class="sd">            failed prediction instances.</span>
+<span class="sd">        create_time (google.protobuf.timestamp_pb2.Timestamp):</span>
+<span class="sd">            Output only. Time when the BatchPredictionJob</span>
+<span class="sd">            was created.</span>
+<span class="sd">        start_time (google.protobuf.timestamp_pb2.Timestamp):</span>
+<span class="sd">            Output only. Time when the BatchPredictionJob for the first</span>
+<span class="sd">            time entered the ``JOB_STATE_RUNNING`` state.</span>
+<span class="sd">        end_time (google.protobuf.timestamp_pb2.Timestamp):</span>
+<span class="sd">            Output only. Time when the BatchPredictionJob entered any of</span>
+<span class="sd">            the following states: ``JOB_STATE_SUCCEEDED``,</span>
+<span class="sd">            ``JOB_STATE_FAILED``, ``JOB_STATE_CANCELLED``.</span>
+<span class="sd">        update_time (google.protobuf.timestamp_pb2.Timestamp):</span>
+<span class="sd">            Output only. Time when the BatchPredictionJob</span>
+<span class="sd">            was most recently updated.</span>
+<span class="sd">        labels (Sequence[google.cloud.aiplatform_v1.types.BatchPredictionJob.LabelsEntry]):</span>
+<span class="sd">            The labels with user-defined metadata to</span>
+<span class="sd">            organize BatchPredictionJobs.</span>
+<span class="sd">            Label keys and values can be no longer than 64</span>
+<span class="sd">            characters (Unicode codepoints), can only</span>
+<span class="sd">            contain lowercase letters, numeric characters,</span>
+<span class="sd">            underscores and dashes. International characters</span>
+<span class="sd">            are allowed.</span>
+<span class="sd">            See https://goo.gl/xmQnxf for more information</span>
+<span class="sd">            and examples of labels.</span>
+<span class="sd">        encryption_spec (google.cloud.aiplatform_v1.types.EncryptionSpec):</span>
+<span class="sd">            Customer-managed encryption key options for a</span>
+<span class="sd">            BatchPredictionJob. If this is set, then all</span>
+<span class="sd">            resources created by the BatchPredictionJob will</span>
+<span class="sd">            be encrypted with the provided encryption key.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="BatchPredictionJob.InputConfig"><a class="viewcode-back" href="../../../../../aiplatform_v1/types.html#google.cloud.aiplatform_v1.types.BatchPredictionJob.InputConfig">[docs]</a>    <span class="k">class</span> <span class="nc">InputConfig</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Configures the input to</span>
+<span class="sd">        [BatchPredictionJob][google.cloud.aiplatform.v1.BatchPredictionJob].</span>
+<span class="sd">        See</span>
+<span class="sd">        [Model.supported_input_storage_formats][google.cloud.aiplatform.v1.Model.supported_input_storage_formats]</span>
+<span class="sd">        for Model&#39;s supported input formats, and how instances should be</span>
+<span class="sd">        expressed via any of them.</span>
+
+<span class="sd">        Attributes:</span>
+<span class="sd">            gcs_source (google.cloud.aiplatform_v1.types.GcsSource):</span>
+<span class="sd">                The Cloud Storage location for the input</span>
+<span class="sd">                instances.</span>
+<span class="sd">            bigquery_source (google.cloud.aiplatform_v1.types.BigQuerySource):</span>
+<span class="sd">                The BigQuery location of the input table.</span>
+<span class="sd">                The schema of the table should be in the format</span>
+<span class="sd">                described by the given context OpenAPI Schema,</span>
+<span class="sd">                if one is provided. The table may contain</span>
+<span class="sd">                additional columns that are not described by the</span>
+<span class="sd">                schema, and they will be ignored.</span>
+<span class="sd">            instances_format (str):</span>
+<span class="sd">                Required. The format in which instances are given, must be</span>
+<span class="sd">                one of the</span>
+<span class="sd">                [Model&#39;s][google.cloud.aiplatform.v1.BatchPredictionJob.model]</span>
+<span class="sd">                [supported_input_storage_formats][google.cloud.aiplatform.v1.Model.supported_input_storage_formats].</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">gcs_source</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+            <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">oneof</span><span class="o">=</span><span class="s2">&quot;source&quot;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">io</span><span class="o">.</span><span class="n">GcsSource</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">bigquery_source</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+            <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">oneof</span><span class="o">=</span><span class="s2">&quot;source&quot;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">io</span><span class="o">.</span><span class="n">BigQuerySource</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">instances_format</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span></div>
+
+<div class="viewcode-block" id="BatchPredictionJob.OutputConfig"><a class="viewcode-back" href="../../../../../aiplatform_v1/types.html#google.cloud.aiplatform_v1.types.BatchPredictionJob.OutputConfig">[docs]</a>    <span class="k">class</span> <span class="nc">OutputConfig</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Configures the output of</span>
+<span class="sd">        [BatchPredictionJob][google.cloud.aiplatform.v1.BatchPredictionJob].</span>
+<span class="sd">        See</span>
+<span class="sd">        [Model.supported_output_storage_formats][google.cloud.aiplatform.v1.Model.supported_output_storage_formats]</span>
+<span class="sd">        for supported output formats, and how predictions are expressed via</span>
+<span class="sd">        any of them.</span>
+
+<span class="sd">        Attributes:</span>
+<span class="sd">            gcs_destination (google.cloud.aiplatform_v1.types.GcsDestination):</span>
+<span class="sd">                The Cloud Storage location of the directory where the output</span>
+<span class="sd">                is to be written to. In the given directory a new directory</span>
+<span class="sd">                is created. Its name is</span>
+<span class="sd">                ``prediction-&lt;model-display-name&gt;-&lt;job-create-time&gt;``, where</span>
+<span class="sd">                timestamp is in YYYY-MM-DDThh:mm:ss.sssZ ISO-8601 format.</span>
+<span class="sd">                Inside of it files ``predictions_0001.&lt;extension&gt;``,</span>
+<span class="sd">                ``predictions_0002.&lt;extension&gt;``, ...,</span>
+<span class="sd">                ``predictions_N.&lt;extension&gt;`` are created where</span>
+<span class="sd">                ``&lt;extension&gt;`` depends on chosen</span>
+<span class="sd">                [predictions_format][google.cloud.aiplatform.v1.BatchPredictionJob.OutputConfig.predictions_format],</span>
+<span class="sd">                and N may equal 0001 and depends on the total number of</span>
+<span class="sd">                successfully predicted instances. If the Model has both</span>
+<span class="sd">                [instance][google.cloud.aiplatform.v1.PredictSchemata.instance_schema_uri]</span>
+<span class="sd">                and</span>
+<span class="sd">                [prediction][google.cloud.aiplatform.v1.PredictSchemata.parameters_schema_uri]</span>
+<span class="sd">                schemata defined then each such file contains predictions as</span>
+<span class="sd">                per the</span>
+<span class="sd">                [predictions_format][google.cloud.aiplatform.v1.BatchPredictionJob.OutputConfig.predictions_format].</span>
+<span class="sd">                If prediction for any instance failed (partially or</span>
+<span class="sd">                completely), then an additional ``errors_0001.&lt;extension&gt;``,</span>
+<span class="sd">                ``errors_0002.&lt;extension&gt;``,..., ``errors_N.&lt;extension&gt;``</span>
+<span class="sd">                files are created (N depends on total number of failed</span>
+<span class="sd">                predictions). These files contain the failed instances, as</span>
+<span class="sd">                per their schema, followed by an additional ``error`` field</span>
+<span class="sd">                which as value has ```google.rpc.Status`` &lt;Status&gt;`__</span>
+<span class="sd">                containing only ``code`` and ``message`` fields.</span>
+<span class="sd">            bigquery_destination (google.cloud.aiplatform_v1.types.BigQueryDestination):</span>
+<span class="sd">                The BigQuery project or dataset location where the output is</span>
+<span class="sd">                to be written to. If project is provided, a new dataset is</span>
+<span class="sd">                created with name</span>
+<span class="sd">                ``prediction_&lt;model-display-name&gt;_&lt;job-create-time&gt;`` where</span>
+<span class="sd">                is made BigQuery-dataset-name compatible (for example, most</span>
+<span class="sd">                special characters become underscores), and timestamp is in</span>
+<span class="sd">                YYYY_MM_DDThh_mm_ss_sssZ &quot;based on ISO-8601&quot; format. In the</span>
+<span class="sd">                dataset two tables will be created, ``predictions``, and</span>
+<span class="sd">                ``errors``. If the Model has both</span>
+<span class="sd">                [instance][google.cloud.aiplatform.v1.PredictSchemata.instance_schema_uri]</span>
+<span class="sd">                and</span>
+<span class="sd">                [prediction][google.cloud.aiplatform.v1.PredictSchemata.parameters_schema_uri]</span>
+<span class="sd">                schemata defined then the tables have columns as follows:</span>
+<span class="sd">                The ``predictions`` table contains instances for which the</span>
+<span class="sd">                prediction succeeded, it has columns as per a concatenation</span>
+<span class="sd">                of the Model&#39;s instance and prediction schemata. The</span>
+<span class="sd">                ``errors`` table contains rows for which the prediction has</span>
+<span class="sd">                failed, it has instance columns, as per the instance schema,</span>
+<span class="sd">                followed by a single &quot;errors&quot; column, which as values has</span>
+<span class="sd">                ```google.rpc.Status`` &lt;Status&gt;`__ represented as a STRUCT,</span>
+<span class="sd">                and containing only ``code`` and ``message``.</span>
+<span class="sd">            predictions_format (str):</span>
+<span class="sd">                Required. The format in which Vertex AI gives the</span>
+<span class="sd">                predictions, must be one of the</span>
+<span class="sd">                [Model&#39;s][google.cloud.aiplatform.v1.BatchPredictionJob.model]</span>
+<span class="sd">                [supported_output_storage_formats][google.cloud.aiplatform.v1.Model.supported_output_storage_formats].</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">gcs_destination</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+            <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">oneof</span><span class="o">=</span><span class="s2">&quot;destination&quot;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">io</span><span class="o">.</span><span class="n">GcsDestination</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">bigquery_destination</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+            <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span>
+            <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+            <span class="n">oneof</span><span class="o">=</span><span class="s2">&quot;destination&quot;</span><span class="p">,</span>
+            <span class="n">message</span><span class="o">=</span><span class="n">io</span><span class="o">.</span><span class="n">BigQueryDestination</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">predictions_format</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span></div>
+
+<div class="viewcode-block" id="BatchPredictionJob.OutputInfo"><a class="viewcode-back" href="../../../../../aiplatform_v1/types.html#google.cloud.aiplatform_v1.types.BatchPredictionJob.OutputInfo">[docs]</a>    <span class="k">class</span> <span class="nc">OutputInfo</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Further describes this job&#39;s output. Supplements</span>
+<span class="sd">        [output_config][google.cloud.aiplatform.v1.BatchPredictionJob.output_config].</span>
+
+<span class="sd">        Attributes:</span>
+<span class="sd">            gcs_output_directory (str):</span>
+<span class="sd">                Output only. The full path of the Cloud</span>
+<span class="sd">                Storage directory created, into which the</span>
+<span class="sd">                prediction output is written.</span>
+<span class="sd">            bigquery_output_dataset (str):</span>
+<span class="sd">                Output only. The path of the BigQuery dataset created, in</span>
+<span class="sd">                ``bq://projectId.bqDatasetId`` format, into which the</span>
+<span class="sd">                prediction output is written.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">gcs_output_directory</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+            <span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">oneof</span><span class="o">=</span><span class="s2">&quot;output_location&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">bigquery_output_dataset</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+            <span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">oneof</span><span class="o">=</span><span class="s2">&quot;output_location&quot;</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="n">display_name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,)</span>
+    <span class="n">input_config</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">InputConfig</span><span class="p">,)</span>
+    <span class="n">model_parameters</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">struct_pb2</span><span class="o">.</span><span class="n">Value</span><span class="p">,)</span>
+    <span class="n">output_config</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">OutputConfig</span><span class="p">,)</span>
+    <span class="n">dedicated_resources</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">machine_resources</span><span class="o">.</span><span class="n">BatchDedicatedResources</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">manual_batch_tuning_parameters</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span>
+        <span class="n">number</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+        <span class="n">message</span><span class="o">=</span><span class="n">gca_manual_batch_tuning_parameters</span><span class="o">.</span><span class="n">ManualBatchTuningParameters</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">output_info</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">OutputInfo</span><span class="p">,)</span>
+    <span class="n">state</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">ENUM</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">enum</span><span class="o">=</span><span class="n">job_state</span><span class="o">.</span><span class="n">JobState</span><span class="p">,)</span>
+    <span class="n">error</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">status_pb2</span><span class="o">.</span><span class="n">Status</span><span class="p">,)</span>
+    <span class="n">partial_failures</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">status_pb2</span><span class="o">.</span><span class="n">Status</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">resources_consumed</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">machine_resources</span><span class="o">.</span><span class="n">ResourcesConsumed</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">completion_stats</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">gca_completion_stats</span><span class="o">.</span><span class="n">CompletionStats</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">create_time</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">timestamp_pb2</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">start_time</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">timestamp_pb2</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">,)</span>
+    <span class="n">end_time</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">17</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">timestamp_pb2</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">,)</span>
+    <span class="n">update_time</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">timestamp_pb2</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">MapField</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">19</span><span class="p">,)</span>
+    <span class="n">encryption_spec</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">gca_encryption_spec</span><span class="o">.</span><span class="n">EncryptionSpec</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">__protobuf__</span><span class="o">.</span><span class="n">manifest</span><span class="p">))</span>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../../../index.html">google-cloud-aiplatform</a></h1>
+
+
+
+<p class="blurb">Google Cloud Client Libraries for google-cloud-aiplatform</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=googleapis&repo=python-aiplatform&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform.html">Google Cloud Aiplatform SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1/services.html">Services for Google Cloud Aiplatform v1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1/types.html">Types for Google Cloud Aiplatform v1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1beta1/services.html">Services for Google Cloud Aiplatform v1beta1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1beta1/types.html">Types for Google Cloud Aiplatform v1beta1 API</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../changelog.html">Changelog</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Google.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+    <a href="https://github.com/googleapis/python-aiplatform" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>

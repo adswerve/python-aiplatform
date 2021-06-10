@@ -1,0 +1,779 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>google.cloud.aiplatform_v1beta1.types.model &#8212; google-cloud-aiplatform  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/alabaster.css" />
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+          	<div class="admonition" id="python2-eol"> 
+          	 As of January 1, 2020 this library no longer supports Python 2 on the latest released version. 
+          	 Library versions released prior to that date will continue to be available. For more information please
+          	 visit <a href="https://cloud.google.com/python/docs/python2-sunset/">Python 2 support on Google Cloud</a>.
+          	</div>
+            
+  <h1>Source code for google.cloud.aiplatform_v1beta1.types.model</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Copyright 2020 Google LLC</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="c1">#</span>
+<span class="kn">import</span> <span class="nn">proto</span>  <span class="c1"># type: ignore</span>
+
+<span class="kn">from</span> <span class="nn">google.cloud.aiplatform_v1beta1.types</span> <span class="kn">import</span> <span class="n">deployed_model_ref</span>
+<span class="kn">from</span> <span class="nn">google.cloud.aiplatform_v1beta1.types</span> <span class="kn">import</span> <span class="n">encryption_spec</span> <span class="k">as</span> <span class="n">gca_encryption_spec</span>
+<span class="kn">from</span> <span class="nn">google.cloud.aiplatform_v1beta1.types</span> <span class="kn">import</span> <span class="n">env_var</span>
+<span class="kn">from</span> <span class="nn">google.cloud.aiplatform_v1beta1.types</span> <span class="kn">import</span> <span class="n">explanation</span>
+<span class="kn">from</span> <span class="nn">google.protobuf</span> <span class="kn">import</span> <span class="n">struct_pb2</span>  <span class="c1"># type: ignore</span>
+<span class="kn">from</span> <span class="nn">google.protobuf</span> <span class="kn">import</span> <span class="n">timestamp_pb2</span>  <span class="c1"># type: ignore</span>
+
+
+<span class="n">__protobuf__</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">module</span><span class="p">(</span>
+    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;google.cloud.aiplatform.v1beta1&quot;</span><span class="p">,</span>
+    <span class="n">manifest</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Model&quot;</span><span class="p">,</span> <span class="s2">&quot;PredictSchemata&quot;</span><span class="p">,</span> <span class="s2">&quot;ModelContainerSpec&quot;</span><span class="p">,</span> <span class="s2">&quot;Port&quot;</span><span class="p">,},</span>
+<span class="p">)</span>
+
+
+<div class="viewcode-block" id="Model"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.Model">[docs]</a><span class="k">class</span> <span class="nc">Model</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;A trained machine learning Model.</span>
+<span class="sd">    Attributes:</span>
+<span class="sd">        name (str):</span>
+<span class="sd">            The resource name of the Model.</span>
+<span class="sd">        display_name (str):</span>
+<span class="sd">            Required. The display name of the Model.</span>
+<span class="sd">            The name can be up to 128 characters long and</span>
+<span class="sd">            can be consist of any UTF-8 characters.</span>
+<span class="sd">        description (str):</span>
+<span class="sd">            The description of the Model.</span>
+<span class="sd">        predict_schemata (google.cloud.aiplatform_v1beta1.types.PredictSchemata):</span>
+<span class="sd">            The schemata that describe formats of the Model&#39;s</span>
+<span class="sd">            predictions and explanations as given and returned via</span>
+<span class="sd">            [PredictionService.Predict][google.cloud.aiplatform.v1beta1.PredictionService.Predict]</span>
+<span class="sd">            and</span>
+<span class="sd">            [PredictionService.Explain][google.cloud.aiplatform.v1beta1.PredictionService.Explain].</span>
+<span class="sd">        metadata_schema_uri (str):</span>
+<span class="sd">            Immutable. Points to a YAML file stored on Google Cloud</span>
+<span class="sd">            Storage describing additional information about the Model,</span>
+<span class="sd">            that is specific to it. Unset if the Model does not have any</span>
+<span class="sd">            additional information. The schema is defined as an OpenAPI</span>
+<span class="sd">            3.0.2 `Schema</span>
+<span class="sd">            Object &lt;https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.2.md#schemaObject&gt;`__.</span>
+<span class="sd">            AutoML Models always have this field populated by Vertex AI,</span>
+<span class="sd">            if no additional metadata is needed, this field is set to an</span>
+<span class="sd">            empty string. Note: The URI given on output will be</span>
+<span class="sd">            immutable and probably different, including the URI scheme,</span>
+<span class="sd">            than the one given on input. The output URI will point to a</span>
+<span class="sd">            location where the user only has a read access.</span>
+<span class="sd">        metadata (google.protobuf.struct_pb2.Value):</span>
+<span class="sd">            Immutable. An additional information about the Model; the</span>
+<span class="sd">            schema of the metadata can be found in</span>
+<span class="sd">            [metadata_schema][google.cloud.aiplatform.v1beta1.Model.metadata_schema_uri].</span>
+<span class="sd">            Unset if the Model does not have any additional information.</span>
+<span class="sd">        supported_export_formats (Sequence[google.cloud.aiplatform_v1beta1.types.Model.ExportFormat]):</span>
+<span class="sd">            Output only. The formats in which this Model</span>
+<span class="sd">            may be exported. If empty, this Model is not</span>
+<span class="sd">            available for export.</span>
+<span class="sd">        training_pipeline (str):</span>
+<span class="sd">            Output only. The resource name of the</span>
+<span class="sd">            TrainingPipeline that uploaded this Model, if</span>
+<span class="sd">            any.</span>
+<span class="sd">        container_spec (google.cloud.aiplatform_v1beta1.types.ModelContainerSpec):</span>
+<span class="sd">            Input only. The specification of the container that is to be</span>
+<span class="sd">            used when deploying this Model. The specification is</span>
+<span class="sd">            ingested upon</span>
+<span class="sd">            [ModelService.UploadModel][google.cloud.aiplatform.v1beta1.ModelService.UploadModel],</span>
+<span class="sd">            and all binaries it contains are copied and stored</span>
+<span class="sd">            internally by Vertex AI. Not present for AutoML Models.</span>
+<span class="sd">        artifact_uri (str):</span>
+<span class="sd">            Immutable. The path to the directory</span>
+<span class="sd">            containing the Model artifact and any of its</span>
+<span class="sd">            supporting files. Not present for AutoML Models.</span>
+<span class="sd">        supported_deployment_resources_types (Sequence[google.cloud.aiplatform_v1beta1.types.Model.DeploymentResourcesType]):</span>
+<span class="sd">            Output only. When this Model is deployed, its prediction</span>
+<span class="sd">            resources are described by the ``prediction_resources``</span>
+<span class="sd">            field of the</span>
+<span class="sd">            [Endpoint.deployed_models][google.cloud.aiplatform.v1beta1.Endpoint.deployed_models]</span>
+<span class="sd">            object. Because not all Models support all resource</span>
+<span class="sd">            configuration types, the configuration types this Model</span>
+<span class="sd">            supports are listed here. If no configuration types are</span>
+<span class="sd">            listed, the Model cannot be deployed to an</span>
+<span class="sd">            [Endpoint][google.cloud.aiplatform.v1beta1.Endpoint] and</span>
+<span class="sd">            does not support online predictions</span>
+<span class="sd">            ([PredictionService.Predict][google.cloud.aiplatform.v1beta1.PredictionService.Predict]</span>
+<span class="sd">            or</span>
+<span class="sd">            [PredictionService.Explain][google.cloud.aiplatform.v1beta1.PredictionService.Explain]).</span>
+<span class="sd">            Such a Model can serve predictions by using a</span>
+<span class="sd">            [BatchPredictionJob][google.cloud.aiplatform.v1beta1.BatchPredictionJob],</span>
+<span class="sd">            if it has at least one entry each in</span>
+<span class="sd">            [supported_input_storage_formats][google.cloud.aiplatform.v1beta1.Model.supported_input_storage_formats]</span>
+<span class="sd">            and</span>
+<span class="sd">            [supported_output_storage_formats][google.cloud.aiplatform.v1beta1.Model.supported_output_storage_formats].</span>
+<span class="sd">        supported_input_storage_formats (Sequence[str]):</span>
+<span class="sd">            Output only. The formats this Model supports in</span>
+<span class="sd">            [BatchPredictionJob.input_config][google.cloud.aiplatform.v1beta1.BatchPredictionJob.input_config].</span>
+<span class="sd">            If</span>
+<span class="sd">            [PredictSchemata.instance_schema_uri][google.cloud.aiplatform.v1beta1.PredictSchemata.instance_schema_uri]</span>
+<span class="sd">            exists, the instances should be given as per that schema.</span>
+
+<span class="sd">            The possible formats are:</span>
+
+<span class="sd">            -  ``jsonl`` The JSON Lines format, where each instance is a</span>
+<span class="sd">               single line. Uses</span>
+<span class="sd">               [GcsSource][google.cloud.aiplatform.v1beta1.BatchPredictionJob.InputConfig.gcs_source].</span>
+
+<span class="sd">            -  ``csv`` The CSV format, where each instance is a single</span>
+<span class="sd">               comma-separated line. The first line in the file is the</span>
+<span class="sd">               header, containing comma-separated field names. Uses</span>
+<span class="sd">               [GcsSource][google.cloud.aiplatform.v1beta1.BatchPredictionJob.InputConfig.gcs_source].</span>
+
+<span class="sd">            -  ``tf-record`` The TFRecord format, where each instance is</span>
+<span class="sd">               a single record in tfrecord syntax. Uses</span>
+<span class="sd">               [GcsSource][google.cloud.aiplatform.v1beta1.BatchPredictionJob.InputConfig.gcs_source].</span>
+
+<span class="sd">            -  ``tf-record-gzip`` Similar to ``tf-record``, but the file</span>
+<span class="sd">               is gzipped. Uses</span>
+<span class="sd">               [GcsSource][google.cloud.aiplatform.v1beta1.BatchPredictionJob.InputConfig.gcs_source].</span>
+
+<span class="sd">            -  ``bigquery`` Each instance is a single row in BigQuery.</span>
+<span class="sd">               Uses</span>
+<span class="sd">               [BigQuerySource][google.cloud.aiplatform.v1beta1.BatchPredictionJob.InputConfig.bigquery_source].</span>
+
+<span class="sd">            -  ``file-list`` Each line of the file is the location of an</span>
+<span class="sd">               instance to process, uses ``gcs_source`` field of the</span>
+<span class="sd">               [InputConfig][google.cloud.aiplatform.v1beta1.BatchPredictionJob.InputConfig]</span>
+<span class="sd">               object.</span>
+
+<span class="sd">            If this Model doesn&#39;t support any of these formats it means</span>
+<span class="sd">            it cannot be used with a</span>
+<span class="sd">            [BatchPredictionJob][google.cloud.aiplatform.v1beta1.BatchPredictionJob].</span>
+<span class="sd">            However, if it has</span>
+<span class="sd">            [supported_deployment_resources_types][google.cloud.aiplatform.v1beta1.Model.supported_deployment_resources_types],</span>
+<span class="sd">            it could serve online predictions by using</span>
+<span class="sd">            [PredictionService.Predict][google.cloud.aiplatform.v1beta1.PredictionService.Predict]</span>
+<span class="sd">            or</span>
+<span class="sd">            [PredictionService.Explain][google.cloud.aiplatform.v1beta1.PredictionService.Explain].</span>
+<span class="sd">        supported_output_storage_formats (Sequence[str]):</span>
+<span class="sd">            Output only. The formats this Model supports in</span>
+<span class="sd">            [BatchPredictionJob.output_config][google.cloud.aiplatform.v1beta1.BatchPredictionJob.output_config].</span>
+<span class="sd">            If both</span>
+<span class="sd">            [PredictSchemata.instance_schema_uri][google.cloud.aiplatform.v1beta1.PredictSchemata.instance_schema_uri]</span>
+<span class="sd">            and</span>
+<span class="sd">            [PredictSchemata.prediction_schema_uri][google.cloud.aiplatform.v1beta1.PredictSchemata.prediction_schema_uri]</span>
+<span class="sd">            exist, the predictions are returned together with their</span>
+<span class="sd">            instances. In other words, the prediction has the original</span>
+<span class="sd">            instance data first, followed by the actual prediction</span>
+<span class="sd">            content (as per the schema).</span>
+
+<span class="sd">            The possible formats are:</span>
+
+<span class="sd">            -  ``jsonl`` The JSON Lines format, where each prediction is</span>
+<span class="sd">               a single line. Uses</span>
+<span class="sd">               [GcsDestination][google.cloud.aiplatform.v1beta1.BatchPredictionJob.OutputConfig.gcs_destination].</span>
+
+<span class="sd">            -  ``csv`` The CSV format, where each prediction is a single</span>
+<span class="sd">               comma-separated line. The first line in the file is the</span>
+<span class="sd">               header, containing comma-separated field names. Uses</span>
+<span class="sd">               [GcsDestination][google.cloud.aiplatform.v1beta1.BatchPredictionJob.OutputConfig.gcs_destination].</span>
+
+<span class="sd">            -  ``bigquery`` Each prediction is a single row in a</span>
+<span class="sd">               BigQuery table, uses</span>
+<span class="sd">               [BigQueryDestination][google.cloud.aiplatform.v1beta1.BatchPredictionJob.OutputConfig.bigquery_destination]</span>
+<span class="sd">               .</span>
+
+<span class="sd">            If this Model doesn&#39;t support any of these formats it means</span>
+<span class="sd">            it cannot be used with a</span>
+<span class="sd">            [BatchPredictionJob][google.cloud.aiplatform.v1beta1.BatchPredictionJob].</span>
+<span class="sd">            However, if it has</span>
+<span class="sd">            [supported_deployment_resources_types][google.cloud.aiplatform.v1beta1.Model.supported_deployment_resources_types],</span>
+<span class="sd">            it could serve online predictions by using</span>
+<span class="sd">            [PredictionService.Predict][google.cloud.aiplatform.v1beta1.PredictionService.Predict]</span>
+<span class="sd">            or</span>
+<span class="sd">            [PredictionService.Explain][google.cloud.aiplatform.v1beta1.PredictionService.Explain].</span>
+<span class="sd">        create_time (google.protobuf.timestamp_pb2.Timestamp):</span>
+<span class="sd">            Output only. Timestamp when this Model was</span>
+<span class="sd">            uploaded into Vertex AI.</span>
+<span class="sd">        update_time (google.protobuf.timestamp_pb2.Timestamp):</span>
+<span class="sd">            Output only. Timestamp when this Model was</span>
+<span class="sd">            most recently updated.</span>
+<span class="sd">        deployed_models (Sequence[google.cloud.aiplatform_v1beta1.types.DeployedModelRef]):</span>
+<span class="sd">            Output only. The pointers to DeployedModels</span>
+<span class="sd">            created from this Model. Note that Model could</span>
+<span class="sd">            have been deployed to Endpoints in different</span>
+<span class="sd">            Locations.</span>
+<span class="sd">        explanation_spec (google.cloud.aiplatform_v1beta1.types.ExplanationSpec):</span>
+<span class="sd">            The default explanation specification for this Model.</span>
+
+<span class="sd">            The Model can be used for [requesting</span>
+<span class="sd">            explanation][PredictionService.Explain] after being</span>
+<span class="sd">            [deployed][google.cloud.aiplatform.v1beta1.EndpointService.DeployModel]</span>
+<span class="sd">            if it is populated. The Model can be used for [batch</span>
+<span class="sd">            explanation][BatchPredictionJob.generate_explanation] if it</span>
+<span class="sd">            is populated.</span>
+
+<span class="sd">            All fields of the explanation_spec can be overridden by</span>
+<span class="sd">            [explanation_spec][google.cloud.aiplatform.v1beta1.DeployedModel.explanation_spec]</span>
+<span class="sd">            of</span>
+<span class="sd">            [DeployModelRequest.deployed_model][google.cloud.aiplatform.v1beta1.DeployModelRequest.deployed_model],</span>
+<span class="sd">            or</span>
+<span class="sd">            [explanation_spec][google.cloud.aiplatform.v1beta1.BatchPredictionJob.explanation_spec]</span>
+<span class="sd">            of</span>
+<span class="sd">            [BatchPredictionJob][google.cloud.aiplatform.v1beta1.BatchPredictionJob].</span>
+
+<span class="sd">            If the default explanation specification is not set for this</span>
+<span class="sd">            Model, this Model can still be used for [requesting</span>
+<span class="sd">            explanation][PredictionService.Explain] by setting</span>
+<span class="sd">            [explanation_spec][google.cloud.aiplatform.v1beta1.DeployedModel.explanation_spec]</span>
+<span class="sd">            of</span>
+<span class="sd">            [DeployModelRequest.deployed_model][google.cloud.aiplatform.v1beta1.DeployModelRequest.deployed_model]</span>
+<span class="sd">            and for [batch</span>
+<span class="sd">            explanation][BatchPredictionJob.generate_explanation] by</span>
+<span class="sd">            setting</span>
+<span class="sd">            [explanation_spec][google.cloud.aiplatform.v1beta1.BatchPredictionJob.explanation_spec]</span>
+<span class="sd">            of</span>
+<span class="sd">            [BatchPredictionJob][google.cloud.aiplatform.v1beta1.BatchPredictionJob].</span>
+<span class="sd">        etag (str):</span>
+<span class="sd">            Used to perform consistent read-modify-write</span>
+<span class="sd">            updates. If not set, a blind &quot;overwrite&quot; update</span>
+<span class="sd">            happens.</span>
+<span class="sd">        labels (Sequence[google.cloud.aiplatform_v1beta1.types.Model.LabelsEntry]):</span>
+<span class="sd">            The labels with user-defined metadata to</span>
+<span class="sd">            organize your Models.</span>
+<span class="sd">            Label keys and values can be no longer than 64</span>
+<span class="sd">            characters (Unicode codepoints), can only</span>
+<span class="sd">            contain lowercase letters, numeric characters,</span>
+<span class="sd">            underscores and dashes. International characters</span>
+<span class="sd">            are allowed.</span>
+<span class="sd">            See https://goo.gl/xmQnxf for more information</span>
+<span class="sd">            and examples of labels.</span>
+<span class="sd">        encryption_spec (google.cloud.aiplatform_v1beta1.types.EncryptionSpec):</span>
+<span class="sd">            Customer-managed encryption key spec for a</span>
+<span class="sd">            Model. If set, this Model and all sub-resources</span>
+<span class="sd">            of this Model will be secured by this key.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Model.DeploymentResourcesType"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.Model.DeploymentResourcesType">[docs]</a>    <span class="k">class</span> <span class="nc">DeploymentResourcesType</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Enum</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Identifies a type of Model&#39;s prediction resources.&quot;&quot;&quot;</span>
+        <span class="n">DEPLOYMENT_RESOURCES_TYPE_UNSPECIFIED</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">DEDICATED_RESOURCES</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">AUTOMATIC_RESOURCES</span> <span class="o">=</span> <span class="mi">2</span></div>
+
+<div class="viewcode-block" id="Model.ExportFormat"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.Model.ExportFormat">[docs]</a>    <span class="k">class</span> <span class="nc">ExportFormat</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Represents export format supported by the Model.</span>
+<span class="sd">        All formats export to Google Cloud Storage.</span>
+
+<span class="sd">        Attributes:</span>
+<span class="sd">            id (str):</span>
+<span class="sd">                Output only. The ID of the export format. The possible</span>
+<span class="sd">                format IDs are:</span>
+
+<span class="sd">                -  ``tflite`` Used for Android mobile devices.</span>
+
+<span class="sd">                -  ``edgetpu-tflite`` Used for `Edge</span>
+<span class="sd">                   TPU &lt;https://cloud.google.com/edge-tpu/&gt;`__ devices.</span>
+
+<span class="sd">                -  ``tf-saved-model`` A tensorflow model in SavedModel</span>
+<span class="sd">                   format.</span>
+
+<span class="sd">                -  ``tf-js`` A</span>
+<span class="sd">                   `TensorFlow.js &lt;https://www.tensorflow.org/js&gt;`__ model</span>
+<span class="sd">                   that can be used in the browser and in Node.js using</span>
+<span class="sd">                   JavaScript.</span>
+
+<span class="sd">                -  ``core-ml`` Used for iOS mobile devices.</span>
+
+<span class="sd">                -  ``custom-trained`` A Model that was uploaded or trained</span>
+<span class="sd">                   by custom code.</span>
+<span class="sd">            exportable_contents (Sequence[google.cloud.aiplatform_v1beta1.types.Model.ExportFormat.ExportableContent]):</span>
+<span class="sd">                Output only. The content of this Model that</span>
+<span class="sd">                may be exported.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Model.ExportFormat.ExportableContent"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.Model.ExportFormat.ExportableContent">[docs]</a>        <span class="k">class</span> <span class="nc">ExportableContent</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Enum</span><span class="p">):</span>
+            <span class="sa">r</span><span class="sd">&quot;&quot;&quot;The Model content that can be exported.&quot;&quot;&quot;</span>
+            <span class="n">EXPORTABLE_CONTENT_UNSPECIFIED</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">ARTIFACT</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="n">IMAGE</span> <span class="o">=</span> <span class="mi">2</span></div>
+
+        <span class="nb">id</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+        <span class="n">exportable_contents</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span>
+            <span class="n">proto</span><span class="o">.</span><span class="n">ENUM</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">enum</span><span class="o">=</span><span class="s2">&quot;Model.ExportFormat.ExportableContent&quot;</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="n">display_name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,)</span>
+    <span class="n">predict_schemata</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;PredictSchemata&quot;</span><span class="p">,)</span>
+    <span class="n">metadata_schema_uri</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">5</span><span class="p">,)</span>
+    <span class="n">metadata</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">struct_pb2</span><span class="o">.</span><span class="n">Value</span><span class="p">,)</span>
+    <span class="n">supported_export_formats</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">ExportFormat</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">training_pipeline</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">7</span><span class="p">,)</span>
+    <span class="n">container_spec</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;ModelContainerSpec&quot;</span><span class="p">,)</span>
+    <span class="n">artifact_uri</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">26</span><span class="p">,)</span>
+    <span class="n">supported_deployment_resources_types</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">ENUM</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">enum</span><span class="o">=</span><span class="n">DeploymentResourcesType</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">supported_input_storage_formats</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">11</span><span class="p">,)</span>
+    <span class="n">supported_output_storage_formats</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">12</span><span class="p">,)</span>
+    <span class="n">create_time</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">timestamp_pb2</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">update_time</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">timestamp_pb2</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">deployed_models</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">deployed_model_ref</span><span class="o">.</span><span class="n">DeployedModelRef</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">explanation_spec</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">23</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">explanation</span><span class="o">.</span><span class="n">ExplanationSpec</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">etag</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">16</span><span class="p">,)</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">MapField</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">17</span><span class="p">,)</span>
+    <span class="n">encryption_spec</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">gca_encryption_spec</span><span class="o">.</span><span class="n">EncryptionSpec</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="PredictSchemata"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.PredictSchemata">[docs]</a><span class="k">class</span> <span class="nc">PredictSchemata</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Contains the schemata used in Model&#39;s predictions and explanations</span>
+<span class="sd">    via</span>
+<span class="sd">    [PredictionService.Predict][google.cloud.aiplatform.v1beta1.PredictionService.Predict],</span>
+<span class="sd">    [PredictionService.Explain][google.cloud.aiplatform.v1beta1.PredictionService.Explain]</span>
+<span class="sd">    and</span>
+<span class="sd">    [BatchPredictionJob][google.cloud.aiplatform.v1beta1.BatchPredictionJob].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        instance_schema_uri (str):</span>
+<span class="sd">            Immutable. Points to a YAML file stored on Google Cloud</span>
+<span class="sd">            Storage describing the format of a single instance, which</span>
+<span class="sd">            are used in</span>
+<span class="sd">            [PredictRequest.instances][google.cloud.aiplatform.v1beta1.PredictRequest.instances],</span>
+<span class="sd">            [ExplainRequest.instances][google.cloud.aiplatform.v1beta1.ExplainRequest.instances]</span>
+<span class="sd">            and</span>
+<span class="sd">            [BatchPredictionJob.input_config][google.cloud.aiplatform.v1beta1.BatchPredictionJob.input_config].</span>
+<span class="sd">            The schema is defined as an OpenAPI 3.0.2 `Schema</span>
+<span class="sd">            Object &lt;https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.2.md#schemaObject&gt;`__.</span>
+<span class="sd">            AutoML Models always have this field populated by Vertex AI.</span>
+<span class="sd">            Note: The URI given on output will be immutable and probably</span>
+<span class="sd">            different, including the URI scheme, than the one given on</span>
+<span class="sd">            input. The output URI will point to a location where the</span>
+<span class="sd">            user only has a read access.</span>
+<span class="sd">        parameters_schema_uri (str):</span>
+<span class="sd">            Immutable. Points to a YAML file stored on Google Cloud</span>
+<span class="sd">            Storage describing the parameters of prediction and</span>
+<span class="sd">            explanation via</span>
+<span class="sd">            [PredictRequest.parameters][google.cloud.aiplatform.v1beta1.PredictRequest.parameters],</span>
+<span class="sd">            [ExplainRequest.parameters][google.cloud.aiplatform.v1beta1.ExplainRequest.parameters]</span>
+<span class="sd">            and</span>
+<span class="sd">            [BatchPredictionJob.model_parameters][google.cloud.aiplatform.v1beta1.BatchPredictionJob.model_parameters].</span>
+<span class="sd">            The schema is defined as an OpenAPI 3.0.2 `Schema</span>
+<span class="sd">            Object &lt;https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.2.md#schemaObject&gt;`__.</span>
+<span class="sd">            AutoML Models always have this field populated by Vertex AI,</span>
+<span class="sd">            if no parameters are supported, then it is set to an empty</span>
+<span class="sd">            string. Note: The URI given on output will be immutable and</span>
+<span class="sd">            probably different, including the URI scheme, than the one</span>
+<span class="sd">            given on input. The output URI will point to a location</span>
+<span class="sd">            where the user only has a read access.</span>
+<span class="sd">        prediction_schema_uri (str):</span>
+<span class="sd">            Immutable. Points to a YAML file stored on Google Cloud</span>
+<span class="sd">            Storage describing the format of a single prediction</span>
+<span class="sd">            produced by this Model, which are returned via</span>
+<span class="sd">            [PredictResponse.predictions][google.cloud.aiplatform.v1beta1.PredictResponse.predictions],</span>
+<span class="sd">            [ExplainResponse.explanations][google.cloud.aiplatform.v1beta1.ExplainResponse.explanations],</span>
+<span class="sd">            and</span>
+<span class="sd">            [BatchPredictionJob.output_config][google.cloud.aiplatform.v1beta1.BatchPredictionJob.output_config].</span>
+<span class="sd">            The schema is defined as an OpenAPI 3.0.2 `Schema</span>
+<span class="sd">            Object &lt;https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.2.md#schemaObject&gt;`__.</span>
+<span class="sd">            AutoML Models always have this field populated by Vertex AI.</span>
+<span class="sd">            Note: The URI given on output will be immutable and probably</span>
+<span class="sd">            different, including the URI scheme, than the one given on</span>
+<span class="sd">            input. The output URI will point to a location where the</span>
+<span class="sd">            user only has a read access.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">instance_schema_uri</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="n">parameters_schema_uri</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span>
+    <span class="n">prediction_schema_uri</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="ModelContainerSpec"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ModelContainerSpec">[docs]</a><span class="k">class</span> <span class="nc">ModelContainerSpec</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Specification of a container for serving predictions. Some fields in</span>
+<span class="sd">    this message correspond to fields in the `Kubernetes Container v1</span>
+<span class="sd">    core</span>
+<span class="sd">    specification &lt;https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#container-v1-core&gt;`__.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        image_uri (str):</span>
+<span class="sd">            Required. Immutable. URI of the Docker image to be used as</span>
+<span class="sd">            the custom container for serving predictions. This URI must</span>
+<span class="sd">            identify an image in Artifact Registry or Container</span>
+<span class="sd">            Registry. Learn more about the `container publishing</span>
+<span class="sd">            requirements &lt;https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#publishing&gt;`__,</span>
+<span class="sd">            including permissions requirements for the AI Platform</span>
+<span class="sd">            Service Agent.</span>
+
+<span class="sd">            The container image is ingested upon</span>
+<span class="sd">            [ModelService.UploadModel][google.cloud.aiplatform.v1beta1.ModelService.UploadModel],</span>
+<span class="sd">            stored internally, and this original path is afterwards not</span>
+<span class="sd">            used.</span>
+
+<span class="sd">            To learn about the requirements for the Docker image itself,</span>
+<span class="sd">            see `Custom container</span>
+<span class="sd">            requirements &lt;https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#&gt;`__.</span>
+
+<span class="sd">            You can use the URI to one of Vertex AI&#39;s `pre-built</span>
+<span class="sd">            container images for</span>
+<span class="sd">            prediction &lt;https://cloud.google.com/vertex-ai/docs/predictions/pre-built-containers&gt;`__</span>
+<span class="sd">            in this field.</span>
+<span class="sd">        command (Sequence[str]):</span>
+<span class="sd">            Immutable. Specifies the command that runs when the</span>
+<span class="sd">            container starts. This overrides the container&#39;s</span>
+<span class="sd">            `ENTRYPOINT &lt;https://docs.docker.com/engine/reference/builder/#entrypoint&gt;`__.</span>
+<span class="sd">            Specify this field as an array of executable and arguments,</span>
+<span class="sd">            similar to a Docker ``ENTRYPOINT``&#39;s &quot;exec&quot; form, not its</span>
+<span class="sd">            &quot;shell&quot; form.</span>
+
+<span class="sd">            If you do not specify this field, then the container&#39;s</span>
+<span class="sd">            ``ENTRYPOINT`` runs, in conjunction with the</span>
+<span class="sd">            [args][google.cloud.aiplatform.v1beta1.ModelContainerSpec.args]</span>
+<span class="sd">            field or the container&#39;s</span>
+<span class="sd">            ```CMD`` &lt;https://docs.docker.com/engine/reference/builder/#cmd&gt;`__,</span>
+<span class="sd">            if either exists. If this field is not specified and the</span>
+<span class="sd">            container does not have an ``ENTRYPOINT``, then refer to the</span>
+<span class="sd">            Docker documentation about `how ``CMD`` and ``ENTRYPOINT``</span>
+<span class="sd">            interact &lt;https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact&gt;`__.</span>
+
+<span class="sd">            If you specify this field, then you can also specify the</span>
+<span class="sd">            ``args`` field to provide additional arguments for this</span>
+<span class="sd">            command. However, if you specify this field, then the</span>
+<span class="sd">            container&#39;s ``CMD`` is ignored. See the `Kubernetes</span>
+<span class="sd">            documentation about how the ``command`` and ``args`` fields</span>
+<span class="sd">            interact with a container&#39;s ``ENTRYPOINT`` and</span>
+<span class="sd">            ``CMD`` &lt;https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#notes&gt;`__.</span>
+
+<span class="sd">            In this field, you can reference `environment variables set</span>
+<span class="sd">            by Vertex</span>
+<span class="sd">            AI &lt;https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables&gt;`__</span>
+<span class="sd">            and environment variables set in the</span>
+<span class="sd">            [env][google.cloud.aiplatform.v1beta1.ModelContainerSpec.env]</span>
+<span class="sd">            field. You cannot reference environment variables set in the</span>
+<span class="sd">            Docker image. In order for environment variables to be</span>
+<span class="sd">            expanded, reference them by using the following syntax:</span>
+<span class="sd">            $(VARIABLE_NAME) Note that this differs from Bash variable</span>
+<span class="sd">            expansion, which does not use parentheses. If a variable</span>
+<span class="sd">            cannot be resolved, the reference in the input string is</span>
+<span class="sd">            used unchanged. To avoid variable expansion, you can escape</span>
+<span class="sd">            this syntax with ``$$``; for example: $$(VARIABLE_NAME) This</span>
+<span class="sd">            field corresponds to the ``command`` field of the Kubernetes</span>
+<span class="sd">            Containers `v1 core</span>
+<span class="sd">            API &lt;https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#container-v1-core&gt;`__.</span>
+<span class="sd">        args (Sequence[str]):</span>
+<span class="sd">            Immutable. Specifies arguments for the command that runs</span>
+<span class="sd">            when the container starts. This overrides the container&#39;s</span>
+<span class="sd">            ```CMD`` &lt;https://docs.docker.com/engine/reference/builder/#cmd&gt;`__.</span>
+<span class="sd">            Specify this field as an array of executable and arguments,</span>
+<span class="sd">            similar to a Docker ``CMD``&#39;s &quot;default parameters&quot; form.</span>
+
+<span class="sd">            If you don&#39;t specify this field but do specify the</span>
+<span class="sd">            [command][google.cloud.aiplatform.v1beta1.ModelContainerSpec.command]</span>
+<span class="sd">            field, then the command from the ``command`` field runs</span>
+<span class="sd">            without any additional arguments. See the `Kubernetes</span>
+<span class="sd">            documentation about how the ``command`` and ``args`` fields</span>
+<span class="sd">            interact with a container&#39;s ``ENTRYPOINT`` and</span>
+<span class="sd">            ``CMD`` &lt;https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#notes&gt;`__.</span>
+
+<span class="sd">            If you don&#39;t specify this field and don&#39;t specify the</span>
+<span class="sd">            ``command`` field, then the container&#39;s</span>
+<span class="sd">            ```ENTRYPOINT`` &lt;https://docs.docker.com/engine/reference/builder/#cmd&gt;`__</span>
+<span class="sd">            and ``CMD`` determine what runs based on their default</span>
+<span class="sd">            behavior. See the Docker documentation about `how ``CMD``</span>
+<span class="sd">            and ``ENTRYPOINT``</span>
+<span class="sd">            interact &lt;https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact&gt;`__.</span>
+
+<span class="sd">            In this field, you can reference `environment variables set</span>
+<span class="sd">            by Vertex</span>
+<span class="sd">            AI &lt;https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables&gt;`__</span>
+<span class="sd">            and environment variables set in the</span>
+<span class="sd">            [env][google.cloud.aiplatform.v1beta1.ModelContainerSpec.env]</span>
+<span class="sd">            field. You cannot reference environment variables set in the</span>
+<span class="sd">            Docker image. In order for environment variables to be</span>
+<span class="sd">            expanded, reference them by using the following syntax:</span>
+<span class="sd">            $(VARIABLE_NAME) Note that this differs from Bash variable</span>
+<span class="sd">            expansion, which does not use parentheses. If a variable</span>
+<span class="sd">            cannot be resolved, the reference in the input string is</span>
+<span class="sd">            used unchanged. To avoid variable expansion, you can escape</span>
+<span class="sd">            this syntax with ``$$``; for example: $$(VARIABLE_NAME) This</span>
+<span class="sd">            field corresponds to the ``args`` field of the Kubernetes</span>
+<span class="sd">            Containers `v1 core</span>
+<span class="sd">            API &lt;https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#container-v1-core&gt;`__.</span>
+<span class="sd">        env (Sequence[google.cloud.aiplatform_v1beta1.types.EnvVar]):</span>
+<span class="sd">            Immutable. List of environment variables to set in the</span>
+<span class="sd">            container. After the container starts running, code running</span>
+<span class="sd">            in the container can read these environment variables.</span>
+
+<span class="sd">            Additionally, the</span>
+<span class="sd">            [command][google.cloud.aiplatform.v1beta1.ModelContainerSpec.command]</span>
+<span class="sd">            and</span>
+<span class="sd">            [args][google.cloud.aiplatform.v1beta1.ModelContainerSpec.args]</span>
+<span class="sd">            fields can reference these variables. Later entries in this</span>
+<span class="sd">            list can also reference earlier entries. For example, the</span>
+<span class="sd">            following example sets the variable ``VAR_2`` to have the</span>
+<span class="sd">            value ``foo bar``:</span>
+
+<span class="sd">            .. code:: json</span>
+
+<span class="sd">               [</span>
+<span class="sd">                 {</span>
+<span class="sd">                   &quot;name&quot;: &quot;VAR_1&quot;,</span>
+<span class="sd">                   &quot;value&quot;: &quot;foo&quot;</span>
+<span class="sd">                 },</span>
+<span class="sd">                 {</span>
+<span class="sd">                   &quot;name&quot;: &quot;VAR_2&quot;,</span>
+<span class="sd">                   &quot;value&quot;: &quot;$(VAR_1) bar&quot;</span>
+<span class="sd">                 }</span>
+<span class="sd">               ]</span>
+
+<span class="sd">            If you switch the order of the variables in the example,</span>
+<span class="sd">            then the expansion does not occur.</span>
+
+<span class="sd">            This field corresponds to the ``env`` field of the</span>
+<span class="sd">            Kubernetes Containers `v1 core</span>
+<span class="sd">            API &lt;https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#container-v1-core&gt;`__.</span>
+<span class="sd">        ports (Sequence[google.cloud.aiplatform_v1beta1.types.Port]):</span>
+<span class="sd">            Immutable. List of ports to expose from the container.</span>
+<span class="sd">            Vertex AI sends any prediction requests that it receives to</span>
+<span class="sd">            the first port on this list. AI Platform also sends</span>
+<span class="sd">            `liveness and health</span>
+<span class="sd">            checks &lt;https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#liveness&gt;`__</span>
+<span class="sd">            to this port.</span>
+
+<span class="sd">            If you do not specify this field, it defaults to following</span>
+<span class="sd">            value:</span>
+
+<span class="sd">            .. code:: json</span>
+
+<span class="sd">               [</span>
+<span class="sd">                 {</span>
+<span class="sd">                   &quot;containerPort&quot;: 8080</span>
+<span class="sd">                 }</span>
+<span class="sd">               ]</span>
+
+<span class="sd">            Vertex AI does not use ports other than the first one</span>
+<span class="sd">            listed. This field corresponds to the ``ports`` field of the</span>
+<span class="sd">            Kubernetes Containers `v1 core</span>
+<span class="sd">            API &lt;https://v1-18.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#container-v1-core&gt;`__.</span>
+<span class="sd">        predict_route (str):</span>
+<span class="sd">            Immutable. HTTP path on the container to send prediction</span>
+<span class="sd">            requests to. Vertex AI forwards requests sent using</span>
+<span class="sd">            [projects.locations.endpoints.predict][google.cloud.aiplatform.v1beta1.PredictionService.Predict]</span>
+<span class="sd">            to this path on the container&#39;s IP address and port. Vertex</span>
+<span class="sd">            AI then returns the container&#39;s response in the API</span>
+<span class="sd">            response.</span>
+
+<span class="sd">            For example, if you set this field to ``/foo``, then when</span>
+<span class="sd">            Vertex AI receives a prediction request, it forwards the</span>
+<span class="sd">            request body in a POST request to the ``/foo`` path on the</span>
+<span class="sd">            port of your container specified by the first value of this</span>
+<span class="sd">            ``ModelContainerSpec``&#39;s</span>
+<span class="sd">            [ports][google.cloud.aiplatform.v1beta1.ModelContainerSpec.ports]</span>
+<span class="sd">            field.</span>
+
+<span class="sd">            If you don&#39;t specify this field, it defaults to the</span>
+<span class="sd">            following value when you [deploy this Model to an</span>
+<span class="sd">            Endpoint][google.cloud.aiplatform.v1beta1.EndpointService.DeployModel]:</span>
+<span class="sd">            /v1/endpoints/ENDPOINT/deployedModels/DEPLOYED_MODEL:predict</span>
+<span class="sd">            The placeholders in this value are replaced as follows:</span>
+
+<span class="sd">            -  ENDPOINT: The last segment (following ``endpoints/``)of</span>
+<span class="sd">               the Endpoint.name][] field of the Endpoint where this</span>
+<span class="sd">               Model has been deployed. (Vertex AI makes this value</span>
+<span class="sd">               available to your container code as the</span>
+<span class="sd">               ```AIP_ENDPOINT_ID`` environment</span>
+<span class="sd">               variable &lt;https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables&gt;`__.)</span>
+
+<span class="sd">            -  DEPLOYED_MODEL:</span>
+<span class="sd">               [DeployedModel.id][google.cloud.aiplatform.v1beta1.DeployedModel.id]</span>
+<span class="sd">               of the ``DeployedModel``. (Vertex AI makes this value</span>
+<span class="sd">               available to your container code as the</span>
+<span class="sd">               ```AIP_DEPLOYED_MODEL_ID`` environment</span>
+<span class="sd">               variable &lt;https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables&gt;`__.)</span>
+<span class="sd">        health_route (str):</span>
+<span class="sd">            Immutable. HTTP path on the container to send health checks</span>
+<span class="sd">            to. Vertex AI intermittently sends GET requests to this path</span>
+<span class="sd">            on the container&#39;s IP address and port to check that the</span>
+<span class="sd">            container is healthy. Read more about `health</span>
+<span class="sd">            checks &lt;https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#health&gt;`__.</span>
+
+<span class="sd">            For example, if you set this field to ``/bar``, then Vertex</span>
+<span class="sd">            AI intermittently sends a GET request to the ``/bar`` path</span>
+<span class="sd">            on the port of your container specified by the first value</span>
+<span class="sd">            of this ``ModelContainerSpec``&#39;s</span>
+<span class="sd">            [ports][google.cloud.aiplatform.v1beta1.ModelContainerSpec.ports]</span>
+<span class="sd">            field.</span>
+
+<span class="sd">            If you don&#39;t specify this field, it defaults to the</span>
+<span class="sd">            following value when you [deploy this Model to an</span>
+<span class="sd">            Endpoint][google.cloud.aiplatform.v1beta1.EndpointService.DeployModel]:</span>
+<span class="sd">            /v1/endpoints/ENDPOINT/deployedModels/DEPLOYED_MODEL:predict</span>
+<span class="sd">            The placeholders in this value are replaced as follows:</span>
+
+<span class="sd">            -  ENDPOINT: The last segment (following ``endpoints/``)of</span>
+<span class="sd">               the Endpoint.name][] field of the Endpoint where this</span>
+<span class="sd">               Model has been deployed. (Vertex AI makes this value</span>
+<span class="sd">               available to your container code as the</span>
+<span class="sd">               ```AIP_ENDPOINT_ID`` environment</span>
+<span class="sd">               variable &lt;https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables&gt;`__.)</span>
+
+<span class="sd">            -  DEPLOYED_MODEL:</span>
+<span class="sd">               [DeployedModel.id][google.cloud.aiplatform.v1beta1.DeployedModel.id]</span>
+<span class="sd">               of the ``DeployedModel``. (Vertex AI makes this value</span>
+<span class="sd">               available to your container code as the</span>
+<span class="sd">               ```AIP_DEPLOYED_MODEL_ID`` environment</span>
+<span class="sd">               variable &lt;https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables&gt;`__.)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">image_uri</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="n">command</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,)</span>
+    <span class="n">env</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">env_var</span><span class="o">.</span><span class="n">EnvVar</span><span class="p">,)</span>
+    <span class="n">ports</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;Port&quot;</span><span class="p">,)</span>
+    <span class="n">predict_route</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">6</span><span class="p">,)</span>
+    <span class="n">health_route</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">7</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="Port"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.Port">[docs]</a><span class="k">class</span> <span class="nc">Port</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Represents a network port in a container.</span>
+<span class="sd">    Attributes:</span>
+<span class="sd">        container_port (int):</span>
+<span class="sd">            The number of the port to expose on the pod&#39;s</span>
+<span class="sd">            IP address. Must be a valid port number, between</span>
+<span class="sd">            1 and 65535 inclusive.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">container_port</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">INT32</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,)</span></div>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">__protobuf__</span><span class="o">.</span><span class="n">manifest</span><span class="p">))</span>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../../../index.html">google-cloud-aiplatform</a></h1>
+
+
+
+<p class="blurb">Google Cloud Client Libraries for google-cloud-aiplatform</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=googleapis&repo=python-aiplatform&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform.html">Google Cloud Aiplatform SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1/services.html">Services for Google Cloud Aiplatform v1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1/types.html">Types for Google Cloud Aiplatform v1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1beta1/services.html">Services for Google Cloud Aiplatform v1beta1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1beta1/types.html">Types for Google Cloud Aiplatform v1beta1 API</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../changelog.html">Changelog</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Google.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+    <a href="https://github.com/googleapis/python-aiplatform" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>

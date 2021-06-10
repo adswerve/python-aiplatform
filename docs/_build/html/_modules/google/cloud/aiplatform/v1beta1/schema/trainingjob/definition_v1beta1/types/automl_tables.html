@@ -1,0 +1,546 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>google.cloud.aiplatform.v1beta1.schema.trainingjob.definition_v1beta1.types.automl_tables &#8212; google-cloud-aiplatform  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../../../_static/alabaster.css" />
+    <script data-url_root="../../../../../../../../../" id="documentation_options" src="../../../../../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../../../../../_static/jquery.js"></script>
+    <script src="../../../../../../../../../_static/underscore.js"></script>
+    <script src="../../../../../../../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../../../../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+          	<div class="admonition" id="python2-eol"> 
+          	 As of January 1, 2020 this library no longer supports Python 2 on the latest released version. 
+          	 Library versions released prior to that date will continue to be available. For more information please
+          	 visit <a href="https://cloud.google.com/python/docs/python2-sunset/">Python 2 support on Google Cloud</a>.
+          	</div>
+            
+  <h1>Source code for google.cloud.aiplatform.v1beta1.schema.trainingjob.definition_v1beta1.types.automl_tables</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Copyright 2020 Google LLC</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="c1">#</span>
+<span class="kn">import</span> <span class="nn">proto</span>  <span class="c1"># type: ignore</span>
+
+<span class="kn">from</span> <span class="nn">google.cloud.aiplatform.v1beta1.schema.trainingjob.definition_v1beta1.types</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">export_evaluated_data_items_config</span> <span class="k">as</span> <span class="n">gcastd_export_evaluated_data_items_config</span><span class="p">,</span>
+<span class="p">)</span>
+
+
+<span class="n">__protobuf__</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">module</span><span class="p">(</span>
+    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;google.cloud.aiplatform.v1beta1.schema.trainingjob.definition&quot;</span><span class="p">,</span>
+    <span class="n">manifest</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;AutoMlTables&quot;</span><span class="p">,</span> <span class="s2">&quot;AutoMlTablesInputs&quot;</span><span class="p">,</span> <span class="s2">&quot;AutoMlTablesMetadata&quot;</span><span class="p">,},</span>
+<span class="p">)</span>
+
+
+<div class="viewcode-block" id="AutoMlTables"><a class="viewcode-back" href="../../../../../../../../../definition_v1beta1/types.html#google.cloud.aiplatform.v1beta1.schema.trainingjob.definition_v1beta1.types.AutoMlTables">[docs]</a><span class="k">class</span> <span class="nc">AutoMlTables</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;A TrainingJob that trains and uploads an AutoML Tables Model.</span>
+<span class="sd">    Attributes:</span>
+<span class="sd">        inputs (google.cloud.aiplatform.v1beta1.schema.trainingjob.definition_v1beta1.types.AutoMlTablesInputs):</span>
+<span class="sd">            The input parameters of this TrainingJob.</span>
+<span class="sd">        metadata (google.cloud.aiplatform.v1beta1.schema.trainingjob.definition_v1beta1.types.AutoMlTablesMetadata):</span>
+<span class="sd">            The metadata information.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">inputs</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;AutoMlTablesInputs&quot;</span><span class="p">,)</span>
+    <span class="n">metadata</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;AutoMlTablesMetadata&quot;</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="AutoMlTablesInputs"><a class="viewcode-back" href="../../../../../../../../../definition_v1beta1/types.html#google.cloud.aiplatform.v1beta1.schema.trainingjob.definition_v1beta1.types.AutoMlTablesInputs">[docs]</a><span class="k">class</span> <span class="nc">AutoMlTablesInputs</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Attributes:</span>
+<span class="sd">        optimization_objective_recall_value (float):</span>
+<span class="sd">            Required when optimization_objective is</span>
+<span class="sd">            &quot;maximize-precision-at-recall&quot;. Must be between 0 and 1,</span>
+<span class="sd">            inclusive.</span>
+<span class="sd">        optimization_objective_precision_value (float):</span>
+<span class="sd">            Required when optimization_objective is</span>
+<span class="sd">            &quot;maximize-recall-at-precision&quot;. Must be between 0 and 1,</span>
+<span class="sd">            inclusive.</span>
+<span class="sd">        prediction_type (str):</span>
+<span class="sd">            The type of prediction the Model is to</span>
+<span class="sd">            produce.   &quot;classification&quot; - Predict one out of</span>
+<span class="sd">            multiple target values is</span>
+<span class="sd">            picked for each row.</span>
+<span class="sd">              &quot;regression&quot; - Predict a value based on its</span>
+<span class="sd">            relation to other values.                  This</span>
+<span class="sd">            type is available only to columns that contain</span>
+<span class="sd">            semantically numeric values, i.e. integers or</span>
+<span class="sd">            floating                  point number, even if</span>
+<span class="sd">            stored as e.g. strings.</span>
+<span class="sd">        target_column (str):</span>
+<span class="sd">            The column name of the target column that the</span>
+<span class="sd">            model is to predict.</span>
+<span class="sd">        transformations (Sequence[google.cloud.aiplatform.v1beta1.schema.trainingjob.definition_v1beta1.types.AutoMlTablesInputs.Transformation]):</span>
+<span class="sd">            Each transformation will apply transform</span>
+<span class="sd">            function to given input column. And the result</span>
+<span class="sd">            will be used for training. When creating</span>
+<span class="sd">            transformation for BigQuery Struct column, the</span>
+<span class="sd">            column should be flattened using &quot;.&quot; as the</span>
+<span class="sd">            delimiter.</span>
+<span class="sd">        optimization_objective (str):</span>
+<span class="sd">            Objective function the model is optimizing</span>
+<span class="sd">            towards. The training process creates a model</span>
+<span class="sd">            that maximizes/minimizes the value of the</span>
+<span class="sd">            objective function over the validation set.</span>
+
+<span class="sd">            The supported optimization objectives depend on</span>
+<span class="sd">            the prediction type. If the field is not set, a</span>
+<span class="sd">            default objective function is used.</span>
+<span class="sd">            classification (binary):</span>
+<span class="sd">              &quot;maximize-au-roc&quot; (default) - Maximize the</span>
+<span class="sd">            area under the receiver</span>
+<span class="sd">            operating characteristic (ROC) curve.</span>
+<span class="sd">            &quot;minimize-log-loss&quot; - Minimize log loss.</span>
+<span class="sd">              &quot;maximize-au-prc&quot; - Maximize the area under</span>
+<span class="sd">            the precision-recall curve.   &quot;maximize-</span>
+<span class="sd">            precision-at-recall&quot; - Maximize precision for a</span>
+<span class="sd">            specified</span>
+<span class="sd">            recall value.   &quot;maximize-recall-at-precision&quot; -</span>
+<span class="sd">            Maximize recall for a specified</span>
+<span class="sd">            precision value.</span>
+<span class="sd">            classification (multi-class):</span>
+<span class="sd">              &quot;minimize-log-loss&quot; (default) - Minimize log</span>
+<span class="sd">            loss.</span>
+<span class="sd">            regression:</span>
+<span class="sd">              &quot;minimize-rmse&quot; (default) - Minimize root-</span>
+<span class="sd">            mean-squared error (RMSE).   &quot;minimize-mae&quot; -</span>
+<span class="sd">            Minimize mean-absolute error (MAE).   &quot;minimize-</span>
+<span class="sd">            rmsle&quot; - Minimize root-mean-squared log error</span>
+<span class="sd">            (RMSLE).</span>
+<span class="sd">        train_budget_milli_node_hours (int):</span>
+<span class="sd">            Required. The train budget of creating this</span>
+<span class="sd">            model, expressed in milli node hours i.e. 1,000</span>
+<span class="sd">            value in this field means 1 node hour.</span>
+<span class="sd">            The training cost of the model will not exceed</span>
+<span class="sd">            this budget. The final cost will be attempted to</span>
+<span class="sd">            be close to the budget, though may end up being</span>
+<span class="sd">            (even) noticeably smaller - at the backend&#39;s</span>
+<span class="sd">            discretion. This especially may happen when</span>
+<span class="sd">            further model training ceases to provide any</span>
+<span class="sd">            improvements.</span>
+<span class="sd">            If the budget is set to a value known to be</span>
+<span class="sd">            insufficient to train a model for the given</span>
+<span class="sd">            dataset, the training won&#39;t be attempted and</span>
+<span class="sd">            will error.</span>
+
+<span class="sd">            The train budget must be between 1,000 and</span>
+<span class="sd">            72,000 milli node hours, inclusive.</span>
+<span class="sd">        disable_early_stopping (bool):</span>
+<span class="sd">            Use the entire training budget. This disables</span>
+<span class="sd">            the early stopping feature. By default, the</span>
+<span class="sd">            early stopping feature is enabled, which means</span>
+<span class="sd">            that AutoML Tables might stop training before</span>
+<span class="sd">            the entire training budget has been used.</span>
+<span class="sd">        weight_column_name (str):</span>
+<span class="sd">            Column name that should be used as the weight</span>
+<span class="sd">            column. Higher values in this column give more</span>
+<span class="sd">            importance to the row during model training. The</span>
+<span class="sd">            column must have numeric values between 0 and</span>
+<span class="sd">            10000 inclusively; 0 means the row is ignored</span>
+<span class="sd">            for training. If weight column field is not set,</span>
+<span class="sd">            then all rows are assumed to have equal weight</span>
+<span class="sd">            of 1.</span>
+<span class="sd">        export_evaluated_data_items_config (google.cloud.aiplatform.v1beta1.schema.trainingjob.definition_v1beta1.types.ExportEvaluatedDataItemsConfig):</span>
+<span class="sd">            Configuration for exporting test set</span>
+<span class="sd">            predictions to a BigQuery table. If this</span>
+<span class="sd">            configuration is absent, then the export is not</span>
+<span class="sd">            performed.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="AutoMlTablesInputs.Transformation"><a class="viewcode-back" href="../../../../../../../../../definition_v1beta1/types.html#google.cloud.aiplatform.v1beta1.schema.trainingjob.definition_v1beta1.types.AutoMlTablesInputs.Transformation">[docs]</a>    <span class="k">class</span> <span class="nc">Transformation</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Attributes:</span>
+<span class="sd">            auto (google.cloud.aiplatform.v1beta1.schema.trainingjob.definition_v1beta1.types.AutoMlTablesInputs.Transformation.AutoTransformation):</span>
+
+<span class="sd">            numeric (google.cloud.aiplatform.v1beta1.schema.trainingjob.definition_v1beta1.types.AutoMlTablesInputs.Transformation.NumericTransformation):</span>
+
+<span class="sd">            categorical (google.cloud.aiplatform.v1beta1.schema.trainingjob.definition_v1beta1.types.AutoMlTablesInputs.Transformation.CategoricalTransformation):</span>
+
+<span class="sd">            timestamp (google.cloud.aiplatform.v1beta1.schema.trainingjob.definition_v1beta1.types.AutoMlTablesInputs.Transformation.TimestampTransformation):</span>
+
+<span class="sd">            text (google.cloud.aiplatform.v1beta1.schema.trainingjob.definition_v1beta1.types.AutoMlTablesInputs.Transformation.TextTransformation):</span>
+
+<span class="sd">            repeated_numeric (google.cloud.aiplatform.v1beta1.schema.trainingjob.definition_v1beta1.types.AutoMlTablesInputs.Transformation.NumericArrayTransformation):</span>
+
+<span class="sd">            repeated_categorical (google.cloud.aiplatform.v1beta1.schema.trainingjob.definition_v1beta1.types.AutoMlTablesInputs.Transformation.CategoricalArrayTransformation):</span>
+
+<span class="sd">            repeated_text (google.cloud.aiplatform.v1beta1.schema.trainingjob.definition_v1beta1.types.AutoMlTablesInputs.Transformation.TextArrayTransformation):</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="AutoMlTablesInputs.Transformation.AutoTransformation"><a class="viewcode-back" href="../../../../../../../../../definition_v1beta1/types.html#google.cloud.aiplatform.v1beta1.schema.trainingjob.definition_v1beta1.types.AutoMlTablesInputs.Transformation.AutoTransformation">[docs]</a>        <span class="k">class</span> <span class="nc">AutoTransformation</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+            <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Training pipeline will infer the proper transformation based</span>
+<span class="sd">            on the statistic of dataset.</span>
+
+<span class="sd">            Attributes:</span>
+<span class="sd">                column_name (str):</span>
+
+<span class="sd">            &quot;&quot;&quot;</span>
+
+            <span class="n">column_name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span></div>
+
+<div class="viewcode-block" id="AutoMlTablesInputs.Transformation.NumericTransformation"><a class="viewcode-back" href="../../../../../../../../../definition_v1beta1/types.html#google.cloud.aiplatform.v1beta1.schema.trainingjob.definition_v1beta1.types.AutoMlTablesInputs.Transformation.NumericTransformation">[docs]</a>        <span class="k">class</span> <span class="nc">NumericTransformation</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+            <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Training pipeline will perform following transformation functions.</span>
+
+<span class="sd">            -  The value converted to float32.</span>
+<span class="sd">            -  The z_score of the value.</span>
+<span class="sd">            -  log(value+1) when the value is greater than or equal to 0.</span>
+<span class="sd">               Otherwise, this transformation is not applied and the value is</span>
+<span class="sd">               considered a missing value.</span>
+<span class="sd">            -  z_score of log(value+1) when the value is greater than or equal</span>
+<span class="sd">               to 0. Otherwise, this transformation is not applied and the value</span>
+<span class="sd">               is considered a missing value.</span>
+<span class="sd">            -  A boolean value that indicates whether the value is valid.</span>
+
+<span class="sd">            Attributes:</span>
+<span class="sd">                column_name (str):</span>
+
+<span class="sd">                invalid_values_allowed (bool):</span>
+<span class="sd">                    If invalid values is allowed, the training</span>
+<span class="sd">                    pipeline will create a boolean feature that</span>
+<span class="sd">                    indicated whether the value is valid. Otherwise,</span>
+<span class="sd">                    the training pipeline will discard the input row</span>
+<span class="sd">                    from trainining data.</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+
+            <span class="n">column_name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+            <span class="n">invalid_values_allowed</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">BOOL</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span></div>
+
+<div class="viewcode-block" id="AutoMlTablesInputs.Transformation.CategoricalTransformation"><a class="viewcode-back" href="../../../../../../../../../definition_v1beta1/types.html#google.cloud.aiplatform.v1beta1.schema.trainingjob.definition_v1beta1.types.AutoMlTablesInputs.Transformation.CategoricalTransformation">[docs]</a>        <span class="k">class</span> <span class="nc">CategoricalTransformation</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+            <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Training pipeline will perform following transformation functions.</span>
+
+<span class="sd">            -  The categorical string as is--no change to case, punctuation,</span>
+<span class="sd">               spelling, tense, and so on.</span>
+<span class="sd">            -  Convert the category name to a dictionary lookup index and</span>
+<span class="sd">               generate an embedding for each index.</span>
+<span class="sd">            -  Categories that appear less than 5 times in the training dataset</span>
+<span class="sd">               are treated as the &quot;unknown&quot; category. The &quot;unknown&quot; category</span>
+<span class="sd">               gets its own special lookup index and resulting embedding.</span>
+
+<span class="sd">            Attributes:</span>
+<span class="sd">                column_name (str):</span>
+
+<span class="sd">            &quot;&quot;&quot;</span>
+
+            <span class="n">column_name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span></div>
+
+<div class="viewcode-block" id="AutoMlTablesInputs.Transformation.TimestampTransformation"><a class="viewcode-back" href="../../../../../../../../../definition_v1beta1/types.html#google.cloud.aiplatform.v1beta1.schema.trainingjob.definition_v1beta1.types.AutoMlTablesInputs.Transformation.TimestampTransformation">[docs]</a>        <span class="k">class</span> <span class="nc">TimestampTransformation</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+            <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Training pipeline will perform following transformation functions.</span>
+
+<span class="sd">            -  Apply the transformation functions for Numerical columns.</span>
+<span class="sd">            -  Determine the year, month, day,and weekday. Treat each value from</span>
+<span class="sd">               the</span>
+<span class="sd">            -  timestamp as a Categorical column.</span>
+<span class="sd">            -  Invalid numerical values (for example, values that fall outside</span>
+<span class="sd">               of a typical timestamp range, or are extreme values) receive no</span>
+<span class="sd">               special treatment and are not removed.</span>
+
+<span class="sd">            Attributes:</span>
+<span class="sd">                column_name (str):</span>
+
+<span class="sd">                time_format (str):</span>
+<span class="sd">                    The format in which that time field is expressed. The</span>
+<span class="sd">                    time_format must either be one of:</span>
+
+<span class="sd">                    -  ``unix-seconds``</span>
+<span class="sd">                    -  ``unix-milliseconds``</span>
+<span class="sd">                    -  ``unix-microseconds``</span>
+<span class="sd">                    -  ``unix-nanoseconds`` (for respectively number of seconds,</span>
+<span class="sd">                       milliseconds, microseconds and nanoseconds since start of</span>
+<span class="sd">                       the Unix epoch); or be written in ``strftime`` syntax. If</span>
+<span class="sd">                       time_format is not set, then the default format is RFC</span>
+<span class="sd">                       3339 ``date-time`` format, where ``time-offset`` =</span>
+<span class="sd">                       ``&quot;Z&quot;`` (e.g. 1985-04-12T23:20:50.52Z)</span>
+<span class="sd">                invalid_values_allowed (bool):</span>
+<span class="sd">                    If invalid values is allowed, the training</span>
+<span class="sd">                    pipeline will create a boolean feature that</span>
+<span class="sd">                    indicated whether the value is valid. Otherwise,</span>
+<span class="sd">                    the training pipeline will discard the input row</span>
+<span class="sd">                    from trainining data.</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+
+            <span class="n">column_name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+            <span class="n">time_format</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span>
+            <span class="n">invalid_values_allowed</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">BOOL</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,)</span></div>
+
+<div class="viewcode-block" id="AutoMlTablesInputs.Transformation.TextTransformation"><a class="viewcode-back" href="../../../../../../../../../definition_v1beta1/types.html#google.cloud.aiplatform.v1beta1.schema.trainingjob.definition_v1beta1.types.AutoMlTablesInputs.Transformation.TextTransformation">[docs]</a>        <span class="k">class</span> <span class="nc">TextTransformation</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+            <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Training pipeline will perform following transformation functions.</span>
+
+<span class="sd">            -  The text as is--no change to case, punctuation, spelling, tense,</span>
+<span class="sd">               and so on.</span>
+<span class="sd">            -  Tokenize text to words. Convert each words to a dictionary lookup</span>
+<span class="sd">               index and generate an embedding for each index. Combine the</span>
+<span class="sd">               embedding of all elements into a single embedding using the mean.</span>
+<span class="sd">            -  Tokenization is based on unicode script boundaries.</span>
+<span class="sd">            -  Missing values get their own lookup index and resulting</span>
+<span class="sd">               embedding.</span>
+<span class="sd">            -  Stop-words receive no special treatment and are not removed.</span>
+
+<span class="sd">            Attributes:</span>
+<span class="sd">                column_name (str):</span>
+
+<span class="sd">            &quot;&quot;&quot;</span>
+
+            <span class="n">column_name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span></div>
+
+<div class="viewcode-block" id="AutoMlTablesInputs.Transformation.NumericArrayTransformation"><a class="viewcode-back" href="../../../../../../../../../definition_v1beta1/types.html#google.cloud.aiplatform.v1beta1.schema.trainingjob.definition_v1beta1.types.AutoMlTablesInputs.Transformation.NumericArrayTransformation">[docs]</a>        <span class="k">class</span> <span class="nc">NumericArrayTransformation</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+            <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Treats the column as numerical array and performs following</span>
+<span class="sd">            transformation functions.</span>
+
+<span class="sd">            -  All transformations for Numerical types applied to the average of</span>
+<span class="sd">               the all elements.</span>
+<span class="sd">            -  The average of empty arrays is treated as zero.</span>
+
+<span class="sd">            Attributes:</span>
+<span class="sd">                column_name (str):</span>
+
+<span class="sd">                invalid_values_allowed (bool):</span>
+<span class="sd">                    If invalid values is allowed, the training</span>
+<span class="sd">                    pipeline will create a boolean feature that</span>
+<span class="sd">                    indicated whether the value is valid. Otherwise,</span>
+<span class="sd">                    the training pipeline will discard the input row</span>
+<span class="sd">                    from trainining data.</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+
+            <span class="n">column_name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+            <span class="n">invalid_values_allowed</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">BOOL</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span></div>
+
+<div class="viewcode-block" id="AutoMlTablesInputs.Transformation.CategoricalArrayTransformation"><a class="viewcode-back" href="../../../../../../../../../definition_v1beta1/types.html#google.cloud.aiplatform.v1beta1.schema.trainingjob.definition_v1beta1.types.AutoMlTablesInputs.Transformation.CategoricalArrayTransformation">[docs]</a>        <span class="k">class</span> <span class="nc">CategoricalArrayTransformation</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+            <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Treats the column as categorical array and performs following</span>
+<span class="sd">            transformation functions.</span>
+
+<span class="sd">            -  For each element in the array, convert the category name to a</span>
+<span class="sd">               dictionary lookup index and generate an embedding for each index.</span>
+<span class="sd">               Combine the embedding of all elements into a single embedding</span>
+<span class="sd">               using the mean.</span>
+<span class="sd">            -  Empty arrays treated as an embedding of zeroes.</span>
+
+<span class="sd">            Attributes:</span>
+<span class="sd">                column_name (str):</span>
+
+<span class="sd">            &quot;&quot;&quot;</span>
+
+            <span class="n">column_name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span></div>
+
+<div class="viewcode-block" id="AutoMlTablesInputs.Transformation.TextArrayTransformation"><a class="viewcode-back" href="../../../../../../../../../definition_v1beta1/types.html#google.cloud.aiplatform.v1beta1.schema.trainingjob.definition_v1beta1.types.AutoMlTablesInputs.Transformation.TextArrayTransformation">[docs]</a>        <span class="k">class</span> <span class="nc">TextArrayTransformation</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+            <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Treats the column as text array and performs following</span>
+<span class="sd">            transformation functions.</span>
+
+<span class="sd">            -  Concatenate all text values in the array into a single text value</span>
+<span class="sd">               using a space (&quot; &quot;) as a delimiter, and then treat the result as</span>
+<span class="sd">               a single text value. Apply the transformations for Text columns.</span>
+<span class="sd">            -  Empty arrays treated as an empty text.</span>
+
+<span class="sd">            Attributes:</span>
+<span class="sd">                column_name (str):</span>
+
+<span class="sd">            &quot;&quot;&quot;</span>
+
+            <span class="n">column_name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span></div>
+
+        <span class="n">auto</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+            <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span>
+            <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">oneof</span><span class="o">=</span><span class="s2">&quot;transformation_detail&quot;</span><span class="p">,</span>
+            <span class="n">message</span><span class="o">=</span><span class="s2">&quot;AutoMlTablesInputs.Transformation.AutoTransformation&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">numeric</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+            <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span>
+            <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+            <span class="n">oneof</span><span class="o">=</span><span class="s2">&quot;transformation_detail&quot;</span><span class="p">,</span>
+            <span class="n">message</span><span class="o">=</span><span class="s2">&quot;AutoMlTablesInputs.Transformation.NumericTransformation&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">categorical</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+            <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span>
+            <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+            <span class="n">oneof</span><span class="o">=</span><span class="s2">&quot;transformation_detail&quot;</span><span class="p">,</span>
+            <span class="n">message</span><span class="o">=</span><span class="s2">&quot;AutoMlTablesInputs.Transformation.CategoricalTransformation&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">timestamp</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+            <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span>
+            <span class="n">number</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+            <span class="n">oneof</span><span class="o">=</span><span class="s2">&quot;transformation_detail&quot;</span><span class="p">,</span>
+            <span class="n">message</span><span class="o">=</span><span class="s2">&quot;AutoMlTablesInputs.Transformation.TimestampTransformation&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+            <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span>
+            <span class="n">number</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+            <span class="n">oneof</span><span class="o">=</span><span class="s2">&quot;transformation_detail&quot;</span><span class="p">,</span>
+            <span class="n">message</span><span class="o">=</span><span class="s2">&quot;AutoMlTablesInputs.Transformation.TextTransformation&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">repeated_numeric</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+            <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span>
+            <span class="n">number</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+            <span class="n">oneof</span><span class="o">=</span><span class="s2">&quot;transformation_detail&quot;</span><span class="p">,</span>
+            <span class="n">message</span><span class="o">=</span><span class="s2">&quot;AutoMlTablesInputs.Transformation.NumericArrayTransformation&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">repeated_categorical</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+            <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span>
+            <span class="n">number</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
+            <span class="n">oneof</span><span class="o">=</span><span class="s2">&quot;transformation_detail&quot;</span><span class="p">,</span>
+            <span class="n">message</span><span class="o">=</span><span class="s2">&quot;AutoMlTablesInputs.Transformation.CategoricalArrayTransformation&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">repeated_text</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+            <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span>
+            <span class="n">number</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+            <span class="n">oneof</span><span class="o">=</span><span class="s2">&quot;transformation_detail&quot;</span><span class="p">,</span>
+            <span class="n">message</span><span class="o">=</span><span class="s2">&quot;AutoMlTablesInputs.Transformation.TextArrayTransformation&quot;</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+    <span class="n">optimization_objective_recall_value</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">FLOAT</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">oneof</span><span class="o">=</span><span class="s2">&quot;additional_optimization_objective_config&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">optimization_objective_precision_value</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">FLOAT</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">oneof</span><span class="o">=</span><span class="s2">&quot;additional_optimization_objective_config&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">prediction_type</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="n">target_column</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span>
+    <span class="n">transformations</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">Transformation</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">optimization_objective</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">4</span><span class="p">,)</span>
+    <span class="n">train_budget_milli_node_hours</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">INT64</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">7</span><span class="p">,)</span>
+    <span class="n">disable_early_stopping</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">BOOL</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">8</span><span class="p">,)</span>
+    <span class="n">weight_column_name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">9</span><span class="p">,)</span>
+    <span class="n">export_evaluated_data_items_config</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span>
+        <span class="n">number</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+        <span class="n">message</span><span class="o">=</span><span class="n">gcastd_export_evaluated_data_items_config</span><span class="o">.</span><span class="n">ExportEvaluatedDataItemsConfig</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="AutoMlTablesMetadata"><a class="viewcode-back" href="../../../../../../../../../definition_v1beta1/types.html#google.cloud.aiplatform.v1beta1.schema.trainingjob.definition_v1beta1.types.AutoMlTablesMetadata">[docs]</a><span class="k">class</span> <span class="nc">AutoMlTablesMetadata</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Model metadata specific to AutoML Tables.</span>
+<span class="sd">    Attributes:</span>
+<span class="sd">        train_cost_milli_node_hours (int):</span>
+<span class="sd">            Output only. The actual training cost of the</span>
+<span class="sd">            model, expressed in milli node hours, i.e. 1,000</span>
+<span class="sd">            value in this field means 1 node hour.</span>
+<span class="sd">            Guaranteed to not exceed the train budget.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">train_cost_milli_node_hours</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">INT64</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span></div>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">__protobuf__</span><span class="o">.</span><span class="n">manifest</span><span class="p">))</span>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../../../../../../../index.html">google-cloud-aiplatform</a></h1>
+
+
+
+<p class="blurb">Google Cloud Client Libraries for google-cloud-aiplatform</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=googleapis&repo=python-aiplatform&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../aiplatform.html">Google Cloud Aiplatform SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../aiplatform_v1/services.html">Services for Google Cloud Aiplatform v1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../aiplatform_v1/types.html">Types for Google Cloud Aiplatform v1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../aiplatform_v1beta1/services.html">Services for Google Cloud Aiplatform v1beta1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../aiplatform_v1beta1/types.html">Types for Google Cloud Aiplatform v1beta1 API</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../changelog.html">Changelog</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../../../../../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../../../../../../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../../../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Google.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+    <a href="https://github.com/googleapis/python-aiplatform" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>

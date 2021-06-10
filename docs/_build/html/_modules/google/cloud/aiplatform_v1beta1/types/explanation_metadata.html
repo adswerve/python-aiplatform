@@ -1,0 +1,516 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>google.cloud.aiplatform_v1beta1.types.explanation_metadata &#8212; google-cloud-aiplatform  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/alabaster.css" />
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+          	<div class="admonition" id="python2-eol"> 
+          	 As of January 1, 2020 this library no longer supports Python 2 on the latest released version. 
+          	 Library versions released prior to that date will continue to be available. For more information please
+          	 visit <a href="https://cloud.google.com/python/docs/python2-sunset/">Python 2 support on Google Cloud</a>.
+          	</div>
+            
+  <h1>Source code for google.cloud.aiplatform_v1beta1.types.explanation_metadata</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Copyright 2020 Google LLC</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="c1">#</span>
+<span class="kn">import</span> <span class="nn">proto</span>  <span class="c1"># type: ignore</span>
+
+<span class="kn">from</span> <span class="nn">google.protobuf</span> <span class="kn">import</span> <span class="n">struct_pb2</span>  <span class="c1"># type: ignore</span>
+
+
+<span class="n">__protobuf__</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">module</span><span class="p">(</span>
+    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;google.cloud.aiplatform.v1beta1&quot;</span><span class="p">,</span> <span class="n">manifest</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;ExplanationMetadata&quot;</span><span class="p">,},</span>
+<span class="p">)</span>
+
+
+<div class="viewcode-block" id="ExplanationMetadata"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ExplanationMetadata">[docs]</a><span class="k">class</span> <span class="nc">ExplanationMetadata</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Metadata describing the Model&#39;s input and output for</span>
+<span class="sd">    explanation.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        inputs (Sequence[google.cloud.aiplatform_v1beta1.types.ExplanationMetadata.InputsEntry]):</span>
+<span class="sd">            Required. Map from feature names to feature input metadata.</span>
+<span class="sd">            Keys are the name of the features. Values are the</span>
+<span class="sd">            specification of the feature.</span>
+
+<span class="sd">            An empty InputMetadata is valid. It describes a text feature</span>
+<span class="sd">            which has the name specified as the key in</span>
+<span class="sd">            [ExplanationMetadata.inputs][google.cloud.aiplatform.v1beta1.ExplanationMetadata.inputs].</span>
+<span class="sd">            The baseline of the empty feature is chosen by Vertex AI.</span>
+
+<span class="sd">            For Vertex AI-provided Tensorflow images, the key can be any</span>
+<span class="sd">            friendly name of the feature. Once specified,</span>
+<span class="sd">            [featureAttributions][google.cloud.aiplatform.v1beta1.Attribution.feature_attributions]</span>
+<span class="sd">            are keyed by this key (if not grouped with another feature).</span>
+
+<span class="sd">            For custom images, the key must match with the key in</span>
+<span class="sd">            [instance][google.cloud.aiplatform.v1beta1.ExplainRequest.instances].</span>
+<span class="sd">        outputs (Sequence[google.cloud.aiplatform_v1beta1.types.ExplanationMetadata.OutputsEntry]):</span>
+<span class="sd">            Required. Map from output names to output</span>
+<span class="sd">            metadata.</span>
+<span class="sd">            For Vertex AI-provided Tensorflow images, keys</span>
+<span class="sd">            can be any user defined string that consists of</span>
+<span class="sd">            any UTF-8 characters.</span>
+<span class="sd">            For custom images, keys are the name of the</span>
+<span class="sd">            output field in the prediction to be explained.</span>
+
+<span class="sd">            Currently only one key is allowed.</span>
+<span class="sd">        feature_attributions_schema_uri (str):</span>
+<span class="sd">            Points to a YAML file stored on Google Cloud Storage</span>
+<span class="sd">            describing the format of the [feature</span>
+<span class="sd">            attributions][google.cloud.aiplatform.v1beta1.Attribution.feature_attributions].</span>
+<span class="sd">            The schema is defined as an OpenAPI 3.0.2 `Schema</span>
+<span class="sd">            Object &lt;https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.2.md#schemaObject&gt;`__.</span>
+<span class="sd">            AutoML tabular Models always have this field populated by</span>
+<span class="sd">            Vertex AI. Note: The URI given on output may be different,</span>
+<span class="sd">            including the URI scheme, than the one given on input. The</span>
+<span class="sd">            output URI will point to a location where the user only has</span>
+<span class="sd">            a read access.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ExplanationMetadata.InputMetadata"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ExplanationMetadata.InputMetadata">[docs]</a>    <span class="k">class</span> <span class="nc">InputMetadata</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Metadata of the input of a feature.</span>
+
+<span class="sd">        Fields other than</span>
+<span class="sd">        [InputMetadata.input_baselines][google.cloud.aiplatform.v1beta1.ExplanationMetadata.InputMetadata.input_baselines]</span>
+<span class="sd">        are applicable only for Models that are using Vertex AI-provided</span>
+<span class="sd">        images for Tensorflow.</span>
+
+<span class="sd">        Attributes:</span>
+<span class="sd">            input_baselines (Sequence[google.protobuf.struct_pb2.Value]):</span>
+<span class="sd">                Baseline inputs for this feature.</span>
+
+<span class="sd">                If no baseline is specified, Vertex AI chooses the baseline</span>
+<span class="sd">                for this feature. If multiple baselines are specified,</span>
+<span class="sd">                Vertex AI returns the average attributions across them in</span>
+<span class="sd">                [Attributions.baseline_attribution][].</span>
+
+<span class="sd">                For Vertex AI-provided Tensorflow images (both 1.x and 2.x),</span>
+<span class="sd">                the shape of each baseline must match the shape of the input</span>
+<span class="sd">                tensor. If a scalar is provided, we broadcast to the same</span>
+<span class="sd">                shape as the input tensor.</span>
+
+<span class="sd">                For custom images, the element of the baselines must be in</span>
+<span class="sd">                the same format as the feature&#39;s input in the</span>
+<span class="sd">                [instance][google.cloud.aiplatform.v1beta1.ExplainRequest.instances][].</span>
+<span class="sd">                The schema of any single instance may be specified via</span>
+<span class="sd">                Endpoint&#39;s DeployedModels&#39;</span>
+<span class="sd">                [Model&#39;s][google.cloud.aiplatform.v1beta1.DeployedModel.model]</span>
+<span class="sd">                [PredictSchemata&#39;s][google.cloud.aiplatform.v1beta1.Model.predict_schemata]</span>
+<span class="sd">                [instance_schema_uri][google.cloud.aiplatform.v1beta1.PredictSchemata.instance_schema_uri].</span>
+<span class="sd">            input_tensor_name (str):</span>
+<span class="sd">                Name of the input tensor for this feature.</span>
+<span class="sd">                Required and is only applicable to Vertex AI-</span>
+<span class="sd">                provided images for Tensorflow.</span>
+<span class="sd">            encoding (google.cloud.aiplatform_v1beta1.types.ExplanationMetadata.InputMetadata.Encoding):</span>
+<span class="sd">                Defines how the feature is encoded into the</span>
+<span class="sd">                input tensor. Defaults to IDENTITY.</span>
+<span class="sd">            modality (str):</span>
+<span class="sd">                Modality of the feature. Valid values are:</span>
+<span class="sd">                numeric, image. Defaults to numeric.</span>
+<span class="sd">            feature_value_domain (google.cloud.aiplatform_v1beta1.types.ExplanationMetadata.InputMetadata.FeatureValueDomain):</span>
+<span class="sd">                The domain details of the input feature</span>
+<span class="sd">                value. Like min/max, original mean or standard</span>
+<span class="sd">                deviation if normalized.</span>
+<span class="sd">            indices_tensor_name (str):</span>
+<span class="sd">                Specifies the index of the values of the input tensor.</span>
+<span class="sd">                Required when the input tensor is a sparse representation.</span>
+<span class="sd">                Refer to Tensorflow documentation for more details:</span>
+<span class="sd">                https://www.tensorflow.org/api_docs/python/tf/sparse/SparseTensor.</span>
+<span class="sd">            dense_shape_tensor_name (str):</span>
+<span class="sd">                Specifies the shape of the values of the input if the input</span>
+<span class="sd">                is a sparse representation. Refer to Tensorflow</span>
+<span class="sd">                documentation for more details:</span>
+<span class="sd">                https://www.tensorflow.org/api_docs/python/tf/sparse/SparseTensor.</span>
+<span class="sd">            index_feature_mapping (Sequence[str]):</span>
+<span class="sd">                A list of feature names for each index in the input tensor.</span>
+<span class="sd">                Required when the input</span>
+<span class="sd">                [InputMetadata.encoding][google.cloud.aiplatform.v1beta1.ExplanationMetadata.InputMetadata.encoding]</span>
+<span class="sd">                is BAG_OF_FEATURES, BAG_OF_FEATURES_SPARSE, INDICATOR.</span>
+<span class="sd">            encoded_tensor_name (str):</span>
+<span class="sd">                Encoded tensor is a transformation of the input tensor. Must</span>
+<span class="sd">                be provided if choosing [Integrated Gradients</span>
+<span class="sd">                attribution][ExplanationParameters.integrated_gradients_attribution]</span>
+<span class="sd">                or [XRAI</span>
+<span class="sd">                attribution][google.cloud.aiplatform.v1beta1.ExplanationParameters.xrai_attribution]</span>
+<span class="sd">                and the input tensor is not differentiable.</span>
+
+<span class="sd">                An encoded tensor is generated if the input tensor is</span>
+<span class="sd">                encoded by a lookup table.</span>
+<span class="sd">            encoded_baselines (Sequence[google.protobuf.struct_pb2.Value]):</span>
+<span class="sd">                A list of baselines for the encoded tensor.</span>
+<span class="sd">                The shape of each baseline should match the</span>
+<span class="sd">                shape of the encoded tensor. If a scalar is</span>
+<span class="sd">                provided, Vertex AI broadcasts to the same shape</span>
+<span class="sd">                as the encoded tensor.</span>
+<span class="sd">            visualization (google.cloud.aiplatform_v1beta1.types.ExplanationMetadata.InputMetadata.Visualization):</span>
+<span class="sd">                Visualization configurations for image</span>
+<span class="sd">                explanation.</span>
+<span class="sd">            group_name (str):</span>
+<span class="sd">                Name of the group that the input belongs to. Features with</span>
+<span class="sd">                the same group name will be treated as one feature when</span>
+<span class="sd">                computing attributions. Features grouped together can have</span>
+<span class="sd">                different shapes in value. If provided, there will be one</span>
+<span class="sd">                single attribution generated in [</span>
+<span class="sd">                featureAttributions][Attribution.feature_attributions],</span>
+<span class="sd">                keyed by the group name.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ExplanationMetadata.InputMetadata.Encoding"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ExplanationMetadata.InputMetadata.Encoding">[docs]</a>        <span class="k">class</span> <span class="nc">Encoding</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Enum</span><span class="p">):</span>
+            <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Defines how the feature is encoded to [encoded_tensor][]. Defaults</span>
+<span class="sd">            to IDENTITY.</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+            <span class="n">ENCODING_UNSPECIFIED</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">IDENTITY</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="n">BAG_OF_FEATURES</span> <span class="o">=</span> <span class="mi">2</span>
+            <span class="n">BAG_OF_FEATURES_SPARSE</span> <span class="o">=</span> <span class="mi">3</span>
+            <span class="n">INDICATOR</span> <span class="o">=</span> <span class="mi">4</span>
+            <span class="n">COMBINED_EMBEDDING</span> <span class="o">=</span> <span class="mi">5</span>
+            <span class="n">CONCAT_EMBEDDING</span> <span class="o">=</span> <span class="mi">6</span></div>
+
+<div class="viewcode-block" id="ExplanationMetadata.InputMetadata.FeatureValueDomain"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ExplanationMetadata.InputMetadata.FeatureValueDomain">[docs]</a>        <span class="k">class</span> <span class="nc">FeatureValueDomain</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+            <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Domain details of the input feature value. Provides numeric</span>
+<span class="sd">            information about the feature, such as its range (min, max). If the</span>
+<span class="sd">            feature has been pre-processed, for example with z-scoring, then it</span>
+<span class="sd">            provides information about how to recover the original feature. For</span>
+<span class="sd">            example, if the input feature is an image and it has been</span>
+<span class="sd">            pre-processed to obtain 0-mean and stddev = 1 values, then</span>
+<span class="sd">            original_mean, and original_stddev refer to the mean and stddev of</span>
+<span class="sd">            the original feature (e.g. image tensor) from which input feature</span>
+<span class="sd">            (with mean = 0 and stddev = 1) was obtained.</span>
+
+<span class="sd">            Attributes:</span>
+<span class="sd">                min_value (float):</span>
+<span class="sd">                    The minimum permissible value for this</span>
+<span class="sd">                    feature.</span>
+<span class="sd">                max_value (float):</span>
+<span class="sd">                    The maximum permissible value for this</span>
+<span class="sd">                    feature.</span>
+<span class="sd">                original_mean (float):</span>
+<span class="sd">                    If this input feature has been normalized to a mean value of</span>
+<span class="sd">                    0, the original_mean specifies the mean value of the domain</span>
+<span class="sd">                    prior to normalization.</span>
+<span class="sd">                original_stddev (float):</span>
+<span class="sd">                    If this input feature has been normalized to a standard</span>
+<span class="sd">                    deviation of 1.0, the original_stddev specifies the standard</span>
+<span class="sd">                    deviation of the domain prior to normalization.</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+
+            <span class="n">min_value</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">FLOAT</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+            <span class="n">max_value</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">FLOAT</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span>
+            <span class="n">original_mean</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">FLOAT</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,)</span>
+            <span class="n">original_stddev</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">FLOAT</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">4</span><span class="p">,)</span></div>
+
+<div class="viewcode-block" id="ExplanationMetadata.InputMetadata.Visualization"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ExplanationMetadata.InputMetadata.Visualization">[docs]</a>        <span class="k">class</span> <span class="nc">Visualization</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+            <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Visualization configurations for image explanation.</span>
+<span class="sd">            Attributes:</span>
+<span class="sd">                type_ (google.cloud.aiplatform_v1beta1.types.ExplanationMetadata.InputMetadata.Visualization.Type):</span>
+<span class="sd">                    Type of the image visualization. Only applicable to</span>
+<span class="sd">                    [Integrated Gradients attribution]</span>
+<span class="sd">                    [ExplanationParameters.integrated_gradients_attribution].</span>
+<span class="sd">                    OUTLINES shows regions of attribution, while PIXELS shows</span>
+<span class="sd">                    per-pixel attribution. Defaults to OUTLINES.</span>
+<span class="sd">                polarity (google.cloud.aiplatform_v1beta1.types.ExplanationMetadata.InputMetadata.Visualization.Polarity):</span>
+<span class="sd">                    Whether to only highlight pixels with</span>
+<span class="sd">                    positive contributions, negative or both.</span>
+<span class="sd">                    Defaults to POSITIVE.</span>
+<span class="sd">                color_map (google.cloud.aiplatform_v1beta1.types.ExplanationMetadata.InputMetadata.Visualization.ColorMap):</span>
+<span class="sd">                    The color scheme used for the highlighted areas.</span>
+
+<span class="sd">                    Defaults to PINK_GREEN for [Integrated Gradients</span>
+<span class="sd">                    attribution][ExplanationParameters.integrated_gradients_attribution],</span>
+<span class="sd">                    which shows positive attributions in green and negative in</span>
+<span class="sd">                    pink.</span>
+
+<span class="sd">                    Defaults to VIRIDIS for [XRAI</span>
+<span class="sd">                    attribution][google.cloud.aiplatform.v1beta1.ExplanationParameters.xrai_attribution],</span>
+<span class="sd">                    which highlights the most influential regions in yellow and</span>
+<span class="sd">                    the least influential in blue.</span>
+<span class="sd">                clip_percent_upperbound (float):</span>
+<span class="sd">                    Excludes attributions above the specified percentile from</span>
+<span class="sd">                    the highlighted areas. Using the clip_percent_upperbound and</span>
+<span class="sd">                    clip_percent_lowerbound together can be useful for filtering</span>
+<span class="sd">                    out noise and making it easier to see areas of strong</span>
+<span class="sd">                    attribution. Defaults to 99.9.</span>
+<span class="sd">                clip_percent_lowerbound (float):</span>
+<span class="sd">                    Excludes attributions below the specified</span>
+<span class="sd">                    percentile, from the highlighted areas. Defaults</span>
+<span class="sd">                    to 62.</span>
+<span class="sd">                overlay_type (google.cloud.aiplatform_v1beta1.types.ExplanationMetadata.InputMetadata.Visualization.OverlayType):</span>
+<span class="sd">                    How the original image is displayed in the</span>
+<span class="sd">                    visualization. Adjusting the overlay can help</span>
+<span class="sd">                    increase visual clarity if the original image</span>
+<span class="sd">                    makes it difficult to view the visualization.</span>
+<span class="sd">                    Defaults to NONE.</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ExplanationMetadata.InputMetadata.Visualization.Type"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ExplanationMetadata.InputMetadata.Visualization.Type">[docs]</a>            <span class="k">class</span> <span class="nc">Type</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Enum</span><span class="p">):</span>
+                <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Type of the image visualization. Only applicable to [Integrated</span>
+<span class="sd">                Gradients attribution]</span>
+<span class="sd">                [ExplanationParameters.integrated_gradients_attribution].</span>
+<span class="sd">                &quot;&quot;&quot;</span>
+                <span class="n">TYPE_UNSPECIFIED</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="n">PIXELS</span> <span class="o">=</span> <span class="mi">1</span>
+                <span class="n">OUTLINES</span> <span class="o">=</span> <span class="mi">2</span></div>
+
+<div class="viewcode-block" id="ExplanationMetadata.InputMetadata.Visualization.Polarity"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ExplanationMetadata.InputMetadata.Visualization.Polarity">[docs]</a>            <span class="k">class</span> <span class="nc">Polarity</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Enum</span><span class="p">):</span>
+                <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Whether to only highlight pixels with positive contributions,</span>
+<span class="sd">                negative or both. Defaults to POSITIVE.</span>
+<span class="sd">                &quot;&quot;&quot;</span>
+                <span class="n">POLARITY_UNSPECIFIED</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="n">POSITIVE</span> <span class="o">=</span> <span class="mi">1</span>
+                <span class="n">NEGATIVE</span> <span class="o">=</span> <span class="mi">2</span>
+                <span class="n">BOTH</span> <span class="o">=</span> <span class="mi">3</span></div>
+
+<div class="viewcode-block" id="ExplanationMetadata.InputMetadata.Visualization.ColorMap"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ExplanationMetadata.InputMetadata.Visualization.ColorMap">[docs]</a>            <span class="k">class</span> <span class="nc">ColorMap</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Enum</span><span class="p">):</span>
+                <span class="sa">r</span><span class="sd">&quot;&quot;&quot;The color scheme used for highlighting areas.&quot;&quot;&quot;</span>
+                <span class="n">COLOR_MAP_UNSPECIFIED</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="n">PINK_GREEN</span> <span class="o">=</span> <span class="mi">1</span>
+                <span class="n">VIRIDIS</span> <span class="o">=</span> <span class="mi">2</span>
+                <span class="n">RED</span> <span class="o">=</span> <span class="mi">3</span>
+                <span class="n">GREEN</span> <span class="o">=</span> <span class="mi">4</span>
+                <span class="n">RED_GREEN</span> <span class="o">=</span> <span class="mi">6</span>
+                <span class="n">PINK_WHITE_GREEN</span> <span class="o">=</span> <span class="mi">5</span></div>
+
+<div class="viewcode-block" id="ExplanationMetadata.InputMetadata.Visualization.OverlayType"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ExplanationMetadata.InputMetadata.Visualization.OverlayType">[docs]</a>            <span class="k">class</span> <span class="nc">OverlayType</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Enum</span><span class="p">):</span>
+                <span class="sa">r</span><span class="sd">&quot;&quot;&quot;How the original image is displayed in the visualization.&quot;&quot;&quot;</span>
+                <span class="n">OVERLAY_TYPE_UNSPECIFIED</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="n">NONE</span> <span class="o">=</span> <span class="mi">1</span>
+                <span class="n">ORIGINAL</span> <span class="o">=</span> <span class="mi">2</span>
+                <span class="n">GRAYSCALE</span> <span class="o">=</span> <span class="mi">3</span>
+                <span class="n">MASK_BLACK</span> <span class="o">=</span> <span class="mi">4</span></div>
+
+            <span class="n">type_</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+                <span class="n">proto</span><span class="o">.</span><span class="n">ENUM</span><span class="p">,</span>
+                <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                <span class="n">enum</span><span class="o">=</span><span class="s2">&quot;ExplanationMetadata.InputMetadata.Visualization.Type&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">polarity</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+                <span class="n">proto</span><span class="o">.</span><span class="n">ENUM</span><span class="p">,</span>
+                <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                <span class="n">enum</span><span class="o">=</span><span class="s2">&quot;ExplanationMetadata.InputMetadata.Visualization.Polarity&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">color_map</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+                <span class="n">proto</span><span class="o">.</span><span class="n">ENUM</span><span class="p">,</span>
+                <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+                <span class="n">enum</span><span class="o">=</span><span class="s2">&quot;ExplanationMetadata.InputMetadata.Visualization.ColorMap&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">clip_percent_upperbound</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">FLOAT</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">4</span><span class="p">,)</span>
+            <span class="n">clip_percent_lowerbound</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">FLOAT</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">5</span><span class="p">,)</span>
+            <span class="n">overlay_type</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+                <span class="n">proto</span><span class="o">.</span><span class="n">ENUM</span><span class="p">,</span>
+                <span class="n">number</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+                <span class="n">enum</span><span class="o">=</span><span class="s2">&quot;ExplanationMetadata.InputMetadata.Visualization.OverlayType&quot;</span><span class="p">,</span>
+            <span class="p">)</span></div>
+
+        <span class="n">input_baselines</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span>
+            <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">struct_pb2</span><span class="o">.</span><span class="n">Value</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">input_tensor_name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span>
+        <span class="n">encoding</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+            <span class="n">proto</span><span class="o">.</span><span class="n">ENUM</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">enum</span><span class="o">=</span><span class="s2">&quot;ExplanationMetadata.InputMetadata.Encoding&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">modality</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">4</span><span class="p">,)</span>
+        <span class="n">feature_value_domain</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+            <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span>
+            <span class="n">number</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+            <span class="n">message</span><span class="o">=</span><span class="s2">&quot;ExplanationMetadata.InputMetadata.FeatureValueDomain&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">indices_tensor_name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">6</span><span class="p">,)</span>
+        <span class="n">dense_shape_tensor_name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">7</span><span class="p">,)</span>
+        <span class="n">index_feature_mapping</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">8</span><span class="p">,)</span>
+        <span class="n">encoded_tensor_name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">9</span><span class="p">,)</span>
+        <span class="n">encoded_baselines</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span>
+            <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">struct_pb2</span><span class="o">.</span><span class="n">Value</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">visualization</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+            <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span>
+            <span class="n">number</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span>
+            <span class="n">message</span><span class="o">=</span><span class="s2">&quot;ExplanationMetadata.InputMetadata.Visualization&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">group_name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">12</span><span class="p">,)</span></div>
+
+<div class="viewcode-block" id="ExplanationMetadata.OutputMetadata"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ExplanationMetadata.OutputMetadata">[docs]</a>    <span class="k">class</span> <span class="nc">OutputMetadata</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Metadata of the prediction output to be explained.</span>
+<span class="sd">        Attributes:</span>
+<span class="sd">            index_display_name_mapping (google.protobuf.struct_pb2.Value):</span>
+<span class="sd">                Static mapping between the index and display name.</span>
+
+<span class="sd">                Use this if the outputs are a deterministic n-dimensional</span>
+<span class="sd">                array, e.g. a list of scores of all the classes in a</span>
+<span class="sd">                pre-defined order for a multi-classification Model. It&#39;s not</span>
+<span class="sd">                feasible if the outputs are non-deterministic, e.g. the</span>
+<span class="sd">                Model produces top-k classes or sort the outputs by their</span>
+<span class="sd">                values.</span>
+
+<span class="sd">                The shape of the value must be an n-dimensional array of</span>
+<span class="sd">                strings. The number of dimensions must match that of the</span>
+<span class="sd">                outputs to be explained. The</span>
+<span class="sd">                [Attribution.output_display_name][google.cloud.aiplatform.v1beta1.Attribution.output_display_name]</span>
+<span class="sd">                is populated by locating in the mapping with</span>
+<span class="sd">                [Attribution.output_index][google.cloud.aiplatform.v1beta1.Attribution.output_index].</span>
+<span class="sd">            display_name_mapping_key (str):</span>
+<span class="sd">                Specify a field name in the prediction to look for the</span>
+<span class="sd">                display name.</span>
+
+<span class="sd">                Use this if the prediction contains the display names for</span>
+<span class="sd">                the outputs.</span>
+
+<span class="sd">                The display names in the prediction must have the same shape</span>
+<span class="sd">                of the outputs, so that it can be located by</span>
+<span class="sd">                [Attribution.output_index][google.cloud.aiplatform.v1beta1.Attribution.output_index]</span>
+<span class="sd">                for a specific output.</span>
+<span class="sd">            output_tensor_name (str):</span>
+<span class="sd">                Name of the output tensor. Required and is</span>
+<span class="sd">                only applicable to AI Platform provided images</span>
+<span class="sd">                for Tensorflow.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">index_display_name_mapping</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+            <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span>
+            <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">oneof</span><span class="o">=</span><span class="s2">&quot;display_name_mapping&quot;</span><span class="p">,</span>
+            <span class="n">message</span><span class="o">=</span><span class="n">struct_pb2</span><span class="o">.</span><span class="n">Value</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">display_name_mapping_key</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+            <span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">oneof</span><span class="o">=</span><span class="s2">&quot;display_name_mapping&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">output_tensor_name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,)</span></div>
+
+    <span class="n">inputs</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">MapField</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">InputMetadata</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">outputs</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">MapField</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">OutputMetadata</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">feature_attributions_schema_uri</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,)</span></div>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">__protobuf__</span><span class="o">.</span><span class="n">manifest</span><span class="p">))</span>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../../../index.html">google-cloud-aiplatform</a></h1>
+
+
+
+<p class="blurb">Google Cloud Client Libraries for google-cloud-aiplatform</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=googleapis&repo=python-aiplatform&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform.html">Google Cloud Aiplatform SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1/services.html">Services for Google Cloud Aiplatform v1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1/types.html">Types for Google Cloud Aiplatform v1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1beta1/services.html">Services for Google Cloud Aiplatform v1beta1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1beta1/types.html">Types for Google Cloud Aiplatform v1beta1 API</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../changelog.html">Changelog</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Google.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+    <a href="https://github.com/googleapis/python-aiplatform" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>

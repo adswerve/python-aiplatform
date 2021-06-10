@@ -1,0 +1,385 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>google.cloud.aiplatform_v1beta1.types.featurestore_online_service &#8212; google-cloud-aiplatform  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/alabaster.css" />
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+          	<div class="admonition" id="python2-eol"> 
+          	 As of January 1, 2020 this library no longer supports Python 2 on the latest released version. 
+          	 Library versions released prior to that date will continue to be available. For more information please
+          	 visit <a href="https://cloud.google.com/python/docs/python2-sunset/">Python 2 support on Google Cloud</a>.
+          	</div>
+            
+  <h1>Source code for google.cloud.aiplatform_v1beta1.types.featurestore_online_service</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Copyright 2020 Google LLC</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="c1">#</span>
+<span class="kn">import</span> <span class="nn">proto</span>  <span class="c1"># type: ignore</span>
+
+<span class="kn">from</span> <span class="nn">google.cloud.aiplatform_v1beta1.types</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">feature_selector</span> <span class="k">as</span> <span class="n">gca_feature_selector</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">google.cloud.aiplatform_v1beta1.types</span> <span class="kn">import</span> <span class="n">types</span>
+<span class="kn">from</span> <span class="nn">google.protobuf</span> <span class="kn">import</span> <span class="n">timestamp_pb2</span>  <span class="c1"># type: ignore</span>
+
+
+<span class="n">__protobuf__</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">module</span><span class="p">(</span>
+    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;google.cloud.aiplatform.v1beta1&quot;</span><span class="p">,</span>
+    <span class="n">manifest</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;ReadFeatureValuesRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ReadFeatureValuesResponse&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;StreamingReadFeatureValuesRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;FeatureValue&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;FeatureValueList&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">)</span>
+
+
+<div class="viewcode-block" id="ReadFeatureValuesRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ReadFeatureValuesRequest">[docs]</a><span class="k">class</span> <span class="nc">ReadFeatureValuesRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [FeaturestoreOnlineServingService.ReadFeatureValues][google.cloud.aiplatform.v1beta1.FeaturestoreOnlineServingService.ReadFeatureValues].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        entity_type (str):</span>
+<span class="sd">            Required. The resource name of the EntityType for the entity</span>
+<span class="sd">            being read. Value format:</span>
+<span class="sd">            ``projects/{project}/locations/{location}/featurestores/ {featurestore}/entityTypes/{entityType}``.</span>
+<span class="sd">            For example, for a machine learning model predicting user</span>
+<span class="sd">            clicks on a website, an EntityType ID could be &quot;user&quot;.</span>
+<span class="sd">        entity_id (str):</span>
+<span class="sd">            Required. ID for a specific entity. For example, for a</span>
+<span class="sd">            machine learning model predicting user clicks on a website,</span>
+<span class="sd">            an entity ID could be &quot;user_123&quot;.</span>
+<span class="sd">        feature_selector (google.cloud.aiplatform_v1beta1.types.FeatureSelector):</span>
+<span class="sd">            Required. Selector choosing Features of the</span>
+<span class="sd">            target EntityType.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">entity_type</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="n">entity_id</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span>
+    <span class="n">feature_selector</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">gca_feature_selector</span><span class="o">.</span><span class="n">FeatureSelector</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ReadFeatureValuesResponse"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ReadFeatureValuesResponse">[docs]</a><span class="k">class</span> <span class="nc">ReadFeatureValuesResponse</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Response message for</span>
+<span class="sd">    [FeaturestoreOnlineServingService.ReadFeatureValues][google.cloud.aiplatform.v1beta1.FeaturestoreOnlineServingService.ReadFeatureValues].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        header (google.cloud.aiplatform_v1beta1.types.ReadFeatureValuesResponse.Header):</span>
+<span class="sd">            Response header.</span>
+<span class="sd">        entity_view (google.cloud.aiplatform_v1beta1.types.ReadFeatureValuesResponse.EntityView):</span>
+<span class="sd">            Entity view with Feature values. This may be</span>
+<span class="sd">            the entity in the Featurestore if values for all</span>
+<span class="sd">            Features were requested, or a projection of the</span>
+<span class="sd">            entity in the Featurestore if values for only</span>
+<span class="sd">            some Features were requested.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ReadFeatureValuesResponse.FeatureDescriptor"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ReadFeatureValuesResponse.FeatureDescriptor">[docs]</a>    <span class="k">class</span> <span class="nc">FeatureDescriptor</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Metadata for requested Features.</span>
+<span class="sd">        Attributes:</span>
+<span class="sd">            id (str):</span>
+<span class="sd">                Feature ID.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="nb">id</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span></div>
+
+<div class="viewcode-block" id="ReadFeatureValuesResponse.Header"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ReadFeatureValuesResponse.Header">[docs]</a>    <span class="k">class</span> <span class="nc">Header</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Response header with metadata for the requested</span>
+<span class="sd">        [ReadFeatureValuesRequest.entity_type][google.cloud.aiplatform.v1beta1.ReadFeatureValuesRequest.entity_type]</span>
+<span class="sd">        and Features.</span>
+
+<span class="sd">        Attributes:</span>
+<span class="sd">            entity_type (str):</span>
+<span class="sd">                The resource name of the EntityType from the</span>
+<span class="sd">                [ReadFeatureValuesRequest][google.cloud.aiplatform.v1beta1.ReadFeatureValuesRequest].</span>
+<span class="sd">                Value format:</span>
+<span class="sd">                ``projects/{project}/locations/{location}/featurestores/ {featurestore}/entityTypes/{entityType}``.</span>
+<span class="sd">            feature_descriptors (Sequence[google.cloud.aiplatform_v1beta1.types.ReadFeatureValuesResponse.FeatureDescriptor]):</span>
+<span class="sd">                List of Feature metadata corresponding to each piece of</span>
+<span class="sd">                [ReadFeatureValuesResponse.data][].</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">entity_type</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+        <span class="n">feature_descriptors</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span>
+            <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span>
+            <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+            <span class="n">message</span><span class="o">=</span><span class="s2">&quot;ReadFeatureValuesResponse.FeatureDescriptor&quot;</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="ReadFeatureValuesResponse.EntityView"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ReadFeatureValuesResponse.EntityView">[docs]</a>    <span class="k">class</span> <span class="nc">EntityView</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Entity view with Feature values.</span>
+<span class="sd">        Attributes:</span>
+<span class="sd">            entity_id (str):</span>
+<span class="sd">                ID of the requested entity.</span>
+<span class="sd">            data (Sequence[google.cloud.aiplatform_v1beta1.types.ReadFeatureValuesResponse.EntityView.Data]):</span>
+<span class="sd">                Each piece of data holds the k requested values for one</span>
+<span class="sd">                requested Feature. If no values for the requested Feature</span>
+<span class="sd">                exist, the corresponding cell will be empty. This has the</span>
+<span class="sd">                same size and is in the same order as the features from the</span>
+<span class="sd">                header</span>
+<span class="sd">                [ReadFeatureValuesResponse.header][google.cloud.aiplatform.v1beta1.ReadFeatureValuesResponse.header].</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ReadFeatureValuesResponse.EntityView.Data"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ReadFeatureValuesResponse.EntityView.Data">[docs]</a>        <span class="k">class</span> <span class="nc">Data</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+            <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Container to hold value(s), successive in time, for one</span>
+<span class="sd">            Feature from the request.</span>
+
+<span class="sd">            Attributes:</span>
+<span class="sd">                value (google.cloud.aiplatform_v1beta1.types.FeatureValue):</span>
+<span class="sd">                    Feature value if a single value is requested.</span>
+<span class="sd">                values (google.cloud.aiplatform_v1beta1.types.FeatureValueList):</span>
+<span class="sd">                    Feature values list if values, successive in</span>
+<span class="sd">                    time, are requested. If the requested number of</span>
+<span class="sd">                    values is greater than the number of existing</span>
+<span class="sd">                    Feature values, nonexistent values are omitted</span>
+<span class="sd">                    instead of being returned as empty.</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+
+            <span class="n">value</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+                <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">oneof</span><span class="o">=</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;FeatureValue&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">values</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+                <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">oneof</span><span class="o">=</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;FeatureValueList&quot;</span><span class="p">,</span>
+            <span class="p">)</span></div>
+
+        <span class="n">entity_id</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span>
+            <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span>
+            <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+            <span class="n">message</span><span class="o">=</span><span class="s2">&quot;ReadFeatureValuesResponse.EntityView.Data&quot;</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+    <span class="n">header</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">Header</span><span class="p">,)</span>
+    <span class="n">entity_view</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">EntityView</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="StreamingReadFeatureValuesRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.StreamingReadFeatureValuesRequest">[docs]</a><span class="k">class</span> <span class="nc">StreamingReadFeatureValuesRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [FeaturestoreOnlineServingService.StreamingFeatureValuesRead][].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        entity_type (str):</span>
+<span class="sd">            Required. The resource name of the entities&#39; type. Value</span>
+<span class="sd">            format:</span>
+<span class="sd">            ``projects/{project}/locations/{location}/featurestores/ {featurestore}/entityTypes/{entityType}``.</span>
+<span class="sd">            For example, for a machine learning model predicting user</span>
+<span class="sd">            clicks on a website, an EntityType ID could be &quot;user&quot;.</span>
+<span class="sd">        entity_ids (Sequence[str]):</span>
+<span class="sd">            Required. IDs of entities to read Feature values of. For</span>
+<span class="sd">            example, for a machine learning model predicting user clicks</span>
+<span class="sd">            on a website, an entity ID could be &quot;user_123&quot;.</span>
+<span class="sd">        feature_selector (google.cloud.aiplatform_v1beta1.types.FeatureSelector):</span>
+<span class="sd">            Required. Selector choosing Features of the</span>
+<span class="sd">            target EntityType.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">entity_type</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="n">entity_ids</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span>
+    <span class="n">feature_selector</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">gca_feature_selector</span><span class="o">.</span><span class="n">FeatureSelector</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="FeatureValue"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.FeatureValue">[docs]</a><span class="k">class</span> <span class="nc">FeatureValue</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Value for a feature.</span>
+<span class="sd">    NEXT ID: 15</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        bool_value (bool):</span>
+<span class="sd">            Bool type feature value.</span>
+<span class="sd">        double_value (float):</span>
+<span class="sd">            Double type feature value.</span>
+<span class="sd">        int64_value (int):</span>
+<span class="sd">            Int64 feature value.</span>
+<span class="sd">        string_value (str):</span>
+<span class="sd">            String feature value.</span>
+<span class="sd">        bool_array_value (google.cloud.aiplatform_v1beta1.types.BoolArray):</span>
+<span class="sd">            A list of bool type feature value.</span>
+<span class="sd">        double_array_value (google.cloud.aiplatform_v1beta1.types.DoubleArray):</span>
+<span class="sd">            A list of double type feature value.</span>
+<span class="sd">        int64_array_value (google.cloud.aiplatform_v1beta1.types.Int64Array):</span>
+<span class="sd">            A list of int64 type feature value.</span>
+<span class="sd">        string_array_value (google.cloud.aiplatform_v1beta1.types.StringArray):</span>
+<span class="sd">            A list of string type feature value.</span>
+<span class="sd">        bytes_value (bytes):</span>
+<span class="sd">            Bytes feature value.</span>
+<span class="sd">        metadata (google.cloud.aiplatform_v1beta1.types.FeatureValue.Metadata):</span>
+<span class="sd">            Output only. Metadata of feature value.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="FeatureValue.Metadata"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.FeatureValue.Metadata">[docs]</a>    <span class="k">class</span> <span class="nc">Metadata</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Metadata of feature value.</span>
+<span class="sd">        Attributes:</span>
+<span class="sd">            generate_time (google.protobuf.timestamp_pb2.Timestamp):</span>
+<span class="sd">                Feature generation timestamp. Typically, it</span>
+<span class="sd">                is provided by user at feature ingestion time.</span>
+<span class="sd">                If not, feature store will use the system</span>
+<span class="sd">                timestamp when the data is ingested into feature</span>
+<span class="sd">                store.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">generate_time</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+            <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">timestamp_pb2</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+    <span class="n">bool_value</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">BOOL</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">oneof</span><span class="o">=</span><span class="s2">&quot;value&quot;</span><span class="p">,)</span>
+    <span class="n">double_value</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">DOUBLE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">oneof</span><span class="o">=</span><span class="s2">&quot;value&quot;</span><span class="p">,)</span>
+    <span class="n">int64_value</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">INT64</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">oneof</span><span class="o">=</span><span class="s2">&quot;value&quot;</span><span class="p">,)</span>
+    <span class="n">string_value</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">oneof</span><span class="o">=</span><span class="s2">&quot;value&quot;</span><span class="p">,)</span>
+    <span class="n">bool_array_value</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">oneof</span><span class="o">=</span><span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">types</span><span class="o">.</span><span class="n">BoolArray</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">double_array_value</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">oneof</span><span class="o">=</span><span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">types</span><span class="o">.</span><span class="n">DoubleArray</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">int64_array_value</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">oneof</span><span class="o">=</span><span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">types</span><span class="o">.</span><span class="n">Int64Array</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">string_array_value</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">oneof</span><span class="o">=</span><span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">types</span><span class="o">.</span><span class="n">StringArray</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">bytes_value</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">BYTES</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span> <span class="n">oneof</span><span class="o">=</span><span class="s2">&quot;value&quot;</span><span class="p">,)</span>
+    <span class="n">metadata</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">Metadata</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="FeatureValueList"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.FeatureValueList">[docs]</a><span class="k">class</span> <span class="nc">FeatureValueList</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Container for list of values.</span>
+<span class="sd">    Attributes:</span>
+<span class="sd">        values (Sequence[google.cloud.aiplatform_v1beta1.types.FeatureValue]):</span>
+<span class="sd">            A list of feature values. All of them should</span>
+<span class="sd">            be the same data type.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">values</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;FeatureValue&quot;</span><span class="p">,)</span></div>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">__protobuf__</span><span class="o">.</span><span class="n">manifest</span><span class="p">))</span>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../../../index.html">google-cloud-aiplatform</a></h1>
+
+
+
+<p class="blurb">Google Cloud Client Libraries for google-cloud-aiplatform</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=googleapis&repo=python-aiplatform&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform.html">Google Cloud Aiplatform SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1/services.html">Services for Google Cloud Aiplatform v1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1/types.html">Types for Google Cloud Aiplatform v1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1beta1/services.html">Services for Google Cloud Aiplatform v1beta1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1beta1/types.html">Types for Google Cloud Aiplatform v1beta1 API</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../changelog.html">Changelog</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Google.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+    <a href="https://github.com/googleapis/python-aiplatform" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>

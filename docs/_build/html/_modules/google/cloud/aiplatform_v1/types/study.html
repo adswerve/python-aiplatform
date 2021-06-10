@@ -1,0 +1,534 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>google.cloud.aiplatform_v1.types.study &#8212; google-cloud-aiplatform  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/alabaster.css" />
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+          	<div class="admonition" id="python2-eol"> 
+          	 As of January 1, 2020 this library no longer supports Python 2 on the latest released version. 
+          	 Library versions released prior to that date will continue to be available. For more information please
+          	 visit <a href="https://cloud.google.com/python/docs/python2-sunset/">Python 2 support on Google Cloud</a>.
+          	</div>
+            
+  <h1>Source code for google.cloud.aiplatform_v1.types.study</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Copyright 2020 Google LLC</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="c1">#</span>
+<span class="kn">import</span> <span class="nn">proto</span>  <span class="c1"># type: ignore</span>
+
+<span class="kn">from</span> <span class="nn">google.protobuf</span> <span class="kn">import</span> <span class="n">struct_pb2</span>  <span class="c1"># type: ignore</span>
+<span class="kn">from</span> <span class="nn">google.protobuf</span> <span class="kn">import</span> <span class="n">timestamp_pb2</span>  <span class="c1"># type: ignore</span>
+
+
+<span class="n">__protobuf__</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">module</span><span class="p">(</span>
+    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;google.cloud.aiplatform.v1&quot;</span><span class="p">,</span>
+    <span class="n">manifest</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Trial&quot;</span><span class="p">,</span> <span class="s2">&quot;StudySpec&quot;</span><span class="p">,</span> <span class="s2">&quot;Measurement&quot;</span><span class="p">,},</span>
+<span class="p">)</span>
+
+
+<div class="viewcode-block" id="Trial"><a class="viewcode-back" href="../../../../../aiplatform_v1/types.html#google.cloud.aiplatform_v1.types.Trial">[docs]</a><span class="k">class</span> <span class="nc">Trial</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;A message representing a Trial. A Trial contains a unique set</span>
+<span class="sd">    of Parameters that has been or will be evaluated, along with the</span>
+<span class="sd">    objective metrics got by running the Trial.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        id (str):</span>
+<span class="sd">            Output only. The identifier of the Trial</span>
+<span class="sd">            assigned by the service.</span>
+<span class="sd">        state (google.cloud.aiplatform_v1.types.Trial.State):</span>
+<span class="sd">            Output only. The detailed state of the Trial.</span>
+<span class="sd">        parameters (Sequence[google.cloud.aiplatform_v1.types.Trial.Parameter]):</span>
+<span class="sd">            Output only. The parameters of the Trial.</span>
+<span class="sd">        final_measurement (google.cloud.aiplatform_v1.types.Measurement):</span>
+<span class="sd">            Output only. The final measurement containing</span>
+<span class="sd">            the objective value.</span>
+<span class="sd">        start_time (google.protobuf.timestamp_pb2.Timestamp):</span>
+<span class="sd">            Output only. Time when the Trial was started.</span>
+<span class="sd">        end_time (google.protobuf.timestamp_pb2.Timestamp):</span>
+<span class="sd">            Output only. Time when the Trial&#39;s status changed to</span>
+<span class="sd">            ``SUCCEEDED`` or ``INFEASIBLE``.</span>
+<span class="sd">        custom_job (str):</span>
+<span class="sd">            Output only. The CustomJob name linked to the</span>
+<span class="sd">            Trial. It&#39;s set for a HyperparameterTuningJob&#39;s</span>
+<span class="sd">            Trial.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Trial.State"><a class="viewcode-back" href="../../../../../aiplatform_v1/types.html#google.cloud.aiplatform_v1.types.Trial.State">[docs]</a>    <span class="k">class</span> <span class="nc">State</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Enum</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Describes a Trial state.&quot;&quot;&quot;</span>
+        <span class="n">STATE_UNSPECIFIED</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">REQUESTED</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">ACTIVE</span> <span class="o">=</span> <span class="mi">2</span>
+        <span class="n">STOPPING</span> <span class="o">=</span> <span class="mi">3</span>
+        <span class="n">SUCCEEDED</span> <span class="o">=</span> <span class="mi">4</span>
+        <span class="n">INFEASIBLE</span> <span class="o">=</span> <span class="mi">5</span></div>
+
+<div class="viewcode-block" id="Trial.Parameter"><a class="viewcode-back" href="../../../../../aiplatform_v1/types.html#google.cloud.aiplatform_v1.types.Trial.Parameter">[docs]</a>    <span class="k">class</span> <span class="nc">Parameter</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;A message representing a parameter to be tuned.</span>
+<span class="sd">        Attributes:</span>
+<span class="sd">            parameter_id (str):</span>
+<span class="sd">                Output only. The ID of the parameter. The parameter should</span>
+<span class="sd">                be defined in [StudySpec&#39;s</span>
+<span class="sd">                Parameters][google.cloud.aiplatform.v1.StudySpec.parameters].</span>
+<span class="sd">            value (google.protobuf.struct_pb2.Value):</span>
+<span class="sd">                Output only. The value of the parameter. ``number_value``</span>
+<span class="sd">                will be set if a parameter defined in StudySpec is in type</span>
+<span class="sd">                &#39;INTEGER&#39;, &#39;DOUBLE&#39; or &#39;DISCRETE&#39;. ``string_value`` will be</span>
+<span class="sd">                set if a parameter defined in StudySpec is in type</span>
+<span class="sd">                &#39;CATEGORICAL&#39;.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">parameter_id</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">struct_pb2</span><span class="o">.</span><span class="n">Value</span><span class="p">,)</span></div>
+
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span>
+    <span class="n">state</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">ENUM</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">enum</span><span class="o">=</span><span class="n">State</span><span class="p">,)</span>
+    <span class="n">parameters</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">Parameter</span><span class="p">,)</span>
+    <span class="n">final_measurement</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;Measurement&quot;</span><span class="p">,)</span>
+    <span class="n">start_time</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">timestamp_pb2</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">,)</span>
+    <span class="n">end_time</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">timestamp_pb2</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">,)</span>
+    <span class="n">custom_job</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">11</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="StudySpec"><a class="viewcode-back" href="../../../../../aiplatform_v1/types.html#google.cloud.aiplatform_v1.types.StudySpec">[docs]</a><span class="k">class</span> <span class="nc">StudySpec</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Represents specification of a Study.</span>
+<span class="sd">    Attributes:</span>
+<span class="sd">        metrics (Sequence[google.cloud.aiplatform_v1.types.StudySpec.MetricSpec]):</span>
+<span class="sd">            Required. Metric specs for the Study.</span>
+<span class="sd">        parameters (Sequence[google.cloud.aiplatform_v1.types.StudySpec.ParameterSpec]):</span>
+<span class="sd">            Required. The set of parameters to tune.</span>
+<span class="sd">        algorithm (google.cloud.aiplatform_v1.types.StudySpec.Algorithm):</span>
+<span class="sd">            The search algorithm specified for the Study.</span>
+<span class="sd">        observation_noise (google.cloud.aiplatform_v1.types.StudySpec.ObservationNoise):</span>
+<span class="sd">            The observation noise level of the study.</span>
+<span class="sd">            Currently only supported by the Vizier service.</span>
+<span class="sd">            Not supported by HyperparamterTuningJob or</span>
+<span class="sd">            TrainingPipeline.</span>
+<span class="sd">        measurement_selection_type (google.cloud.aiplatform_v1.types.StudySpec.MeasurementSelectionType):</span>
+<span class="sd">            Describe which measurement selection type</span>
+<span class="sd">            will be used</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="StudySpec.Algorithm"><a class="viewcode-back" href="../../../../../aiplatform_v1/types.html#google.cloud.aiplatform_v1.types.StudySpec.Algorithm">[docs]</a>    <span class="k">class</span> <span class="nc">Algorithm</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Enum</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;The available search algorithms for the Study.&quot;&quot;&quot;</span>
+        <span class="n">ALGORITHM_UNSPECIFIED</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">GRID_SEARCH</span> <span class="o">=</span> <span class="mi">2</span>
+        <span class="n">RANDOM_SEARCH</span> <span class="o">=</span> <span class="mi">3</span></div>
+
+<div class="viewcode-block" id="StudySpec.ObservationNoise"><a class="viewcode-back" href="../../../../../aiplatform_v1/types.html#google.cloud.aiplatform_v1.types.StudySpec.ObservationNoise">[docs]</a>    <span class="k">class</span> <span class="nc">ObservationNoise</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Enum</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Describes the noise level of the repeated observations.</span>
+<span class="sd">        &quot;Noisy&quot; means that the repeated observations with the same Trial</span>
+<span class="sd">        parameters may lead to different metric evaluations.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">OBSERVATION_NOISE_UNSPECIFIED</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">LOW</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">HIGH</span> <span class="o">=</span> <span class="mi">2</span></div>
+
+<div class="viewcode-block" id="StudySpec.MeasurementSelectionType"><a class="viewcode-back" href="../../../../../aiplatform_v1/types.html#google.cloud.aiplatform_v1.types.StudySpec.MeasurementSelectionType">[docs]</a>    <span class="k">class</span> <span class="nc">MeasurementSelectionType</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Enum</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;This indicates which measurement to use if/when the service</span>
+<span class="sd">        automatically selects the final measurement from previously reported</span>
+<span class="sd">        intermediate measurements. Choose this based on two considerations:</span>
+<span class="sd">        A) Do you expect your measurements to monotonically improve? If so,</span>
+<span class="sd">        choose LAST_MEASUREMENT. On the other hand, if you&#39;re in a situation</span>
+<span class="sd">        where your system can &quot;over-train&quot; and you expect the performance to</span>
+<span class="sd">        get better for a while but then start declining, choose</span>
+<span class="sd">        BEST_MEASUREMENT. B) Are your measurements significantly noisy</span>
+<span class="sd">        and/or irreproducible? If so, BEST_MEASUREMENT will tend to be</span>
+<span class="sd">        over-optimistic, and it may be better to choose LAST_MEASUREMENT. If</span>
+<span class="sd">        both or neither of (A) and (B) apply, it doesn&#39;t matter which</span>
+<span class="sd">        selection type is chosen.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">MEASUREMENT_SELECTION_TYPE_UNSPECIFIED</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">LAST_MEASUREMENT</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">BEST_MEASUREMENT</span> <span class="o">=</span> <span class="mi">2</span></div>
+
+<div class="viewcode-block" id="StudySpec.MetricSpec"><a class="viewcode-back" href="../../../../../aiplatform_v1/types.html#google.cloud.aiplatform_v1.types.StudySpec.MetricSpec">[docs]</a>    <span class="k">class</span> <span class="nc">MetricSpec</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Represents a metric to optimize.</span>
+<span class="sd">        Attributes:</span>
+<span class="sd">            metric_id (str):</span>
+<span class="sd">                Required. The ID of the metric. Must not</span>
+<span class="sd">                contain whitespaces and must be unique amongst</span>
+<span class="sd">                all MetricSpecs.</span>
+<span class="sd">            goal (google.cloud.aiplatform_v1.types.StudySpec.MetricSpec.GoalType):</span>
+<span class="sd">                Required. The optimization goal of the</span>
+<span class="sd">                metric.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="StudySpec.MetricSpec.GoalType"><a class="viewcode-back" href="../../../../../aiplatform_v1/types.html#google.cloud.aiplatform_v1.types.StudySpec.MetricSpec.GoalType">[docs]</a>        <span class="k">class</span> <span class="nc">GoalType</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Enum</span><span class="p">):</span>
+            <span class="sa">r</span><span class="sd">&quot;&quot;&quot;The available types of optimization goals.&quot;&quot;&quot;</span>
+            <span class="n">GOAL_TYPE_UNSPECIFIED</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">MAXIMIZE</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="n">MINIMIZE</span> <span class="o">=</span> <span class="mi">2</span></div>
+
+        <span class="n">metric_id</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+        <span class="n">goal</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">ENUM</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">enum</span><span class="o">=</span><span class="s2">&quot;StudySpec.MetricSpec.GoalType&quot;</span><span class="p">,)</span></div>
+
+<div class="viewcode-block" id="StudySpec.ParameterSpec"><a class="viewcode-back" href="../../../../../aiplatform_v1/types.html#google.cloud.aiplatform_v1.types.StudySpec.ParameterSpec">[docs]</a>    <span class="k">class</span> <span class="nc">ParameterSpec</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Represents a single parameter to optimize.</span>
+<span class="sd">        Attributes:</span>
+<span class="sd">            double_value_spec (google.cloud.aiplatform_v1.types.StudySpec.ParameterSpec.DoubleValueSpec):</span>
+<span class="sd">                The value spec for a &#39;DOUBLE&#39; parameter.</span>
+<span class="sd">            integer_value_spec (google.cloud.aiplatform_v1.types.StudySpec.ParameterSpec.IntegerValueSpec):</span>
+<span class="sd">                The value spec for an &#39;INTEGER&#39; parameter.</span>
+<span class="sd">            categorical_value_spec (google.cloud.aiplatform_v1.types.StudySpec.ParameterSpec.CategoricalValueSpec):</span>
+<span class="sd">                The value spec for a &#39;CATEGORICAL&#39; parameter.</span>
+<span class="sd">            discrete_value_spec (google.cloud.aiplatform_v1.types.StudySpec.ParameterSpec.DiscreteValueSpec):</span>
+<span class="sd">                The value spec for a &#39;DISCRETE&#39; parameter.</span>
+<span class="sd">            parameter_id (str):</span>
+<span class="sd">                Required. The ID of the parameter. Must not</span>
+<span class="sd">                contain whitespaces and must be unique amongst</span>
+<span class="sd">                all ParameterSpecs.</span>
+<span class="sd">            scale_type (google.cloud.aiplatform_v1.types.StudySpec.ParameterSpec.ScaleType):</span>
+<span class="sd">                How the parameter should be scaled. Leave unset for</span>
+<span class="sd">                ``CATEGORICAL`` parameters.</span>
+<span class="sd">            conditional_parameter_specs (Sequence[google.cloud.aiplatform_v1.types.StudySpec.ParameterSpec.ConditionalParameterSpec]):</span>
+<span class="sd">                A conditional parameter node is active if the parameter&#39;s</span>
+<span class="sd">                value matches the conditional node&#39;s parent_value_condition.</span>
+
+<span class="sd">                If two items in conditional_parameter_specs have the same</span>
+<span class="sd">                name, they must have disjoint parent_value_condition.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="StudySpec.ParameterSpec.ScaleType"><a class="viewcode-back" href="../../../../../aiplatform_v1/types.html#google.cloud.aiplatform_v1.types.StudySpec.ParameterSpec.ScaleType">[docs]</a>        <span class="k">class</span> <span class="nc">ScaleType</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Enum</span><span class="p">):</span>
+            <span class="sa">r</span><span class="sd">&quot;&quot;&quot;The type of scaling that should be applied to this parameter.&quot;&quot;&quot;</span>
+            <span class="n">SCALE_TYPE_UNSPECIFIED</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">UNIT_LINEAR_SCALE</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="n">UNIT_LOG_SCALE</span> <span class="o">=</span> <span class="mi">2</span>
+            <span class="n">UNIT_REVERSE_LOG_SCALE</span> <span class="o">=</span> <span class="mi">3</span></div>
+
+<div class="viewcode-block" id="StudySpec.ParameterSpec.DoubleValueSpec"><a class="viewcode-back" href="../../../../../aiplatform_v1/types.html#google.cloud.aiplatform_v1.types.StudySpec.ParameterSpec.DoubleValueSpec">[docs]</a>        <span class="k">class</span> <span class="nc">DoubleValueSpec</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+            <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Value specification for a parameter in ``DOUBLE`` type.</span>
+<span class="sd">            Attributes:</span>
+<span class="sd">                min_value (float):</span>
+<span class="sd">                    Required. Inclusive minimum value of the</span>
+<span class="sd">                    parameter.</span>
+<span class="sd">                max_value (float):</span>
+<span class="sd">                    Required. Inclusive maximum value of the</span>
+<span class="sd">                    parameter.</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+
+            <span class="n">min_value</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">DOUBLE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+            <span class="n">max_value</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">DOUBLE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span></div>
+
+<div class="viewcode-block" id="StudySpec.ParameterSpec.IntegerValueSpec"><a class="viewcode-back" href="../../../../../aiplatform_v1/types.html#google.cloud.aiplatform_v1.types.StudySpec.ParameterSpec.IntegerValueSpec">[docs]</a>        <span class="k">class</span> <span class="nc">IntegerValueSpec</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+            <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Value specification for a parameter in ``INTEGER`` type.</span>
+<span class="sd">            Attributes:</span>
+<span class="sd">                min_value (int):</span>
+<span class="sd">                    Required. Inclusive minimum value of the</span>
+<span class="sd">                    parameter.</span>
+<span class="sd">                max_value (int):</span>
+<span class="sd">                    Required. Inclusive maximum value of the</span>
+<span class="sd">                    parameter.</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+
+            <span class="n">min_value</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">INT64</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+            <span class="n">max_value</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">INT64</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span></div>
+
+<div class="viewcode-block" id="StudySpec.ParameterSpec.CategoricalValueSpec"><a class="viewcode-back" href="../../../../../aiplatform_v1/types.html#google.cloud.aiplatform_v1.types.StudySpec.ParameterSpec.CategoricalValueSpec">[docs]</a>        <span class="k">class</span> <span class="nc">CategoricalValueSpec</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+            <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Value specification for a parameter in ``CATEGORICAL`` type.</span>
+<span class="sd">            Attributes:</span>
+<span class="sd">                values (Sequence[str]):</span>
+<span class="sd">                    Required. The list of possible categories.</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+
+            <span class="n">values</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span></div>
+
+<div class="viewcode-block" id="StudySpec.ParameterSpec.DiscreteValueSpec"><a class="viewcode-back" href="../../../../../aiplatform_v1/types.html#google.cloud.aiplatform_v1.types.StudySpec.ParameterSpec.DiscreteValueSpec">[docs]</a>        <span class="k">class</span> <span class="nc">DiscreteValueSpec</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+            <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Value specification for a parameter in ``DISCRETE`` type.</span>
+<span class="sd">            Attributes:</span>
+<span class="sd">                values (Sequence[float]):</span>
+<span class="sd">                    Required. A list of possible values.</span>
+<span class="sd">                    The list should be in increasing order and at</span>
+<span class="sd">                    least 1e-10 apart. For instance, this parameter</span>
+<span class="sd">                    might have possible settings of 1.5, 2.5, and</span>
+<span class="sd">                    4.0. This list should not contain more than</span>
+<span class="sd">                    1,000 values.</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+
+            <span class="n">values</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">DOUBLE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span></div>
+
+<div class="viewcode-block" id="StudySpec.ParameterSpec.ConditionalParameterSpec"><a class="viewcode-back" href="../../../../../aiplatform_v1/types.html#google.cloud.aiplatform_v1.types.StudySpec.ParameterSpec.ConditionalParameterSpec">[docs]</a>        <span class="k">class</span> <span class="nc">ConditionalParameterSpec</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+            <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Represents a parameter spec with condition from its parent</span>
+<span class="sd">            parameter.</span>
+
+<span class="sd">            Attributes:</span>
+<span class="sd">                parent_discrete_values (google.cloud.aiplatform_v1.types.StudySpec.ParameterSpec.ConditionalParameterSpec.DiscreteValueCondition):</span>
+<span class="sd">                    The spec for matching values from a parent parameter of</span>
+<span class="sd">                    ``DISCRETE`` type.</span>
+<span class="sd">                parent_int_values (google.cloud.aiplatform_v1.types.StudySpec.ParameterSpec.ConditionalParameterSpec.IntValueCondition):</span>
+<span class="sd">                    The spec for matching values from a parent parameter of</span>
+<span class="sd">                    ``INTEGER`` type.</span>
+<span class="sd">                parent_categorical_values (google.cloud.aiplatform_v1.types.StudySpec.ParameterSpec.ConditionalParameterSpec.CategoricalValueCondition):</span>
+<span class="sd">                    The spec for matching values from a parent parameter of</span>
+<span class="sd">                    ``CATEGORICAL`` type.</span>
+<span class="sd">                parameter_spec (google.cloud.aiplatform_v1.types.StudySpec.ParameterSpec):</span>
+<span class="sd">                    Required. The spec for a conditional</span>
+<span class="sd">                    parameter.</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="StudySpec.ParameterSpec.ConditionalParameterSpec.DiscreteValueCondition"><a class="viewcode-back" href="../../../../../aiplatform_v1/types.html#google.cloud.aiplatform_v1.types.StudySpec.ParameterSpec.ConditionalParameterSpec.DiscreteValueCondition">[docs]</a>            <span class="k">class</span> <span class="nc">DiscreteValueCondition</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+                <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Represents the spec to match discrete values from parent</span>
+<span class="sd">                parameter.</span>
+
+<span class="sd">                Attributes:</span>
+<span class="sd">                    values (Sequence[float]):</span>
+<span class="sd">                        Required. Matches values of the parent parameter of</span>
+<span class="sd">                        &#39;DISCRETE&#39; type. All values must exist in</span>
+<span class="sd">                        ``discrete_value_spec`` of parent parameter.</span>
+
+<span class="sd">                        The Epsilon of the value matching is 1e-10.</span>
+<span class="sd">                &quot;&quot;&quot;</span>
+
+                <span class="n">values</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">DOUBLE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span></div>
+
+<div class="viewcode-block" id="StudySpec.ParameterSpec.ConditionalParameterSpec.IntValueCondition"><a class="viewcode-back" href="../../../../../aiplatform_v1/types.html#google.cloud.aiplatform_v1.types.StudySpec.ParameterSpec.ConditionalParameterSpec.IntValueCondition">[docs]</a>            <span class="k">class</span> <span class="nc">IntValueCondition</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+                <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Represents the spec to match integer values from parent</span>
+<span class="sd">                parameter.</span>
+
+<span class="sd">                Attributes:</span>
+<span class="sd">                    values (Sequence[int]):</span>
+<span class="sd">                        Required. Matches values of the parent parameter of</span>
+<span class="sd">                        &#39;INTEGER&#39; type. All values must lie in</span>
+<span class="sd">                        ``integer_value_spec`` of parent parameter.</span>
+<span class="sd">                &quot;&quot;&quot;</span>
+
+                <span class="n">values</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">INT64</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span></div>
+
+<div class="viewcode-block" id="StudySpec.ParameterSpec.ConditionalParameterSpec.CategoricalValueCondition"><a class="viewcode-back" href="../../../../../aiplatform_v1/types.html#google.cloud.aiplatform_v1.types.StudySpec.ParameterSpec.ConditionalParameterSpec.CategoricalValueCondition">[docs]</a>            <span class="k">class</span> <span class="nc">CategoricalValueCondition</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+                <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Represents the spec to match categorical values from parent</span>
+<span class="sd">                parameter.</span>
+
+<span class="sd">                Attributes:</span>
+<span class="sd">                    values (Sequence[str]):</span>
+<span class="sd">                        Required. Matches values of the parent parameter of</span>
+<span class="sd">                        &#39;CATEGORICAL&#39; type. All values must exist in</span>
+<span class="sd">                        ``categorical_value_spec`` of parent parameter.</span>
+<span class="sd">                &quot;&quot;&quot;</span>
+
+                <span class="n">values</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span></div>
+
+            <span class="n">parent_discrete_values</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+                <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span>
+                <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                <span class="n">oneof</span><span class="o">=</span><span class="s2">&quot;parent_value_condition&quot;</span><span class="p">,</span>
+                <span class="n">message</span><span class="o">=</span><span class="s2">&quot;StudySpec.ParameterSpec.ConditionalParameterSpec.DiscreteValueCondition&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">parent_int_values</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+                <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span>
+                <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+                <span class="n">oneof</span><span class="o">=</span><span class="s2">&quot;parent_value_condition&quot;</span><span class="p">,</span>
+                <span class="n">message</span><span class="o">=</span><span class="s2">&quot;StudySpec.ParameterSpec.ConditionalParameterSpec.IntValueCondition&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">parent_categorical_values</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+                <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span>
+                <span class="n">number</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+                <span class="n">oneof</span><span class="o">=</span><span class="s2">&quot;parent_value_condition&quot;</span><span class="p">,</span>
+                <span class="n">message</span><span class="o">=</span><span class="s2">&quot;StudySpec.ParameterSpec.ConditionalParameterSpec.CategoricalValueCondition&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">parameter_spec</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+                <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;StudySpec.ParameterSpec&quot;</span><span class="p">,</span>
+            <span class="p">)</span></div>
+
+        <span class="n">double_value_spec</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+            <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span>
+            <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+            <span class="n">oneof</span><span class="o">=</span><span class="s2">&quot;parameter_value_spec&quot;</span><span class="p">,</span>
+            <span class="n">message</span><span class="o">=</span><span class="s2">&quot;StudySpec.ParameterSpec.DoubleValueSpec&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">integer_value_spec</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+            <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span>
+            <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+            <span class="n">oneof</span><span class="o">=</span><span class="s2">&quot;parameter_value_spec&quot;</span><span class="p">,</span>
+            <span class="n">message</span><span class="o">=</span><span class="s2">&quot;StudySpec.ParameterSpec.IntegerValueSpec&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">categorical_value_spec</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+            <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span>
+            <span class="n">number</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+            <span class="n">oneof</span><span class="o">=</span><span class="s2">&quot;parameter_value_spec&quot;</span><span class="p">,</span>
+            <span class="n">message</span><span class="o">=</span><span class="s2">&quot;StudySpec.ParameterSpec.CategoricalValueSpec&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">discrete_value_spec</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+            <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span>
+            <span class="n">number</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+            <span class="n">oneof</span><span class="o">=</span><span class="s2">&quot;parameter_value_spec&quot;</span><span class="p">,</span>
+            <span class="n">message</span><span class="o">=</span><span class="s2">&quot;StudySpec.ParameterSpec.DiscreteValueSpec&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">parameter_id</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+        <span class="n">scale_type</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+            <span class="n">proto</span><span class="o">.</span><span class="n">ENUM</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">enum</span><span class="o">=</span><span class="s2">&quot;StudySpec.ParameterSpec.ScaleType&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">conditional_parameter_specs</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span>
+            <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span>
+            <span class="n">number</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+            <span class="n">message</span><span class="o">=</span><span class="s2">&quot;StudySpec.ParameterSpec.ConditionalParameterSpec&quot;</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+    <span class="n">metrics</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">MetricSpec</span><span class="p">,)</span>
+    <span class="n">parameters</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">ParameterSpec</span><span class="p">,)</span>
+    <span class="n">algorithm</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">ENUM</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">enum</span><span class="o">=</span><span class="n">Algorithm</span><span class="p">,)</span>
+    <span class="n">observation_noise</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">ENUM</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">enum</span><span class="o">=</span><span class="n">ObservationNoise</span><span class="p">,)</span>
+    <span class="n">measurement_selection_type</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">ENUM</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">enum</span><span class="o">=</span><span class="n">MeasurementSelectionType</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Measurement"><a class="viewcode-back" href="../../../../../aiplatform_v1/types.html#google.cloud.aiplatform_v1.types.Measurement">[docs]</a><span class="k">class</span> <span class="nc">Measurement</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;A message representing a Measurement of a Trial. A</span>
+<span class="sd">    Measurement contains the Metrics got by executing a Trial using</span>
+<span class="sd">    suggested hyperparameter values.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        step_count (int):</span>
+<span class="sd">            Output only. The number of steps the machine</span>
+<span class="sd">            learning model has been trained for. Must be</span>
+<span class="sd">            non-negative.</span>
+<span class="sd">        metrics (Sequence[google.cloud.aiplatform_v1.types.Measurement.Metric]):</span>
+<span class="sd">            Output only. A list of metrics got by</span>
+<span class="sd">            evaluating the objective functions using</span>
+<span class="sd">            suggested Parameter values.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Measurement.Metric"><a class="viewcode-back" href="../../../../../aiplatform_v1/types.html#google.cloud.aiplatform_v1.types.Measurement.Metric">[docs]</a>    <span class="k">class</span> <span class="nc">Metric</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;A message representing a metric in the measurement.</span>
+<span class="sd">        Attributes:</span>
+<span class="sd">            metric_id (str):</span>
+<span class="sd">                Output only. The ID of the Metric. The Metric should be</span>
+<span class="sd">                defined in [StudySpec&#39;s</span>
+<span class="sd">                Metrics][google.cloud.aiplatform.v1.StudySpec.metrics].</span>
+<span class="sd">            value (float):</span>
+<span class="sd">                Output only. The value for this metric.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">metric_id</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">DOUBLE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span></div>
+
+    <span class="n">step_count</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">INT64</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span>
+    <span class="n">metrics</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">Metric</span><span class="p">,)</span></div>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">__protobuf__</span><span class="o">.</span><span class="n">manifest</span><span class="p">))</span>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../../../index.html">google-cloud-aiplatform</a></h1>
+
+
+
+<p class="blurb">Google Cloud Client Libraries for google-cloud-aiplatform</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=googleapis&repo=python-aiplatform&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform.html">Google Cloud Aiplatform SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1/services.html">Services for Google Cloud Aiplatform v1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1/types.html">Types for Google Cloud Aiplatform v1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1beta1/services.html">Services for Google Cloud Aiplatform v1beta1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1beta1/types.html">Types for Google Cloud Aiplatform v1beta1 API</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../changelog.html">Changelog</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Google.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+    <a href="https://github.com/googleapis/python-aiplatform" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,207 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>EndpointService &#8212; google-cloud-aiplatform  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="JobService" href="job_service.html" />
+    <link rel="prev" title="DatasetService" href="dataset_service.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+          	<div class="admonition" id="python2-eol"> 
+          	 As of January 1, 2020 this library no longer supports Python 2 on the latest released version. 
+          	 Library versions released prior to that date will continue to be available. For more information please
+          	 visit <a href="https://cloud.google.com/python/docs/python2-sunset/">Python 2 support on Google Cloud</a>.
+          	</div>
+            
+  <section id="module-google.cloud.aiplatform_v1.services.endpoint_service">
+<span id="endpointservice"></span><h1>EndpointService<a class="headerlink" href="#module-google.cloud.aiplatform_v1.services.endpoint_service" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-google.cloud.aiplatform_v1.services.endpoint_service.pagers"></span><dl class="py class">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1.services.endpoint_service.pagers.ListEndpointsAsyncPager">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">google.cloud.aiplatform_v1.services.endpoint_service.pagers.</span></span><span class="sig-name descname"><span class="pre">ListEndpointsAsyncPager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">Awaitable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="types.html#google.cloud.aiplatform_v1.types.ListEndpointsResponse" title="google.cloud.aiplatform_v1.types.endpoint_service.ListEndpointsResponse"><span class="pre">google.cloud.aiplatform_v1.types.endpoint_service.ListEndpointsResponse</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="types.html#google.cloud.aiplatform_v1.types.ListEndpointsRequest" title="google.cloud.aiplatform_v1.types.endpoint_service.ListEndpointsRequest"><span class="pre">google.cloud.aiplatform_v1.types.endpoint_service.ListEndpointsRequest</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">response</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="types.html#google.cloud.aiplatform_v1.types.ListEndpointsResponse" title="google.cloud.aiplatform_v1.types.endpoint_service.ListEndpointsResponse"><span class="pre">google.cloud.aiplatform_v1.types.endpoint_service.ListEndpointsResponse</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">()</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/google/cloud/aiplatform_v1/services/endpoint_service/pagers.html#ListEndpointsAsyncPager"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#google.cloud.aiplatform_v1.services.endpoint_service.pagers.ListEndpointsAsyncPager" title="Permalink to this definition">¶</a></dt>
+<dd><p>A pager for iterating through <code class="docutils literal notranslate"><span class="pre">list_endpoints</span></code> requests.</p>
+<p>This class thinly wraps an initial
+<a class="reference internal" href="types.html#google.cloud.aiplatform_v1.types.ListEndpointsResponse" title="google.cloud.aiplatform_v1.types.ListEndpointsResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">google.cloud.aiplatform_v1.types.ListEndpointsResponse</span></code></a> object, and
+provides an <code class="docutils literal notranslate"><span class="pre">__aiter__</span></code> method to iterate through its
+<code class="docutils literal notranslate"><span class="pre">endpoints</span></code> field.</p>
+<p>If there are more pages, the <code class="docutils literal notranslate"><span class="pre">__aiter__</span></code> method will make additional
+<code class="docutils literal notranslate"><span class="pre">ListEndpoints</span></code> requests and continue to iterate
+through the <code class="docutils literal notranslate"><span class="pre">endpoints</span></code> field on the
+corresponding responses.</p>
+<p>All the usual <a class="reference internal" href="types.html#google.cloud.aiplatform_v1.types.ListEndpointsResponse" title="google.cloud.aiplatform_v1.types.ListEndpointsResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">google.cloud.aiplatform_v1.types.ListEndpointsResponse</span></code></a>
+attributes are available on the pager. If multiple requests are made, only
+the most recent response is retained, and thus used for attribute lookup.</p>
+<p>Instantiates the pager.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>method</strong> (<em>Callable</em>) – The method that was originally called, and
+which instantiated this pager.</p></li>
+<li><p><strong>request</strong> (<a class="reference internal" href="types.html#google.cloud.aiplatform_v1.types.ListEndpointsRequest" title="google.cloud.aiplatform_v1.types.ListEndpointsRequest"><em>google.cloud.aiplatform_v1.types.ListEndpointsRequest</em></a>) – The initial request object.</p></li>
+<li><p><strong>response</strong> (<a class="reference internal" href="types.html#google.cloud.aiplatform_v1.types.ListEndpointsResponse" title="google.cloud.aiplatform_v1.types.ListEndpointsResponse"><em>google.cloud.aiplatform_v1.types.ListEndpointsResponse</em></a>) – The initial response object.</p></li>
+<li><p><strong>metadata</strong> (<em>Sequence</em><em>[</em><em>Tuple</em><em>[</em><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>, </em><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>]</em><em>]</em>) – Strings which should be
+sent along with the request as metadata.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1.services.endpoint_service.pagers.ListEndpointsPager">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">google.cloud.aiplatform_v1.services.endpoint_service.pagers.</span></span><span class="sig-name descname"><span class="pre">ListEndpointsPager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="types.html#google.cloud.aiplatform_v1.types.ListEndpointsResponse" title="google.cloud.aiplatform_v1.types.endpoint_service.ListEndpointsResponse"><span class="pre">google.cloud.aiplatform_v1.types.endpoint_service.ListEndpointsResponse</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="types.html#google.cloud.aiplatform_v1.types.ListEndpointsRequest" title="google.cloud.aiplatform_v1.types.endpoint_service.ListEndpointsRequest"><span class="pre">google.cloud.aiplatform_v1.types.endpoint_service.ListEndpointsRequest</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">response</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="types.html#google.cloud.aiplatform_v1.types.ListEndpointsResponse" title="google.cloud.aiplatform_v1.types.endpoint_service.ListEndpointsResponse"><span class="pre">google.cloud.aiplatform_v1.types.endpoint_service.ListEndpointsResponse</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">()</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/google/cloud/aiplatform_v1/services/endpoint_service/pagers.html#ListEndpointsPager"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#google.cloud.aiplatform_v1.services.endpoint_service.pagers.ListEndpointsPager" title="Permalink to this definition">¶</a></dt>
+<dd><p>A pager for iterating through <code class="docutils literal notranslate"><span class="pre">list_endpoints</span></code> requests.</p>
+<p>This class thinly wraps an initial
+<a class="reference internal" href="types.html#google.cloud.aiplatform_v1.types.ListEndpointsResponse" title="google.cloud.aiplatform_v1.types.ListEndpointsResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">google.cloud.aiplatform_v1.types.ListEndpointsResponse</span></code></a> object, and
+provides an <code class="docutils literal notranslate"><span class="pre">__iter__</span></code> method to iterate through its
+<code class="docutils literal notranslate"><span class="pre">endpoints</span></code> field.</p>
+<p>If there are more pages, the <code class="docutils literal notranslate"><span class="pre">__iter__</span></code> method will make additional
+<code class="docutils literal notranslate"><span class="pre">ListEndpoints</span></code> requests and continue to iterate
+through the <code class="docutils literal notranslate"><span class="pre">endpoints</span></code> field on the
+corresponding responses.</p>
+<p>All the usual <a class="reference internal" href="types.html#google.cloud.aiplatform_v1.types.ListEndpointsResponse" title="google.cloud.aiplatform_v1.types.ListEndpointsResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">google.cloud.aiplatform_v1.types.ListEndpointsResponse</span></code></a>
+attributes are available on the pager. If multiple requests are made, only
+the most recent response is retained, and thus used for attribute lookup.</p>
+<p>Instantiate the pager.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>method</strong> (<em>Callable</em>) – The method that was originally called, and
+which instantiated this pager.</p></li>
+<li><p><strong>request</strong> (<a class="reference internal" href="types.html#google.cloud.aiplatform_v1.types.ListEndpointsRequest" title="google.cloud.aiplatform_v1.types.ListEndpointsRequest"><em>google.cloud.aiplatform_v1.types.ListEndpointsRequest</em></a>) – The initial request object.</p></li>
+<li><p><strong>response</strong> (<a class="reference internal" href="types.html#google.cloud.aiplatform_v1.types.ListEndpointsResponse" title="google.cloud.aiplatform_v1.types.ListEndpointsResponse"><em>google.cloud.aiplatform_v1.types.ListEndpointsResponse</em></a>) – The initial response object.</p></li>
+<li><p><strong>metadata</strong> (<em>Sequence</em><em>[</em><em>Tuple</em><em>[</em><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>, </em><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>]</em><em>]</em>) – Strings which should be
+sent along with the request as metadata.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">google-cloud-aiplatform</a></h1>
+
+
+
+<p class="blurb">Google Cloud Client Libraries for google-cloud-aiplatform</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=googleapis&repo=python-aiplatform&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../aiplatform.html">Google Cloud Aiplatform SDK</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="services.html">Services for Google Cloud Aiplatform v1 API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="dataset_service.html">DatasetService</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">EndpointService</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_service.html">JobService</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_service.html">MigrationService</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_service.html">ModelService</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipeline_service.html">PipelineService</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prediction_service.html">PredictionService</a></li>
+<li class="toctree-l2"><a class="reference internal" href="specialist_pool_service.html">SpecialistPoolService</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="types.html">Types for Google Cloud Aiplatform v1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aiplatform_v1beta1/services.html">Services for Google Cloud Aiplatform v1beta1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aiplatform_v1beta1/types.html">Types for Google Cloud Aiplatform v1beta1 API</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="services.html">Services for Google Cloud Aiplatform v1 API</a><ul>
+      <li>Previous: <a href="dataset_service.html" title="previous chapter">DatasetService</a></li>
+      <li>Next: <a href="job_service.html" title="next chapter">JobService</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Google.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/aiplatform_v1/endpoint_service.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+    <a href="https://github.com/googleapis/python-aiplatform" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>

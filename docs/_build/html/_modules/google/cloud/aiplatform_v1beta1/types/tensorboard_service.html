@@ -1,0 +1,978 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>google.cloud.aiplatform_v1beta1.types.tensorboard_service &#8212; google-cloud-aiplatform  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/alabaster.css" />
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+          	<div class="admonition" id="python2-eol"> 
+          	 As of January 1, 2020 this library no longer supports Python 2 on the latest released version. 
+          	 Library versions released prior to that date will continue to be available. For more information please
+          	 visit <a href="https://cloud.google.com/python/docs/python2-sunset/">Python 2 support on Google Cloud</a>.
+          	</div>
+            
+  <h1>Source code for google.cloud.aiplatform_v1beta1.types.tensorboard_service</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Copyright 2020 Google LLC</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="c1">#</span>
+<span class="kn">import</span> <span class="nn">proto</span>  <span class="c1"># type: ignore</span>
+
+<span class="kn">from</span> <span class="nn">google.cloud.aiplatform_v1beta1.types</span> <span class="kn">import</span> <span class="n">operation</span>
+<span class="kn">from</span> <span class="nn">google.cloud.aiplatform_v1beta1.types</span> <span class="kn">import</span> <span class="n">tensorboard</span> <span class="k">as</span> <span class="n">gca_tensorboard</span>
+<span class="kn">from</span> <span class="nn">google.cloud.aiplatform_v1beta1.types</span> <span class="kn">import</span> <span class="n">tensorboard_data</span>
+<span class="kn">from</span> <span class="nn">google.cloud.aiplatform_v1beta1.types</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">tensorboard_experiment</span> <span class="k">as</span> <span class="n">gca_tensorboard_experiment</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">google.cloud.aiplatform_v1beta1.types</span> <span class="kn">import</span> <span class="n">tensorboard_run</span> <span class="k">as</span> <span class="n">gca_tensorboard_run</span>
+<span class="kn">from</span> <span class="nn">google.cloud.aiplatform_v1beta1.types</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">tensorboard_time_series</span> <span class="k">as</span> <span class="n">gca_tensorboard_time_series</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">google.protobuf</span> <span class="kn">import</span> <span class="n">field_mask_pb2</span>  <span class="c1"># type: ignore</span>
+
+
+<span class="n">__protobuf__</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">module</span><span class="p">(</span>
+    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;google.cloud.aiplatform.v1beta1&quot;</span><span class="p">,</span>
+    <span class="n">manifest</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;CreateTensorboardRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;GetTensorboardRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ListTensorboardsRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ListTensorboardsResponse&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;UpdateTensorboardRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;DeleteTensorboardRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;CreateTensorboardExperimentRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;GetTensorboardExperimentRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ListTensorboardExperimentsRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ListTensorboardExperimentsResponse&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;UpdateTensorboardExperimentRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;DeleteTensorboardExperimentRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;CreateTensorboardRunRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;GetTensorboardRunRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ReadTensorboardBlobDataRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ReadTensorboardBlobDataResponse&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ListTensorboardRunsRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ListTensorboardRunsResponse&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;UpdateTensorboardRunRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;DeleteTensorboardRunRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;CreateTensorboardTimeSeriesRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;GetTensorboardTimeSeriesRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ListTensorboardTimeSeriesRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ListTensorboardTimeSeriesResponse&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;UpdateTensorboardTimeSeriesRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;DeleteTensorboardTimeSeriesRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ReadTensorboardTimeSeriesDataRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ReadTensorboardTimeSeriesDataResponse&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;WriteTensorboardRunDataRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;WriteTensorboardRunDataResponse&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ExportTensorboardTimeSeriesDataRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ExportTensorboardTimeSeriesDataResponse&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;CreateTensorboardOperationMetadata&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;UpdateTensorboardOperationMetadata&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">)</span>
+
+
+<div class="viewcode-block" id="CreateTensorboardRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.CreateTensorboardRequest">[docs]</a><span class="k">class</span> <span class="nc">CreateTensorboardRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [TensorboardService.CreateTensorboard][google.cloud.aiplatform.v1beta1.TensorboardService.CreateTensorboard].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        parent (str):</span>
+<span class="sd">            Required. The resource name of the Location to create the</span>
+<span class="sd">            Tensorboard in. Format:</span>
+<span class="sd">            ``projects/{project}/locations/{location}``</span>
+<span class="sd">        tensorboard (google.cloud.aiplatform_v1beta1.types.Tensorboard):</span>
+<span class="sd">            Required. The Tensorboard to create.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="n">tensorboard</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">gca_tensorboard</span><span class="o">.</span><span class="n">Tensorboard</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="GetTensorboardRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.GetTensorboardRequest">[docs]</a><span class="k">class</span> <span class="nc">GetTensorboardRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [TensorboardService.GetTensorboard][google.cloud.aiplatform.v1beta1.TensorboardService.GetTensorboard].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        name (str):</span>
+<span class="sd">            Required. The name of the Tensorboard resource. Format:</span>
+<span class="sd">            ``projects/{project}/locations/{location}/tensorboards/{tensorboard}``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="ListTensorboardsRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ListTensorboardsRequest">[docs]</a><span class="k">class</span> <span class="nc">ListTensorboardsRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [TensorboardService.ListTensorboards][google.cloud.aiplatform.v1beta1.TensorboardService.ListTensorboards].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        parent (str):</span>
+<span class="sd">            Required. The resource name of the Location</span>
+<span class="sd">            to list Tensorboards. Format:</span>
+<span class="sd">            &#39;projects/{project}/locations/{location}&#39;</span>
+<span class="sd">        filter (str):</span>
+<span class="sd">            Lists the Tensorboards that match the filter</span>
+<span class="sd">            expression.</span>
+<span class="sd">        page_size (int):</span>
+<span class="sd">            The maximum number of Tensorboards to return.</span>
+<span class="sd">            The service may return fewer than this value. If</span>
+<span class="sd">            unspecified, at most 100 Tensorboards will be</span>
+<span class="sd">            returned. The maximum value is 100; values above</span>
+<span class="sd">            100 will be coerced to 100.</span>
+<span class="sd">        page_token (str):</span>
+<span class="sd">            A page token, received from a previous</span>
+<span class="sd">            [TensorboardService.ListTensorboards][google.cloud.aiplatform.v1beta1.TensorboardService.ListTensorboards]</span>
+<span class="sd">            call. Provide this to retrieve the subsequent page.</span>
+
+<span class="sd">            When paginating, all other parameters provided to</span>
+<span class="sd">            [TensorboardService.ListTensorboards][google.cloud.aiplatform.v1beta1.TensorboardService.ListTensorboards]</span>
+<span class="sd">            must match the call that provided the page token.</span>
+<span class="sd">        order_by (str):</span>
+<span class="sd">            Field to use to sort the list.</span>
+<span class="sd">        read_mask (google.protobuf.field_mask_pb2.FieldMask):</span>
+<span class="sd">            Mask specifying which fields to read.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="nb">filter</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span>
+    <span class="n">page_size</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">INT32</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,)</span>
+    <span class="n">page_token</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">4</span><span class="p">,)</span>
+    <span class="n">order_by</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">5</span><span class="p">,)</span>
+    <span class="n">read_mask</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">field_mask_pb2</span><span class="o">.</span><span class="n">FieldMask</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="ListTensorboardsResponse"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ListTensorboardsResponse">[docs]</a><span class="k">class</span> <span class="nc">ListTensorboardsResponse</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Response message for</span>
+<span class="sd">    [TensorboardService.ListTensorboards][google.cloud.aiplatform.v1beta1.TensorboardService.ListTensorboards].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        tensorboards (Sequence[google.cloud.aiplatform_v1beta1.types.Tensorboard]):</span>
+<span class="sd">            The Tensorboards mathching the request.</span>
+<span class="sd">        next_page_token (str):</span>
+<span class="sd">            A token, which can be sent as</span>
+<span class="sd">            [ListTensorboardsRequest.page_token][google.cloud.aiplatform.v1beta1.ListTensorboardsRequest.page_token]</span>
+<span class="sd">            to retrieve the next page. If this field is omitted, there</span>
+<span class="sd">            are no subsequent pages.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">raw_page</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="n">tensorboards</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">gca_tensorboard</span><span class="o">.</span><span class="n">Tensorboard</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">next_page_token</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="UpdateTensorboardRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.UpdateTensorboardRequest">[docs]</a><span class="k">class</span> <span class="nc">UpdateTensorboardRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [TensorboardService.UpdateTensorboard][google.cloud.aiplatform.v1beta1.TensorboardService.UpdateTensorboard].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        update_mask (google.protobuf.field_mask_pb2.FieldMask):</span>
+<span class="sd">            Required. Field mask is used to specify the fields to be</span>
+<span class="sd">            overwritten in the Tensorboard resource by the update. The</span>
+<span class="sd">            fields specified in the update_mask are relative to the</span>
+<span class="sd">            resource, not the full request. A field will be overwritten</span>
+<span class="sd">            if it is in the mask. If the user does not provide a mask</span>
+<span class="sd">            then all fields will be overwritten if new values are</span>
+<span class="sd">            specified.</span>
+<span class="sd">        tensorboard (google.cloud.aiplatform_v1beta1.types.Tensorboard):</span>
+<span class="sd">            Required. The Tensorboard&#39;s ``name`` field is used to</span>
+<span class="sd">            identify the Tensorboard to be updated. Format:</span>
+<span class="sd">            ``projects/{project}/locations/{location}/tensorboards/{tensorboard}``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">update_mask</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">field_mask_pb2</span><span class="o">.</span><span class="n">FieldMask</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">tensorboard</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">gca_tensorboard</span><span class="o">.</span><span class="n">Tensorboard</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="DeleteTensorboardRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.DeleteTensorboardRequest">[docs]</a><span class="k">class</span> <span class="nc">DeleteTensorboardRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [TensorboardService.DeleteTensorboard][google.cloud.aiplatform.v1beta1.TensorboardService.DeleteTensorboard].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        name (str):</span>
+<span class="sd">            Required. The name of the Tensorboard to be deleted. Format:</span>
+<span class="sd">            ``projects/{project}/locations/{location}/tensorboards/{tensorboard}``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="CreateTensorboardExperimentRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.CreateTensorboardExperimentRequest">[docs]</a><span class="k">class</span> <span class="nc">CreateTensorboardExperimentRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [TensorboardService.CreateTensorboardExperiment][google.cloud.aiplatform.v1beta1.TensorboardService.CreateTensorboardExperiment].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        parent (str):</span>
+<span class="sd">            Required. The resource name of the Tensorboard to create the</span>
+<span class="sd">            TensorboardExperiment in. Format:</span>
+<span class="sd">            ``projects/{project}/locations/{location}/tensorboards/{tensorboard}``</span>
+<span class="sd">        tensorboard_experiment (google.cloud.aiplatform_v1beta1.types.TensorboardExperiment):</span>
+<span class="sd">            The TensorboardExperiment to create.</span>
+<span class="sd">        tensorboard_experiment_id (str):</span>
+<span class="sd">            Required. The ID to use for the Tensorboard experiment,</span>
+<span class="sd">            which will become the final component of the Tensorboard</span>
+<span class="sd">            experiment&#39;s resource name.</span>
+
+<span class="sd">            This value should be 1-128 characters, and valid characters</span>
+<span class="sd">            are /[a-z][0-9]-/.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="n">tensorboard_experiment</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span>
+        <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="n">message</span><span class="o">=</span><span class="n">gca_tensorboard_experiment</span><span class="o">.</span><span class="n">TensorboardExperiment</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">tensorboard_experiment_id</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="GetTensorboardExperimentRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.GetTensorboardExperimentRequest">[docs]</a><span class="k">class</span> <span class="nc">GetTensorboardExperimentRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [TensorboardService.GetTensorboardExperiment][google.cloud.aiplatform.v1beta1.TensorboardService.GetTensorboardExperiment].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        name (str):</span>
+<span class="sd">            Required. The name of the TensorboardExperiment resource.</span>
+<span class="sd">            Format:</span>
+<span class="sd">            ``projects/{project}/locations/{location}/tensorboards/{tensorboard}/experiments/{experiment}``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="ListTensorboardExperimentsRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ListTensorboardExperimentsRequest">[docs]</a><span class="k">class</span> <span class="nc">ListTensorboardExperimentsRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [TensorboardService.ListTensorboardExperiments][google.cloud.aiplatform.v1beta1.TensorboardService.ListTensorboardExperiments].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        parent (str):</span>
+<span class="sd">            Required. The resource name of the</span>
+<span class="sd">            Tensorboard to list TensorboardExperiments.</span>
+<span class="sd">            Format:</span>
+<span class="sd">            &#39;projects/{project}/locations/{location}/tensorboards/{tensorboard}&#39;</span>
+<span class="sd">        filter (str):</span>
+<span class="sd">            Lists the TensorboardExperiments that match</span>
+<span class="sd">            the filter expression.</span>
+<span class="sd">        page_size (int):</span>
+<span class="sd">            The maximum number of TensorboardExperiments</span>
+<span class="sd">            to return. The service may return fewer than</span>
+<span class="sd">            this value. If unspecified, at most 50</span>
+<span class="sd">            TensorboardExperiments will be returned. The</span>
+<span class="sd">            maximum value is 1000; values above 1000 will be</span>
+<span class="sd">            coerced to 1000.</span>
+<span class="sd">        page_token (str):</span>
+<span class="sd">            A page token, received from a previous</span>
+<span class="sd">            [TensorboardService.ListTensorboardExperiments][google.cloud.aiplatform.v1beta1.TensorboardService.ListTensorboardExperiments]</span>
+<span class="sd">            call. Provide this to retrieve the subsequent page.</span>
+
+<span class="sd">            When paginating, all other parameters provided to</span>
+<span class="sd">            [TensorboardService.ListTensorboardExperiments][google.cloud.aiplatform.v1beta1.TensorboardService.ListTensorboardExperiments]</span>
+<span class="sd">            must match the call that provided the page token.</span>
+<span class="sd">        order_by (str):</span>
+<span class="sd">            Field to use to sort the list.</span>
+<span class="sd">        read_mask (google.protobuf.field_mask_pb2.FieldMask):</span>
+<span class="sd">            Mask specifying which fields to read.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="nb">filter</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span>
+    <span class="n">page_size</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">INT32</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,)</span>
+    <span class="n">page_token</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">4</span><span class="p">,)</span>
+    <span class="n">order_by</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">5</span><span class="p">,)</span>
+    <span class="n">read_mask</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">field_mask_pb2</span><span class="o">.</span><span class="n">FieldMask</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="ListTensorboardExperimentsResponse"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ListTensorboardExperimentsResponse">[docs]</a><span class="k">class</span> <span class="nc">ListTensorboardExperimentsResponse</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Response message for</span>
+<span class="sd">    [TensorboardService.ListTensorboardExperiments][google.cloud.aiplatform.v1beta1.TensorboardService.ListTensorboardExperiments].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        tensorboard_experiments (Sequence[google.cloud.aiplatform_v1beta1.types.TensorboardExperiment]):</span>
+<span class="sd">            The TensorboardExperiments mathching the</span>
+<span class="sd">            request.</span>
+<span class="sd">        next_page_token (str):</span>
+<span class="sd">            A token, which can be sent as</span>
+<span class="sd">            [ListTensorboardExperimentsRequest.page_token][google.cloud.aiplatform.v1beta1.ListTensorboardExperimentsRequest.page_token]</span>
+<span class="sd">            to retrieve the next page. If this field is omitted, there</span>
+<span class="sd">            are no subsequent pages.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">raw_page</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="n">tensorboard_experiments</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span>
+        <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">message</span><span class="o">=</span><span class="n">gca_tensorboard_experiment</span><span class="o">.</span><span class="n">TensorboardExperiment</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">next_page_token</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="UpdateTensorboardExperimentRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.UpdateTensorboardExperimentRequest">[docs]</a><span class="k">class</span> <span class="nc">UpdateTensorboardExperimentRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [TensorboardService.UpdateTensorboardExperiment][google.cloud.aiplatform.v1beta1.TensorboardService.UpdateTensorboardExperiment].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        update_mask (google.protobuf.field_mask_pb2.FieldMask):</span>
+<span class="sd">            Required. Field mask is used to specify the fields to be</span>
+<span class="sd">            overwritten in the TensorboardExperiment resource by the</span>
+<span class="sd">            update. The fields specified in the update_mask are relative</span>
+<span class="sd">            to the resource, not the full request. A field will be</span>
+<span class="sd">            overwritten if it is in the mask. If the user does not</span>
+<span class="sd">            provide a mask then all fields will be overwritten if new</span>
+<span class="sd">            values are specified.</span>
+<span class="sd">        tensorboard_experiment (google.cloud.aiplatform_v1beta1.types.TensorboardExperiment):</span>
+<span class="sd">            Required. The TensorboardExperiment&#39;s ``name`` field is used</span>
+<span class="sd">            to identify the TensorboardExperiment to be updated. Format:</span>
+<span class="sd">            ``projects/{project}/locations/{location}/tensorboards/{tensorboard}/experiments/{experiment}``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">update_mask</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">field_mask_pb2</span><span class="o">.</span><span class="n">FieldMask</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">tensorboard_experiment</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span>
+        <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="n">message</span><span class="o">=</span><span class="n">gca_tensorboard_experiment</span><span class="o">.</span><span class="n">TensorboardExperiment</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="DeleteTensorboardExperimentRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.DeleteTensorboardExperimentRequest">[docs]</a><span class="k">class</span> <span class="nc">DeleteTensorboardExperimentRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [TensorboardService.DeleteTensorboardExperiment][google.cloud.aiplatform.v1beta1.TensorboardService.DeleteTensorboardExperiment].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        name (str):</span>
+<span class="sd">            Required. The name of the TensorboardExperiment to be</span>
+<span class="sd">            deleted. Format:</span>
+<span class="sd">            ``projects/{project}/locations/{location}/tensorboards/{tensorboard}/experiments/{experiment}``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="CreateTensorboardRunRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.CreateTensorboardRunRequest">[docs]</a><span class="k">class</span> <span class="nc">CreateTensorboardRunRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [TensorboardService.CreateTensorboardRun][google.cloud.aiplatform.v1beta1.TensorboardService.CreateTensorboardRun].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        parent (str):</span>
+<span class="sd">            Required. The resource name of the Tensorboard to create the</span>
+<span class="sd">            TensorboardRun in. Format:</span>
+<span class="sd">            ``projects/{project}/locations/{location}/tensorboards/{tensorboard}/experiments/{experiment}``</span>
+<span class="sd">        tensorboard_run (google.cloud.aiplatform_v1beta1.types.TensorboardRun):</span>
+<span class="sd">            Required. The TensorboardRun to create.</span>
+<span class="sd">        tensorboard_run_id (str):</span>
+<span class="sd">            Required. The ID to use for the Tensorboard run, which will</span>
+<span class="sd">            become the final component of the Tensorboard run&#39;s resource</span>
+<span class="sd">            name.</span>
+
+<span class="sd">            This value should be 1-128 characters, and valid characters</span>
+<span class="sd">            are /[a-z][0-9]-/.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="n">tensorboard_run</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">gca_tensorboard_run</span><span class="o">.</span><span class="n">TensorboardRun</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">tensorboard_run_id</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="GetTensorboardRunRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.GetTensorboardRunRequest">[docs]</a><span class="k">class</span> <span class="nc">GetTensorboardRunRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [TensorboardService.GetTensorboardRun][google.cloud.aiplatform.v1beta1.TensorboardService.GetTensorboardRun].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        name (str):</span>
+<span class="sd">            Required. The name of the TensorboardRun resource. Format:</span>
+<span class="sd">            ``projects/{project}/locations/{location}/tensorboards/{tensorboard}/experiments/{experiment}/runs/{run}``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="ReadTensorboardBlobDataRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ReadTensorboardBlobDataRequest">[docs]</a><span class="k">class</span> <span class="nc">ReadTensorboardBlobDataRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [TensorboardService.ReadTensorboardBlobData][google.cloud.aiplatform.v1beta1.TensorboardService.ReadTensorboardBlobData].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        time_series (str):</span>
+<span class="sd">            Required. The resource name of the TensorboardTimeSeries to</span>
+<span class="sd">            list Blobs. Format:</span>
+<span class="sd">            &#39;projects/{project}/locations/{location}/tensorboards/{tensorboard}/experiments/{experiment}/runs/{run}/timeSeries/{time_series}&#39;</span>
+<span class="sd">        blob_ids (Sequence[str]):</span>
+<span class="sd">            IDs of the blobs to read.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">time_series</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="n">blob_ids</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="ReadTensorboardBlobDataResponse"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ReadTensorboardBlobDataResponse">[docs]</a><span class="k">class</span> <span class="nc">ReadTensorboardBlobDataResponse</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Response message for</span>
+<span class="sd">    [TensorboardService.ReadTensorboardBlobData][google.cloud.aiplatform.v1beta1.TensorboardService.ReadTensorboardBlobData].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        blobs (Sequence[google.cloud.aiplatform_v1beta1.types.TensorboardBlob]):</span>
+<span class="sd">            Blob messages containing blob bytes.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">blobs</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">tensorboard_data</span><span class="o">.</span><span class="n">TensorboardBlob</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ListTensorboardRunsRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ListTensorboardRunsRequest">[docs]</a><span class="k">class</span> <span class="nc">ListTensorboardRunsRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [TensorboardService.ListTensorboardRuns][google.cloud.aiplatform.v1beta1.TensorboardService.ListTensorboardRuns].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        parent (str):</span>
+<span class="sd">            Required. The resource name of the</span>
+<span class="sd">            Tensorboard to list TensorboardRuns. Format:</span>
+<span class="sd">            &#39;projects/{project}/locations/{location}/tensorboards/{tensorboard}/experiments/{experiment}&#39;</span>
+<span class="sd">        filter (str):</span>
+<span class="sd">            Lists the TensorboardRuns that match the</span>
+<span class="sd">            filter expression.</span>
+<span class="sd">        page_size (int):</span>
+<span class="sd">            The maximum number of TensorboardRuns to</span>
+<span class="sd">            return. The service may return fewer than this</span>
+<span class="sd">            value. If unspecified, at most 50</span>
+<span class="sd">            TensorboardRuns will be returned. The maximum</span>
+<span class="sd">            value is 1000; values above 1000 will be coerced</span>
+<span class="sd">            to 1000.</span>
+<span class="sd">        page_token (str):</span>
+<span class="sd">            A page token, received from a previous</span>
+<span class="sd">            [TensorboardService.ListTensorboardRuns][google.cloud.aiplatform.v1beta1.TensorboardService.ListTensorboardRuns]</span>
+<span class="sd">            call. Provide this to retrieve the subsequent page.</span>
+
+<span class="sd">            When paginating, all other parameters provided to</span>
+<span class="sd">            [TensorboardService.ListTensorboardRuns][google.cloud.aiplatform.v1beta1.TensorboardService.ListTensorboardRuns]</span>
+<span class="sd">            must match the call that provided the page token.</span>
+<span class="sd">        order_by (str):</span>
+<span class="sd">            Field to use to sort the list.</span>
+<span class="sd">        read_mask (google.protobuf.field_mask_pb2.FieldMask):</span>
+<span class="sd">            Mask specifying which fields to read.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="nb">filter</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span>
+    <span class="n">page_size</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">INT32</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,)</span>
+    <span class="n">page_token</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">4</span><span class="p">,)</span>
+    <span class="n">order_by</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">5</span><span class="p">,)</span>
+    <span class="n">read_mask</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">field_mask_pb2</span><span class="o">.</span><span class="n">FieldMask</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="ListTensorboardRunsResponse"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ListTensorboardRunsResponse">[docs]</a><span class="k">class</span> <span class="nc">ListTensorboardRunsResponse</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Response message for</span>
+<span class="sd">    [TensorboardService.ListTensorboardRuns][google.cloud.aiplatform.v1beta1.TensorboardService.ListTensorboardRuns].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        tensorboard_runs (Sequence[google.cloud.aiplatform_v1beta1.types.TensorboardRun]):</span>
+<span class="sd">            The TensorboardRuns mathching the request.</span>
+<span class="sd">        next_page_token (str):</span>
+<span class="sd">            A token, which can be sent as</span>
+<span class="sd">            [ListTensorboardRunsRequest.page_token][google.cloud.aiplatform.v1beta1.ListTensorboardRunsRequest.page_token]</span>
+<span class="sd">            to retrieve the next page. If this field is omitted, there</span>
+<span class="sd">            are no subsequent pages.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">raw_page</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="n">tensorboard_runs</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">gca_tensorboard_run</span><span class="o">.</span><span class="n">TensorboardRun</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">next_page_token</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="UpdateTensorboardRunRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.UpdateTensorboardRunRequest">[docs]</a><span class="k">class</span> <span class="nc">UpdateTensorboardRunRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [TensorboardService.UpdateTensorboardRun][google.cloud.aiplatform.v1beta1.TensorboardService.UpdateTensorboardRun].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        update_mask (google.protobuf.field_mask_pb2.FieldMask):</span>
+<span class="sd">            Required. Field mask is used to specify the fields to be</span>
+<span class="sd">            overwritten in the TensorboardRun resource by the update.</span>
+<span class="sd">            The fields specified in the update_mask are relative to the</span>
+<span class="sd">            resource, not the full request. A field will be overwritten</span>
+<span class="sd">            if it is in the mask. If the user does not provide a mask</span>
+<span class="sd">            then all fields will be overwritten if new values are</span>
+<span class="sd">            specified.</span>
+<span class="sd">        tensorboard_run (google.cloud.aiplatform_v1beta1.types.TensorboardRun):</span>
+<span class="sd">            Required. The TensorboardRun&#39;s ``name`` field is used to</span>
+<span class="sd">            identify the TensorboardRun to be updated. Format:</span>
+<span class="sd">            ``projects/{project}/locations/{location}/tensorboards/{tensorboard}/experiments/{experiment}/runs/{run}``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">update_mask</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">field_mask_pb2</span><span class="o">.</span><span class="n">FieldMask</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">tensorboard_run</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">gca_tensorboard_run</span><span class="o">.</span><span class="n">TensorboardRun</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="DeleteTensorboardRunRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.DeleteTensorboardRunRequest">[docs]</a><span class="k">class</span> <span class="nc">DeleteTensorboardRunRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [TensorboardService.DeleteTensorboardRun][google.cloud.aiplatform.v1beta1.TensorboardService.DeleteTensorboardRun].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        name (str):</span>
+<span class="sd">            Required. The name of the TensorboardRun to be deleted.</span>
+<span class="sd">            Format:</span>
+<span class="sd">            ``projects/{project}/locations/{location}/tensorboards/{tensorboard}/experiments/{experiment}/runs/{run}``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="CreateTensorboardTimeSeriesRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.CreateTensorboardTimeSeriesRequest">[docs]</a><span class="k">class</span> <span class="nc">CreateTensorboardTimeSeriesRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [TensorboardService.CreateTensorboardTimeSeries][google.cloud.aiplatform.v1beta1.TensorboardService.CreateTensorboardTimeSeries].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        parent (str):</span>
+<span class="sd">            Required. The resource name of the TensorboardRun to create</span>
+<span class="sd">            the TensorboardTimeSeries in. Format:</span>
+<span class="sd">            ``projects/{project}/locations/{location}/tensorboards/{tensorboard}/experiments/{experiment}/runs/{run}``</span>
+<span class="sd">        tensorboard_time_series_id (str):</span>
+<span class="sd">            Optional. The user specified unique ID to use for the</span>
+<span class="sd">            TensorboardTimeSeries, which will become the final component</span>
+<span class="sd">            of the TensorboardTimeSeries&#39;s resource name. Ref:</span>
+<span class="sd">            go/ucaip-user-specified-id</span>
+
+<span class="sd">            This value should match &quot;[a-z0-9][a-z0-9-]{0, 127}&quot;.</span>
+<span class="sd">        tensorboard_time_series (google.cloud.aiplatform_v1beta1.types.TensorboardTimeSeries):</span>
+<span class="sd">            Required. The TensorboardTimeSeries to</span>
+<span class="sd">            create.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="n">tensorboard_time_series_id</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,)</span>
+    <span class="n">tensorboard_time_series</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span>
+        <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="n">message</span><span class="o">=</span><span class="n">gca_tensorboard_time_series</span><span class="o">.</span><span class="n">TensorboardTimeSeries</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="GetTensorboardTimeSeriesRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.GetTensorboardTimeSeriesRequest">[docs]</a><span class="k">class</span> <span class="nc">GetTensorboardTimeSeriesRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [TensorboardService.GetTensorboardTimeSeries][google.cloud.aiplatform.v1beta1.TensorboardService.GetTensorboardTimeSeries].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        name (str):</span>
+<span class="sd">            Required. The name of the TensorboardTimeSeries resource.</span>
+<span class="sd">            Format:</span>
+<span class="sd">            ``projects/{project}/locations/{location}/tensorboards/{tensorboard}/experiments/{experiment}/runs/{run}/timeSeries/{time_series}``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="ListTensorboardTimeSeriesRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ListTensorboardTimeSeriesRequest">[docs]</a><span class="k">class</span> <span class="nc">ListTensorboardTimeSeriesRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [TensorboardService.ListTensorboardTimeSeries][google.cloud.aiplatform.v1beta1.TensorboardService.ListTensorboardTimeSeries].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        parent (str):</span>
+<span class="sd">            Required. The resource name of the</span>
+<span class="sd">            TensorboardRun to list TensorboardTimeSeries.</span>
+<span class="sd">            Format:</span>
+<span class="sd">            &#39;projects/{project}/locations/{location}/tensorboards/{tensorboard}/experiments/{experiment}/runs/{run}&#39;</span>
+<span class="sd">        filter (str):</span>
+<span class="sd">            Lists the TensorboardTimeSeries that match</span>
+<span class="sd">            the filter expression.</span>
+<span class="sd">        page_size (int):</span>
+<span class="sd">            The maximum number of TensorboardTimeSeries</span>
+<span class="sd">            to return. The service may return fewer than</span>
+<span class="sd">            this value. If unspecified, at most 50</span>
+<span class="sd">            TensorboardTimeSeries will be returned. The</span>
+<span class="sd">            maximum value is 1000; values above 1000 will be</span>
+<span class="sd">            coerced to 1000.</span>
+<span class="sd">        page_token (str):</span>
+<span class="sd">            A page token, received from a previous</span>
+<span class="sd">            [TensorboardService.ListTensorboardTimeSeries][google.cloud.aiplatform.v1beta1.TensorboardService.ListTensorboardTimeSeries]</span>
+<span class="sd">            call. Provide this to retrieve the subsequent page.</span>
+
+<span class="sd">            When paginating, all other parameters provided to</span>
+<span class="sd">            [TensorboardService.ListTensorboardTimeSeries][google.cloud.aiplatform.v1beta1.TensorboardService.ListTensorboardTimeSeries]</span>
+<span class="sd">            must match the call that provided the page token.</span>
+<span class="sd">        order_by (str):</span>
+<span class="sd">            Field to use to sort the list.</span>
+<span class="sd">        read_mask (google.protobuf.field_mask_pb2.FieldMask):</span>
+<span class="sd">            Mask specifying which fields to read.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="nb">filter</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span>
+    <span class="n">page_size</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">INT32</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,)</span>
+    <span class="n">page_token</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">4</span><span class="p">,)</span>
+    <span class="n">order_by</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">5</span><span class="p">,)</span>
+    <span class="n">read_mask</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">field_mask_pb2</span><span class="o">.</span><span class="n">FieldMask</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="ListTensorboardTimeSeriesResponse"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ListTensorboardTimeSeriesResponse">[docs]</a><span class="k">class</span> <span class="nc">ListTensorboardTimeSeriesResponse</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Response message for</span>
+<span class="sd">    [TensorboardService.ListTensorboardTimeSeries][google.cloud.aiplatform.v1beta1.TensorboardService.ListTensorboardTimeSeries].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        tensorboard_time_series (Sequence[google.cloud.aiplatform_v1beta1.types.TensorboardTimeSeries]):</span>
+<span class="sd">            The TensorboardTimeSeries mathching the</span>
+<span class="sd">            request.</span>
+<span class="sd">        next_page_token (str):</span>
+<span class="sd">            A token, which can be sent as</span>
+<span class="sd">            [ListTensorboardTimeSeriesRequest.page_token][google.cloud.aiplatform.v1beta1.ListTensorboardTimeSeriesRequest.page_token]</span>
+<span class="sd">            to retrieve the next page. If this field is omitted, there</span>
+<span class="sd">            are no subsequent pages.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">raw_page</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="n">tensorboard_time_series</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span>
+        <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">message</span><span class="o">=</span><span class="n">gca_tensorboard_time_series</span><span class="o">.</span><span class="n">TensorboardTimeSeries</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">next_page_token</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="UpdateTensorboardTimeSeriesRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.UpdateTensorboardTimeSeriesRequest">[docs]</a><span class="k">class</span> <span class="nc">UpdateTensorboardTimeSeriesRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [TensorboardService.UpdateTensorboardTimeSeries][google.cloud.aiplatform.v1beta1.TensorboardService.UpdateTensorboardTimeSeries].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        update_mask (google.protobuf.field_mask_pb2.FieldMask):</span>
+<span class="sd">            Required. Field mask is used to specify the fields to be</span>
+<span class="sd">            overwritten in the TensorboardTimeSeries resource by the</span>
+<span class="sd">            update. The fields specified in the update_mask are relative</span>
+<span class="sd">            to the resource, not the full request. A field will be</span>
+<span class="sd">            overwritten if it is in the mask. If the user does not</span>
+<span class="sd">            provide a mask then all fields will be overwritten if new</span>
+<span class="sd">            values are specified.</span>
+<span class="sd">        tensorboard_time_series (google.cloud.aiplatform_v1beta1.types.TensorboardTimeSeries):</span>
+<span class="sd">            Required. The TensorboardTimeSeries&#39; ``name`` field is used</span>
+<span class="sd">            to identify the TensorboardTimeSeries to be updated. Format:</span>
+<span class="sd">            ``projects/{project}/locations/{location}/tensorboards/{tensorboard}/experiments/{experiment}/runs/{run}/timeSeries/{time_series}``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">update_mask</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">field_mask_pb2</span><span class="o">.</span><span class="n">FieldMask</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">tensorboard_time_series</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span>
+        <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="n">message</span><span class="o">=</span><span class="n">gca_tensorboard_time_series</span><span class="o">.</span><span class="n">TensorboardTimeSeries</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="DeleteTensorboardTimeSeriesRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.DeleteTensorboardTimeSeriesRequest">[docs]</a><span class="k">class</span> <span class="nc">DeleteTensorboardTimeSeriesRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [TensorboardService.DeleteTensorboardTimeSeries][google.cloud.aiplatform.v1beta1.TensorboardService.DeleteTensorboardTimeSeries].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        name (str):</span>
+<span class="sd">            Required. The name of the TensorboardTimeSeries to be</span>
+<span class="sd">            deleted. Format:</span>
+<span class="sd">            ``projects/{project}/locations/{location}/tensorboards/{tensorboard}/experiments/{experiment}/runs/{run}/timeSeries/{time_series}``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="ReadTensorboardTimeSeriesDataRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ReadTensorboardTimeSeriesDataRequest">[docs]</a><span class="k">class</span> <span class="nc">ReadTensorboardTimeSeriesDataRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [TensorboardService.ReadTensorboardTimeSeriesData][google.cloud.aiplatform.v1beta1.TensorboardService.ReadTensorboardTimeSeriesData].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        tensorboard_time_series (str):</span>
+<span class="sd">            Required. The resource name of the TensorboardTimeSeries to</span>
+<span class="sd">            read data from. Format:</span>
+<span class="sd">            ``projects/{project}/locations/{location}/tensorboards/{tensorboard}/experiments/{experiment}/runs/{run}/timeSeries/{time_series}``</span>
+<span class="sd">        max_data_points (int):</span>
+<span class="sd">            The maximum number of TensorboardTimeSeries&#39;</span>
+<span class="sd">            data to return.</span>
+<span class="sd">            This value should be a positive integer.</span>
+<span class="sd">            This value can be set to -1 to return all data.</span>
+<span class="sd">        filter (str):</span>
+<span class="sd">            Reads the TensorboardTimeSeries&#39; data that</span>
+<span class="sd">            match the filter expression.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">tensorboard_time_series</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="n">max_data_points</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">INT32</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span>
+    <span class="nb">filter</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="ReadTensorboardTimeSeriesDataResponse"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ReadTensorboardTimeSeriesDataResponse">[docs]</a><span class="k">class</span> <span class="nc">ReadTensorboardTimeSeriesDataResponse</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Response message for</span>
+<span class="sd">    [TensorboardService.ReadTensorboardTimeSeriesData][google.cloud.aiplatform.v1beta1.TensorboardService.ReadTensorboardTimeSeriesData].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        time_series_data (google.cloud.aiplatform_v1beta1.types.TimeSeriesData):</span>
+<span class="sd">            The returned time series data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">time_series_data</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">tensorboard_data</span><span class="o">.</span><span class="n">TimeSeriesData</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="WriteTensorboardRunDataRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.WriteTensorboardRunDataRequest">[docs]</a><span class="k">class</span> <span class="nc">WriteTensorboardRunDataRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [TensorboardService.WriteTensorboardRunData][google.cloud.aiplatform.v1beta1.TensorboardService.WriteTensorboardRunData].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        tensorboard_run (str):</span>
+<span class="sd">            Required. The resource name of the TensorboardRun to write</span>
+<span class="sd">            data to. Format:</span>
+<span class="sd">            ``projects/{project}/locations/{location}/tensorboards/{tensorboard}/experiments/{experiment}/runs/{run}``</span>
+<span class="sd">        time_series_data (Sequence[google.cloud.aiplatform_v1beta1.types.TimeSeriesData]):</span>
+<span class="sd">            Required. The TensorboardTimeSeries data to</span>
+<span class="sd">            write. Values with in a time series are indexed</span>
+<span class="sd">            by their step value. Repeated writes to the same</span>
+<span class="sd">            step will overwrite the existing value for that</span>
+<span class="sd">            step.</span>
+<span class="sd">            The upper limit of data points per write request</span>
+<span class="sd">            is 5000.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">tensorboard_run</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="n">time_series_data</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">tensorboard_data</span><span class="o">.</span><span class="n">TimeSeriesData</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="WriteTensorboardRunDataResponse"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.WriteTensorboardRunDataResponse">[docs]</a><span class="k">class</span> <span class="nc">WriteTensorboardRunDataResponse</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Response message for</span>
+<span class="sd">    [TensorboardService.WriteTensorboardRunData][google.cloud.aiplatform.v1beta1.TensorboardService.WriteTensorboardRunData].</span>
+<span class="sd">        &quot;&quot;&quot;</span></div>
+
+
+<div class="viewcode-block" id="ExportTensorboardTimeSeriesDataRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ExportTensorboardTimeSeriesDataRequest">[docs]</a><span class="k">class</span> <span class="nc">ExportTensorboardTimeSeriesDataRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [TensorboardService.ExportTensorboardTimeSeriesData][google.cloud.aiplatform.v1beta1.TensorboardService.ExportTensorboardTimeSeriesData].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        tensorboard_time_series (str):</span>
+<span class="sd">            Required. The resource name of the TensorboardTimeSeries to</span>
+<span class="sd">            export data from. Format:</span>
+<span class="sd">            ``projects/{project}/locations/{location}/tensorboards/{tensorboard}/experiments/{experiment}/runs/{run}/timeSeries/{time_series}``</span>
+<span class="sd">        filter (str):</span>
+<span class="sd">            Exports the TensorboardTimeSeries&#39; data that</span>
+<span class="sd">            match the filter expression.</span>
+<span class="sd">        page_size (int):</span>
+<span class="sd">            The maximum number of data points to return per page. The</span>
+<span class="sd">            default page_size will be 1000. Values must be between 1 and</span>
+<span class="sd">            10000. Values above 10000 will be coerced to 10000.</span>
+<span class="sd">        page_token (str):</span>
+<span class="sd">            A page token, received from a previous</span>
+<span class="sd">            [TensorboardService.ExportTensorboardTimeSeries][] call.</span>
+<span class="sd">            Provide this to retrieve the subsequent page.</span>
+
+<span class="sd">            When paginating, all other parameters provided to</span>
+<span class="sd">            [TensorboardService.ExportTensorboardTimeSeries][] must</span>
+<span class="sd">            match the call that provided the page token.</span>
+<span class="sd">        order_by (str):</span>
+<span class="sd">            Field to use to sort the</span>
+<span class="sd">            TensorboardTimeSeries&#39; data. By default,</span>
+<span class="sd">            TensorboardTimeSeries&#39; data will be returned in</span>
+<span class="sd">            a pseudo random order.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">tensorboard_time_series</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="nb">filter</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span>
+    <span class="n">page_size</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">INT32</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,)</span>
+    <span class="n">page_token</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">4</span><span class="p">,)</span>
+    <span class="n">order_by</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">5</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="ExportTensorboardTimeSeriesDataResponse"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ExportTensorboardTimeSeriesDataResponse">[docs]</a><span class="k">class</span> <span class="nc">ExportTensorboardTimeSeriesDataResponse</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Response message for</span>
+<span class="sd">    [TensorboardService.ExportTensorboardTimeSeriesData][google.cloud.aiplatform.v1beta1.TensorboardService.ExportTensorboardTimeSeriesData].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        time_series_data_points (Sequence[google.cloud.aiplatform_v1beta1.types.TimeSeriesDataPoint]):</span>
+<span class="sd">            The returned time series data points.</span>
+<span class="sd">        next_page_token (str):</span>
+<span class="sd">            A token, which can be sent as</span>
+<span class="sd">            [ExportTensorboardTimeSeriesRequest.page_token][] to</span>
+<span class="sd">            retrieve the next page. If this field is omitted, there are</span>
+<span class="sd">            no subsequent pages.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">raw_page</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="n">time_series_data_points</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">tensorboard_data</span><span class="o">.</span><span class="n">TimeSeriesDataPoint</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">next_page_token</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="CreateTensorboardOperationMetadata"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.CreateTensorboardOperationMetadata">[docs]</a><span class="k">class</span> <span class="nc">CreateTensorboardOperationMetadata</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Details of operations that perform create Tensorboard.</span>
+<span class="sd">    Attributes:</span>
+<span class="sd">        generic_metadata (google.cloud.aiplatform_v1beta1.types.GenericOperationMetadata):</span>
+<span class="sd">            Operation metadata for Tensorboard.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">generic_metadata</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">operation</span><span class="o">.</span><span class="n">GenericOperationMetadata</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="UpdateTensorboardOperationMetadata"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.UpdateTensorboardOperationMetadata">[docs]</a><span class="k">class</span> <span class="nc">UpdateTensorboardOperationMetadata</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Details of operations that perform update Tensorboard.</span>
+<span class="sd">    Attributes:</span>
+<span class="sd">        generic_metadata (google.cloud.aiplatform_v1beta1.types.GenericOperationMetadata):</span>
+<span class="sd">            Operation metadata for Tensorboard.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">generic_metadata</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">operation</span><span class="o">.</span><span class="n">GenericOperationMetadata</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">__protobuf__</span><span class="o">.</span><span class="n">manifest</span><span class="p">))</span>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../../../index.html">google-cloud-aiplatform</a></h1>
+
+
+
+<p class="blurb">Google Cloud Client Libraries for google-cloud-aiplatform</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=googleapis&repo=python-aiplatform&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform.html">Google Cloud Aiplatform SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1/services.html">Services for Google Cloud Aiplatform v1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1/types.html">Types for Google Cloud Aiplatform v1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1beta1/services.html">Services for Google Cloud Aiplatform v1beta1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1beta1/types.html">Types for Google Cloud Aiplatform v1beta1 API</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../changelog.html">Changelog</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Google.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+    <a href="https://github.com/googleapis/python-aiplatform" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>

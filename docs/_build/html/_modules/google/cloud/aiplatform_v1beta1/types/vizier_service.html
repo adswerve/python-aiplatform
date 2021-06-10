@@ -1,0 +1,581 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>google.cloud.aiplatform_v1beta1.types.vizier_service &#8212; google-cloud-aiplatform  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/alabaster.css" />
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+          	<div class="admonition" id="python2-eol"> 
+          	 As of January 1, 2020 this library no longer supports Python 2 on the latest released version. 
+          	 Library versions released prior to that date will continue to be available. For more information please
+          	 visit <a href="https://cloud.google.com/python/docs/python2-sunset/">Python 2 support on Google Cloud</a>.
+          	</div>
+            
+  <h1>Source code for google.cloud.aiplatform_v1beta1.types.vizier_service</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Copyright 2020 Google LLC</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="c1">#</span>
+<span class="kn">import</span> <span class="nn">proto</span>  <span class="c1"># type: ignore</span>
+
+<span class="kn">from</span> <span class="nn">google.cloud.aiplatform_v1beta1.types</span> <span class="kn">import</span> <span class="n">operation</span>
+<span class="kn">from</span> <span class="nn">google.cloud.aiplatform_v1beta1.types</span> <span class="kn">import</span> <span class="n">study</span> <span class="k">as</span> <span class="n">gca_study</span>
+<span class="kn">from</span> <span class="nn">google.protobuf</span> <span class="kn">import</span> <span class="n">timestamp_pb2</span>  <span class="c1"># type: ignore</span>
+
+
+<span class="n">__protobuf__</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">module</span><span class="p">(</span>
+    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;google.cloud.aiplatform.v1beta1&quot;</span><span class="p">,</span>
+    <span class="n">manifest</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;GetStudyRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;CreateStudyRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ListStudiesRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ListStudiesResponse&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;DeleteStudyRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;LookupStudyRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;SuggestTrialsRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;SuggestTrialsResponse&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;SuggestTrialsMetadata&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;CreateTrialRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;GetTrialRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ListTrialsRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ListTrialsResponse&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;AddTrialMeasurementRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;CompleteTrialRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;DeleteTrialRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;CheckTrialEarlyStoppingStateRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;CheckTrialEarlyStoppingStateResponse&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;CheckTrialEarlyStoppingStateMetatdata&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;StopTrialRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ListOptimalTrialsRequest&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ListOptimalTrialsResponse&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">)</span>
+
+
+<div class="viewcode-block" id="GetStudyRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.GetStudyRequest">[docs]</a><span class="k">class</span> <span class="nc">GetStudyRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [VizierService.GetStudy][google.cloud.aiplatform.v1beta1.VizierService.GetStudy].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        name (str):</span>
+<span class="sd">            Required. The name of the Study resource. Format:</span>
+<span class="sd">            ``projects/{project}/locations/{location}/studies/{study}``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="CreateStudyRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.CreateStudyRequest">[docs]</a><span class="k">class</span> <span class="nc">CreateStudyRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [VizierService.CreateStudy][google.cloud.aiplatform.v1beta1.VizierService.CreateStudy].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        parent (str):</span>
+<span class="sd">            Required. The resource name of the Location to create the</span>
+<span class="sd">            CustomJob in. Format:</span>
+<span class="sd">            ``projects/{project}/locations/{location}``</span>
+<span class="sd">        study (google.cloud.aiplatform_v1beta1.types.Study):</span>
+<span class="sd">            Required. The Study configuration used to</span>
+<span class="sd">            create the Study.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="n">study</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">gca_study</span><span class="o">.</span><span class="n">Study</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="ListStudiesRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ListStudiesRequest">[docs]</a><span class="k">class</span> <span class="nc">ListStudiesRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [VizierService.ListStudies][google.cloud.aiplatform.v1beta1.VizierService.ListStudies].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        parent (str):</span>
+<span class="sd">            Required. The resource name of the Location to list the</span>
+<span class="sd">            Study from. Format:</span>
+<span class="sd">            ``projects/{project}/locations/{location}``</span>
+<span class="sd">        page_token (str):</span>
+<span class="sd">            Optional. A page token to request the next</span>
+<span class="sd">            page of results. If unspecified, there are no</span>
+<span class="sd">            subsequent pages.</span>
+<span class="sd">        page_size (int):</span>
+<span class="sd">            Optional. The maximum number of studies to</span>
+<span class="sd">            return per &quot;page&quot; of results. If unspecified,</span>
+<span class="sd">            service will pick an appropriate default.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="n">page_token</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span>
+    <span class="n">page_size</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">INT32</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="ListStudiesResponse"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ListStudiesResponse">[docs]</a><span class="k">class</span> <span class="nc">ListStudiesResponse</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Response message for</span>
+<span class="sd">    [VizierService.ListStudies][google.cloud.aiplatform.v1beta1.VizierService.ListStudies].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        studies (Sequence[google.cloud.aiplatform_v1beta1.types.Study]):</span>
+<span class="sd">            The studies associated with the project.</span>
+<span class="sd">        next_page_token (str):</span>
+<span class="sd">            Passes this token as the ``page_token`` field of the request</span>
+<span class="sd">            for a subsequent call. If this field is omitted, there are</span>
+<span class="sd">            no subsequent pages.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">raw_page</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="n">studies</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">gca_study</span><span class="o">.</span><span class="n">Study</span><span class="p">,)</span>
+    <span class="n">next_page_token</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="DeleteStudyRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.DeleteStudyRequest">[docs]</a><span class="k">class</span> <span class="nc">DeleteStudyRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [VizierService.DeleteStudy][google.cloud.aiplatform.v1beta1.VizierService.DeleteStudy].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        name (str):</span>
+<span class="sd">            Required. The name of the Study resource to be deleted.</span>
+<span class="sd">            Format:</span>
+<span class="sd">            ``projects/{project}/locations/{location}/studies/{study}``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="LookupStudyRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.LookupStudyRequest">[docs]</a><span class="k">class</span> <span class="nc">LookupStudyRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [VizierService.LookupStudy][google.cloud.aiplatform.v1beta1.VizierService.LookupStudy].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        parent (str):</span>
+<span class="sd">            Required. The resource name of the Location to get the Study</span>
+<span class="sd">            from. Format: ``projects/{project}/locations/{location}``</span>
+<span class="sd">        display_name (str):</span>
+<span class="sd">            Required. The user-defined display name of</span>
+<span class="sd">            the Study</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="n">display_name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="SuggestTrialsRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.SuggestTrialsRequest">[docs]</a><span class="k">class</span> <span class="nc">SuggestTrialsRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [VizierService.SuggestTrials][google.cloud.aiplatform.v1beta1.VizierService.SuggestTrials].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        parent (str):</span>
+<span class="sd">            Required. The project and location that the Study belongs</span>
+<span class="sd">            to. Format:</span>
+<span class="sd">            ``projects/{project}/locations/{location}/studies/{study}``</span>
+<span class="sd">        suggestion_count (int):</span>
+<span class="sd">            Required. The number of suggestions</span>
+<span class="sd">            requested.</span>
+<span class="sd">        client_id (str):</span>
+<span class="sd">            Required. The identifier of the client that is requesting</span>
+<span class="sd">            the suggestion.</span>
+
+<span class="sd">            If multiple SuggestTrialsRequests have the same</span>
+<span class="sd">            ``client_id``, the service will return the identical</span>
+<span class="sd">            suggested Trial if the Trial is pending, and provide a new</span>
+<span class="sd">            Trial if the last suggested Trial was completed.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="n">suggestion_count</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">INT32</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span>
+    <span class="n">client_id</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="SuggestTrialsResponse"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.SuggestTrialsResponse">[docs]</a><span class="k">class</span> <span class="nc">SuggestTrialsResponse</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Response message for</span>
+<span class="sd">    [VizierService.SuggestTrials][google.cloud.aiplatform.v1beta1.VizierService.SuggestTrials].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        trials (Sequence[google.cloud.aiplatform_v1beta1.types.Trial]):</span>
+<span class="sd">            A list of Trials.</span>
+<span class="sd">        study_state (google.cloud.aiplatform_v1beta1.types.Study.State):</span>
+<span class="sd">            The state of the Study.</span>
+<span class="sd">        start_time (google.protobuf.timestamp_pb2.Timestamp):</span>
+<span class="sd">            The time at which the operation was started.</span>
+<span class="sd">        end_time (google.protobuf.timestamp_pb2.Timestamp):</span>
+<span class="sd">            The time at which operation processing</span>
+<span class="sd">            completed.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">trials</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">gca_study</span><span class="o">.</span><span class="n">Trial</span><span class="p">,)</span>
+    <span class="n">study_state</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">ENUM</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">enum</span><span class="o">=</span><span class="n">gca_study</span><span class="o">.</span><span class="n">Study</span><span class="o">.</span><span class="n">State</span><span class="p">,)</span>
+    <span class="n">start_time</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">timestamp_pb2</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">,)</span>
+    <span class="n">end_time</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">timestamp_pb2</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="SuggestTrialsMetadata"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.SuggestTrialsMetadata">[docs]</a><span class="k">class</span> <span class="nc">SuggestTrialsMetadata</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Details of operations that perform Trials suggestion.</span>
+<span class="sd">    Attributes:</span>
+<span class="sd">        generic_metadata (google.cloud.aiplatform_v1beta1.types.GenericOperationMetadata):</span>
+<span class="sd">            Operation metadata for suggesting Trials.</span>
+<span class="sd">        client_id (str):</span>
+<span class="sd">            The identifier of the client that is requesting the</span>
+<span class="sd">            suggestion.</span>
+
+<span class="sd">            If multiple SuggestTrialsRequests have the same</span>
+<span class="sd">            ``client_id``, the service will return the identical</span>
+<span class="sd">            suggested Trial if the Trial is pending, and provide a new</span>
+<span class="sd">            Trial if the last suggested Trial was completed.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">generic_metadata</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">operation</span><span class="o">.</span><span class="n">GenericOperationMetadata</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">client_id</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="CreateTrialRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.CreateTrialRequest">[docs]</a><span class="k">class</span> <span class="nc">CreateTrialRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [VizierService.CreateTrial][google.cloud.aiplatform.v1beta1.VizierService.CreateTrial].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        parent (str):</span>
+<span class="sd">            Required. The resource name of the Study to create the Trial</span>
+<span class="sd">            in. Format:</span>
+<span class="sd">            ``projects/{project}/locations/{location}/studies/{study}``</span>
+<span class="sd">        trial (google.cloud.aiplatform_v1beta1.types.Trial):</span>
+<span class="sd">            Required. The Trial to create.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="n">trial</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">gca_study</span><span class="o">.</span><span class="n">Trial</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="GetTrialRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.GetTrialRequest">[docs]</a><span class="k">class</span> <span class="nc">GetTrialRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [VizierService.GetTrial][google.cloud.aiplatform.v1beta1.VizierService.GetTrial].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        name (str):</span>
+<span class="sd">            Required. The name of the Trial resource. Format:</span>
+<span class="sd">            ``projects/{project}/locations/{location}/studies/{study}/trials/{trial}``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="ListTrialsRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ListTrialsRequest">[docs]</a><span class="k">class</span> <span class="nc">ListTrialsRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [VizierService.ListTrials][google.cloud.aiplatform.v1beta1.VizierService.ListTrials].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        parent (str):</span>
+<span class="sd">            Required. The resource name of the Study to list the Trial</span>
+<span class="sd">            from. Format:</span>
+<span class="sd">            ``projects/{project}/locations/{location}/studies/{study}``</span>
+<span class="sd">        page_token (str):</span>
+<span class="sd">            Optional. A page token to request the next</span>
+<span class="sd">            page of results. If unspecified, there are no</span>
+<span class="sd">            subsequent pages.</span>
+<span class="sd">        page_size (int):</span>
+<span class="sd">            Optional. The number of Trials to retrieve</span>
+<span class="sd">            per &quot;page&quot; of results. If unspecified, the</span>
+<span class="sd">            service will pick an appropriate default.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="n">page_token</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span>
+    <span class="n">page_size</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">INT32</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="ListTrialsResponse"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ListTrialsResponse">[docs]</a><span class="k">class</span> <span class="nc">ListTrialsResponse</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Response message for</span>
+<span class="sd">    [VizierService.ListTrials][google.cloud.aiplatform.v1beta1.VizierService.ListTrials].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        trials (Sequence[google.cloud.aiplatform_v1beta1.types.Trial]):</span>
+<span class="sd">            The Trials associated with the Study.</span>
+<span class="sd">        next_page_token (str):</span>
+<span class="sd">            Pass this token as the ``page_token`` field of the request</span>
+<span class="sd">            for a subsequent call. If this field is omitted, there are</span>
+<span class="sd">            no subsequent pages.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">raw_page</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="n">trials</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">gca_study</span><span class="o">.</span><span class="n">Trial</span><span class="p">,)</span>
+    <span class="n">next_page_token</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="AddTrialMeasurementRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.AddTrialMeasurementRequest">[docs]</a><span class="k">class</span> <span class="nc">AddTrialMeasurementRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [VizierService.AddTrialMeasurement][google.cloud.aiplatform.v1beta1.VizierService.AddTrialMeasurement].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        trial_name (str):</span>
+<span class="sd">            Required. The name of the trial to add measurement. Format:</span>
+<span class="sd">            ``projects/{project}/locations/{location}/studies/{study}/trials/{trial}``</span>
+<span class="sd">        measurement (google.cloud.aiplatform_v1beta1.types.Measurement):</span>
+<span class="sd">            Required. The measurement to be added to a</span>
+<span class="sd">            Trial.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">trial_name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="n">measurement</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">gca_study</span><span class="o">.</span><span class="n">Measurement</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="CompleteTrialRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.CompleteTrialRequest">[docs]</a><span class="k">class</span> <span class="nc">CompleteTrialRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [VizierService.CompleteTrial][google.cloud.aiplatform.v1beta1.VizierService.CompleteTrial].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        name (str):</span>
+<span class="sd">            Required. The Trial&#39;s name. Format:</span>
+<span class="sd">            ``projects/{project}/locations/{location}/studies/{study}/trials/{trial}``</span>
+<span class="sd">        final_measurement (google.cloud.aiplatform_v1beta1.types.Measurement):</span>
+<span class="sd">            Optional. If provided, it will be used as the completed</span>
+<span class="sd">            Trial&#39;s final_measurement; Otherwise, the service will</span>
+<span class="sd">            auto-select a previously reported measurement as the</span>
+<span class="sd">            final-measurement</span>
+<span class="sd">        trial_infeasible (bool):</span>
+<span class="sd">            Optional. True if the Trial cannot be run with the given</span>
+<span class="sd">            Parameter, and final_measurement will be ignored.</span>
+<span class="sd">        infeasible_reason (str):</span>
+<span class="sd">            Optional. A human readable reason why the trial was</span>
+<span class="sd">            infeasible. This should only be provided if</span>
+<span class="sd">            ``trial_infeasible`` is true.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="n">final_measurement</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">gca_study</span><span class="o">.</span><span class="n">Measurement</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">trial_infeasible</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">BOOL</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,)</span>
+    <span class="n">infeasible_reason</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">4</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="DeleteTrialRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.DeleteTrialRequest">[docs]</a><span class="k">class</span> <span class="nc">DeleteTrialRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [VizierService.DeleteTrial][google.cloud.aiplatform.v1beta1.VizierService.DeleteTrial].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        name (str):</span>
+<span class="sd">            Required. The Trial&#39;s name. Format:</span>
+<span class="sd">            ``projects/{project}/locations/{location}/studies/{study}/trials/{trial}``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="CheckTrialEarlyStoppingStateRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.CheckTrialEarlyStoppingStateRequest">[docs]</a><span class="k">class</span> <span class="nc">CheckTrialEarlyStoppingStateRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [VizierService.CheckTrialEarlyStoppingState][google.cloud.aiplatform.v1beta1.VizierService.CheckTrialEarlyStoppingState].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        trial_name (str):</span>
+<span class="sd">            Required. The Trial&#39;s name. Format:</span>
+<span class="sd">            ``projects/{project}/locations/{location}/studies/{study}/trials/{trial}``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">trial_name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="CheckTrialEarlyStoppingStateResponse"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.CheckTrialEarlyStoppingStateResponse">[docs]</a><span class="k">class</span> <span class="nc">CheckTrialEarlyStoppingStateResponse</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Response message for</span>
+<span class="sd">    [VizierService.CheckTrialEarlyStoppingState][google.cloud.aiplatform.v1beta1.VizierService.CheckTrialEarlyStoppingState].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        should_stop (bool):</span>
+<span class="sd">            True if the Trial should stop.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">should_stop</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">BOOL</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="CheckTrialEarlyStoppingStateMetatdata"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.CheckTrialEarlyStoppingStateMetatdata">[docs]</a><span class="k">class</span> <span class="nc">CheckTrialEarlyStoppingStateMetatdata</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;This message will be placed in the metadata field of a</span>
+<span class="sd">    google.longrunning.Operation associated with a</span>
+<span class="sd">    CheckTrialEarlyStoppingState request.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        generic_metadata (google.cloud.aiplatform_v1beta1.types.GenericOperationMetadata):</span>
+<span class="sd">            Operation metadata for suggesting Trials.</span>
+<span class="sd">        study (str):</span>
+<span class="sd">            The name of the Study that the Trial belongs</span>
+<span class="sd">            to.</span>
+<span class="sd">        trial (str):</span>
+<span class="sd">            The Trial name.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">generic_metadata</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">operation</span><span class="o">.</span><span class="n">GenericOperationMetadata</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">study</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span>
+    <span class="n">trial</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="StopTrialRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.StopTrialRequest">[docs]</a><span class="k">class</span> <span class="nc">StopTrialRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [VizierService.StopTrial][google.cloud.aiplatform.v1beta1.VizierService.StopTrial].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        name (str):</span>
+<span class="sd">            Required. The Trial&#39;s name. Format:</span>
+<span class="sd">            ``projects/{project}/locations/{location}/studies/{study}/trials/{trial}``</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="ListOptimalTrialsRequest"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ListOptimalTrialsRequest">[docs]</a><span class="k">class</span> <span class="nc">ListOptimalTrialsRequest</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Request message for</span>
+<span class="sd">    [VizierService.ListOptimalTrials][google.cloud.aiplatform.v1beta1.VizierService.ListOptimalTrials].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        parent (str):</span>
+<span class="sd">            Required. The name of the Study that the</span>
+<span class="sd">            optimal Trial belongs to.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="ListOptimalTrialsResponse"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.ListOptimalTrialsResponse">[docs]</a><span class="k">class</span> <span class="nc">ListOptimalTrialsResponse</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Response message for</span>
+<span class="sd">    [VizierService.ListOptimalTrials][google.cloud.aiplatform.v1beta1.VizierService.ListOptimalTrials].</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        optimal_trials (Sequence[google.cloud.aiplatform_v1beta1.types.Trial]):</span>
+<span class="sd">            The pareto-optimal Trials for multiple objective Study or</span>
+<span class="sd">            the optimal trial for single objective Study. The definition</span>
+<span class="sd">            of pareto-optimal can be checked in wiki page.</span>
+<span class="sd">            https://en.wikipedia.org/wiki/Pareto_efficiency</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">optimal_trials</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">gca_study</span><span class="o">.</span><span class="n">Trial</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">__protobuf__</span><span class="o">.</span><span class="n">manifest</span><span class="p">))</span>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../../../index.html">google-cloud-aiplatform</a></h1>
+
+
+
+<p class="blurb">Google Cloud Client Libraries for google-cloud-aiplatform</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=googleapis&repo=python-aiplatform&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform.html">Google Cloud Aiplatform SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1/services.html">Services for Google Cloud Aiplatform v1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1/types.html">Types for Google Cloud Aiplatform v1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1beta1/services.html">Services for Google Cloud Aiplatform v1beta1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1beta1/types.html">Types for Google Cloud Aiplatform v1beta1 API</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../changelog.html">Changelog</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Google.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+    <a href="https://github.com/googleapis/python-aiplatform" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>

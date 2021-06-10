@@ -1,0 +1,508 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>google.cloud.aiplatform_v1.services.migration_service.async_client &#8212; google-cloud-aiplatform  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../_static/alabaster.css" />
+    <script data-url_root="../../../../../../" id="documentation_options" src="../../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../../_static/jquery.js"></script>
+    <script src="../../../../../../_static/underscore.js"></script>
+    <script src="../../../../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+          	<div class="admonition" id="python2-eol"> 
+          	 As of January 1, 2020 this library no longer supports Python 2 on the latest released version. 
+          	 Library versions released prior to that date will continue to be available. For more information please
+          	 visit <a href="https://cloud.google.com/python/docs/python2-sunset/">Python 2 support on Google Cloud</a>.
+          	</div>
+            
+  <h1>Source code for google.cloud.aiplatform_v1.services.migration_service.async_client</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Copyright 2020 Google LLC</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="c1">#</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span>
+<span class="kn">import</span> <span class="nn">functools</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Type</span><span class="p">,</span> <span class="n">Union</span>
+<span class="kn">import</span> <span class="nn">pkg_resources</span>
+
+<span class="kn">import</span> <span class="nn">google.api_core.client_options</span> <span class="k">as</span> <span class="nn">ClientOptions</span>  <span class="c1"># type: ignore</span>
+<span class="kn">from</span> <span class="nn">google.api_core</span> <span class="kn">import</span> <span class="n">exceptions</span> <span class="k">as</span> <span class="n">core_exceptions</span>  <span class="c1"># type: ignore</span>
+<span class="kn">from</span> <span class="nn">google.api_core</span> <span class="kn">import</span> <span class="n">gapic_v1</span>  <span class="c1"># type: ignore</span>
+<span class="kn">from</span> <span class="nn">google.api_core</span> <span class="kn">import</span> <span class="n">retry</span> <span class="k">as</span> <span class="n">retries</span>  <span class="c1"># type: ignore</span>
+<span class="kn">from</span> <span class="nn">google.auth</span> <span class="kn">import</span> <span class="n">credentials</span> <span class="k">as</span> <span class="n">ga_credentials</span>  <span class="c1"># type: ignore</span>
+<span class="kn">from</span> <span class="nn">google.oauth2</span> <span class="kn">import</span> <span class="n">service_account</span>  <span class="c1"># type: ignore</span>
+
+<span class="kn">from</span> <span class="nn">google.api_core</span> <span class="kn">import</span> <span class="n">operation</span>  <span class="c1"># type: ignore</span>
+<span class="kn">from</span> <span class="nn">google.api_core</span> <span class="kn">import</span> <span class="n">operation_async</span>  <span class="c1"># type: ignore</span>
+<span class="kn">from</span> <span class="nn">google.cloud.aiplatform_v1.services.migration_service</span> <span class="kn">import</span> <span class="n">pagers</span>
+<span class="kn">from</span> <span class="nn">google.cloud.aiplatform_v1.types</span> <span class="kn">import</span> <span class="n">migratable_resource</span>
+<span class="kn">from</span> <span class="nn">google.cloud.aiplatform_v1.types</span> <span class="kn">import</span> <span class="n">migration_service</span>
+<span class="kn">from</span> <span class="nn">.transports.base</span> <span class="kn">import</span> <span class="n">MigrationServiceTransport</span><span class="p">,</span> <span class="n">DEFAULT_CLIENT_INFO</span>
+<span class="kn">from</span> <span class="nn">.transports.grpc_asyncio</span> <span class="kn">import</span> <span class="n">MigrationServiceGrpcAsyncIOTransport</span>
+<span class="kn">from</span> <span class="nn">.client</span> <span class="kn">import</span> <span class="n">MigrationServiceClient</span>
+
+
+<div class="viewcode-block" id="MigrationServiceAsyncClient"><a class="viewcode-back" href="../../../../../../aiplatform_v1/migration_service.html#google.cloud.aiplatform_v1.services.migration_service.MigrationServiceAsyncClient">[docs]</a><span class="k">class</span> <span class="nc">MigrationServiceAsyncClient</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;A service that migrates resources from automl.googleapis.com,</span>
+<span class="sd">    datalabeling.googleapis.com and ml.googleapis.com to Vertex AI.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_client</span><span class="p">:</span> <span class="n">MigrationServiceClient</span>
+
+    <span class="n">DEFAULT_ENDPOINT</span> <span class="o">=</span> <span class="n">MigrationServiceClient</span><span class="o">.</span><span class="n">DEFAULT_ENDPOINT</span>
+    <span class="n">DEFAULT_MTLS_ENDPOINT</span> <span class="o">=</span> <span class="n">MigrationServiceClient</span><span class="o">.</span><span class="n">DEFAULT_MTLS_ENDPOINT</span>
+
+    <span class="n">annotated_dataset_path</span> <span class="o">=</span> <span class="nb">staticmethod</span><span class="p">(</span><span class="n">MigrationServiceClient</span><span class="o">.</span><span class="n">annotated_dataset_path</span><span class="p">)</span>
+    <span class="n">parse_annotated_dataset_path</span> <span class="o">=</span> <span class="nb">staticmethod</span><span class="p">(</span>
+        <span class="n">MigrationServiceClient</span><span class="o">.</span><span class="n">parse_annotated_dataset_path</span>
+    <span class="p">)</span>
+    <span class="n">dataset_path</span> <span class="o">=</span> <span class="nb">staticmethod</span><span class="p">(</span><span class="n">MigrationServiceClient</span><span class="o">.</span><span class="n">dataset_path</span><span class="p">)</span>
+    <span class="n">parse_dataset_path</span> <span class="o">=</span> <span class="nb">staticmethod</span><span class="p">(</span><span class="n">MigrationServiceClient</span><span class="o">.</span><span class="n">parse_dataset_path</span><span class="p">)</span>
+    <span class="n">dataset_path</span> <span class="o">=</span> <span class="nb">staticmethod</span><span class="p">(</span><span class="n">MigrationServiceClient</span><span class="o">.</span><span class="n">dataset_path</span><span class="p">)</span>
+    <span class="n">parse_dataset_path</span> <span class="o">=</span> <span class="nb">staticmethod</span><span class="p">(</span><span class="n">MigrationServiceClient</span><span class="o">.</span><span class="n">parse_dataset_path</span><span class="p">)</span>
+    <span class="n">dataset_path</span> <span class="o">=</span> <span class="nb">staticmethod</span><span class="p">(</span><span class="n">MigrationServiceClient</span><span class="o">.</span><span class="n">dataset_path</span><span class="p">)</span>
+    <span class="n">parse_dataset_path</span> <span class="o">=</span> <span class="nb">staticmethod</span><span class="p">(</span><span class="n">MigrationServiceClient</span><span class="o">.</span><span class="n">parse_dataset_path</span><span class="p">)</span>
+    <span class="n">model_path</span> <span class="o">=</span> <span class="nb">staticmethod</span><span class="p">(</span><span class="n">MigrationServiceClient</span><span class="o">.</span><span class="n">model_path</span><span class="p">)</span>
+    <span class="n">parse_model_path</span> <span class="o">=</span> <span class="nb">staticmethod</span><span class="p">(</span><span class="n">MigrationServiceClient</span><span class="o">.</span><span class="n">parse_model_path</span><span class="p">)</span>
+    <span class="n">model_path</span> <span class="o">=</span> <span class="nb">staticmethod</span><span class="p">(</span><span class="n">MigrationServiceClient</span><span class="o">.</span><span class="n">model_path</span><span class="p">)</span>
+    <span class="n">parse_model_path</span> <span class="o">=</span> <span class="nb">staticmethod</span><span class="p">(</span><span class="n">MigrationServiceClient</span><span class="o">.</span><span class="n">parse_model_path</span><span class="p">)</span>
+    <span class="n">version_path</span> <span class="o">=</span> <span class="nb">staticmethod</span><span class="p">(</span><span class="n">MigrationServiceClient</span><span class="o">.</span><span class="n">version_path</span><span class="p">)</span>
+    <span class="n">parse_version_path</span> <span class="o">=</span> <span class="nb">staticmethod</span><span class="p">(</span><span class="n">MigrationServiceClient</span><span class="o">.</span><span class="n">parse_version_path</span><span class="p">)</span>
+    <span class="n">common_billing_account_path</span> <span class="o">=</span> <span class="nb">staticmethod</span><span class="p">(</span>
+        <span class="n">MigrationServiceClient</span><span class="o">.</span><span class="n">common_billing_account_path</span>
+    <span class="p">)</span>
+    <span class="n">parse_common_billing_account_path</span> <span class="o">=</span> <span class="nb">staticmethod</span><span class="p">(</span>
+        <span class="n">MigrationServiceClient</span><span class="o">.</span><span class="n">parse_common_billing_account_path</span>
+    <span class="p">)</span>
+    <span class="n">common_folder_path</span> <span class="o">=</span> <span class="nb">staticmethod</span><span class="p">(</span><span class="n">MigrationServiceClient</span><span class="o">.</span><span class="n">common_folder_path</span><span class="p">)</span>
+    <span class="n">parse_common_folder_path</span> <span class="o">=</span> <span class="nb">staticmethod</span><span class="p">(</span>
+        <span class="n">MigrationServiceClient</span><span class="o">.</span><span class="n">parse_common_folder_path</span>
+    <span class="p">)</span>
+    <span class="n">common_organization_path</span> <span class="o">=</span> <span class="nb">staticmethod</span><span class="p">(</span>
+        <span class="n">MigrationServiceClient</span><span class="o">.</span><span class="n">common_organization_path</span>
+    <span class="p">)</span>
+    <span class="n">parse_common_organization_path</span> <span class="o">=</span> <span class="nb">staticmethod</span><span class="p">(</span>
+        <span class="n">MigrationServiceClient</span><span class="o">.</span><span class="n">parse_common_organization_path</span>
+    <span class="p">)</span>
+    <span class="n">common_project_path</span> <span class="o">=</span> <span class="nb">staticmethod</span><span class="p">(</span><span class="n">MigrationServiceClient</span><span class="o">.</span><span class="n">common_project_path</span><span class="p">)</span>
+    <span class="n">parse_common_project_path</span> <span class="o">=</span> <span class="nb">staticmethod</span><span class="p">(</span>
+        <span class="n">MigrationServiceClient</span><span class="o">.</span><span class="n">parse_common_project_path</span>
+    <span class="p">)</span>
+    <span class="n">common_location_path</span> <span class="o">=</span> <span class="nb">staticmethod</span><span class="p">(</span><span class="n">MigrationServiceClient</span><span class="o">.</span><span class="n">common_location_path</span><span class="p">)</span>
+    <span class="n">parse_common_location_path</span> <span class="o">=</span> <span class="nb">staticmethod</span><span class="p">(</span>
+        <span class="n">MigrationServiceClient</span><span class="o">.</span><span class="n">parse_common_location_path</span>
+    <span class="p">)</span>
+
+<div class="viewcode-block" id="MigrationServiceAsyncClient.from_service_account_info"><a class="viewcode-back" href="../../../../../../aiplatform_v1/migration_service.html#google.cloud.aiplatform_v1.services.migration_service.MigrationServiceAsyncClient.from_service_account_info">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_service_account_info</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">info</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Creates an instance of this client using the provided credentials</span>
+<span class="sd">            info.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            info (dict): The service account private key info.</span>
+<span class="sd">            args: Additional arguments to pass to the constructor.</span>
+<span class="sd">            kwargs: Additional arguments to pass to the constructor.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            MigrationServiceAsyncClient: The constructed client.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">MigrationServiceClient</span><span class="o">.</span><span class="n">from_service_account_info</span><span class="o">.</span><span class="vm">__func__</span><span class="p">(</span><span class="n">MigrationServiceAsyncClient</span><span class="p">,</span> <span class="n">info</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>  <span class="c1"># type: ignore</span></div>
+
+<div class="viewcode-block" id="MigrationServiceAsyncClient.from_service_account_file"><a class="viewcode-back" href="../../../../../../aiplatform_v1/migration_service.html#google.cloud.aiplatform_v1.services.migration_service.MigrationServiceAsyncClient.from_service_account_file">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_service_account_file</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Creates an instance of this client using the provided credentials</span>
+<span class="sd">            file.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            filename (str): The path to the service account private key json</span>
+<span class="sd">                file.</span>
+<span class="sd">            args: Additional arguments to pass to the constructor.</span>
+<span class="sd">            kwargs: Additional arguments to pass to the constructor.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            MigrationServiceAsyncClient: The constructed client.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">MigrationServiceClient</span><span class="o">.</span><span class="n">from_service_account_file</span><span class="o">.</span><span class="vm">__func__</span><span class="p">(</span><span class="n">MigrationServiceAsyncClient</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>  <span class="c1"># type: ignore</span></div>
+
+    <span class="n">from_service_account_json</span> <span class="o">=</span> <span class="n">from_service_account_file</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">transport</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MigrationServiceTransport</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Returns the transport used by the client instance.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            MigrationServiceTransport: The transport used by the client instance.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">transport</span>
+
+    <span class="n">get_transport_class</span> <span class="o">=</span> <span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span>
+        <span class="nb">type</span><span class="p">(</span><span class="n">MigrationServiceClient</span><span class="p">)</span><span class="o">.</span><span class="n">get_transport_class</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">MigrationServiceClient</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">credentials</span><span class="p">:</span> <span class="n">ga_credentials</span><span class="o">.</span><span class="n">Credentials</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">transport</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">MigrationServiceTransport</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;grpc_asyncio&quot;</span><span class="p">,</span>
+        <span class="n">client_options</span><span class="p">:</span> <span class="n">ClientOptions</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">client_info</span><span class="p">:</span> <span class="n">gapic_v1</span><span class="o">.</span><span class="n">client_info</span><span class="o">.</span><span class="n">ClientInfo</span> <span class="o">=</span> <span class="n">DEFAULT_CLIENT_INFO</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Instantiates the migration service client.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            credentials (Optional[google.auth.credentials.Credentials]): The</span>
+<span class="sd">                authorization credentials to attach to requests. These</span>
+<span class="sd">                credentials identify the application to the service; if none</span>
+<span class="sd">                are specified, the client will attempt to ascertain the</span>
+<span class="sd">                credentials from the environment.</span>
+<span class="sd">            transport (Union[str, ~.MigrationServiceTransport]): The</span>
+<span class="sd">                transport to use. If set to None, a transport is chosen</span>
+<span class="sd">                automatically.</span>
+<span class="sd">            client_options (ClientOptions): Custom options for the client. It</span>
+<span class="sd">                won&#39;t take effect if a ``transport`` instance is provided.</span>
+<span class="sd">                (1) The ``api_endpoint`` property can be used to override the</span>
+<span class="sd">                default endpoint provided by the client. GOOGLE_API_USE_MTLS_ENDPOINT</span>
+<span class="sd">                environment variable can also be used to override the endpoint:</span>
+<span class="sd">                &quot;always&quot; (always use the default mTLS endpoint), &quot;never&quot; (always</span>
+<span class="sd">                use the default regular endpoint) and &quot;auto&quot; (auto switch to the</span>
+<span class="sd">                default mTLS endpoint if client certificate is present, this is</span>
+<span class="sd">                the default value). However, the ``api_endpoint`` property takes</span>
+<span class="sd">                precedence if provided.</span>
+<span class="sd">                (2) If GOOGLE_API_USE_CLIENT_CERTIFICATE environment variable</span>
+<span class="sd">                is &quot;true&quot;, then the ``client_cert_source`` property can be used</span>
+<span class="sd">                to provide client certificate for mutual TLS transport. If</span>
+<span class="sd">                not provided, the default SSL client certificate will be used if</span>
+<span class="sd">                present. If GOOGLE_API_USE_CLIENT_CERTIFICATE is &quot;false&quot; or not</span>
+<span class="sd">                set, no client certificate will be used.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            google.auth.exceptions.MutualTlsChannelError: If mutual TLS transport</span>
+<span class="sd">                creation failed for any reason.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">MigrationServiceClient</span><span class="p">(</span>
+            <span class="n">credentials</span><span class="o">=</span><span class="n">credentials</span><span class="p">,</span>
+            <span class="n">transport</span><span class="o">=</span><span class="n">transport</span><span class="p">,</span>
+            <span class="n">client_options</span><span class="o">=</span><span class="n">client_options</span><span class="p">,</span>
+            <span class="n">client_info</span><span class="o">=</span><span class="n">client_info</span><span class="p">,</span>
+        <span class="p">)</span>
+
+<div class="viewcode-block" id="MigrationServiceAsyncClient.search_migratable_resources"><a class="viewcode-back" href="../../../../../../aiplatform_v1/migration_service.html#google.cloud.aiplatform_v1.services.migration_service.MigrationServiceAsyncClient.search_migratable_resources">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">search_migratable_resources</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">request</span><span class="p">:</span> <span class="n">migration_service</span><span class="o">.</span><span class="n">SearchMigratableResourcesRequest</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">parent</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">retry</span><span class="p">:</span> <span class="n">retries</span><span class="o">.</span><span class="n">Retry</span> <span class="o">=</span> <span class="n">gapic_v1</span><span class="o">.</span><span class="n">method</span><span class="o">.</span><span class="n">DEFAULT</span><span class="p">,</span>
+        <span class="n">timeout</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">metadata</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="p">(),</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pagers</span><span class="o">.</span><span class="n">SearchMigratableResourcesAsyncPager</span><span class="p">:</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Searches all of the resources in</span>
+<span class="sd">        automl.googleapis.com, datalabeling.googleapis.com and</span>
+<span class="sd">        ml.googleapis.com that can be migrated to Vertex AI&#39;s</span>
+<span class="sd">        given location.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            request (:class:`google.cloud.aiplatform_v1.types.SearchMigratableResourcesRequest`):</span>
+<span class="sd">                The request object. Request message for</span>
+<span class="sd">                [MigrationService.SearchMigratableResources][google.cloud.aiplatform.v1.MigrationService.SearchMigratableResources].</span>
+<span class="sd">            parent (:class:`str`):</span>
+<span class="sd">                Required. The location that the migratable resources</span>
+<span class="sd">                should be searched from. It&#39;s the Vertex AI location</span>
+<span class="sd">                that the resources can be migrated to, not the</span>
+<span class="sd">                resources&#39; original location. Format:</span>
+<span class="sd">                ``projects/{project}/locations/{location}``</span>
+
+<span class="sd">                This corresponds to the ``parent`` field</span>
+<span class="sd">                on the ``request`` instance; if ``request`` is provided, this</span>
+<span class="sd">                should not be set.</span>
+<span class="sd">            retry (google.api_core.retry.Retry): Designation of what errors, if any,</span>
+<span class="sd">                should be retried.</span>
+<span class="sd">            timeout (float): The timeout for this request.</span>
+<span class="sd">            metadata (Sequence[Tuple[str, str]]): Strings which should be</span>
+<span class="sd">                sent along with the request as metadata.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            google.cloud.aiplatform_v1.services.migration_service.pagers.SearchMigratableResourcesAsyncPager:</span>
+<span class="sd">                Response message for</span>
+<span class="sd">                [MigrationService.SearchMigratableResources][google.cloud.aiplatform.v1.MigrationService.SearchMigratableResources].</span>
+
+<span class="sd">                Iterating over this object will yield results and</span>
+<span class="sd">                resolve additional pages automatically.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Create or coerce a protobuf request object.</span>
+        <span class="c1"># Sanity check: If we got a request object, we should *not* have</span>
+        <span class="c1"># gotten any keyword arguments that map to the request.</span>
+        <span class="n">has_flattened_params</span> <span class="o">=</span> <span class="nb">any</span><span class="p">([</span><span class="n">parent</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">request</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">has_flattened_params</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;If the `request` argument is set, then none of &quot;</span>
+                <span class="s2">&quot;the individual field arguments should be set.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="n">request</span> <span class="o">=</span> <span class="n">migration_service</span><span class="o">.</span><span class="n">SearchMigratableResourcesRequest</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+
+        <span class="c1"># If we have keyword arguments corresponding to fields on the</span>
+        <span class="c1"># request, apply these.</span>
+        <span class="k">if</span> <span class="n">parent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">request</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="n">parent</span>
+
+        <span class="c1"># Wrap the RPC method; this adds retry and timeout information,</span>
+        <span class="c1"># and friendly error handling.</span>
+        <span class="n">rpc</span> <span class="o">=</span> <span class="n">gapic_v1</span><span class="o">.</span><span class="n">method_async</span><span class="o">.</span><span class="n">wrap_method</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">_transport</span><span class="o">.</span><span class="n">search_migratable_resources</span><span class="p">,</span>
+            <span class="n">default_timeout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">client_info</span><span class="o">=</span><span class="n">DEFAULT_CLIENT_INFO</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Certain fields should be provided within the metadata header;</span>
+        <span class="c1"># add these here.</span>
+        <span class="n">metadata</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">metadata</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span>
+            <span class="n">gapic_v1</span><span class="o">.</span><span class="n">routing_header</span><span class="o">.</span><span class="n">to_grpc_metadata</span><span class="p">(((</span><span class="s2">&quot;parent&quot;</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">parent</span><span class="p">),)),</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Send the request.</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">rpc</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">retry</span><span class="o">=</span><span class="n">retry</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">,)</span>
+
+        <span class="c1"># This method is paged; wrap the response in a pager, which provides</span>
+        <span class="c1"># an `__aiter__` convenience method.</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">pagers</span><span class="o">.</span><span class="n">SearchMigratableResourcesAsyncPager</span><span class="p">(</span>
+            <span class="n">method</span><span class="o">=</span><span class="n">rpc</span><span class="p">,</span> <span class="n">request</span><span class="o">=</span><span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="o">=</span><span class="n">response</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Done; return the response.</span>
+        <span class="k">return</span> <span class="n">response</span></div>
+
+<div class="viewcode-block" id="MigrationServiceAsyncClient.batch_migrate_resources"><a class="viewcode-back" href="../../../../../../aiplatform_v1/migration_service.html#google.cloud.aiplatform_v1.services.migration_service.MigrationServiceAsyncClient.batch_migrate_resources">[docs]</a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">batch_migrate_resources</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">request</span><span class="p">:</span> <span class="n">migration_service</span><span class="o">.</span><span class="n">BatchMigrateResourcesRequest</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">parent</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">migrate_resource_requests</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span>
+            <span class="n">migration_service</span><span class="o">.</span><span class="n">MigrateResourceRequest</span>
+        <span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">retry</span><span class="p">:</span> <span class="n">retries</span><span class="o">.</span><span class="n">Retry</span> <span class="o">=</span> <span class="n">gapic_v1</span><span class="o">.</span><span class="n">method</span><span class="o">.</span><span class="n">DEFAULT</span><span class="p">,</span>
+        <span class="n">timeout</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">metadata</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="p">(),</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">operation_async</span><span class="o">.</span><span class="n">AsyncOperation</span><span class="p">:</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Batch migrates resources from ml.googleapis.com,</span>
+<span class="sd">        automl.googleapis.com, and datalabeling.googleapis.com</span>
+<span class="sd">        to Vertex AI.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            request (:class:`google.cloud.aiplatform_v1.types.BatchMigrateResourcesRequest`):</span>
+<span class="sd">                The request object. Request message for</span>
+<span class="sd">                [MigrationService.BatchMigrateResources][google.cloud.aiplatform.v1.MigrationService.BatchMigrateResources].</span>
+<span class="sd">            parent (:class:`str`):</span>
+<span class="sd">                Required. The location of the migrated resource will</span>
+<span class="sd">                live in. Format:</span>
+<span class="sd">                ``projects/{project}/locations/{location}``</span>
+
+<span class="sd">                This corresponds to the ``parent`` field</span>
+<span class="sd">                on the ``request`` instance; if ``request`` is provided, this</span>
+<span class="sd">                should not be set.</span>
+<span class="sd">            migrate_resource_requests (:class:`Sequence[google.cloud.aiplatform_v1.types.MigrateResourceRequest]`):</span>
+<span class="sd">                Required. The request messages</span>
+<span class="sd">                specifying the resources to migrate.</span>
+<span class="sd">                They must be in the same location as the</span>
+<span class="sd">                destination. Up to 50 resources can be</span>
+<span class="sd">                migrated in one batch.</span>
+
+<span class="sd">                This corresponds to the ``migrate_resource_requests`` field</span>
+<span class="sd">                on the ``request`` instance; if ``request`` is provided, this</span>
+<span class="sd">                should not be set.</span>
+<span class="sd">            retry (google.api_core.retry.Retry): Designation of what errors, if any,</span>
+<span class="sd">                should be retried.</span>
+<span class="sd">            timeout (float): The timeout for this request.</span>
+<span class="sd">            metadata (Sequence[Tuple[str, str]]): Strings which should be</span>
+<span class="sd">                sent along with the request as metadata.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            google.api_core.operation_async.AsyncOperation:</span>
+<span class="sd">                An object representing a long-running operation.</span>
+
+<span class="sd">                The result type for the operation will be</span>
+<span class="sd">                :class:`google.cloud.aiplatform_v1.types.BatchMigrateResourcesResponse`</span>
+<span class="sd">                Response message for</span>
+<span class="sd">                [MigrationService.BatchMigrateResources][google.cloud.aiplatform.v1.MigrationService.BatchMigrateResources].</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Create or coerce a protobuf request object.</span>
+        <span class="c1"># Sanity check: If we got a request object, we should *not* have</span>
+        <span class="c1"># gotten any keyword arguments that map to the request.</span>
+        <span class="n">has_flattened_params</span> <span class="o">=</span> <span class="nb">any</span><span class="p">([</span><span class="n">parent</span><span class="p">,</span> <span class="n">migrate_resource_requests</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">request</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">has_flattened_params</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;If the `request` argument is set, then none of &quot;</span>
+                <span class="s2">&quot;the individual field arguments should be set.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="n">request</span> <span class="o">=</span> <span class="n">migration_service</span><span class="o">.</span><span class="n">BatchMigrateResourcesRequest</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+
+        <span class="c1"># If we have keyword arguments corresponding to fields on the</span>
+        <span class="c1"># request, apply these.</span>
+        <span class="k">if</span> <span class="n">parent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">request</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="n">parent</span>
+        <span class="k">if</span> <span class="n">migrate_resource_requests</span><span class="p">:</span>
+            <span class="n">request</span><span class="o">.</span><span class="n">migrate_resource_requests</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">migrate_resource_requests</span><span class="p">)</span>
+
+        <span class="c1"># Wrap the RPC method; this adds retry and timeout information,</span>
+        <span class="c1"># and friendly error handling.</span>
+        <span class="n">rpc</span> <span class="o">=</span> <span class="n">gapic_v1</span><span class="o">.</span><span class="n">method_async</span><span class="o">.</span><span class="n">wrap_method</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">_transport</span><span class="o">.</span><span class="n">batch_migrate_resources</span><span class="p">,</span>
+            <span class="n">default_timeout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">client_info</span><span class="o">=</span><span class="n">DEFAULT_CLIENT_INFO</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Certain fields should be provided within the metadata header;</span>
+        <span class="c1"># add these here.</span>
+        <span class="n">metadata</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">metadata</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span>
+            <span class="n">gapic_v1</span><span class="o">.</span><span class="n">routing_header</span><span class="o">.</span><span class="n">to_grpc_metadata</span><span class="p">(((</span><span class="s2">&quot;parent&quot;</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">parent</span><span class="p">),)),</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Send the request.</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">rpc</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">retry</span><span class="o">=</span><span class="n">retry</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">,)</span>
+
+        <span class="c1"># Wrap the response in an operation future.</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">operation_async</span><span class="o">.</span><span class="n">from_gapic</span><span class="p">(</span>
+            <span class="n">response</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">_transport</span><span class="o">.</span><span class="n">operations_client</span><span class="p">,</span>
+            <span class="n">migration_service</span><span class="o">.</span><span class="n">BatchMigrateResourcesResponse</span><span class="p">,</span>
+            <span class="n">metadata_type</span><span class="o">=</span><span class="n">migration_service</span><span class="o">.</span><span class="n">BatchMigrateResourcesOperationMetadata</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Done; return the response.</span>
+        <span class="k">return</span> <span class="n">response</span></div></div>
+
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">DEFAULT_CLIENT_INFO</span> <span class="o">=</span> <span class="n">gapic_v1</span><span class="o">.</span><span class="n">client_info</span><span class="o">.</span><span class="n">ClientInfo</span><span class="p">(</span>
+        <span class="n">gapic_version</span><span class="o">=</span><span class="n">pkg_resources</span><span class="o">.</span><span class="n">get_distribution</span><span class="p">(</span>
+            <span class="s2">&quot;google-cloud-aiplatform&quot;</span><span class="p">,</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">version</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="k">except</span> <span class="n">pkg_resources</span><span class="o">.</span><span class="n">DistributionNotFound</span><span class="p">:</span>
+    <span class="n">DEFAULT_CLIENT_INFO</span> <span class="o">=</span> <span class="n">gapic_v1</span><span class="o">.</span><span class="n">client_info</span><span class="o">.</span><span class="n">ClientInfo</span><span class="p">()</span>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;MigrationServiceAsyncClient&quot;</span><span class="p">,)</span>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../../../../index.html">google-cloud-aiplatform</a></h1>
+
+
+
+<p class="blurb">Google Cloud Client Libraries for google-cloud-aiplatform</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=googleapis&repo=python-aiplatform&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../aiplatform.html">Google Cloud Aiplatform SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../aiplatform_v1/services.html">Services for Google Cloud Aiplatform v1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../aiplatform_v1/types.html">Types for Google Cloud Aiplatform v1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../aiplatform_v1beta1/services.html">Services for Google Cloud Aiplatform v1beta1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../aiplatform_v1beta1/types.html">Types for Google Cloud Aiplatform v1beta1 API</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../changelog.html">Changelog</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../../../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Google.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+    <a href="https://github.com/googleapis/python-aiplatform" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,326 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>google.cloud.aiplatform_v1beta1.types.endpoint &#8212; google-cloud-aiplatform  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/alabaster.css" />
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+          	<div class="admonition" id="python2-eol"> 
+          	 As of January 1, 2020 this library no longer supports Python 2 on the latest released version. 
+          	 Library versions released prior to that date will continue to be available. For more information please
+          	 visit <a href="https://cloud.google.com/python/docs/python2-sunset/">Python 2 support on Google Cloud</a>.
+          	</div>
+            
+  <h1>Source code for google.cloud.aiplatform_v1beta1.types.endpoint</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Copyright 2020 Google LLC</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="c1">#</span>
+<span class="kn">import</span> <span class="nn">proto</span>  <span class="c1"># type: ignore</span>
+
+<span class="kn">from</span> <span class="nn">google.cloud.aiplatform_v1beta1.types</span> <span class="kn">import</span> <span class="n">encryption_spec</span> <span class="k">as</span> <span class="n">gca_encryption_spec</span>
+<span class="kn">from</span> <span class="nn">google.cloud.aiplatform_v1beta1.types</span> <span class="kn">import</span> <span class="n">explanation</span>
+<span class="kn">from</span> <span class="nn">google.cloud.aiplatform_v1beta1.types</span> <span class="kn">import</span> <span class="n">machine_resources</span>
+<span class="kn">from</span> <span class="nn">google.protobuf</span> <span class="kn">import</span> <span class="n">timestamp_pb2</span>  <span class="c1"># type: ignore</span>
+
+
+<span class="n">__protobuf__</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">module</span><span class="p">(</span>
+    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;google.cloud.aiplatform.v1beta1&quot;</span><span class="p">,</span> <span class="n">manifest</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Endpoint&quot;</span><span class="p">,</span> <span class="s2">&quot;DeployedModel&quot;</span><span class="p">,},</span>
+<span class="p">)</span>
+
+
+<div class="viewcode-block" id="Endpoint"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.Endpoint">[docs]</a><span class="k">class</span> <span class="nc">Endpoint</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Models are deployed into it, and afterwards Endpoint is</span>
+<span class="sd">    called to obtain predictions and explanations.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        name (str):</span>
+<span class="sd">            Output only. The resource name of the</span>
+<span class="sd">            Endpoint.</span>
+<span class="sd">        display_name (str):</span>
+<span class="sd">            Required. The display name of the Endpoint.</span>
+<span class="sd">            The name can be up to 128 characters long and</span>
+<span class="sd">            can be consist of any UTF-8 characters.</span>
+<span class="sd">        description (str):</span>
+<span class="sd">            The description of the Endpoint.</span>
+<span class="sd">        deployed_models (Sequence[google.cloud.aiplatform_v1beta1.types.DeployedModel]):</span>
+<span class="sd">            Output only. The models deployed in this Endpoint. To add or</span>
+<span class="sd">            remove DeployedModels use</span>
+<span class="sd">            [EndpointService.DeployModel][google.cloud.aiplatform.v1beta1.EndpointService.DeployModel]</span>
+<span class="sd">            and</span>
+<span class="sd">            [EndpointService.UndeployModel][google.cloud.aiplatform.v1beta1.EndpointService.UndeployModel]</span>
+<span class="sd">            respectively.</span>
+<span class="sd">        traffic_split (Sequence[google.cloud.aiplatform_v1beta1.types.Endpoint.TrafficSplitEntry]):</span>
+<span class="sd">            A map from a DeployedModel&#39;s ID to the</span>
+<span class="sd">            percentage of this Endpoint&#39;s traffic that</span>
+<span class="sd">            should be forwarded to that DeployedModel.</span>
+<span class="sd">            If a DeployedModel&#39;s ID is not listed in this</span>
+<span class="sd">            map, then it receives no traffic.</span>
+
+<span class="sd">            The traffic percentage values must add up to</span>
+<span class="sd">            100, or map must be empty if the Endpoint is to</span>
+<span class="sd">            not accept any traffic at a moment.</span>
+<span class="sd">        etag (str):</span>
+<span class="sd">            Used to perform consistent read-modify-write</span>
+<span class="sd">            updates. If not set, a blind &quot;overwrite&quot; update</span>
+<span class="sd">            happens.</span>
+<span class="sd">        labels (Sequence[google.cloud.aiplatform_v1beta1.types.Endpoint.LabelsEntry]):</span>
+<span class="sd">            The labels with user-defined metadata to</span>
+<span class="sd">            organize your Endpoints.</span>
+<span class="sd">            Label keys and values can be no longer than 64</span>
+<span class="sd">            characters (Unicode codepoints), can only</span>
+<span class="sd">            contain lowercase letters, numeric characters,</span>
+<span class="sd">            underscores and dashes. International characters</span>
+<span class="sd">            are allowed.</span>
+<span class="sd">            See https://goo.gl/xmQnxf for more information</span>
+<span class="sd">            and examples of labels.</span>
+<span class="sd">        create_time (google.protobuf.timestamp_pb2.Timestamp):</span>
+<span class="sd">            Output only. Timestamp when this Endpoint was</span>
+<span class="sd">            created.</span>
+<span class="sd">        update_time (google.protobuf.timestamp_pb2.Timestamp):</span>
+<span class="sd">            Output only. Timestamp when this Endpoint was</span>
+<span class="sd">            last updated.</span>
+<span class="sd">        encryption_spec (google.cloud.aiplatform_v1beta1.types.EncryptionSpec):</span>
+<span class="sd">            Customer-managed encryption key spec for an</span>
+<span class="sd">            Endpoint. If set, this Endpoint and all sub-</span>
+<span class="sd">            resources of this Endpoint will be secured by</span>
+<span class="sd">            this key.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="n">display_name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,)</span>
+    <span class="n">deployed_models</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">RepeatedField</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;DeployedModel&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">traffic_split</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">MapField</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">proto</span><span class="o">.</span><span class="n">INT32</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">5</span><span class="p">,)</span>
+    <span class="n">etag</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">6</span><span class="p">,)</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">MapField</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">7</span><span class="p">,)</span>
+    <span class="n">create_time</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">timestamp_pb2</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">,)</span>
+    <span class="n">update_time</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">timestamp_pb2</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">,)</span>
+    <span class="n">encryption_spec</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">gca_encryption_spec</span><span class="o">.</span><span class="n">EncryptionSpec</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="DeployedModel"><a class="viewcode-back" href="../../../../../aiplatform_v1beta1/types.html#google.cloud.aiplatform_v1beta1.types.DeployedModel">[docs]</a><span class="k">class</span> <span class="nc">DeployedModel</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;A deployment of a Model. Endpoints contain one or more</span>
+<span class="sd">    DeployedModels.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        dedicated_resources (google.cloud.aiplatform_v1beta1.types.DedicatedResources):</span>
+<span class="sd">            A description of resources that are dedicated</span>
+<span class="sd">            to the DeployedModel, and that need a higher</span>
+<span class="sd">            degree of manual configuration.</span>
+<span class="sd">        automatic_resources (google.cloud.aiplatform_v1beta1.types.AutomaticResources):</span>
+<span class="sd">            A description of resources that to large</span>
+<span class="sd">            degree are decided by AI Platform, and require</span>
+<span class="sd">            only a modest additional configuration.</span>
+<span class="sd">        id (str):</span>
+<span class="sd">            Output only. The ID of the DeployedModel.</span>
+<span class="sd">        model (str):</span>
+<span class="sd">            Required. The name of the Model that this is</span>
+<span class="sd">            the deployment of. Note that the Model may be in</span>
+<span class="sd">            a different location than the DeployedModel&#39;s</span>
+<span class="sd">            Endpoint.</span>
+<span class="sd">        display_name (str):</span>
+<span class="sd">            The display name of the DeployedModel. If not provided upon</span>
+<span class="sd">            creation, the Model&#39;s display_name is used.</span>
+<span class="sd">        create_time (google.protobuf.timestamp_pb2.Timestamp):</span>
+<span class="sd">            Output only. Timestamp when the DeployedModel</span>
+<span class="sd">            was created.</span>
+<span class="sd">        explanation_spec (google.cloud.aiplatform_v1beta1.types.ExplanationSpec):</span>
+<span class="sd">            Explanation configuration for this DeployedModel.</span>
+
+<span class="sd">            When deploying a Model using</span>
+<span class="sd">            [EndpointService.DeployModel][google.cloud.aiplatform.v1beta1.EndpointService.DeployModel],</span>
+<span class="sd">            this value overrides the value of</span>
+<span class="sd">            [Model.explanation_spec][google.cloud.aiplatform.v1beta1.Model.explanation_spec].</span>
+<span class="sd">            All fields of</span>
+<span class="sd">            [explanation_spec][google.cloud.aiplatform.v1beta1.DeployedModel.explanation_spec]</span>
+<span class="sd">            are optional in the request. If a field of</span>
+<span class="sd">            [explanation_spec][google.cloud.aiplatform.v1beta1.DeployedModel.explanation_spec]</span>
+<span class="sd">            is not populated, the value of the same field of</span>
+<span class="sd">            [Model.explanation_spec][google.cloud.aiplatform.v1beta1.Model.explanation_spec]</span>
+<span class="sd">            is inherited. If the corresponding</span>
+<span class="sd">            [Model.explanation_spec][google.cloud.aiplatform.v1beta1.Model.explanation_spec]</span>
+<span class="sd">            is not populated, all fields of the</span>
+<span class="sd">            [explanation_spec][google.cloud.aiplatform.v1beta1.DeployedModel.explanation_spec]</span>
+<span class="sd">            will be used for the explanation configuration.</span>
+<span class="sd">        service_account (str):</span>
+<span class="sd">            The service account that the DeployedModel&#39;s container runs</span>
+<span class="sd">            as. Specify the email address of the service account. If</span>
+<span class="sd">            this service account is not specified, the container runs as</span>
+<span class="sd">            a service account that doesn&#39;t have access to the resource</span>
+<span class="sd">            project.</span>
+
+<span class="sd">            Users deploying the Model must have the</span>
+<span class="sd">            ``iam.serviceAccounts.actAs`` permission on this service</span>
+<span class="sd">            account.</span>
+<span class="sd">        enable_container_logging (bool):</span>
+<span class="sd">            If true, the container of the DeployedModel instances will</span>
+<span class="sd">            send ``stderr`` and ``stdout`` streams to Stackdriver</span>
+<span class="sd">            Logging.</span>
+
+<span class="sd">            Only supported for custom-trained Models and AutoML Tabular</span>
+<span class="sd">            Models.</span>
+<span class="sd">        enable_access_logging (bool):</span>
+<span class="sd">            These logs are like standard server access</span>
+<span class="sd">            logs, containing information like timestamp and</span>
+<span class="sd">            latency for each prediction request.</span>
+<span class="sd">            Note that Stackdriver logs may incur a cost,</span>
+<span class="sd">            especially if your project receives prediction</span>
+<span class="sd">            requests at a high queries per second rate</span>
+<span class="sd">            (QPS). Estimate your costs before enabling this</span>
+<span class="sd">            option.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">dedicated_resources</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span>
+        <span class="n">number</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
+        <span class="n">oneof</span><span class="o">=</span><span class="s2">&quot;prediction_resources&quot;</span><span class="p">,</span>
+        <span class="n">message</span><span class="o">=</span><span class="n">machine_resources</span><span class="o">.</span><span class="n">DedicatedResources</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">automatic_resources</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span>
+        <span class="n">number</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+        <span class="n">oneof</span><span class="o">=</span><span class="s2">&quot;prediction_resources&quot;</span><span class="p">,</span>
+        <span class="n">message</span><span class="o">=</span><span class="n">machine_resources</span><span class="o">.</span><span class="n">AutomaticResources</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span>
+    <span class="n">display_name</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,)</span>
+    <span class="n">create_time</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">timestamp_pb2</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">,)</span>
+    <span class="n">explanation_spec</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">explanation</span><span class="o">.</span><span class="n">ExplanationSpec</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">service_account</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">11</span><span class="p">,)</span>
+    <span class="n">enable_container_logging</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">BOOL</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">12</span><span class="p">,)</span>
+    <span class="n">enable_access_logging</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">BOOL</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">13</span><span class="p">,)</span></div>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">__protobuf__</span><span class="o">.</span><span class="n">manifest</span><span class="p">))</span>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../../../index.html">google-cloud-aiplatform</a></h1>
+
+
+
+<p class="blurb">Google Cloud Client Libraries for google-cloud-aiplatform</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=googleapis&repo=python-aiplatform&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform.html">Google Cloud Aiplatform SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1/services.html">Services for Google Cloud Aiplatform v1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1/types.html">Types for Google Cloud Aiplatform v1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1beta1/services.html">Services for Google Cloud Aiplatform v1beta1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../aiplatform_v1beta1/types.html">Types for Google Cloud Aiplatform v1beta1 API</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../changelog.html">Changelog</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Google.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+    <a href="https://github.com/googleapis/python-aiplatform" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>

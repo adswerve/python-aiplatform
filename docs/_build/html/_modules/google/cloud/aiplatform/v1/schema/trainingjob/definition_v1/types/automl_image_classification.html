@@ -1,0 +1,260 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>google.cloud.aiplatform.v1.schema.trainingjob.definition_v1.types.automl_image_classification &#8212; google-cloud-aiplatform  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../../../_static/alabaster.css" />
+    <script data-url_root="../../../../../../../../../" id="documentation_options" src="../../../../../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../../../../../_static/jquery.js"></script>
+    <script src="../../../../../../../../../_static/underscore.js"></script>
+    <script src="../../../../../../../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../../../../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+          	<div class="admonition" id="python2-eol"> 
+          	 As of January 1, 2020 this library no longer supports Python 2 on the latest released version. 
+          	 Library versions released prior to that date will continue to be available. For more information please
+          	 visit <a href="https://cloud.google.com/python/docs/python2-sunset/">Python 2 support on Google Cloud</a>.
+          	</div>
+            
+  <h1>Source code for google.cloud.aiplatform.v1.schema.trainingjob.definition_v1.types.automl_image_classification</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Copyright 2020 Google LLC</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="c1">#</span>
+<span class="kn">import</span> <span class="nn">proto</span>  <span class="c1"># type: ignore</span>
+
+
+<span class="n">__protobuf__</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">module</span><span class="p">(</span>
+    <span class="n">package</span><span class="o">=</span><span class="s2">&quot;google.cloud.aiplatform.v1.schema.trainingjob.definition&quot;</span><span class="p">,</span>
+    <span class="n">manifest</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;AutoMlImageClassification&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;AutoMlImageClassificationInputs&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;AutoMlImageClassificationMetadata&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">)</span>
+
+
+<div class="viewcode-block" id="AutoMlImageClassification"><a class="viewcode-back" href="../../../../../../../../../definition_v1/types.html#google.cloud.aiplatform.v1.schema.trainingjob.definition_v1.types.AutoMlImageClassification">[docs]</a><span class="k">class</span> <span class="nc">AutoMlImageClassification</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;A TrainingJob that trains and uploads an AutoML Image</span>
+<span class="sd">    Classification Model.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        inputs (google.cloud.aiplatform.v1.schema.trainingjob.definition_v1.types.AutoMlImageClassificationInputs):</span>
+<span class="sd">            The input parameters of this TrainingJob.</span>
+<span class="sd">        metadata (google.cloud.aiplatform.v1.schema.trainingjob.definition_v1.types.AutoMlImageClassificationMetadata):</span>
+<span class="sd">            The metadata information.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">inputs</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;AutoMlImageClassificationInputs&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">metadata</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">MESSAGE</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;AutoMlImageClassificationMetadata&quot;</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="AutoMlImageClassificationInputs"><a class="viewcode-back" href="../../../../../../../../../definition_v1/types.html#google.cloud.aiplatform.v1.schema.trainingjob.definition_v1.types.AutoMlImageClassificationInputs">[docs]</a><span class="k">class</span> <span class="nc">AutoMlImageClassificationInputs</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Attributes:</span>
+<span class="sd">        model_type (google.cloud.aiplatform.v1.schema.trainingjob.definition_v1.types.AutoMlImageClassificationInputs.ModelType):</span>
+
+<span class="sd">        base_model_id (str):</span>
+<span class="sd">            The ID of the ``base`` model. If it is specified, the new</span>
+<span class="sd">            model will be trained based on the ``base`` model.</span>
+<span class="sd">            Otherwise, the new model will be trained from scratch. The</span>
+<span class="sd">            ``base`` model must be in the same Project and Location as</span>
+<span class="sd">            the new Model to train, and have the same modelType.</span>
+<span class="sd">        budget_milli_node_hours (int):</span>
+<span class="sd">            The training budget of creating this model, expressed in</span>
+<span class="sd">            milli node hours i.e. 1,000 value in this field means 1 node</span>
+<span class="sd">            hour. The actual metadata.costMilliNodeHours will be equal</span>
+<span class="sd">            or less than this value. If further model training ceases to</span>
+<span class="sd">            provide any improvements, it will stop without using the</span>
+<span class="sd">            full budget and the metadata.successfulStopReason will be</span>
+<span class="sd">            ``model-converged``. Note, node_hour = actual_hour \*</span>
+<span class="sd">            number_of_nodes_involved. For modelType</span>
+<span class="sd">            ``cloud``\ (default), the budget must be between 8,000 and</span>
+<span class="sd">            800,000 milli node hours, inclusive. The default value is</span>
+<span class="sd">            192,000 which represents one day in wall time, considering 8</span>
+<span class="sd">            nodes are used. For model types ``mobile-tf-low-latency-1``,</span>
+<span class="sd">            ``mobile-tf-versatile-1``, ``mobile-tf-high-accuracy-1``,</span>
+<span class="sd">            the training budget must be between 1,000 and 100,000 milli</span>
+<span class="sd">            node hours, inclusive. The default value is 24,000 which</span>
+<span class="sd">            represents one day in wall time on a single node that is</span>
+<span class="sd">            used.</span>
+<span class="sd">        disable_early_stopping (bool):</span>
+<span class="sd">            Use the entire training budget. This disables</span>
+<span class="sd">            the early stopping feature. When false the early</span>
+<span class="sd">            stopping feature is enabled, which means that</span>
+<span class="sd">            AutoML Image Classification might stop training</span>
+<span class="sd">            before the entire training budget has been used.</span>
+<span class="sd">        multi_label (bool):</span>
+<span class="sd">            If false, a single-label (multi-class) Model</span>
+<span class="sd">            will be trained (i.e. assuming that for each</span>
+<span class="sd">            image just up to one annotation may be</span>
+<span class="sd">            applicable). If true, a multi-label Model will</span>
+<span class="sd">            be trained (i.e. assuming that for each image</span>
+<span class="sd">            multiple annotations may be applicable).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="AutoMlImageClassificationInputs.ModelType"><a class="viewcode-back" href="../../../../../../../../../definition_v1/types.html#google.cloud.aiplatform.v1.schema.trainingjob.definition_v1.types.AutoMlImageClassificationInputs.ModelType">[docs]</a>    <span class="k">class</span> <span class="nc">ModelType</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Enum</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;&quot;&quot;&quot;</span>
+        <span class="n">MODEL_TYPE_UNSPECIFIED</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">CLOUD</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">MOBILE_TF_LOW_LATENCY_1</span> <span class="o">=</span> <span class="mi">2</span>
+        <span class="n">MOBILE_TF_VERSATILE_1</span> <span class="o">=</span> <span class="mi">3</span>
+        <span class="n">MOBILE_TF_HIGH_ACCURACY_1</span> <span class="o">=</span> <span class="mi">4</span></div>
+
+    <span class="n">model_type</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">ENUM</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">enum</span><span class="o">=</span><span class="n">ModelType</span><span class="p">,)</span>
+    <span class="n">base_model_id</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">STRING</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,)</span>
+    <span class="n">budget_milli_node_hours</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">INT64</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,)</span>
+    <span class="n">disable_early_stopping</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">BOOL</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">4</span><span class="p">,)</span>
+    <span class="n">multi_label</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">BOOL</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">5</span><span class="p">,)</span></div>
+
+
+<div class="viewcode-block" id="AutoMlImageClassificationMetadata"><a class="viewcode-back" href="../../../../../../../../../definition_v1/types.html#google.cloud.aiplatform.v1.schema.trainingjob.definition_v1.types.AutoMlImageClassificationMetadata">[docs]</a><span class="k">class</span> <span class="nc">AutoMlImageClassificationMetadata</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Message</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Attributes:</span>
+<span class="sd">        cost_milli_node_hours (int):</span>
+<span class="sd">            The actual training cost of creating this</span>
+<span class="sd">            model, expressed in milli node hours, i.e. 1,000</span>
+<span class="sd">            value in this field means 1 node hour.</span>
+<span class="sd">            Guaranteed to not exceed</span>
+<span class="sd">            inputs.budgetMilliNodeHours.</span>
+<span class="sd">        successful_stop_reason (google.cloud.aiplatform.v1.schema.trainingjob.definition_v1.types.AutoMlImageClassificationMetadata.SuccessfulStopReason):</span>
+<span class="sd">            For successful job completions, this is the</span>
+<span class="sd">            reason why the job has finished.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="AutoMlImageClassificationMetadata.SuccessfulStopReason"><a class="viewcode-back" href="../../../../../../../../../definition_v1/types.html#google.cloud.aiplatform.v1.schema.trainingjob.definition_v1.types.AutoMlImageClassificationMetadata.SuccessfulStopReason">[docs]</a>    <span class="k">class</span> <span class="nc">SuccessfulStopReason</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">Enum</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;&quot;&quot;&quot;</span>
+        <span class="n">SUCCESSFUL_STOP_REASON_UNSPECIFIED</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">BUDGET_REACHED</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">MODEL_CONVERGED</span> <span class="o">=</span> <span class="mi">2</span></div>
+
+    <span class="n">cost_milli_node_hours</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">proto</span><span class="o">.</span><span class="n">INT64</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,)</span>
+    <span class="n">successful_stop_reason</span> <span class="o">=</span> <span class="n">proto</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span>
+        <span class="n">proto</span><span class="o">.</span><span class="n">ENUM</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">enum</span><span class="o">=</span><span class="n">SuccessfulStopReason</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">__protobuf__</span><span class="o">.</span><span class="n">manifest</span><span class="p">))</span>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../../../../../../../index.html">google-cloud-aiplatform</a></h1>
+
+
+
+<p class="blurb">Google Cloud Client Libraries for google-cloud-aiplatform</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=googleapis&repo=python-aiplatform&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../aiplatform.html">Google Cloud Aiplatform SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../aiplatform_v1/services.html">Services for Google Cloud Aiplatform v1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../aiplatform_v1/types.html">Types for Google Cloud Aiplatform v1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../aiplatform_v1beta1/services.html">Services for Google Cloud Aiplatform v1beta1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../aiplatform_v1beta1/types.html">Types for Google Cloud Aiplatform v1beta1 API</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../../../../changelog.html">Changelog</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../../../../../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../../../../../../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../../../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Google.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+    <a href="https://github.com/googleapis/python-aiplatform" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>

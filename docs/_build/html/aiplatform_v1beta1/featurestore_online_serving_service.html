@@ -1,0 +1,733 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>FeaturestoreOnlineServingService &#8212; google-cloud-aiplatform  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="FeaturestoreService" href="featurestore_service.html" />
+    <link rel="prev" title="EndpointService" href="endpoint_service.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+          	<div class="admonition" id="python2-eol"> 
+          	 As of January 1, 2020 this library no longer supports Python 2 on the latest released version. 
+          	 Library versions released prior to that date will continue to be available. For more information please
+          	 visit <a href="https://cloud.google.com/python/docs/python2-sunset/">Python 2 support on Google Cloud</a>.
+          	</div>
+            
+  <section id="module-google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service">
+<span id="featurestoreonlineservingservice"></span><h1>FeaturestoreOnlineServingService<a class="headerlink" href="#module-google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceAsyncClient">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.</span></span><span class="sig-name descname"><span class="pre">FeaturestoreOnlineServingServiceAsyncClient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">*</span></em>, <em class="sig-param"><span class="pre">credentials:</span> <span class="pre">google.auth.credentials.Credentials</span> <span class="pre">=</span> <span class="pre">None</span></em>, <em class="sig-param"><span class="pre">transport:</span> <span class="pre">Union[str</span></em>, <em class="sig-param"><span class="pre">google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.transports.base.FeaturestoreOnlineServingServiceTransport]</span> <span class="pre">=</span> <span class="pre">'grpc_asyncio'</span></em>, <em class="sig-param"><span class="pre">client_options:</span> <span class="pre">&lt;module</span> <span class="pre">'google.api_core.client_options'</span> <span class="pre">from</span> <span class="pre">'/Users/daniel/Documents/Github/python-aiplatform/.nox/docs/lib/python3.8/site-packages/google/api_core/client_options.py'&gt;</span> <span class="pre">=</span> <span class="pre">None</span></em>, <em class="sig-param"><span class="pre">client_info:</span> <span class="pre">google.api_core.gapic_v1.client_info.ClientInfo</span> <span class="pre">=</span> <span class="pre">&lt;google.api_core.gapic_v1.client_info.ClientInfo</span> <span class="pre">object&gt;</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/google/cloud/aiplatform_v1beta1/services/featurestore_online_serving_service/async_client.html#FeaturestoreOnlineServingServiceAsyncClient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceAsyncClient" title="Permalink to this definition">¶</a></dt>
+<dd><p>A service for serving online feature values.</p>
+<p>Instantiates the featurestore online serving service client.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>credentials</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://googleapis.dev/python/google-auth/latest/reference/google.auth.credentials.html#google.auth.credentials.Credentials" title="(in google-auth v1.30.2)"><em>google.auth.credentials.Credentials</em></a><em>]</em>) – The
+authorization credentials to attach to requests. These
+credentials identify the application to the service; if none
+are specified, the client will attempt to ascertain the
+credentials from the environment.</p></li>
+<li><p><strong>transport</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>, </em><em>FeaturestoreOnlineServingServiceTransport</em><em>]</em>) – The
+transport to use. If set to None, a transport is chosen
+automatically.</p></li>
+<li><p><strong>client_options</strong> (<em>ClientOptions</em>) – Custom options for the client. It
+won’t take effect if a <code class="docutils literal notranslate"><span class="pre">transport</span></code> instance is provided.
+(1) The <code class="docutils literal notranslate"><span class="pre">api_endpoint</span></code> property can be used to override the
+default endpoint provided by the client. GOOGLE_API_USE_MTLS_ENDPOINT
+environment variable can also be used to override the endpoint:
+“always” (always use the default mTLS endpoint), “never” (always
+use the default regular endpoint) and “auto” (auto switch to the
+default mTLS endpoint if client certificate is present, this is
+the default value). However, the <code class="docutils literal notranslate"><span class="pre">api_endpoint</span></code> property takes
+precedence if provided.
+(2) If GOOGLE_API_USE_CLIENT_CERTIFICATE environment variable
+is “true”, then the <code class="docutils literal notranslate"><span class="pre">client_cert_source</span></code> property can be used
+to provide client certificate for mutual TLS transport. If
+not provided, the default SSL client certificate will be used if
+present. If GOOGLE_API_USE_CLIENT_CERTIFICATE is “false” or not
+set, no client certificate will be used.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>google.auth.exceptions.MutualTlsChannelError</strong> – If mutual TLS transport
+    creation failed for any reason.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceAsyncClient.common_billing_account_path">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">common_billing_account_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">billing_account</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><a class="headerlink" href="#google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceAsyncClient.common_billing_account_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a fully-qualified billing_account string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceAsyncClient.common_folder_path">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">common_folder_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><a class="headerlink" href="#google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceAsyncClient.common_folder_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a fully-qualified folder string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceAsyncClient.common_location_path">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">common_location_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><a class="headerlink" href="#google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceAsyncClient.common_location_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a fully-qualified location string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceAsyncClient.common_organization_path">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">common_organization_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">organization</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><a class="headerlink" href="#google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceAsyncClient.common_organization_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a fully-qualified organization string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceAsyncClient.common_project_path">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">common_project_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><a class="headerlink" href="#google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceAsyncClient.common_project_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a fully-qualified project string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceAsyncClient.entity_type_path">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">entity_type_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">featurestore</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">entity_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><a class="headerlink" href="#google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceAsyncClient.entity_type_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a fully-qualified entity_type string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceAsyncClient.from_service_account_file">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_service_account_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/google/cloud/aiplatform_v1beta1/services/featurestore_online_serving_service/async_client.html#FeaturestoreOnlineServingServiceAsyncClient.from_service_account_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceAsyncClient.from_service_account_file" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Creates an instance of this client using the provided credentials</dt><dd><p>file.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The path to the service account private key json
+file.</p></li>
+<li><p><strong>args</strong> – Additional arguments to pass to the constructor.</p></li>
+<li><p><strong>kwargs</strong> – Additional arguments to pass to the constructor.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The constructed client.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceAsyncClient" title="google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceAsyncClient">FeaturestoreOnlineServingServiceAsyncClient</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceAsyncClient.from_service_account_info">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_service_account_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">info</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#dict" title="(in Python v3.7)"><span class="pre">dict</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/google/cloud/aiplatform_v1beta1/services/featurestore_online_serving_service/async_client.html#FeaturestoreOnlineServingServiceAsyncClient.from_service_account_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceAsyncClient.from_service_account_info" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Creates an instance of this client using the provided credentials</dt><dd><p>info.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>info</strong> (<a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – The service account private key info.</p></li>
+<li><p><strong>args</strong> – Additional arguments to pass to the constructor.</p></li>
+<li><p><strong>kwargs</strong> – Additional arguments to pass to the constructor.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The constructed client.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceAsyncClient" title="google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceAsyncClient">FeaturestoreOnlineServingServiceAsyncClient</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceAsyncClient.from_service_account_json">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_service_account_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceAsyncClient.from_service_account_json" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Creates an instance of this client using the provided credentials</dt><dd><p>file.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The path to the service account private key json
+file.</p></li>
+<li><p><strong>args</strong> – Additional arguments to pass to the constructor.</p></li>
+<li><p><strong>kwargs</strong> – Additional arguments to pass to the constructor.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The constructed client.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceAsyncClient" title="google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceAsyncClient">FeaturestoreOnlineServingServiceAsyncClient</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceAsyncClient.get_transport_class">
+<span class="sig-name descname"><span class="pre">get_transport_class</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">Type</span><span class="p"><span class="pre">[</span></span><span class="pre">google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.transports.base.FeaturestoreOnlineServingServiceTransport</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceAsyncClient.get_transport_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns an appropriate transport class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>label</strong> – The name of the desired transport. If none is
+provided, then the first transport in the registry is used.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The transport class to use.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceAsyncClient.parse_common_billing_account_path">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">parse_common_billing_account_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceAsyncClient.parse_common_billing_account_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse a billing_account path into its component segments.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceAsyncClient.parse_common_folder_path">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">parse_common_folder_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceAsyncClient.parse_common_folder_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse a folder path into its component segments.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceAsyncClient.parse_common_location_path">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">parse_common_location_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceAsyncClient.parse_common_location_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse a location path into its component segments.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceAsyncClient.parse_common_organization_path">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">parse_common_organization_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceAsyncClient.parse_common_organization_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse a organization path into its component segments.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceAsyncClient.parse_common_project_path">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">parse_common_project_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceAsyncClient.parse_common_project_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse a project path into its component segments.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceAsyncClient.parse_entity_type_path">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">parse_entity_type_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceAsyncClient.parse_entity_type_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses a entity_type path into its component segments.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceAsyncClient.read_feature_values">
+<em class="property"><span class="pre">async</span> </em><span class="sig-name descname"><span class="pre">read_feature_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">request:</span> <span class="pre">Optional[google.cloud.aiplatform_v1beta1.types.featurestore_online_service.ReadFeatureValuesRequest]</span> <span class="pre">=</span> <span class="pre">None</span></em>, <em class="sig-param"><span class="pre">*</span></em>, <em class="sig-param"><span class="pre">entity_type:</span> <span class="pre">Optional[str]</span> <span class="pre">=</span> <span class="pre">None</span></em>, <em class="sig-param"><span class="pre">retry:</span> <span class="pre">google.api_core.retry.Retry</span> <span class="pre">=</span> <span class="pre">&lt;object</span> <span class="pre">object&gt;</span></em>, <em class="sig-param"><span class="pre">timeout:</span> <span class="pre">Optional[float]</span> <span class="pre">=</span> <span class="pre">None</span></em>, <em class="sig-param"><span class="pre">metadata:</span> <span class="pre">Sequence[Tuple[str</span></em>, <em class="sig-param"><span class="pre">str]]</span> <span class="pre">=</span> <span class="pre">()</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="types.html#google.cloud.aiplatform_v1beta1.types.ReadFeatureValuesResponse" title="google.cloud.aiplatform_v1beta1.types.featurestore_online_service.ReadFeatureValuesResponse"><span class="pre">google.cloud.aiplatform_v1beta1.types.featurestore_online_service.ReadFeatureValuesResponse</span></a><a class="reference internal" href="../_modules/google/cloud/aiplatform_v1beta1/services/featurestore_online_serving_service/async_client.html#FeaturestoreOnlineServingServiceAsyncClient.read_feature_values"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceAsyncClient.read_feature_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads Feature values of a specific entity of an
+EntityType. For reading feature values of multiple
+entities of an EntityType, please use
+StreamingReadFeatureValues.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> (<a class="reference internal" href="types.html#google.cloud.aiplatform_v1beta1.types.ReadFeatureValuesRequest" title="google.cloud.aiplatform_v1beta1.types.ReadFeatureValuesRequest"><code class="xref py py-class docutils literal notranslate"><span class="pre">google.cloud.aiplatform_v1beta1.types.ReadFeatureValuesRequest</span></code></a>) – The request object. Request message for
+[FeaturestoreOnlineServingService.ReadFeatureValues][google.cloud.aiplatform.v1beta1.FeaturestoreOnlineServingService.ReadFeatureValues].</p></li>
+<li><p><strong>entity_type</strong> (<a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – <p>Required. The resource name of the EntityType for the
+entity being read. Value format:
+<code class="docutils literal notranslate"><span class="pre">projects/{project}/locations/{location}/featurestores/</span> <span class="pre">{featurestore}/entityTypes/{entityType}</span></code>.
+For example, for a machine learning model predicting
+user clicks on a website, an EntityType ID could be
+“user”.</p>
+<p>This corresponds to the <code class="docutils literal notranslate"><span class="pre">entity_type</span></code> field
+on the <code class="docutils literal notranslate"><span class="pre">request</span></code> instance; if <code class="docutils literal notranslate"><span class="pre">request</span></code> is provided, this
+should not be set.</p>
+</p></li>
+<li><p><strong>retry</strong> (<a class="reference external" href="https://googleapis.dev/python/google-api-core/latest/retry.html#google.api_core.retry.Retry" title="(in google-api-core)"><em>google.api_core.retry.Retry</em></a>) – Designation of what errors, if any,
+should be retried.</p></li>
+<li><p><strong>timeout</strong> (<a class="reference external" href="https://python.readthedocs.io/en/latest/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The timeout for this request.</p></li>
+<li><p><strong>metadata</strong> (<em>Sequence</em><em>[</em><em>Tuple</em><em>[</em><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>, </em><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>]</em><em>]</em>) – Strings which should be
+sent along with the request as metadata.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Response message for
+[FeaturestoreOnlineServingService.ReadFeatureValues][google.cloud.aiplatform.v1beta1.FeaturestoreOnlineServingService.ReadFeatureValues].</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="types.html#google.cloud.aiplatform_v1beta1.types.ReadFeatureValuesResponse" title="google.cloud.aiplatform_v1beta1.types.ReadFeatureValuesResponse">google.cloud.aiplatform_v1beta1.types.ReadFeatureValuesResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceAsyncClient.streaming_read_feature_values">
+<span class="sig-name descname"><span class="pre">streaming_read_feature_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">request:</span> <span class="pre">Optional[google.cloud.aiplatform_v1beta1.types.featurestore_online_service.StreamingReadFeatureValuesRequest]</span> <span class="pre">=</span> <span class="pre">None</span></em>, <em class="sig-param"><span class="pre">*</span></em>, <em class="sig-param"><span class="pre">entity_type:</span> <span class="pre">Optional[str]</span> <span class="pre">=</span> <span class="pre">None</span></em>, <em class="sig-param"><span class="pre">retry:</span> <span class="pre">google.api_core.retry.Retry</span> <span class="pre">=</span> <span class="pre">&lt;object</span> <span class="pre">object&gt;</span></em>, <em class="sig-param"><span class="pre">timeout:</span> <span class="pre">Optional[float]</span> <span class="pre">=</span> <span class="pre">None</span></em>, <em class="sig-param"><span class="pre">metadata:</span> <span class="pre">Sequence[Tuple[str</span></em>, <em class="sig-param"><span class="pre">str]]</span> <span class="pre">=</span> <span class="pre">()</span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Awaitable</span><span class="p"><span class="pre">[</span></span><span class="pre">AsyncIterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="types.html#google.cloud.aiplatform_v1beta1.types.ReadFeatureValuesResponse" title="google.cloud.aiplatform_v1beta1.types.featurestore_online_service.ReadFeatureValuesResponse"><span class="pre">google.cloud.aiplatform_v1beta1.types.featurestore_online_service.ReadFeatureValuesResponse</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="../_modules/google/cloud/aiplatform_v1beta1/services/featurestore_online_serving_service/async_client.html#FeaturestoreOnlineServingServiceAsyncClient.streaming_read_feature_values"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceAsyncClient.streaming_read_feature_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads Feature values for multiple entities. Depending
+on their size, data for different entities may be broken
+up across multiple responses.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> (<a class="reference internal" href="types.html#google.cloud.aiplatform_v1beta1.types.StreamingReadFeatureValuesRequest" title="google.cloud.aiplatform_v1beta1.types.StreamingReadFeatureValuesRequest"><code class="xref py py-class docutils literal notranslate"><span class="pre">google.cloud.aiplatform_v1beta1.types.StreamingReadFeatureValuesRequest</span></code></a>) – The request object. Request message for
+[FeaturestoreOnlineServingService.StreamingFeatureValuesRead][].</p></li>
+<li><p><strong>entity_type</strong> (<a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – <p>Required. The resource name of the entities’ type. Value
+format:
+<code class="docutils literal notranslate"><span class="pre">projects/{project}/locations/{location}/featurestores/</span> <span class="pre">{featurestore}/entityTypes/{entityType}</span></code>.
+For example, for a machine learning model predicting
+user clicks on a website, an EntityType ID could be
+“user”.</p>
+<p>This corresponds to the <code class="docutils literal notranslate"><span class="pre">entity_type</span></code> field
+on the <code class="docutils literal notranslate"><span class="pre">request</span></code> instance; if <code class="docutils literal notranslate"><span class="pre">request</span></code> is provided, this
+should not be set.</p>
+</p></li>
+<li><p><strong>retry</strong> (<a class="reference external" href="https://googleapis.dev/python/google-api-core/latest/retry.html#google.api_core.retry.Retry" title="(in google-api-core)"><em>google.api_core.retry.Retry</em></a>) – Designation of what errors, if any,
+should be retried.</p></li>
+<li><p><strong>timeout</strong> (<a class="reference external" href="https://python.readthedocs.io/en/latest/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The timeout for this request.</p></li>
+<li><p><strong>metadata</strong> (<em>Sequence</em><em>[</em><em>Tuple</em><em>[</em><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>, </em><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>]</em><em>]</em>) – Strings which should be
+sent along with the request as metadata.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Response message for
+[FeaturestoreOnlineServingService.ReadFeatureValues][google.cloud.aiplatform.v1beta1.FeaturestoreOnlineServingService.ReadFeatureValues].</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>AsyncIterable[<a class="reference internal" href="types.html#google.cloud.aiplatform_v1beta1.types.ReadFeatureValuesResponse" title="google.cloud.aiplatform_v1beta1.types.ReadFeatureValuesResponse">google.cloud.aiplatform_v1beta1.types.ReadFeatureValuesResponse</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceAsyncClient.transport">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">transport</span></span><em class="property"><span class="pre">:</span> <span class="pre">google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.transports.base.FeaturestoreOnlineServingServiceTransport</span></em><a class="headerlink" href="#google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceAsyncClient.transport" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the transport used by the client instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The transport used by the client instance.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>FeaturestoreOnlineServingServiceTransport</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceClient">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.</span></span><span class="sig-name descname"><span class="pre">FeaturestoreOnlineServingServiceClient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">*</span></em>, <em class="sig-param"><span class="pre">credentials:</span> <span class="pre">Optional[google.auth.credentials.Credentials]</span> <span class="pre">=</span> <span class="pre">None</span></em>, <em class="sig-param"><span class="pre">transport:</span> <span class="pre">Optional[Union[str</span></em>, <em class="sig-param"><span class="pre">google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.transports.base.FeaturestoreOnlineServingServiceTransport]]</span> <span class="pre">=</span> <span class="pre">None</span></em>, <em class="sig-param"><span class="pre">client_options:</span> <span class="pre">Optional[google.api_core.client_options.ClientOptions]</span> <span class="pre">=</span> <span class="pre">None</span></em>, <em class="sig-param"><span class="pre">client_info:</span> <span class="pre">google.api_core.gapic_v1.client_info.ClientInfo</span> <span class="pre">=</span> <span class="pre">&lt;google.api_core.gapic_v1.client_info.ClientInfo</span> <span class="pre">object&gt;</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/google/cloud/aiplatform_v1beta1/services/featurestore_online_serving_service/client.html#FeaturestoreOnlineServingServiceClient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceClient" title="Permalink to this definition">¶</a></dt>
+<dd><p>A service for serving online feature values.</p>
+<p>Instantiates the featurestore online serving service client.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>credentials</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://googleapis.dev/python/google-auth/latest/reference/google.auth.credentials.html#google.auth.credentials.Credentials" title="(in google-auth v1.30.2)"><em>google.auth.credentials.Credentials</em></a><em>]</em>) – The
+authorization credentials to attach to requests. These
+credentials identify the application to the service; if none
+are specified, the client will attempt to ascertain the
+credentials from the environment.</p></li>
+<li><p><strong>transport</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>, </em><em>FeaturestoreOnlineServingServiceTransport</em><em>]</em>) – The
+transport to use. If set to None, a transport is chosen
+automatically.</p></li>
+<li><p><strong>client_options</strong> (<a class="reference external" href="https://googleapis.dev/python/google-api-core/latest/client_options.html#google.api_core.client_options.ClientOptions" title="(in google-api-core)"><em>google.api_core.client_options.ClientOptions</em></a>) – Custom options for the
+client. It won’t take effect if a <code class="docutils literal notranslate"><span class="pre">transport</span></code> instance is provided.
+(1) The <code class="docutils literal notranslate"><span class="pre">api_endpoint</span></code> property can be used to override the
+default endpoint provided by the client. GOOGLE_API_USE_MTLS_ENDPOINT
+environment variable can also be used to override the endpoint:
+“always” (always use the default mTLS endpoint), “never” (always
+use the default regular endpoint) and “auto” (auto switch to the
+default mTLS endpoint if client certificate is present, this is
+the default value). However, the <code class="docutils literal notranslate"><span class="pre">api_endpoint</span></code> property takes
+precedence if provided.
+(2) If GOOGLE_API_USE_CLIENT_CERTIFICATE environment variable
+is “true”, then the <code class="docutils literal notranslate"><span class="pre">client_cert_source</span></code> property can be used
+to provide client certificate for mutual TLS transport. If
+not provided, the default SSL client certificate will be used if
+present. If GOOGLE_API_USE_CLIENT_CERTIFICATE is “false” or not
+set, no client certificate will be used.</p></li>
+<li><p><strong>client_info</strong> (<a class="reference external" href="https://googleapis.dev/python/google-api-core/latest/client_info.html#google.api_core.gapic_v1.client_info.ClientInfo" title="(in google-api-core)"><em>google.api_core.gapic_v1.client_info.ClientInfo</em></a>) – The client info used to send a user-agent string along with
+API requests. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, then default info will be used.
+Generally, you only need to set this if you’re developing
+your own client library.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference external" href="https://googleapis.dev/python/google-auth/latest/reference/google.auth.exceptions.html#google.auth.exceptions.MutualTLSChannelError" title="(in google-auth v1.30.2)"><strong>google.auth.exceptions.MutualTLSChannelError</strong></a> – If mutual TLS transport
+    creation failed for any reason.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceClient.common_billing_account_path">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">common_billing_account_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">billing_account</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><a class="reference internal" href="../_modules/google/cloud/aiplatform_v1beta1/services/featurestore_online_serving_service/client.html#FeaturestoreOnlineServingServiceClient.common_billing_account_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceClient.common_billing_account_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a fully-qualified billing_account string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceClient.common_folder_path">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">common_folder_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><a class="reference internal" href="../_modules/google/cloud/aiplatform_v1beta1/services/featurestore_online_serving_service/client.html#FeaturestoreOnlineServingServiceClient.common_folder_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceClient.common_folder_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a fully-qualified folder string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceClient.common_location_path">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">common_location_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><a class="reference internal" href="../_modules/google/cloud/aiplatform_v1beta1/services/featurestore_online_serving_service/client.html#FeaturestoreOnlineServingServiceClient.common_location_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceClient.common_location_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a fully-qualified location string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceClient.common_organization_path">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">common_organization_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">organization</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><a class="reference internal" href="../_modules/google/cloud/aiplatform_v1beta1/services/featurestore_online_serving_service/client.html#FeaturestoreOnlineServingServiceClient.common_organization_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceClient.common_organization_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a fully-qualified organization string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceClient.common_project_path">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">common_project_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><a class="reference internal" href="../_modules/google/cloud/aiplatform_v1beta1/services/featurestore_online_serving_service/client.html#FeaturestoreOnlineServingServiceClient.common_project_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceClient.common_project_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a fully-qualified project string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceClient.entity_type_path">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">entity_type_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">featurestore</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">entity_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><a class="reference internal" href="../_modules/google/cloud/aiplatform_v1beta1/services/featurestore_online_serving_service/client.html#FeaturestoreOnlineServingServiceClient.entity_type_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceClient.entity_type_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a fully-qualified entity_type string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceClient.from_service_account_file">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_service_account_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/google/cloud/aiplatform_v1beta1/services/featurestore_online_serving_service/client.html#FeaturestoreOnlineServingServiceClient.from_service_account_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceClient.from_service_account_file" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Creates an instance of this client using the provided credentials</dt><dd><p>file.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The path to the service account private key json
+file.</p></li>
+<li><p><strong>args</strong> – Additional arguments to pass to the constructor.</p></li>
+<li><p><strong>kwargs</strong> – Additional arguments to pass to the constructor.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The constructed client.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceClient" title="google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceClient">FeaturestoreOnlineServingServiceClient</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceClient.from_service_account_info">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_service_account_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">info</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#dict" title="(in Python v3.7)"><span class="pre">dict</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/google/cloud/aiplatform_v1beta1/services/featurestore_online_serving_service/client.html#FeaturestoreOnlineServingServiceClient.from_service_account_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceClient.from_service_account_info" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Creates an instance of this client using the provided credentials</dt><dd><p>info.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>info</strong> (<a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a>) – The service account private key info.</p></li>
+<li><p><strong>args</strong> – Additional arguments to pass to the constructor.</p></li>
+<li><p><strong>kwargs</strong> – Additional arguments to pass to the constructor.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The constructed client.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceClient" title="google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceClient">FeaturestoreOnlineServingServiceClient</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceClient.from_service_account_json">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_service_account_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceClient.from_service_account_json" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Creates an instance of this client using the provided credentials</dt><dd><p>file.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – The path to the service account private key json
+file.</p></li>
+<li><p><strong>args</strong> – Additional arguments to pass to the constructor.</p></li>
+<li><p><strong>kwargs</strong> – Additional arguments to pass to the constructor.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The constructed client.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceClient" title="google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceClient">FeaturestoreOnlineServingServiceClient</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceClient.parse_common_billing_account_path">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">parse_common_billing_account_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><a class="reference internal" href="../_modules/google/cloud/aiplatform_v1beta1/services/featurestore_online_serving_service/client.html#FeaturestoreOnlineServingServiceClient.parse_common_billing_account_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceClient.parse_common_billing_account_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse a billing_account path into its component segments.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceClient.parse_common_folder_path">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">parse_common_folder_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><a class="reference internal" href="../_modules/google/cloud/aiplatform_v1beta1/services/featurestore_online_serving_service/client.html#FeaturestoreOnlineServingServiceClient.parse_common_folder_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceClient.parse_common_folder_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse a folder path into its component segments.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceClient.parse_common_location_path">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">parse_common_location_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><a class="reference internal" href="../_modules/google/cloud/aiplatform_v1beta1/services/featurestore_online_serving_service/client.html#FeaturestoreOnlineServingServiceClient.parse_common_location_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceClient.parse_common_location_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse a location path into its component segments.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceClient.parse_common_organization_path">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">parse_common_organization_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><a class="reference internal" href="../_modules/google/cloud/aiplatform_v1beta1/services/featurestore_online_serving_service/client.html#FeaturestoreOnlineServingServiceClient.parse_common_organization_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceClient.parse_common_organization_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse a organization path into its component segments.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceClient.parse_common_project_path">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">parse_common_project_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><a class="reference internal" href="../_modules/google/cloud/aiplatform_v1beta1/services/featurestore_online_serving_service/client.html#FeaturestoreOnlineServingServiceClient.parse_common_project_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceClient.parse_common_project_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse a project path into its component segments.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceClient.parse_entity_type_path">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">parse_entity_type_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><a class="reference internal" href="../_modules/google/cloud/aiplatform_v1beta1/services/featurestore_online_serving_service/client.html#FeaturestoreOnlineServingServiceClient.parse_entity_type_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceClient.parse_entity_type_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parses a entity_type path into its component segments.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceClient.read_feature_values">
+<span class="sig-name descname"><span class="pre">read_feature_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">request:</span> <span class="pre">Optional[google.cloud.aiplatform_v1beta1.types.featurestore_online_service.ReadFeatureValuesRequest]</span> <span class="pre">=</span> <span class="pre">None</span></em>, <em class="sig-param"><span class="pre">*</span></em>, <em class="sig-param"><span class="pre">entity_type:</span> <span class="pre">Optional[str]</span> <span class="pre">=</span> <span class="pre">None</span></em>, <em class="sig-param"><span class="pre">retry:</span> <span class="pre">google.api_core.retry.Retry</span> <span class="pre">=</span> <span class="pre">&lt;object</span> <span class="pre">object&gt;</span></em>, <em class="sig-param"><span class="pre">timeout:</span> <span class="pre">Optional[float]</span> <span class="pre">=</span> <span class="pre">None</span></em>, <em class="sig-param"><span class="pre">metadata:</span> <span class="pre">Sequence[Tuple[str</span></em>, <em class="sig-param"><span class="pre">str]]</span> <span class="pre">=</span> <span class="pre">()</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="types.html#google.cloud.aiplatform_v1beta1.types.ReadFeatureValuesResponse" title="google.cloud.aiplatform_v1beta1.types.featurestore_online_service.ReadFeatureValuesResponse"><span class="pre">google.cloud.aiplatform_v1beta1.types.featurestore_online_service.ReadFeatureValuesResponse</span></a><a class="reference internal" href="../_modules/google/cloud/aiplatform_v1beta1/services/featurestore_online_serving_service/client.html#FeaturestoreOnlineServingServiceClient.read_feature_values"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceClient.read_feature_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads Feature values of a specific entity of an
+EntityType. For reading feature values of multiple
+entities of an EntityType, please use
+StreamingReadFeatureValues.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> (<a class="reference internal" href="types.html#google.cloud.aiplatform_v1beta1.types.ReadFeatureValuesRequest" title="google.cloud.aiplatform_v1beta1.types.ReadFeatureValuesRequest"><em>google.cloud.aiplatform_v1beta1.types.ReadFeatureValuesRequest</em></a>) – The request object. Request message for
+[FeaturestoreOnlineServingService.ReadFeatureValues][google.cloud.aiplatform.v1beta1.FeaturestoreOnlineServingService.ReadFeatureValues].</p></li>
+<li><p><strong>entity_type</strong> (<a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – <p>Required. The resource name of the EntityType for the
+entity being read. Value format:
+<code class="docutils literal notranslate"><span class="pre">projects/{project}/locations/{location}/featurestores/</span> <span class="pre">{featurestore}/entityTypes/{entityType}</span></code>.
+For example, for a machine learning model predicting
+user clicks on a website, an EntityType ID could be
+“user”.</p>
+<p>This corresponds to the <code class="docutils literal notranslate"><span class="pre">entity_type</span></code> field
+on the <code class="docutils literal notranslate"><span class="pre">request</span></code> instance; if <code class="docutils literal notranslate"><span class="pre">request</span></code> is provided, this
+should not be set.</p>
+</p></li>
+<li><p><strong>retry</strong> (<a class="reference external" href="https://googleapis.dev/python/google-api-core/latest/retry.html#google.api_core.retry.Retry" title="(in google-api-core)"><em>google.api_core.retry.Retry</em></a>) – Designation of what errors, if any,
+should be retried.</p></li>
+<li><p><strong>timeout</strong> (<a class="reference external" href="https://python.readthedocs.io/en/latest/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The timeout for this request.</p></li>
+<li><p><strong>metadata</strong> (<em>Sequence</em><em>[</em><em>Tuple</em><em>[</em><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>, </em><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>]</em><em>]</em>) – Strings which should be
+sent along with the request as metadata.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Response message for
+[FeaturestoreOnlineServingService.ReadFeatureValues][google.cloud.aiplatform.v1beta1.FeaturestoreOnlineServingService.ReadFeatureValues].</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="types.html#google.cloud.aiplatform_v1beta1.types.ReadFeatureValuesResponse" title="google.cloud.aiplatform_v1beta1.types.ReadFeatureValuesResponse">google.cloud.aiplatform_v1beta1.types.ReadFeatureValuesResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceClient.streaming_read_feature_values">
+<span class="sig-name descname"><span class="pre">streaming_read_feature_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">request:</span> <span class="pre">Optional[google.cloud.aiplatform_v1beta1.types.featurestore_online_service.StreamingReadFeatureValuesRequest]</span> <span class="pre">=</span> <span class="pre">None</span></em>, <em class="sig-param"><span class="pre">*</span></em>, <em class="sig-param"><span class="pre">entity_type:</span> <span class="pre">Optional[str]</span> <span class="pre">=</span> <span class="pre">None</span></em>, <em class="sig-param"><span class="pre">retry:</span> <span class="pre">google.api_core.retry.Retry</span> <span class="pre">=</span> <span class="pre">&lt;object</span> <span class="pre">object&gt;</span></em>, <em class="sig-param"><span class="pre">timeout:</span> <span class="pre">Optional[float]</span> <span class="pre">=</span> <span class="pre">None</span></em>, <em class="sig-param"><span class="pre">metadata:</span> <span class="pre">Sequence[Tuple[str</span></em>, <em class="sig-param"><span class="pre">str]]</span> <span class="pre">=</span> <span class="pre">()</span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="types.html#google.cloud.aiplatform_v1beta1.types.ReadFeatureValuesResponse" title="google.cloud.aiplatform_v1beta1.types.featurestore_online_service.ReadFeatureValuesResponse"><span class="pre">google.cloud.aiplatform_v1beta1.types.featurestore_online_service.ReadFeatureValuesResponse</span></a><span class="p"><span class="pre">]</span></span><a class="reference internal" href="../_modules/google/cloud/aiplatform_v1beta1/services/featurestore_online_serving_service/client.html#FeaturestoreOnlineServingServiceClient.streaming_read_feature_values"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceClient.streaming_read_feature_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads Feature values for multiple entities. Depending
+on their size, data for different entities may be broken
+up across multiple responses.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> (<a class="reference internal" href="types.html#google.cloud.aiplatform_v1beta1.types.StreamingReadFeatureValuesRequest" title="google.cloud.aiplatform_v1beta1.types.StreamingReadFeatureValuesRequest"><em>google.cloud.aiplatform_v1beta1.types.StreamingReadFeatureValuesRequest</em></a>) – The request object. Request message for
+[FeaturestoreOnlineServingService.StreamingFeatureValuesRead][].</p></li>
+<li><p><strong>entity_type</strong> (<a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – <p>Required. The resource name of the entities’ type. Value
+format:
+<code class="docutils literal notranslate"><span class="pre">projects/{project}/locations/{location}/featurestores/</span> <span class="pre">{featurestore}/entityTypes/{entityType}</span></code>.
+For example, for a machine learning model predicting
+user clicks on a website, an EntityType ID could be
+“user”.</p>
+<p>This corresponds to the <code class="docutils literal notranslate"><span class="pre">entity_type</span></code> field
+on the <code class="docutils literal notranslate"><span class="pre">request</span></code> instance; if <code class="docutils literal notranslate"><span class="pre">request</span></code> is provided, this
+should not be set.</p>
+</p></li>
+<li><p><strong>retry</strong> (<a class="reference external" href="https://googleapis.dev/python/google-api-core/latest/retry.html#google.api_core.retry.Retry" title="(in google-api-core)"><em>google.api_core.retry.Retry</em></a>) – Designation of what errors, if any,
+should be retried.</p></li>
+<li><p><strong>timeout</strong> (<a class="reference external" href="https://python.readthedocs.io/en/latest/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – The timeout for this request.</p></li>
+<li><p><strong>metadata</strong> (<em>Sequence</em><em>[</em><em>Tuple</em><em>[</em><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>, </em><a class="reference external" href="https://python.readthedocs.io/en/latest/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>]</em><em>]</em>) – Strings which should be
+sent along with the request as metadata.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Response message for
+[FeaturestoreOnlineServingService.ReadFeatureValues][google.cloud.aiplatform.v1beta1.FeaturestoreOnlineServingService.ReadFeatureValues].</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Iterable[<a class="reference internal" href="types.html#google.cloud.aiplatform_v1beta1.types.ReadFeatureValuesResponse" title="google.cloud.aiplatform_v1beta1.types.ReadFeatureValuesResponse">google.cloud.aiplatform_v1beta1.types.ReadFeatureValuesResponse</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceClient.transport">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">transport</span></span><em class="property"><span class="pre">:</span> <span class="pre">google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.transports.base.FeaturestoreOnlineServingServiceTransport</span></em><a class="headerlink" href="#google.cloud.aiplatform_v1beta1.services.featurestore_online_serving_service.FeaturestoreOnlineServingServiceClient.transport" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the transport used by the client instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><dl class="simple">
+<dt>The transport used by the client</dt><dd><p>instance.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>FeaturestoreOnlineServingServiceTransport</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">google-cloud-aiplatform</a></h1>
+
+
+
+<p class="blurb">Google Cloud Client Libraries for google-cloud-aiplatform</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=googleapis&repo=python-aiplatform&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../aiplatform.html">Google Cloud Aiplatform SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aiplatform_v1/services.html">Services for Google Cloud Aiplatform v1 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../aiplatform_v1/types.html">Types for Google Cloud Aiplatform v1 API</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="services.html">Services for Google Cloud Aiplatform v1beta1 API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="dataset_service.html">DatasetService</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endpoint_service.html">EndpointService</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">FeaturestoreOnlineServingService</a></li>
+<li class="toctree-l2"><a class="reference internal" href="featurestore_service.html">FeaturestoreService</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_endpoint_service.html">IndexEndpointService</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_service.html">IndexService</a></li>
+<li class="toctree-l2"><a class="reference internal" href="job_service.html">JobService</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metadata_service.html">MetadataService</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_service.html">MigrationService</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_service.html">ModelService</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipeline_service.html">PipelineService</a></li>
+<li class="toctree-l2"><a class="reference internal" href="prediction_service.html">PredictionService</a></li>
+<li class="toctree-l2"><a class="reference internal" href="specialist_pool_service.html">SpecialistPoolService</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tensorboard_service.html">TensorboardService</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vizier_service.html">VizierService</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="types.html">Types for Google Cloud Aiplatform v1beta1 API</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="services.html">Services for Google Cloud Aiplatform v1beta1 API</a><ul>
+      <li>Previous: <a href="endpoint_service.html" title="previous chapter">EndpointService</a></li>
+      <li>Next: <a href="featurestore_service.html" title="next chapter">FeaturestoreService</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Google.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/aiplatform_v1beta1/featurestore_online_serving_service.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+    <a href="https://github.com/googleapis/python-aiplatform" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>
